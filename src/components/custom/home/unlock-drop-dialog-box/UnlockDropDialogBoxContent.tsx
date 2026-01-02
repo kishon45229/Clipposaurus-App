@@ -10,7 +10,6 @@ import { UnlockDropDialogBoxBody } from "@/components/custom/home/unlock-drop-di
 import { UnlockDropDialogBoxFooter } from "@/components/custom/home/unlock-drop-dialog-box/UnlockDropDialogBoxFooter";
 import { useDropOptions } from "@/contexts/DropOptionsContext";
 import { DialogBox } from "@/components/custom/home/DialogBox";
-import { AmbientGlow } from "@/components/ui/ambient-glow";
 
 export const UnlockDropDialogBoxContent: React.FC = React.memo(() => {
     const { shouldShowModal, handleOpenChange } = useDropOptions();
@@ -33,9 +32,6 @@ export const UnlockDropDialogBoxContent: React.FC = React.memo(() => {
                     gap-[clamp(0.5rem,3vw,1.5rem)]
                 "
             >
-                {/* Background Glow */}
-                <AmbientGlow />
-
                 <UnlockDropDialogBoxHeader />
                 <UnlockDropDialogBoxBody />
                 <UnlockDropDialogBoxFooter />
