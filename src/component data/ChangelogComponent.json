@@ -3,7 +3,7 @@
   "description": "Stay up to date with the latest features, improvements, and bug fixes in Clipposaurus.",
   "releases": [
     {
-      "version": "1.0.0",
+      "version": "1.0.0-beta",
       "date": "January 1, 2026",
       "title": "Initial Beta Release",
       "type": "major",
