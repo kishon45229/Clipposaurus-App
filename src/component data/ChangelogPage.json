@@ -1,0 +1,199 @@
+{
+  "headline": "Changelog",
+  "description": "Stay up to date with the latest features, improvements, and bug fixes in Clipposaurus.",
+  "releases": [
+    {
+      "version": "1.2.0",
+      "date": "December 15, 2025",
+      "title": "Enhanced Security & Performance",
+      "type": "major",
+      "changes": [
+        {
+          "category": "New Features",
+          "items": [
+            {
+              "title": "Multi-file Upload Support",
+              "description": "You can now upload multiple files at once, making it easier to share entire project folders or collections of documents."
+            },
+            {
+              "title": "Custom Expiration Times",
+              "description": "Choose between 15 minutes, 30 minutes, 1 hour, or 6 hours for your content expiration. More flexibility for your sharing needs."
+            },
+            {
+              "title": "QR Code Generation",
+              "description": "Automatically generate QR codes for your drops, making it easy to share content with mobile devices."
+            }
+          ]
+        },
+        {
+          "category": "Improvements",
+          "items": [
+            {
+              "title": "Faster Upload Speeds",
+              "description": "Optimized file upload process resulting in 40% faster upload times for large files."
+            },
+            {
+              "title": "Better Mobile Experience",
+              "description": "Redesigned mobile interface with improved touch targets and better responsive layouts."
+            },
+            {
+              "title": "Enhanced Code Editor",
+              "description": "Added support for 50+ new programming languages and improved syntax highlighting accuracy."
+            }
+          ]
+        },
+        {
+          "category": "Bug Fixes",
+          "items": [
+            {
+              "title": "Fixed Copy Button on iOS",
+              "description": "Resolved issue where the copy button wasn't working correctly on iOS Safari."
+            },
+            {
+              "title": "Improved Error Messages",
+              "description": "More descriptive error messages to help users troubleshoot issues quickly."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "1.1.0",
+      "date": "November 1, 2025",
+      "title": "UI/UX Enhancements",
+      "type": "minor",
+      "changes": [
+        {
+          "category": "New Features",
+          "items": [
+            {
+              "title": "Dark Mode",
+              "description": "Added full dark mode support with automatic theme detection based on system preferences."
+            },
+            {
+              "title": "Download All Files",
+              "description": "New button to download all files in a drop as a single ZIP archive."
+            },
+            {
+              "title": "Syntax Theme Selection",
+              "description": "Choose from 10+ code editor themes for better code readability."
+            }
+          ]
+        },
+        {
+          "category": "Improvements",
+          "items": [
+            {
+              "title": "Improved Loading States",
+              "description": "Added skeleton loaders and better visual feedback during content loading."
+            },
+            {
+              "title": "Keyboard Shortcuts",
+              "description": "Added keyboard shortcuts for common actions (Ctrl+V to paste, Ctrl+S to save)."
+            },
+            {
+              "title": "Better File Preview",
+              "description": "Enhanced file preview for images, PDFs, and common document formats."
+            }
+          ]
+        },
+        {
+          "category": "Bug Fixes",
+          "items": [
+            {
+              "title": "Fixed Text Wrapping",
+              "description": "Long text without spaces now wraps correctly instead of overflowing the container."
+            },
+            {
+              "title": "Fixed Magic Words Generation",
+              "description": "Resolved rare issue where magic words could contain similar-looking characters."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "1.0.5",
+      "date": "October 10, 2025",
+      "title": "Performance & Stability",
+      "type": "patch",
+      "changes": [
+        {
+          "category": "Improvements",
+          "items": [
+            {
+              "title": "Reduced Bundle Size",
+              "description": "Optimized JavaScript bundle size by 30%, resulting in faster initial page loads."
+            },
+            {
+              "title": "Better Error Handling",
+              "description": "Improved error handling for network issues and server errors."
+            },
+            {
+              "title": "SEO Improvements",
+              "description": "Added proper meta tags and structured data for better search engine visibility."
+            }
+          ]
+        },
+        {
+          "category": "Bug Fixes",
+          "items": [
+            {
+              "title": "Fixed File Upload Timeout",
+              "description": "Increased timeout for large file uploads to prevent premature failures."
+            },
+            {
+              "title": "Fixed Code Language Detection",
+              "description": "Improved accuracy of automatic programming language detection."
+            },
+            {
+              "title": "Fixed Memory Leak",
+              "description": "Resolved memory leak issue that occurred when uploading multiple files in succession."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "date": "September 1, 2025",
+      "title": "Initial Release",
+      "type": "major",
+      "changes": [
+        {
+          "category": "New Features",
+          "items": [
+            {
+              "title": "Secure Content Sharing",
+              "description": "End-to-end encrypted sharing for text, code, and files with automatic deletion after 1 hour."
+            },
+            {
+              "title": "Magic Words System",
+              "description": "Easy-to-remember two-word codes for accessing your shared content."
+            },
+            {
+              "title": "Code Syntax Highlighting",
+              "description": "Support for 180+ programming languages with automatic language detection."
+            },
+            {
+              "title": "File Upload Support",
+              "description": "Upload files up to 100MB with secure encrypted storage."
+            },
+            {
+              "title": "No Registration Required",
+              "description": "Share content instantly without creating an account or signing in."
+            },
+            {
+              "title": "Cross-Device Sharing",
+              "description": "Share content seamlessly between desktop, mobile, and tablet devices."
+            },
+            {
+              "title": "Privacy-First Design",
+              "description": "No tracking, no ads, no personal data collection - just secure sharing."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

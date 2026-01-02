@@ -1,0 +1,35 @@
+import React from "react";
+import type { DocsSection, ContentData29 } from "@/types/docs";
+
+interface FeaturesSectionProps {
+    section: DocsSection & { data: ContentData29 };
+}
+
+export const FeaturesSection = React.memo<FeaturesSectionProps>(({ section }) => {
+    const data = section.data as ContentData29;
+    if (!data) return null;
+
+    return (
+        <section id={section.id}>
+            <div className="grid md:grid-cols-3 gap-6">
+                {data.map((feature, index) => (
+                    <div key={index} className="space-y-3 p-6 border-e border-zinc-200 dark:border-zinc-800">
+                        <div className="text-lg font-semibold text-emerald-600 dark:text-emerald-500">
+                            {feature.title}
+                        </div>
+                        <ul className="space-y-2">
+                            {feature.items.map((item, i) => (
+                                <li key={i} className="flex items-start space-x-2">
+                                    <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 shrink-0"></div>
+                                    <span className="text-base text-zinc-700 dark:text-zinc-400">{item}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                ))}
+            </div>
+        </section>
+    );
+});
+
+FeaturesSection.displayName = "FeaturesSection";

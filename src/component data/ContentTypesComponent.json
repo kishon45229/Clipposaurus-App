@@ -1,0 +1,22 @@
+{
+  "title": "What You Can Share?",
+  "description": "Discover the variety of content you can securely share with Clipposaurus, from simple text notes to complex code snippets and any format files.",
+  "contentTypes": [
+    {
+      "title": "Text",
+      "items": ["No character limit", "Formatting preserved"]
+    },
+    {
+      "title": "Code",
+      "items": [
+        "Syntax highlighting for 20+ languages",
+        "Auto language detection",
+        "Professional formatting"
+      ]
+    },
+    {
+      "title": "Files",
+      "items": ["Up to 50MB total", "Any file type", "Drag & drop or upload"]
+    }
+  ]
+}

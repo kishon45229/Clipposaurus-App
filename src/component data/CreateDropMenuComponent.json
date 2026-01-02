@@ -1,0 +1,13 @@
+{
+  "title": "Ready to Create Drop?",
+  "description": "Complete below to configure your Drop",
+  "retentionSettingsTitle": "Drop Retention Settings",
+  "retentionOptions": {
+    "deleteOnAccess": "Delete Drop immediately after downloaded or copied",
+    "keep30Minutes": "Keep the Drop for 30 minutes then delete",
+    "keep1Hour": "Keep the Drop for 1 hour then delete"
+  },
+  "noteLabel": "Note:",
+  "noteText": "Each Drop is securely encrypted and stored according to your settings — you'll receive a magic key to retrieve it anytime within your selected retention period.",
+  "ctaButton": "Create Drop"
+}

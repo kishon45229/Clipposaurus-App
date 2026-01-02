@@ -1,0 +1,712 @@
+{
+  "title": "Getting Started Guide",
+  "description": "Complete guide for users and developers to get started with Clipposaurus",
+  "userGuide": {
+    "title": "User Guide",
+    "description": "Learn how to use Clipposaurus to share files, text, and code securely",
+    "quickStart": {
+      "title": "Quick Start (2 minutes)",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Visit Clipposaurus",
+          "description": "Go to https://clipposaurus.com in any web browser",
+          "details": [
+            "Works on desktop, mobile, and tablet devices",
+            "No downloads or installations required",
+            "No account registration needed"
+          ]
+        },
+        {
+          "step": 2,
+          "title": "Choose Content Type",
+          "description": "Select what you want to share",
+          "options": [
+            {
+              "type": "Text",
+              "description": "Share plain text, notes, or messages",
+              "icon": "📝"
+            },
+            {
+              "type": "Code",
+              "description": "Share code snippets with syntax highlighting",
+              "icon": "💻"
+            },
+            {
+              "type": "Files",
+              "description": "Upload any files up to 50MB each",
+              "icon": "📁"
+            }
+          ]
+        },
+        {
+          "step": 3,
+          "title": "Add Your Content",
+          "description": "Enter or upload your content",
+          "methods": [
+            "Type or paste text directly",
+            "Upload files by drag & drop or file browser",
+            "Write code with syntax highlighting",
+            "Mix multiple content types in one share"
+          ]
+        },
+        {
+          "step": 4,
+          "title": "Get Magic Words",
+          "description": "Receive unique access codes to retrieve your content",
+          "details": [
+            "Unique random words generated for security",
+            "Share these words to give others access",
+            "Content expires automatically after 1 hour",
+            "Access codes work on any device"
+          ]
+        },
+        {
+          "step": 5,
+          "title": "Share & Access",
+          "description": "Use the magic words to access content anywhere",
+          "methods": [
+            "Enter magic words on the showcase page",
+            "Share the direct link with magic words included",
+            "Access from any device with internet connection",
+            "Download files or copy text/code as needed"
+          ]
+        }
+      ]
+    },
+    "detailedGuide": {
+      "title": "Detailed Usage Guide",
+      "sections": [
+        {
+          "section": "Sharing Text Content",
+          "description": "How to share text messages, notes, and documents",
+          "steps": [
+            {
+              "action": "Navigate to Text Tab",
+              "description": "Click the 'Text' option on the main page"
+            },
+            {
+              "action": "Enter Text",
+              "description": "Type or paste your text content in the text area",
+              "tips": [
+                "No character limit for text content",
+                "Line breaks and formatting preserved",
+                "Unicode characters supported",
+                "Markdown formatting recommended for rich text"
+              ]
+            },
+            {
+              "action": "Submit Content",
+              "description": "Click 'Create Drop' to generate magic words",
+              "note": "reCAPTCHA verification may be required"
+            },
+            {
+              "action": "Save Magic Words",
+              "description": "Copy and securely store the generated access code",
+              "security": "These words are the only way to access your content"
+            }
+          ]
+        },
+        {
+          "section": "Sharing Code Snippets",
+          "description": "How to share source code with syntax highlighting",
+          "steps": [
+            {
+              "action": "Select Code Tab",
+              "description": "Choose the 'Code' option for syntax highlighting"
+            },
+            {
+              "action": "Choose Language",
+              "description": "Select the programming language for proper highlighting",
+              "supportedLanguages": [
+                "JavaScript/TypeScript",
+                "Python",
+                "Java",
+                "C/C++",
+                "HTML/CSS",
+                "SQL",
+                "JSON/XML",
+                "Bash/Shell",
+                "And 100+ more languages"
+              ]
+            },
+            {
+              "action": "Paste Code",
+              "description": "Enter your code in the editor",
+              "features": [
+                "Real-time syntax highlighting",
+                "Auto-indentation",
+                "Line numbers",
+                "Code folding",
+                "Multiple themes available"
+              ]
+            },
+            {
+              "action": "Create Drop",
+              "description": "Generate magic words for your code snippet"
+            }
+          ]
+        },
+        {
+          "section": "Uploading Files",
+          "description": "How to upload and share files securely",
+          "steps": [
+            {
+              "action": "Access File Upload",
+              "description": "Go to the 'Files' section or drag files anywhere"
+            },
+            {
+              "action": "Select Files",
+              "description": "Choose files using one of these methods",
+              "methods": [
+                "Drag and drop files onto the page",
+                "Click 'Browse' to select files",
+                "Paste images from clipboard",
+                "Select multiple files simultaneously"
+              ]
+            },
+            {
+              "action": "Review Upload",
+              "description": "Check file details before uploading",
+              "information": [
+                "File names and sizes displayed",
+                "Progress indicators for uploads",
+                "Total size validation (50MB limit)",
+                "File type verification"
+              ]
+            },
+            {
+              "action": "Upload & Share",
+              "description": "Complete upload and get access codes",
+              "note": "Files are encrypted before storage"
+            }
+          ]
+        },
+        {
+          "section": "Accessing Shared Content",
+          "description": "How to retrieve content using magic words",
+          "steps": [
+            {
+              "action": "Visit Showcase Page",
+              "description": "Go to /showcase or use the direct share link"
+            },
+            {
+              "action": "Enter Magic Words",
+              "description": "Type the access code in the verification field",
+              "tips": [
+                "Words are case-insensitive",
+                "Spaces and hyphens are optional",
+                "Copy-paste recommended to avoid typos"
+              ]
+            },
+            {
+              "action": "View Content",
+              "description": "Access all shared content in organized tabs",
+              "features": [
+                "Text content with copy button",
+                "Code with syntax highlighting and copy",
+                "File downloads with original names",
+                "Creation and expiration timestamps"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "tips": {
+      "title": "Pro Tips",
+      "tips": [
+        {
+          "category": "Security",
+          "tip": "Share magic words through secure channels only (encrypted messaging, in person)",
+          "reason": "Anyone with the magic words can access your content"
+        },
+        {
+          "category": "Organization",
+          "tip": "Combine related files, text, and code in a single drop",
+          "reason": "Easier to manage and share complete projects or sets of information"
+        },
+        {
+          "category": "File Size",
+          "tip": "Compress large files before uploading to maximize the 50MB limit",
+          "reason": "You can fit more content within the size constraints"
+        },
+        {
+          "category": "Expiration",
+          "tip": "Download important files immediately after sharing",
+          "reason": "Content is automatically deleted after 1 hour"
+        },
+        {
+          "category": "Privacy",
+          "tip": "Avoid sharing personally identifiable information",
+          "reason": "While encrypted, it's best practice for privacy"
+        }
+      ]
+    }
+  },
+  "developerGuide": {
+    "title": "Developer Guide",
+    "description": "Technical guide for developers wanting to deploy or contribute to Clipposaurus",
+    "prerequisites": {
+      "title": "Prerequisites",
+      "requirements": [
+        {
+          "category": "Runtime",
+          "items": [
+            "Node.js 18.17 or later",
+            "npm 9.6 or later (or yarn/pnpm equivalent)",
+            "Git for version control"
+          ]
+        },
+        {
+          "category": "Services",
+          "items": [
+            "Redis database (Upstash recommended)",
+            "At least one S3-compatible storage provider",
+            "reCAPTCHA v3 keys (optional but recommended)",
+            "Domain with SSL certificate"
+          ]
+        },
+        {
+          "category": "Development Environment",
+          "items": [
+            "VS Code or similar editor",
+            "Terminal/Command line access",
+            "Basic understanding of Next.js and React"
+          ]
+        }
+      ]
+    },
+    "installation": {
+      "title": "Local Development Setup",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Clone Repository",
+          "commands": [
+            "git clone https://github.com/your-username/clipposaurus.git",
+            "cd clipposaurus"
+          ],
+          "description": "Get the source code locally"
+        },
+        {
+          "step": 2,
+          "title": "Install Dependencies",
+          "commands": ["npm install", "# or", "yarn install"],
+          "description": "Install all required packages"
+        },
+        {
+          "step": 3,
+          "title": "Environment Setup",
+          "description": "Create and configure environment variables",
+          "files": [
+            {
+              "file": ".env.local",
+              "description": "Local development environment variables",
+              "requiredVars": [
+                "NEXT_PUBLIC_BASE_URL=http://localhost:3000",
+                "UPSTASH_REDIS_REST_URL=your_redis_url",
+                "UPSTASH_REDIS_REST_TOKEN=your_redis_token",
+                "ENCRYPTION_KEY=your_32_character_encryption_key",
+                "KEY_LENGTH=32",
+                "IV_LENGTH=12",
+                "SALT_LENGTH=16",
+                "TAG_LENGTH=16"
+              ],
+              "storageVars": [
+                "# At least one storage provider required:",
+                "CLOUDFLARE_R2_ACCESS_KEY_ID=your_key",
+                "CLOUDFLARE_R2_SECRET_ACCESS_KEY=your_secret",
+                "CLOUDFLARE_R2_BUCKET_NAME=your_bucket",
+                "CLOUDFLARE_R2_ENDPOINT=your_endpoint",
+                "CLOUDFLARE_R2_PUBLIC_URL=your_public_url"
+              ],
+              "optionalVars": [
+                "RECAPTCHA_SECRET_KEY=your_recaptcha_secret",
+                "NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_recaptcha_site_key"
+              ]
+            }
+          ]
+        },
+        {
+          "step": 4,
+          "title": "Database Setup",
+          "description": "Configure Redis database",
+          "options": [
+            {
+              "option": "Upstash (Recommended)",
+              "steps": [
+                "Create account at upstash.com",
+                "Create new Redis database",
+                "Copy REST URL and token to .env.local",
+                "Test connection with npm run test:redis"
+              ]
+            },
+            {
+              "option": "Local Redis",
+              "steps": [
+                "Install Redis locally",
+                "Start Redis server: redis-server",
+                "Configure connection in .env.local",
+                "Test with redis-cli ping"
+              ]
+            }
+          ]
+        },
+        {
+          "step": 5,
+          "title": "Storage Provider Setup",
+          "description": "Configure at least one storage provider",
+          "providers": [
+            {
+              "provider": "Cloudflare R2",
+              "setup": [
+                "Create Cloudflare account",
+                "Enable R2 storage",
+                "Create bucket and API keys",
+                "Configure public access and custom domain"
+              ],
+              "benefits": [
+                "Fast global CDN",
+                "Generous free tier",
+                "S3 compatibility"
+              ]
+            },
+            {
+              "provider": "Backblaze B2",
+              "setup": [
+                "Create Backblaze account",
+                "Create bucket with public access",
+                "Generate application keys",
+                "Configure friendly URLs"
+              ],
+              "benefits": ["Cost effective", "Simple setup", "Reliable storage"]
+            },
+            {
+              "provider": "Storj",
+              "setup": [
+                "Create Storj account",
+                "Generate S3-compatible credentials",
+                "Create bucket with public gateway",
+                "Configure access keys"
+              ],
+              "benefits": [
+                "Decentralized",
+                "High security",
+                "Redundant storage"
+              ]
+            }
+          ]
+        },
+        {
+          "step": 6,
+          "title": "Run Development Server",
+          "commands": ["npm run dev", "# or", "yarn dev"],
+          "description": "Start the development server on http://localhost:3000"
+        }
+      ]
+    },
+    "deployment": {
+      "title": "Production Deployment",
+      "platforms": [
+        {
+          "platform": "Vercel (Recommended)",
+          "description": "Optimized for Next.js applications",
+          "steps": [
+            {
+              "step": "Connect Repository",
+              "description": "Link your GitHub/GitLab repository to Vercel"
+            },
+            {
+              "step": "Configure Environment",
+              "description": "Set all production environment variables in Vercel dashboard"
+            },
+            {
+              "step": "Deploy",
+              "description": "Automatic deployment on git push"
+            },
+            {
+              "step": "Configure Domain",
+              "description": "Set up custom domain with SSL"
+            }
+          ],
+          "environmentVariables": [
+            "All .env.local variables",
+            "NEXT_PUBLIC_BASE_URL=https://yourdomain.com",
+            "NODE_ENV=production"
+          ]
+        },
+        {
+          "platform": "Docker",
+          "description": "Containerized deployment for any environment",
+          "files": [
+            {
+              "file": "Dockerfile",
+              "content": "FROM node:18-alpine\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci --only=production\nCOPY . .\nRUN npm run build\nEXPOSE 3000\nCMD [\"npm\", \"start\"]"
+            },
+            {
+              "file": "docker-compose.yml",
+              "content": "version: '3.8'\nservices:\n  clipposaurus:\n    build: .\n    ports:\n      - '3000:3000'\n    environment:\n      - NODE_ENV=production\n    env_file:\n      - .env.production"
+            }
+          ],
+          "commands": [
+            "docker build -t clipposaurus .",
+            "docker run -p 3000:3000 --env-file .env.production clipposaurus"
+          ]
+        },
+        {
+          "platform": "Self-Hosted",
+          "description": "Deploy on your own server",
+          "steps": [
+            {
+              "step": "Server Setup",
+              "description": "Prepare Linux server with Node.js and PM2"
+            },
+            {
+              "step": "Clone and Build",
+              "commands": ["git clone your-repo", "npm ci", "npm run build"]
+            },
+            {
+              "step": "Process Management",
+              "commands": [
+                "npm install -g pm2",
+                "pm2 start npm --name 'clipposaurus' -- start",
+                "pm2 save && pm2 startup"
+              ]
+            },
+            {
+              "step": "Reverse Proxy",
+              "description": "Configure Nginx or Apache for SSL termination"
+            }
+          ]
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Configuration Guide",
+      "sections": [
+        {
+          "category": "Security Configuration",
+          "settings": [
+            {
+              "setting": "Encryption Key",
+              "description": "32-character random string for AES encryption",
+              "generation": "openssl rand -hex 32",
+              "importance": "Critical - keep secret and secure"
+            },
+            {
+              "setting": "reCAPTCHA",
+              "description": "Google reCAPTCHA v3 for bot protection",
+              "setup": "Create keys at google.com/recaptcha",
+              "optional": true
+            }
+          ]
+        },
+        {
+          "category": "Storage Configuration",
+          "settings": [
+            {
+              "setting": "Provider Redundancy",
+              "description": "Configure multiple storage providers for reliability",
+              "recommendation": "At least 2 providers for production"
+            },
+            {
+              "setting": "Quota Management",
+              "description": "Monitor storage quotas to prevent service disruption",
+              "limits": "Set quota limits in storage provider configs"
+            }
+          ]
+        },
+        {
+          "category": "Performance Configuration",
+          "settings": [
+            {
+              "setting": "Rate Limiting",
+              "description": "Configure request limits per IP address",
+              "default": "100 requests per hour"
+            },
+            {
+              "setting": "File Size Limits",
+              "description": "Adjust maximum file sizes based on your infrastructure",
+              "default": "50MB per file"
+            }
+          ]
+        }
+      ]
+    },
+    "development": {
+      "title": "Development Workflow",
+      "structure": {
+        "title": "Project Structure",
+        "directories": [
+          {
+            "path": "/src/app",
+            "description": "Next.js app router pages and API routes"
+          },
+          {
+            "path": "/src/components",
+            "description": "React components (UI, custom, animations)"
+          },
+          {
+            "path": "/src/lib",
+            "description": "Utility libraries (encryption, utils, etc.)"
+          },
+          {
+            "path": "/src/services",
+            "description": "Business logic services"
+          },
+          {
+            "path": "/src/hooks",
+            "description": "Custom React hooks"
+          },
+          {
+            "path": "/src/types",
+            "description": "TypeScript type definitions"
+          },
+          {
+            "path": "/src/component data",
+            "description": "JSON data for dynamic content"
+          }
+        ]
+      },
+      "scripts": {
+        "title": "Available Scripts",
+        "commands": [
+          {
+            "command": "npm run dev",
+            "description": "Start development server with Turbopack"
+          },
+          {
+            "command": "npm run build",
+            "description": "Build production application"
+          },
+          {
+            "command": "npm run start",
+            "description": "Start production server"
+          },
+          {
+            "command": "npm run lint",
+            "description": "Run ESLint for code quality"
+          },
+          {
+            "command": "npm run test",
+            "description": "Run test suite (if available)"
+          }
+        ]
+      },
+      "codeStyle": {
+        "title": "Code Style Guidelines",
+        "rules": [
+          "Use TypeScript for type safety",
+          "Follow ESLint configuration",
+          "Use Prettier for code formatting",
+          "Implement proper error handling",
+          "Add JSDoc comments for complex functions",
+          "Use semantic commit messages"
+        ]
+      }
+    },
+    "troubleshooting": {
+      "title": "Common Issues & Solutions",
+      "issues": [
+        {
+          "issue": "Redis Connection Errors",
+          "symptoms": ["Unable to store/retrieve content", "500 server errors"],
+          "solutions": [
+            "Verify Redis URL and token in environment variables",
+            "Check Upstash dashboard for connection limits",
+            "Ensure Redis instance is running and accessible",
+            "Test connection with redis-cli or Upstash REST API"
+          ]
+        },
+        {
+          "issue": "Storage Upload Failures",
+          "symptoms": [
+            "File uploads fail",
+            "All storage providers unavailable"
+          ],
+          "solutions": [
+            "Check storage provider credentials and permissions",
+            "Verify bucket names and endpoints are correct",
+            "Monitor quota limits on storage providers",
+            "Test individual provider connections"
+          ]
+        },
+        {
+          "issue": "Encryption/Decryption Errors",
+          "symptoms": ["Content retrieval fails", "Invalid encryption errors"],
+          "solutions": [
+            "Ensure ENCRYPTION_KEY is 32 characters long",
+            "Verify encryption parameters (IV, salt, tag lengths)",
+            "Check for consistent encryption key across deployments",
+            "Review encryption library compatibility"
+          ]
+        },
+        {
+          "issue": "Build Failures",
+          "symptoms": ["npm run build fails", "TypeScript errors"],
+          "solutions": [
+            "Install all dependencies: npm ci",
+            "Fix TypeScript type errors",
+            "Update Next.js and dependencies if needed",
+            "Clear .next folder and rebuild"
+          ]
+        }
+      ]
+    }
+  },
+  "apiIntegration": {
+    "title": "API Integration Guide",
+    "description": "How to integrate Clipposaurus into your applications",
+    "gettingStarted": {
+      "title": "API Quick Start",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Choose Your Language",
+          "description": "Examples available for JavaScript, Python, cURL, and more"
+        },
+        {
+          "step": 2,
+          "title": "Make Your First Request",
+          "description": "Test the API with a simple text sharing example"
+        },
+        {
+          "step": 3,
+          "title": "Handle Responses",
+          "description": "Implement proper error handling and response parsing"
+        },
+        {
+          "step": 4,
+          "title": "Build Your Integration",
+          "description": "Create your application using Clipposaurus for file sharing"
+        }
+      ]
+    },
+    "useCases": {
+      "title": "Integration Use Cases",
+      "examples": [
+        {
+          "useCase": "Chat Applications",
+          "description": "Enable file sharing in messaging apps",
+          "implementation": "Use API to upload files and share access codes in messages"
+        },
+        {
+          "useCase": "Development Tools",
+          "description": "Share code snippets and logs between team members",
+          "implementation": "Integrate into IDEs or command-line tools"
+        },
+        {
+          "useCase": "Support Systems",
+          "description": "Allow customers to share files securely with support teams",
+          "implementation": "Embed sharing widget in support portal"
+        },
+        {
+          "useCase": "Educational Platforms",
+          "description": "Students and teachers can share assignments and materials",
+          "implementation": "API integration in learning management systems"
+        }
+      ]
+    }
+  }
+}

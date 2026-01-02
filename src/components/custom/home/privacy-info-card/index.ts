@@ -1,0 +1,1 @@
+export { PrivacyInfoCardContainer as PrivacyInfoCard } from "./PrivacyInfoCardContainer";

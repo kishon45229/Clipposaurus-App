@@ -1,0 +1,10 @@
+{
+    "title": "Unlock Your Drop",
+    "description": "Enter your drop key below to reveal the content",
+    "ctaBtn" : {
+        "label": "Unlock Drop",
+        "loadingLabel": "Verifying..."
+    },
+    "hintText": "Your drop key looks like:",
+    "sampleKey": "apple-beer-ocean"
+}

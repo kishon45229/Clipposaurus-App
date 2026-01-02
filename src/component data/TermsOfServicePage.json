@@ -1,0 +1,81 @@
+{
+  "headline": "Terms of Service",
+  "lastUpdated": "September 16, 2025",
+  "sections": [
+    {
+      "id": "1",
+      "title": "Acceptance of Terms",
+      "description": "By accessing or using Clipposaurus (&ldquo;we,&rdquo; &ldquo;our,&rdquo; or &ldquo;us&rdquo;), you agree to be bound by these Terms of Service (&ldquo;Terms&rdquo;). If you disagree with any part of these terms, then you may not access the Service."
+    },
+    {
+      "id": "2",
+      "title": "Description of Service",
+      "description": "Clipposaurus is a web-based file sharing service that allows users to temporarily share text, code snippets, and files between devices. The Service operates without requiring user accounts and provides temporary storage with automatic content expiration.Key Features:.. Temporary sharing of text, code, and files. No user registration required. End-to-end encryption for shared content. Automatic content expiration (1 hour by default). Cross-device accessibility via unique share codes."
+    },
+    {
+      "id": "3",
+      "title": "User Responsibilities",
+      "description": "Acceptable Use. You agree to use the Service only for lawful purposes and in accordance with these Terms. You agree NOT to use the Service. To upload, share, or transmit any content that is illegal, harmful, threatening, abusive, harassing, defamatory, vulgar, obscene, or otherwise objectionable. To violate any applicable local, state, national, or international law or regulation. To transmit any material that infringes upon the intellectual property rights of others. To upload malware, viruses, or any other malicious code. To attempt to gain unauthorized access to the Service or its related systems. To interfere with or disrupt the Service or servers connected to the Service. To share content containing personally identifiable information of others without consent. To use the Service for commercial purposes without prior written consent.3.2 Content Responsibility. You are solely responsible for all content you upload, share, or transmit through the Service. You represent and warrant that you own or have the necessary rights to share any content you upload."
+    },
+    {
+      "id": "4",
+      "title": "Privacy and Data Handling",
+      "description": "We take your privacy seriously. Please review our Privacy Policy, which describes how we collect, use, and protect your information. By using the Service, you consent to the collection and use of information as described in our Privacy Policy.4.1 Data Encryption. All shared content is encrypted before storage and transmission. However, you acknowledge that no method of transmission over the internet is 100% secure.4.2 Data Retention. Shared content is automatically deleted after expiration (default 1 hour). We do not guarantee the availability of content beyond the expiration time."
+    },
+    {
+      "id": "5",
+      "title": "Prohibited Content",
+      "description": "You may not upload, share, or transmit through the Service any content that. Contains malware, viruses, or malicious code. Infringes upon intellectual property rights. Contains personal information of others without consent. Is illegal, harmful, threatening, or abusive. Contains spam or unsolicited commercial content. Violates any applicable laws or regulations."
+    },
+    {
+      "id": "6",
+      "title": "Service Availability",
+      "description": "We strive to maintain the Service&apos;s availability but do not guarantee uninterrupted or error-free operation. The Service may be temporarily unavailable due to maintenance, updates, or unforeseen circumstances."
+    },
+    {
+      "id": "7",
+      "title": "Limitation of Liability",
+      "description": "To the fullest extent permitted by applicable law, Clipposaurus shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from. Your use of or inability to use the Service. Any unauthorized access to or use of our servers and/or personal information stored therein. Any interruption or cessation of transmission to or from the Service. Any bugs, viruses, trojan horses, or the like that may be transmitted through the Service. Any errors or omissions in any content or for any loss or damage incurred as a result of your use of any content."
+    },
+    {
+      "id": "8",
+      "title": "Disclaimer of Warranties",
+      "description": "The Service is provided on an &ldquo;AS IS&rdquo; and &ldquo;AS AVAILABLE&rdquo; basis. We expressly disclaim all warranties of any kind, whether express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, and non-infringement."
+    },
+    {
+      "id": "9",
+      "title": "Indemnification",
+      "description": "You agree to defend, indemnify, and hold harmless Clipposaurus and its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses, including reasonable attorney&apos;s fees, arising out of or in any way connected with your use of the Service or violation of these Terms."
+    },
+    {
+      "id": "10",
+      "title": "Termination",
+      "description": "We may terminate or suspend your access to the Service immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach the Terms. Upon termination, your right to use the Service will cease immediately."
+    },
+    {
+      "id": "11",
+      "title": "Governing Law",
+      "description": "These Terms shall be interpreted and governed by the laws of the jurisdiction in which the Service is operated, without regard to its conflict of law provisions. You agree to submit to the personal jurisdiction of the courts located in this jurisdiction."
+    },
+    {
+      "id": "12",
+      "title": "Changes to Terms",
+      "description": "We reserve the right to modify or replace these Terms at any time. If a revision is material, we will try to provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion."
+    },
+    {
+      "id": "13",
+      "title": "Contact Information",
+      "description": "If you have any questions about these Terms of Service, please contact us through the information provided on our website."
+    },
+    {
+      "id": "14",
+      "title": "Severability",
+      "description": "If any provision of these Terms is held to be unenforceable or invalid, such provision will be changed and interpreted to accomplish the objectives of such provision to the greatest extent possible under applicable law, and the remaining provisions will continue in full force and effect."
+    },
+    {
+      "id": "15",
+      "title": "Entire Agreement",
+      "description": "These Terms constitute the sole and entire agreement between you and Clipposaurus regarding the Service and supersede all prior and contemporaneous understandings, agreements, representations, and warranties, both written and oral, regarding the Service."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+# Add to your .gitignore file for testing
+
+# Test coverage
+/coverage
+*.lcov
+
+# Jest cache
+/.jest-cache

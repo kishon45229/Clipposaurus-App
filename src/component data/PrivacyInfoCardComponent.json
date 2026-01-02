@@ -1,0 +1,31 @@
+{
+  "title": "Clipposaurus is engineered to forget—on purpose",
+  "subtitle": "We Don't Remember You",
+  "privacyPillars": [
+    {
+      "title": "Privacy by design - not by promise",
+      "detail": "Content is encrypted before it leaves your browser, so nothing readable ever touches our edge.",
+      "icon": "ShieldCheck"
+    },
+    {
+      "title": "No accounts or analytics",
+      "detail": "Each drop stands alone. We never ask for emails, trackers, or device fingerprints.",
+      "icon": "EyeOff"
+    },
+    {
+      "title": "Auto-expiring by default",
+      "detail": "Drops self-destruct after the timer or the moment you access them. No leftovers, no history.",
+      "icon": "TimerReset"
+    },
+    {
+      "title": "Open source & transparent",
+      "detail": "Our code is publicly available for review. We welcome audits to ensure your data's safety.",
+      "icon": "CodeSquare"
+    }
+  ],
+ "stats": [
+  { "value": "0", "label": "Identity required" },
+  { "value": "60 min", "label": "Maximum lifetime" },
+  { "value": "100%", "label": "Encryption enforced" }
+]
+}

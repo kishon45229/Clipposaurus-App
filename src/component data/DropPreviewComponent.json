@@ -1,0 +1,9 @@
+{
+  "title": "Hey there, your Drop is unlocked!",
+  "subtitle": "Everything you shared is right here — safely decrypted and ready to access.",
+  "timeRemainingLabel": "Time Remaining",
+  "expiredMessage": "Drop expired",
+  "autoDeleteMessage": "This Drop disappears automatically when time runs out.",
+  "deleteAfterAccessMessage": "This Drop deletes itself after being opened — it's already gone from our servers. Copy or download anything you need before closing this page.",
+  "contentsLabel": "Contents of this Drop"
+}

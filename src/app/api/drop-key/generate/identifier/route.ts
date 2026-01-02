@@ -1,0 +1,61 @@
+import { NextResponse } from "next/server";
+import { upstashRedis } from "@/lib/redis";
+import env from "@/lib/env";
+
+const KEYS: string[] = env.KEYS
+  ? env.KEYS.split(",")
+      .map((word) => word.trim())
+      .filter((word) => word.length > 0)
+  : [];
+
+const PENDING_TTL = 600 as const; // 10 minutes
+
+export async function GET() {
+  try {
+    if (KEYS.length === 0) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Keys not configured. Please contact support.",
+        },
+        { status: 500 }
+      );
+    }
+
+    const setSize = await upstashRedis.scard("available_keys");
+    if (setSize === 0 && KEYS.length > 0) {
+      await upstashRedis.sadd(
+        "available_keys",
+        ...(KEYS as [string, ...string[]])
+      );
+    }
+
+    const identifierKey = await upstashRedis.srandmember("available_keys");
+    if (!identifierKey) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "No identifiers available. Please try again later.",
+        },
+        { status: 503 }
+      );
+    }
+
+    await upstashRedis.srem("available_keys", identifierKey);
+    await upstashRedis.setex(`pending:${identifierKey}`, PENDING_TTL, "1");
+
+    return NextResponse.json({
+      success: true,
+      identifier: identifierKey,
+      expiresIn: PENDING_TTL,
+    });
+  } catch {
+    return NextResponse.json(
+      {
+        success: false,
+        error: "Failed to retrieve an identifier. Please try again.",
+      },
+      { status: 500 }
+    );
+  }
+}

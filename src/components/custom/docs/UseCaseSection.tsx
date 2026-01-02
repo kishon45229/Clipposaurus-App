@@ -1,0 +1,31 @@
+import React from "react";
+import type { DocsSection, ContentData6 } from "@/types/docs";
+
+interface UseCaseSectionProps {
+  section: DocsSection & { data: ContentData6 };
+}
+
+export const UseCaseSection = React.memo<UseCaseSectionProps>(({ section }) => {
+  const data = section.data as ContentData6;
+  if (!data) return null;
+
+  return (
+    <section id={section.id}>
+      <div className="space-y-6">
+        {data.map((usecase, index) => (
+            <div key={index} className="border-l-2 border-zinc-700 pl-6">
+              <div className="text-lg font-semibold text-emerald-500 mb-2">
+                {usecase.title}
+              </div>
+              <div className="text-zinc-400 text-base md:text-base italic ">
+                &ldquo;{usecase.quote}&rdquo;
+              </div>
+            </div>
+          )
+        )}
+      </div>
+    </section>
+  );
+});
+
+UseCaseSection.displayName = "UseCaseSection";

@@ -1,0 +1,1 @@
+export { TextTabContainer as TextTab } from "./TextTabContainer";

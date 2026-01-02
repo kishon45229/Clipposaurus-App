@@ -1,0 +1,9 @@
+{
+  "title": "Works Everywhere, Always",
+  "description": "Clipposaurus is built as a progressive web app that works seamlessly across all modern devices and browsers. No downloads, no installations, no app stores - just visit the website and start sharing instantly.",
+  "platforms": {
+    "Desktop": "Windows, Mac, Linux, Chromebook",
+    "Mobile": "iPhone, Android, iPad",
+    "Browser": "Chrome, Safari, Firefox, Edge"
+  }
+}

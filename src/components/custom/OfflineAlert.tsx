@@ -1,0 +1,113 @@
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { WifiOff } from "lucide-react";
+import useNetworkStatus from "@/hooks/useNetworkStatus";
+
+export const OfflineAlert: React.FC = React.memo(() => {
+    const { isOnline } = useNetworkStatus();
+    const [isMounted, setIsMounted] = useState(false);
+
+    useEffect(() => {
+        setIsMounted(true);
+    }, []);
+
+    if (!isMounted || isOnline) return null;
+
+    return (
+        <div
+            className="
+                fixed inset-0 z-50
+                flex items-center justify-center
+                px-[clamp(1rem,4vw,1.5rem)]
+                bg-black/40 backdrop-blur-sm
+            "
+            role="alert"
+            aria-live="assertive"
+        >
+            <div
+                className="
+                    relative w-full
+                    max-w-[clamp(18rem,85vw,24rem)]
+                    rounded-2xl
+                    px-[clamp(1.25rem,5vw,1.75rem)]
+                    py-[clamp(1.5rem,5vw,2rem)]
+                    border border-zinc-200/60 dark:border-zinc-800/60
+                    bg-white/80 dark:bg-zinc-950/80
+                    backdrop-blur-xl shadow-2xl
+                "
+            >
+                {/* Ambient glow */}
+                <div className="pointer-events-none absolute inset-0 rounded-3xl">
+                    <div className="absolute inset-0 bg-emerald-500/10 blur-2xl" />
+                </div>
+
+                <div
+                    className="
+                        relative flex flex-col items-center text-center
+                        gap-[clamp(0.75rem,3vw,1.25rem)]
+                    "
+                >
+                    {/* Icon */}
+                    <div
+                        className="
+                            flex items-center justify-center
+                            size-[clamp(3rem,10vw,3.5rem)]
+                            rounded-2xl
+                            border border-zinc-200 dark:border-zinc-800
+                            text-emerald-600 dark:text-emerald-400
+                        "
+                    >
+                        <WifiOff className="size-[clamp(1.25rem,4vw,1.75rem)]" />
+                    </div>
+
+                    {/* Title */}
+                    <h2
+                        className="
+                            font-semibold tracking-tight
+                            text-zinc-900 dark:text-zinc-100
+                            text-[clamp(1.05rem,3vw,1.25rem)]
+                        "
+                    >
+                        You’re offline
+                    </h2>
+
+                    {/* Core message */}
+                    <p
+                        className="
+                            leading-relaxed
+                            text-zinc-600 dark:text-zinc-300
+                            text-[clamp(0.85rem,2.5vw,1rem)]
+                        "
+                    >
+                        Clipposaurus requires an active internet connection to work properly.
+                    </p>
+
+                    {/* Explanation */}
+                    <p
+                        className="
+                            leading-relaxed
+                            text-zinc-500 dark:text-zinc-400
+                            text-[clamp(0.75rem,2.2vw,0.875rem)]
+                        "
+                    >
+                        Without connectivity, creating or opening drops and other core features
+                        will be unavailable.
+                    </p>
+
+                    {/* Reassurance */}
+                    <p
+                        className="
+                            text-zinc-400 dark:text-zinc-500
+                            text-[clamp(0.65rem,2vw,0.75rem)]
+                        "
+                    >
+                        Reconnect to continue using all features securely.
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+});
+
+OfflineAlert.displayName = "OfflineAlert";

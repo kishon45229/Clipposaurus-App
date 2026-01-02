@@ -1,0 +1,4 @@
+export const FILE_SIZE_CONFIG = {
+    MAX_TOTAL_SIZE: 50 * 1024 * 1024, // 50 MB
+    MAX_INDIVIDUAL_FILE_SIZE: 50 * 1024 * 1024, // 50 MB
+}

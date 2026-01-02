@@ -1,0 +1,142 @@
+name: Feature Request
+description: Suggest an idea or new feature for Clipposaurus
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to suggest a new feature! We love hearing ideas from our users.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement
+      description: Is your feature request related to a problem? Please describe.
+      placeholder: I'm always frustrated when...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Solution
+      description: Describe the solution you'd like to see.
+      placeholder: I would love to see...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternative Solutions
+      description: Describe any alternative solutions or features you've considered.
+      placeholder: Alternatively, we could...
+    validations:
+      required: false
+
+  - type: dropdown
+    id: feature-category
+    attributes:
+      label: Feature Category
+      description: Which area does this feature request relate to?
+      options:
+        - User Interface / Design
+        - Content Sharing (Text/Code/Files)
+        - Security / Privacy
+        - Performance
+        - Mobile Experience
+        - Accessibility
+        - Documentation
+        - API / Integration
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature to you?
+      options:
+        - Critical - I cannot use the app effectively without this
+        - High - This would significantly improve my experience
+        - Medium - This would be nice to have
+        - Low - This is a minor enhancement
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Describe a specific scenario where this feature would be useful.
+      placeholder: |
+        When I'm working on a project, I often need to...
+        This feature would help me by...
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefits
+    attributes:
+      label: Expected Benefits
+      description: What benefits would this feature provide? Who would benefit from it?
+      placeholder: |
+        - Benefit 1: ...
+        - Benefit 2: ...
+        - Target users: ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Implementation Ideas
+      description: If you have any technical ideas about how this could be implemented, share them here (optional).
+      placeholder: This could potentially be implemented by...
+    validations:
+      required: false
+
+  - type: textarea
+    id: examples
+    attributes:
+      label: Examples / References
+      description: Are there any examples from other apps or services that demonstrate this feature?
+      placeholder: |
+        - Example 1: [Service Name] does this by...
+        - Reference: [URL]
+    validations:
+      required: false
+
+  - type: textarea
+    id: mockups
+    attributes:
+      label: Mockups / Wireframes
+      description: If you have any mockups, wireframes, or sketches, share them here.
+      placeholder: Drag and drop images here or paste image URLs
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other context, screenshots, or information about the feature request here.
+      placeholder: Any additional information that might help us understand your request
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Checklist
+      description: Please confirm the following
+      options:
+        - label: I have searched existing issues to ensure this feature hasn't been requested before
+          required: true
+        - label: I have provided a clear description of the problem and proposed solution
+          required: true
+        - label: This feature aligns with Clipposaurus's focus on secure, temporary content sharing
+          required: false
