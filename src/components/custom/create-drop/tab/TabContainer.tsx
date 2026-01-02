@@ -23,7 +23,7 @@ const TextTab = dynamic(
         import("@/components/custom/create-drop/tab/text-tab").then((m) => ({
             default: m.TextTab,
         })),
-    { loading: () =>  <div>loading</div> }
+    { loading: () =>  <TabsSkeleton type="note" /> }
 );
 
 const CodeTab = dynamic(

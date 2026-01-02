@@ -61,4 +61,9 @@ Issues and pull requests are welcome. Please maintain the zero-knowledge guarant
 
 ## Support
 
-If Clipposaurus saves you time or strengthens your privacy, please consider sponsoring the project. Your support helps us maintain and improve this fast, secure, and open-source clipboard for everyone.
+If Clipposaurus saves you time or strengthens your privacy, please consider supporting the project:
+
+- [GitHub Sponsors](https://github.com/sponsors/kishon45229)
+- [Buy Me a Coffee](https://buymeacoffee.com/kishon45229)
+
+Your support helps us maintain and improve this fast, secure, and open-source clipboard for everyone.
