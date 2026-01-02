@@ -1,8 +1,0 @@
-{
-    "headline": "Paste text, code, upload or drag and drop files to share your content",
-    "buttonText": {
-        "default": "Save & Get Magic Words",
-        "loading": "Saving..."
-    },
-    "tabList": ["Note", "Code", "File"]
-}
