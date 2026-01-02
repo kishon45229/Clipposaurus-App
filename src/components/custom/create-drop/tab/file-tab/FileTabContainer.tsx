@@ -91,7 +91,7 @@ export const FileTabContainer = React.memo(() => {
         />
         <div
           className={cn(
-            "flex-1 min-h-0 rounded-2xl border lg:border-2 lg:border-dashed p-[clamp(0.5rem,2vw,1.5rem)] transition-all duration-200 overflow-y-auto",
+            "flex-1 min-h-0 rounded-2xl border lg:border-2 lg:border-dashed p-[clamp(0.5rem,2vw,0.6rem)] transition-all duration-200 overflow-y-auto",
             isDragOver
               ? "border-primary bg-primary/10"
               : "border-border lg:hover:border-primary/50",
