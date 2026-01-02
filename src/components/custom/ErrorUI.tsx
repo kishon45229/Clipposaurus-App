@@ -2,6 +2,7 @@ import React from "react";
 import { TriangleAlert } from "lucide-react";
 import { Button } from "../ui/button";
 import Link from "next/link";
+import { AmbientGlow } from "../ui/ambient-glow";
 
 interface ErrorUIProps {
     isDev: boolean;
@@ -13,15 +14,12 @@ interface ErrorUIProps {
 function ErrorUI({ isDev, error, supportId, reset }: ErrorUIProps) {
     return (
         <div
-            className="relative flex items-center justify-center min-h-[70vh] px-4"
+            className="relative flex items-center justify-center min-h-[84dvh] px-4"
             role="status"
             aria-label="Error occurred"
         >
-
-
             {/* Main container */}
-            <div
-                className="
+            <div className="
                     relative w-full max-w-md
                     rounded-3xl
                     border border-zinc-200/70 dark:border-zinc-800/70
@@ -32,23 +30,22 @@ function ErrorUI({ isDev, error, supportId, reset }: ErrorUIProps) {
                 "
             >
                 {/* Ambient background glow */}
-                <div className="absolute inset-0 pointer-events-none rounded-3xl">
-                    <div className="absolute inset-0 bg-emerald-500/5 blur-2xl" />
-                </div>
+                <AmbientGlow />
+
                 {/* Icon */}
                 <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                     <TriangleAlert className="h-7 w-7" />
                 </div>
 
                 {/* Title */}
-                <h1 className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
+                <div className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
                     Something didn’t load
-                </h1>
+                </div>
 
                 {/* Description */}
-                <p className="mt-2 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
+                <div className="mt-2 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
                     We hit a small hiccup while preparing this page. A quick retry usually fixes it.
-                </p>
+                </div>
 
                 {/* Dev-only details */}
                 {isDev && (
@@ -103,7 +100,7 @@ function ErrorUI({ isDev, error, supportId, reset }: ErrorUIProps) {
                 </div>
 
                 {/* Support note */}
-                <p className="mt-6 text-sm text-zinc-500 dark:text-zinc-400">
+                <div className="mt-6 text-sm text-zinc-500 dark:text-zinc-400">
                     If this keeps happening, contact support
                     {supportId && (
                         <>
@@ -113,7 +110,7 @@ function ErrorUI({ isDev, error, supportId, reset }: ErrorUIProps) {
                             </span>
                         </>
                     )}
-                </p>
+                </div>
 
                 {/* Accessibility */}
                 <div className="sr-only" aria-live="polite" aria-atomic="true">

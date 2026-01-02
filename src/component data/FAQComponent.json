@@ -5,16 +5,16 @@
   "categories": [
     {
       "id": "general",
-      "category": "General",
+      "title": "General",
       "description": "Basic questions about Clipposaurus and how it works",
       "questions": [
         {
           "question": "What is Clipposaurus?",
-          "answer": "Clipposaurus is a secure, temporary content sharing platform that allows you to quickly share text, code snippets, and files across devices. It uses end-to-end encryption and automatically deletes your content after 1 hour, ensuring your privacy and security."
+          "answer": "Clipposaurus is a secure, temporary content sharing platform that allows you to create drops containing text, code snippets, and files across devices. It uses end-to-end encryption and automatically deletes your content based on your chosen retention setting (up to 1 hour), ensuring your privacy and security."
         },
         {
           "question": "Do I need to create an account?",
-          "answer": "No! Clipposaurus works without any registration or login. Simply upload your content, get your unique magic words, and share them with anyone who needs access. This approach ensures maximum privacy and convenience."
+          "answer": "No! Clipposaurus works without any registration or login. Simply add your content, get your drop key, and share them with anyone who needs access. This approach ensures maximum privacy and convenience."
         },
         {
           "question": "How much does it cost?",
@@ -22,83 +22,83 @@
         },
         {
           "question": "What types of content can I share?",
-          "answer": "You can share three types of content: plain text (notes, messages, etc.), code snippets with syntax highlighting for 180+ programming languages, and files up to 100MB in size."
+          "answer": "You can create drops containing three types of content: plain text (notes, messages, etc.), code snippets with syntax highlighting for 10+ programming languages, and files up to 50MB in size (At the moment, file uploads are limited to 50 MB due to storage constraints. We plan to increase this limit in the future. If you’d like to support us, donations will help us expand our storage capacity)."
         },
         {
-          "question": "How long is my content stored?",
-          "answer": "All content is automatically deleted after 1 hour. This temporary storage ensures your sensitive information doesn't remain on our servers longer than necessary."
+          "question": "How long is my drop stored?",
+          "answer": "Your drop is automatically deleted based on the retention setting you choose when creating it: immediately after being accessed, after 30 minutes, or after 1 hour. This ensures your sensitive information doesn't remain on our servers longer than necessary."
         }
       ]
     },
     {
       "id": "security",
-      "category": "Security & Privacy",
+      "title": "Security & Privacy",
       "description": "Questions about data protection and security measures",
       "questions": [
         {
           "question": "Is my content encrypted?",
-          "answer": "Yes! All content is encrypted using industry-standard AES-256 encryption before being stored. Your content is encrypted on our servers and can only be decrypted using your unique magic words."
+          "answer": "Yes! All content is encrypted using industry-standard AES-256 encryption before being stored. Your content is encrypted on our servers and can only be decrypted using your drop Key."
         },
         {
           "question": "Can Clipposaurus staff access my content?",
-          "answer": "No. Your content is encrypted before storage, and we don't have access to the decryption keys. Only someone with your magic words can decrypt and access your content."
+          "answer": "No. Your content is encrypted before storage, and we don't have access to the decryption keys. Only someone with your drop Key can decrypt and access your content."
         },
         {
-          "question": "What happens to my content after 1 hour?",
-          "answer": "After 1 hour, your content is automatically and permanently deleted from our servers. This includes all text, code, files, and associated metadata. There is no backup or recovery option."
+          "question": "What happens when my drop expires?",
+          "answer": "Your content is automatically and permanently deleted from our servers. This includes all text, code, files, and associated metadata. There is no backup or recovery option."
         },
         {
           "question": "Do you track or log user activity?",
-          "answer": "We use minimal analytics (Vercel Analytics) to understand usage patterns and improve the service. We don't track individual users, and all analytics data is anonymized. We don't use cookies for tracking or advertising."
+          "answer": "We use minimal analytics (Vercel Analytics) to understand usage demands and improve the service. We don't track individual users. We don't use cookies for tracking or advertising."
         },
         {
           "question": "Is Clipposaurus GDPR and CCPA compliant?",
-          "answer": "Yes. We comply with GDPR, CCPA, and other data protection regulations. Since content is automatically deleted after 1 hour and we don't store personal information, our service is designed with privacy by default."
+          "answer": "Yes. We comply with GDPR, CCPA, and other data protection regulations. Since drop is automatically deleted after maximum 1 hour and we don't store personal information, our service is designed with privacy by default."
         },
         {
           "question": "Where is my data stored?",
-          "answer": "Your data is stored on secure cloud infrastructure. Text and code are stored in encrypted Redis databases, while files are stored on enterprise cloud storage providers (Cloudflare R2, Backblaze B2, or Storj) with encryption."
+          "answer": "Your data is stored on secure cloud infrastructure. Text and code are stored in encrypted Upstash Redis databases, while files are stored on cloud storage providers such as Cloudflare R2 and Backblaze B2 with encryption."
         }
       ]
     },
     {
       "id": "usage",
-      "category": "Using Clipposaurus",
+      "title": "Using Clipposaurus",
       "description": "How to use the platform effectively",
       "questions": [
         {
-          "question": "How do I share content?",
-          "answer": "Simply paste or upload your content, click 'Save Content', and you'll receive unique magic words. Share these words with anyone who needs access. They can then visit Clipposaurus, enter the words, and instantly access your content."
+          "question": "How do I create a drop?",
+          "answer": "Simply paste or upload your content, click 'Create Drop', and you'll receive a unique drop key. Share this key with anyone who needs access. They can then visit Clipposaurus, enter the key, and instantly access your content."
         },
         {
-          "question": "What are magic words?",
-          "answer": "Magic words are unique two-word codes (like 'happy-elephant') that serve as the key to access your content. They're easy to remember, type, and share compared to long random strings."
+          "question": "What is a drop key?",
+          "answer": "A drop key is a unique three-word code (like 'apple-beer-ocean') that serves as the key to access your content. It's easy to remember, type, and share compared to long random strings."
         },
         {
           "question": "Can I access my content multiple times?",
-          "answer": "Yes! You can access your content as many times as you want within the 1-hour window. The magic words remain valid until the content expires."
+          "answer": "Yes! You can access your content as many times as you want within the retention period you selected (if you choose delete immediately after access you can access your drop only one time, after that it will be automatically deleted). The drop key remains valid until the content expires."
         },
         {
-          "question": "What happens if I lose my magic words?",
-          "answer": "Unfortunately, if you lose your magic words, there's no way to recover your content. The words are the only way to decrypt and access your data. We recommend saving them immediately or keeping the browser tab open."
+          "question": "What happens if I lose my drop key?",
+          "answer": "Unfortunately, if you lose your drop key, there's no way to recover your content. The key is the only way to decrypt and access your data. We recommend saving it immediately or keeping the browser tab open."
         },
         {
-          "question": "Can I share my magic words with multiple people?",
-          "answer": "Yes! You can share your magic words with as many people as you want. Everyone who has the words can access the content within the 1-hour timeframe."
+          "question": "Can I share my drop key with multiple people?",
+          "answer": "Yes! You can share your drop key with as many people as you want only if you choose the retention setting as keep for 30 minutes or 1 hour. Everyone who has the key can access the content within the selected retention timeframe."
         },
         {
           "question": "Can I edit content after saving it?",
-          "answer": "No. Once content is saved, it cannot be edited. If you need to make changes, you'll need to create a new share with the updated content and new magic words."
+          "answer": "No. Once drop is created, it cannot be edited. If you need to make changes, you'll need to create a new drop with the updated content and a new drop key."
         },
         {
           "question": "Is there a limit to how much I can share?",
-          "answer": "Text and code are limited to reasonable sizes for performance. Files are limited to 100MB per upload. There's no limit on the number of shares you can create."
+          "answer": "Text and code are limited to reasonable sizes for performance. Files are limited to 50MB per upload. There's no limit on the number of drop you can create. However, excessive usage may be subject to rate limiting to ensure fair access for all users."
         }
       ]
     },
     {
       "id": "technical",
-      "category": "Technical Details",
+      "title": "Technical Details",
       "description": "Technical specifications and requirements",
       "questions": [
         {
@@ -115,7 +115,7 @@
         },
         {
           "question": "What programming languages are supported for code sharing?",
-          "answer": "We support syntax highlighting for over 180 programming languages including JavaScript, Python, Java, C++, Go, Rust, TypeScript, PHP, Ruby, Swift, Kotlin, and many more. We also have auto-detection to identify the language automatically."
+          "answer": "We support syntax highlighting for over 10 programming languages including JavaScript, Python, Java, C++, Go, Rust, TypeScript, PHP, Ruby, Swift, Kotlin, and many more. You can copy the code with formatting preserved and syntax highlighting"
         },
         {
           "question": "What encryption algorithm do you use?",
@@ -123,7 +123,7 @@
         },
         {
           "question": "Is the source code open source?",
-          "answer": "Currently, Clipposaurus is not open source. However, we're considering open-sourcing parts of the codebase in the future to allow security audits and community contributions."
+          "answer": "Yes, it is open source! You can find the source code on our GitHub repository at https://github.com/kishon45229/clipposaurus."
         },
         {
           "question": "Do you have an API?",
@@ -133,34 +133,34 @@
     },
     {
       "id": "troubleshooting",
-      "category": "Troubleshooting",
+      "title": "Troubleshooting",
       "description": "Common issues and their solutions",
       "questions": [
         {
-          "question": "Why can't I access my content?",
-          "answer": "Common reasons include: 1) Content has expired (1 hour has passed), 2) Magic words were entered incorrectly (check for typos), 3) Network connectivity issues. Make sure you're entering the exact magic words provided when you saved the content."
+          "question": "Why can't I access my drop?",
+          "answer": "Common reasons include: 1) Content has expired (depending on your retention setting: after access, 30 minutes, or 1 hour), 2) Drop key was entered incorrectly (check for typos), 3) Network connectivity issues. Make sure you're entering the exact drop key provided when you created the drop."
         },
         {
           "question": "My file upload is failing. What should I do?",
-          "answer": "Check that: 1) Your file is under 100MB, 2) You have a stable internet connection, 3) Your browser is up to date. If issues persist, try a different browser or clear your browser cache."
+          "answer": "Check that: 1) Your file is under 50MB, 2) You have a stable internet connection, 3) Your browser is up to date. If issues persist, try a different browser or clear your browser cache."
         },
         {
           "question": "The page is loading slowly. How can I fix this?",
           "answer": "Slow loading can be caused by: 1) Poor internet connection, 2) Large file uploads, 3) Browser extensions interfering. Try disabling browser extensions, checking your connection speed, or using a different network."
         },
         {
-          "question": "Can I extend the 1-hour expiration time?",
-          "answer": "No. The 1-hour expiration is a core security feature and cannot be extended. If you need to keep content accessible longer, you'll need to create a new share before the current one expires."
+          "question": "Can I extend the expiration time beyond 1 hour?",
+          "answer": "No. For security reasons, drops cannot be kept longer than 1 hour. However, you can choose shorter retention periods when creating your drop: delete immediately after access, after 30 minutes, or after 1 hour. If you need to keep content accessible longer, you'll need to create a new drop before the current one expires."
         },
         {
           "question": "Why am I seeing an error message?",
-          "answer": "Error messages usually indicate: content expiration, invalid magic words, network issues, or server problems. Try refreshing the page, checking your internet connection, or creating a new share. If the problem persists, the issue may be on our end and we're likely working on it."
+          "answer": "Error messages usually indicate: content expiration, invalid drop key, network issues, or server problems. Try refreshing the page, checking your internet connection, or creating a new drop. If the problem persists, the issue may be on our end and we're likely working on it."
         }
       ]
     },
     {
       "id": "features",
-      "category": "Features & Capabilities",
+      "title": "Features & Capabilities",
       "description": "Learn about Clipposaurus features",
       "questions": [
         {
@@ -173,11 +173,11 @@
         },
         {
           "question": "Does Clipposaurus work offline?",
-          "answer": "No. Clipposaurus requires an internet connection to encrypt, upload, and retrieve content. However, once you've accessed your content, you can copy it locally for offline use."
+          "answer": "No. Clipposaurus requires an internet connection to  create and open drop. However, once you've accessed accessed your drop, you can copy it locally for offline use."
         },
         {
           "question": "Can I password-protect my content?",
-          "answer": "The magic words serve as your password. Since they're required to access the content and are unique to each share, your content is already protected. Only those with the magic words can access it."
+          "answer": "The drop key serves as your password. Since it's required to access the content and is unique to each share, your content is already protected. Only those with the drop key can access it."
         },
         {
           "question": "Is there a dark mode?",
@@ -187,7 +187,7 @@
     },
     {
       "id": "comparison",
-      "category": "Comparisons",
+      "title": "Comparisons",
       "description": "How Clipposaurus compares to alternatives",
       "questions": [
         {
@@ -210,7 +210,7 @@
     },
     {
       "id": "support",
-      "category": "Support & Feedback",
+      "title": "Support & Feedback",
       "description": "Getting help and providing feedback",
       "questions": [
         {

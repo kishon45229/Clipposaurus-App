@@ -13,8 +13,8 @@ export const COMPONENT_ORIGINS = [
   "DocsComponent",
   "DropPreviewComponent",
   "TermsOfServiceComponent",
-  "FAQPage",
-  "ChangelogPage"
+  "FAQComponent",
+  "ChangelogComponent",
 ];
 
 export function isValidOrigin(origin: string): boolean {

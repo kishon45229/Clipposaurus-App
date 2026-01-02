@@ -8,35 +8,22 @@ interface ChangelogSectionProps {
     section: ChangelogCategory;
 }
 
-export const ChangelogSection: React.FC<ChangelogSectionProps> = ({ section }) => {
-    const getCategoryIcon = (category: string) => {
-        if (category.toLowerCase().includes("feature")) {
-            return <Sparkles className="h-5 w-5 text-green-500" />;
-        }
-        if (category.toLowerCase().includes("improvement")) {
-            return <Wrench className="h-5 w-5 text-blue-500" />;
-        }
-        if (category.toLowerCase().includes("bug") || category.toLowerCase().includes("fix")) {
-            return <CheckCircle2 className="h-5 w-5 text-orange-500" />;
-        }
-        return <CheckCircle2 className="h-5 w-5 text-gray-500" />;
-    };
+export const ChangelogSection: React.FC<ChangelogSectionProps> = React.memo(({ section }) => {
+    const { category } = section;
+    const items = section.items;
 
     return (
         <div className="space-y-3">
-            <div className="flex items-center gap-2">
-                {getCategoryIcon(section.category)}
-                <h3 className="text-xl font-semibold text-foreground">
-                    {section.category}
-                </h3>
+            <div className="text-xl font-semibold text-foreground">
+                {category}
             </div>
-            <ul className="space-y-3 ml-7">
-                {section.items.map((item, index) => (
+            <ul className="space-y-3">
+                {items.map((item, index) => (
                     <li key={index} className="space-y-1">
                         <div className="font-medium text-foreground">
-                            {item.title}
+                           {index + 1}. {item.title}
                         </div>
-                        <div className="text-sm text-muted-foreground">
+                        <div className="text-sm text-muted-foreground ml-7">
                             {item.description}
                         </div>
                     </li>
@@ -44,4 +31,6 @@ export const ChangelogSection: React.FC<ChangelogSectionProps> = ({ section }) =
             </ul>
         </div>
     );
-};
+});
+
+ChangelogSection.displayName = "ChangelogSection";

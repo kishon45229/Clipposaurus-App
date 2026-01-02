@@ -18,7 +18,7 @@ export const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
 
     return (
         <Accordion type="single" collapsible className="w-full">
-            <AccordionItem value={itemId} className="border rounded-lg px-4">
+            <AccordionItem value={itemId} className="border-t rounded-lg px-4">
                 <AccordionTrigger className="text-left hover:no-underline">
                     <span className="font-medium text-foreground">{question}</span>
                 </AccordionTrigger>

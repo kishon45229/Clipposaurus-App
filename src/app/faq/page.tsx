@@ -3,6 +3,7 @@ import { FAQContainer } from "@/components/custom/faq/FAQContainer";
 import { ComponentDataProvider } from "@/contexts/ComponentDataContext";
 import ErrorFallback from "@/app/error";
 import LoadingFallback from "@/app/loading";
+import { FAQProvider } from "@/contexts/FAQContext";
 
 const PAGE_ID = "FAQPage" as const;
 
@@ -13,11 +14,15 @@ const PAGE_ID = "FAQPage" as const;
 export default function FAQPage(): React.ReactElement {
     try {
         return (
-            <React.Suspense fallback={<LoadingFallback />}>
-                <ComponentDataProvider>
-                    <FAQContainer />
-                </ComponentDataProvider>
-            </React.Suspense>
+            <ComponentDataProvider>
+                <React.Suspense fallback={<LoadingFallback />}>
+                    <FAQProvider>
+                        <section className="xl:min-h-screen max-w-[1920px] mx-auto py-2 sm:py-4">
+                            <FAQContainer />
+                        </section>
+                    </FAQProvider>
+                </React.Suspense>
+            </ComponentDataProvider>
         );
     } catch (error) {
         return (

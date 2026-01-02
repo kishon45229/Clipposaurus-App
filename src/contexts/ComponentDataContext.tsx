@@ -2,7 +2,7 @@
 
 import React from "react";
 import { getComponentData } from "@/services/componentDataService";
-import { HeroComponent, PrivacyInfoCardComponent, UnlockDropDialogBoxComponent, OptionsComponent, MenuComponent, DropPreviewComponent, AppError, HomeIntroductionComponent, ComparisonComponent, DesignComponent, ContentTypesComponent, PlatformComponent, PrivacyComponent, TestimonialsComponent, TermsOfServiceComponent, FAQPage, ChangelogPage } from "@/types";
+import { HeroComponent, PrivacyInfoCardComponent, UnlockDropDialogBoxComponent, OptionsComponent, MenuComponent, DropPreviewComponent, AppError, HomeIntroductionComponent, ComparisonComponent, DesignComponent, ContentTypesComponent, PlatformComponent, PrivacyComponent, TestimonialsComponent, TermsOfServiceComponent, FAQComponent, ChangelogComponent } from "@/types";
 import { DocsComponent } from "@/types/docs";
 
 export type ComponentDataType =
@@ -21,8 +21,8 @@ export type ComponentDataType =
     | PrivacyComponent
     | TestimonialsComponent
     | TermsOfServiceComponent
-    | FAQPage
-    | ChangelogPage;
+    | FAQComponent
+    | ChangelogComponent;
 
 export type ComponentTypeMap = {
     HeroComponent: HeroComponent;
@@ -40,8 +40,8 @@ export type ComponentTypeMap = {
     PrivacyComponent: PrivacyComponent;
     TestimonialsComponent: TestimonialsComponent;
     TermsOfServiceComponent: TermsOfServiceComponent;
-    FAQPage: FAQPage;
-    ChangelogPage: ChangelogPage;
+    FAQComponent: FAQComponent;
+    ChangelogComponent: ChangelogComponent;
 };
 
 interface ComponentDataContextType {
@@ -386,34 +386,34 @@ export function useTermsOfServiceComponent() {
     };
 }
 
-export function useFAQPage() {
+export function useFAQComponent() {
     const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
 
     React.useEffect(() => {
-        if (!cachedData.FAQPage && !loadingStates.FAQPage && !errorStates.FAQPage) {
-            getComponentData('FAQPage').catch(console.error);
+        if (!cachedData.FAQComponent && !loadingStates.FAQComponent && !errorStates.FAQComponent) {
+            getComponentData("FAQComponent").catch(console.error);
         }
-    }, [cachedData.FAQPage, loadingStates.FAQPage, errorStates.FAQPage, getComponentData]);
+    }, [cachedData.FAQComponent, loadingStates.FAQComponent, errorStates.FAQComponent, getComponentData]);
 
     return {
-        data: cachedData.FAQPage as FAQPage,
-        isLoading: loadingStates.FAQPage || false,
-        error: errorStates.FAQPage,
+        data: cachedData.FAQComponent as FAQComponent,
+        isLoading: loadingStates.FAQComponent || false,
+        error: errorStates.FAQComponent,
     };
 }
 
-export function useChangelogPage() {
+export function useChangelogComponent() {
     const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
 
     React.useEffect(() => {
-        if (!cachedData.ChangelogPage && !loadingStates.ChangelogPage && !errorStates.ChangelogPage) {
-            getComponentData('ChangelogPage').catch(console.error);
+        if (!cachedData.ChangelogComponent && !loadingStates.ChangelogComponent && !errorStates.ChangelogComponent) {
+            getComponentData("ChangelogComponent").catch(console.error);
         }
-    }, [cachedData.ChangelogPage, loadingStates.ChangelogPage, errorStates.ChangelogPage, getComponentData]);
+    }, [cachedData.ChangelogComponent, loadingStates.ChangelogComponent, errorStates.ChangelogComponent, getComponentData]);
 
     return {
-        data: cachedData.ChangelogPage as ChangelogPage,
-        isLoading: loadingStates.ChangelogPage || false,
-        error: errorStates.ChangelogPage,
+        data: cachedData.ChangelogComponent as ChangelogComponent,
+        isLoading: loadingStates.ChangelogComponent || false,
+        error: errorStates.ChangelogComponent,
     };
 }

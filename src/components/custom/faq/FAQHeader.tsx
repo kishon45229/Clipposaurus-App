@@ -1,29 +1,24 @@
 "use client";
 
 import React from "react";
+import { useFAQ } from "@/contexts/FAQContext";
 
-interface FAQHeaderProps {
-    headline: string;
-    description: string;
-    lastUpdated: string;
-}
+export const FAQHeader: React.FC = React.memo(() => {
+    const { data } = useFAQ();
+    const { headline, description } = data;
 
-export const FAQHeader: React.FC<FAQHeaderProps> = ({
-    headline,
-    description,
-    lastUpdated,
-}) => {
     return (
-        <header className="text-center space-y-4">
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
+        <header className="mb-12 gap-[clamp(0.75rem,2vw,1rem)]">
+            <div className="font-bold tracking-tight text-zinc-900 dark:text-emerald-500 text-[clamp(1.8rem,4vw,2.4rem)]">
                 {headline}
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            </div>
+            <div className="text-zinc-500 dark:text-zinc-400 text-[clamp(0.75rem,1.2vw,0.9rem)]">
                 {description}
-            </p>
-            <p className="text-sm text-muted-foreground/60">
-                Last updated: {lastUpdated}
-            </p>
+            </div>
+
+            <div className="h-px w-full mt-4 bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-800 to-transparent" />
         </header>
     );
-};
+});
+
+FAQHeader.displayName = "FAQHeader";

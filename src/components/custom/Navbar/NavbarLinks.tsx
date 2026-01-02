@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { BookOpen, Star, HeartHandshake, Bug, ScrollText, HelpCircle } from "lucide-react";
+import { BookOpen, Star, HeartHandshake, Bug, ScrollText, HelpCircle, Mail, FileText } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { useGitHubStars } from "@/hooks/useGitHubStars";
@@ -82,6 +82,19 @@ export const NavbarLinks: React.FC = React.memo(() => {
                   description="Found a bug? Let us know"
                   external
                 />
+                <NavItem
+                  href="/terms-of-service"
+                  icon={FileText}
+                  title="Terms of Service"
+                  description="Read our terms and conditions"
+                />
+                <NavItem
+                  href="mailto:support@clipposaurus.com"
+                  icon={Mail}
+                  title="Contact Us"
+                  description="Get in touch with support"
+                  external
+                />
                 <li className="
                   h-px
                   my-2
@@ -156,7 +169,7 @@ function NavItem({
           <div>
             <div className="
               text-xs
-              opacity-80
+              opacity-30
             ">{description}
             </div>
           </div>

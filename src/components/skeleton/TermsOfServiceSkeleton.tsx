@@ -3,19 +3,15 @@
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export function TermsOfServiceSkeleton(): React.ReactElement {
+export const TermsOfServiceSkeleton: React.FC = React.memo(() => {
     return (
-        <div className="mx-auto max-w-7xl px-4 py-2 grid grid-cols-1 lg:grid-cols-[240px_auto] gap-10">
-            <div className="pointer-events-none absolute inset-0 -z-10 flex justify-center print:hidden">
-                <div className="absolute top-24 h-72 w-72 rounded-full bg-emerald-500/5 blur-3xl" />
-            </div>
-
+        <div className="mx-auto max-w-[1920px] px-4 py-2 grid grid-cols-1 lg:grid-cols-[240px_auto] gap-[clamp(2rem,5vw,2.5rem)]">
             {/* Sticky TOC — Desktop only */}
             <aside className="hidden lg:block print:hidden">
-                <nav className="sticky top-24 space-y-4 text-sm">
-                    <Skeleton className="h-4 w-20" />
+                <nav className="sticky top-24 text-[clamp(0.75rem,1.2vw,0.9rem)] leading-6">
+                    <Skeleton className="h-5 w-20 mb-3" />
 
-                    <ul className="space-y-2 border-l border-zinc-200 dark:border-zinc-800 pl-4">
+                    <ul className="border-l border-zinc-200 dark:border-zinc-800 pl-4 space-y-2">
                         {[1, 2, 3, 4, 5, 6, 7].map((index) => (
                             <li key={index}>
                                 <Skeleton className="h-4 w-24" />
@@ -26,9 +22,9 @@ export function TermsOfServiceSkeleton(): React.ReactElement {
             </aside>
 
             {/* Main content */}
-            <div className="max-w-3xl">
+            <div className="max-w-7xl border-l border-zinc-200 dark:border-zinc-800 pl-6">
                 {/* Header */}
-                <header className="top-[8dvh] mb-12 space-y-3 z-50">
+                <header className="mb-12 space-y-3">
                     <Skeleton className="h-10 w-3/4" />
 
                     <Skeleton className="h-4 w-1/3" />
@@ -54,4 +50,6 @@ export function TermsOfServiceSkeleton(): React.ReactElement {
             </div>
         </div>
     );
-}
+});
+
+TermsOfServiceSkeleton.displayName = "TermsOfServiceSkeleton";

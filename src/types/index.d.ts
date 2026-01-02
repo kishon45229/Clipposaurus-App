@@ -381,6 +381,8 @@ export interface TermsOfServiceComponent {
   lastUpdated: string;
   sections: AccordionItem[];
 }
+
+
 export interface FAQQuestion {
   question: string;
   answer: string;
@@ -388,12 +390,12 @@ export interface FAQQuestion {
 
 export interface FAQCategory {
   id: string;
-  category: string;
+  title: string;
   description?: string;
   questions: FAQQuestion[];
 }
 
-export interface FAQPage {
+export interface FAQComponent {
   headline: string;
   description: string;
   lastUpdated: string;
@@ -418,7 +420,7 @@ export interface ChangelogRelease {
   changes: ChangelogCategory[];
 }
 
-export interface ChangelogPage {
+export interface ChangelogComponent {
   headline: string;
   description: string;
   releases: ChangelogRelease[];

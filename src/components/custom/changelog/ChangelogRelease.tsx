@@ -1,54 +1,32 @@
 "use client";
 
 import React from "react";
-import { ChangelogRelease as ChangelogReleaseType } from "@/types";
-import { Badge } from "@/components/ui/badge";
-import { ChangelogSection } from "./ChangelogSection";
+import { useChangelog } from "@/contexts/ChangelogContext";
+import { ChangelogSection } from "@/components/custom/changelog/ChangelogSection";
+import { ChangelogReleaseHeader } from "./ChangelogReleaseHeader";
 
-interface ChangelogReleaseProps {
-    release: ChangelogReleaseType;
-}
-
-export const ChangelogRelease: React.FC<ChangelogReleaseProps> = ({ release }) => {
-    const getBadgeVariant = (type: string) => {
-        switch (type) {
-            case "major":
-                return "default";
-            case "minor":
-                return "secondary";
-            case "patch":
-                return "outline";
-            default:
-                return "default";
-        }
-    };
+export const ChangelogRelease: React.FC = React.memo(() => {
+    const { data } = useChangelog();
+    const { releases } = data;
 
     return (
-        <article className="border-l-4 border-primary/30 pl-6 space-y-4">
-            <div className="space-y-2">
-                <div className="flex items-center gap-3 flex-wrap">
-                    <h2 className="text-3xl font-bold text-foreground">
-                        v{release.version}
-                    </h2>
-                    <Badge variant={getBadgeVariant(release.type)}>
-                        {release.type}
-                    </Badge>
-                </div>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <time dateTime={release.date}>{release.date}</time>
-                    <span>•</span>
-                    <span className="font-medium">{release.title}</span>
-                </div>
-            </div>
+        <div className="space-y-12">
+            {releases.map((release, index) => (
+                <div key={index} id={`release-${release.version}`} className="scroll-mt-28">
+                    <ChangelogReleaseHeader release={release} />
 
-            <div className="space-y-6 mt-6">
-                {release.changes.map((section, index) => (
-                    <ChangelogSection
-                        key={`${release.version}-${index}`}
-                        section={section}
-                    />
-                ))}
-            </div>
-        </article>
+                    <div className="space-y-6 mt-6">
+                        {release.changes.map((section, index) => (
+                            <ChangelogSection
+                                key={`${release.version}-${index}`}
+                                section={section}
+                            />
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </div>
     );
-};
+});
+
+ChangelogRelease.displayName = "ChangelogRelease";

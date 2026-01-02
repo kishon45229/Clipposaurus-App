@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { AmbientGlow } from "@/components/ui/ambient-glow";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -18,6 +17,8 @@ import {
     ScrollText,
     Bug,
     HeartHandshake,
+    FileText,
+    Mail,
 } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -109,6 +110,28 @@ export const HamburgerMenu: React.FC = React.memo(() => {
                 >
                     <Bug className="hamburger-menu-icon-item" />
                     Report an Issue
+                </DropdownMenuItem>
+
+                {/* Terms of Service */}
+                <DropdownMenuItem
+                    onClick={() => window.open("/terms-of-service")}
+                    className="hamburger-menu-item"
+                >
+                    <FileText className="hamburger-menu-icon-item" />
+                    Terms of Service
+                </DropdownMenuItem>
+
+                {/* Contact Us */}
+                <DropdownMenuItem
+                    onClick={() => {
+                        const link = document.createElement('a');
+                        link.href = "mailto:support@clipposaurus.com";
+                        link.click();
+                    }}
+                    className="hamburger-menu-item"
+                >
+                    <Mail className="hamburger-menu-icon-item" />
+                    Contact Us
                 </DropdownMenuItem>
 
                 <DropdownMenuSeparator className="
