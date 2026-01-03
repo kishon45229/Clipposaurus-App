@@ -1,15 +1,19 @@
 import React from "react";
-import type { DocsSection, ContentData1 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 
-interface SupportedFileTypesSectionProps {
-    section: DocsSection & { data: ContentData1 };
+interface SupportedFileTypesSectionData {
+    headers: string[];
+    rows: string[][];
 }
 
-export const SupportedFileTypesSection: React.FC<SupportedFileTypesSectionProps> = React.memo(({ section }) => {
-    const data = section.data as ContentData1;
-    if (!data) return null;
+interface SupportedFileTypesSectionProps {
+    section: DocsPageSection;
+}
 
-    const { headers, rows } = data;
+export const SupportedFileTypesSection = React.memo<SupportedFileTypesSectionProps>(({ section }) => {
+    if (!section.data || typeof section.data !== "object") return null;
+
+    const { headers, rows } = section.data as SupportedFileTypesSectionData;
 
     return (
         <section id={section.id}>

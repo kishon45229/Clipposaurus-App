@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/responsive-dialog";
 import type { BaseDialogBodyProps } from "./types";
 
-export const BaseDialogBody: React.FC<BaseDialogBodyProps> = React.memo(
+export const BaseDialogBody = React.memo<BaseDialogBodyProps>(
     ({ icon, title, description, children }) => {
         return (
             <ResponsiveDialogHeader

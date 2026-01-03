@@ -4,7 +4,7 @@ import React from "react";
 import { FooterCopyright } from "@/components/custom/Footer/FooterCopyright";
 import { FooterLinks } from "@/components/custom/Footer/FooterLinks";
 
-export const FooterContainer: React.FC = React.memo(() => {
+export const FooterContainer = React.memo(() => {
     return (
         <footer className="
                 w-full h-full

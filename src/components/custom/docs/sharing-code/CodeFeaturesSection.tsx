@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import { DocsSection } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 
 interface CodeFeaturesSectionProps {
-    section: DocsSection;
+    section: DocsPageSection;
 }
 
-export const CodeFeaturesSection: React.FC<CodeFeaturesSectionProps> = React.memo(({ section }) => {
+export const CodeFeaturesSection = React.memo<CodeFeaturesSectionProps>(({ section }) => {
     if (section.type !== "content-types" || !Array.isArray(section.data)) {
         return null;
     }

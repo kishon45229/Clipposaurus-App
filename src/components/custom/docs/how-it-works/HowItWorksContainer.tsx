@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useDocs } from "@/contexts/DocsContext";
-import type { DocsPage, DocsSection, ContentData9, ContentData10, ContentData11, ContentData12, ContentData14 } from "@/types/docs";
+import type { DocsPage, DocsPageSection } from "@/types/contentData-types/docs-types";
 import { LocalFirstSection } from "@/components/custom/docs/how-it-works/LocalFirstSection";
 import { DropKeySection } from "@/components/custom/docs/how-it-works/DropKeySection";
 import { EncryptionSection } from "@/components/custom/docs/how-it-works/EncryptionSection";
@@ -18,7 +18,7 @@ export const HowItWorksContainer = React.memo(() => {
 
     if (!currentPage || !currentPage.sections) return null;
 
-    const { sections } = currentPage as DocsPage & { sections: DocsSection[] } & { data: ContentData9 | ContentData10 | ContentData11 | ContentData12 | ContentData14 };
+    const { sections } = currentPage as DocsPage & { sections: DocsPageSection[] };
 
     return (
         <div className="space-y-16">
@@ -28,49 +28,49 @@ export const HowItWorksContainer = React.memo(() => {
                         return (
                             <div key={section.id} className="space-y-8">
                                 <SectionHeadline section={section} />
-                                <LocalFirstSection section={section as DocsSection & { data: ContentData10 }} />
+                                <LocalFirstSection section={section as DocsPageSection} />
                             </div>
                         );
                     case "drop-key":
                         return (
                             <div key={section.id} className="space-y-8">
                                 <SectionHeadline section={section} />
-                                <DropKeySection section={section as DocsSection & { data: ContentData11 }} />
+                                <DropKeySection section={section as DocsPageSection} />
                             </div>
                         );
                     case "encryption":
                         return (
                             <div key={section.id} className="space-y-8">
                                 <SectionHeadline section={section} />
-                                <EncryptionSection section={section as DocsSection & { data: ContentData12 }} />
+                                <EncryptionSection section={section as DocsPageSection} />
                             </div>
                         );
                     case "storage":
                         return (
                             <div key={section.id} className="space-y-8">
                                 <SectionHeadline section={section} />
-                                <StorageSection section={section as DocsSection & { data: ContentData14 }} />
+                                <StorageSection section={section as DocsPageSection} />
                             </div>
                         );
                     case "access":
                         return (
                             <div key={section.id} className="space-y-8">
                                 <SectionHeadline section={section} />
-                                <AccessSection section={section as DocsSection & { data: ContentData14 }} />
+                                <AccessSection section={section as DocsPageSection} />
                             </div>
                         );
                     case "deletion":
                         return (
                             <div key={section.id} className="space-y-8">
                                 <SectionHeadline section={section} />
-                                <DeletionSection section={section as DocsSection & { data: { content?: string; highlights?: string[]; note?: string; } }} />
+                                <DeletionSection section={section as DocsPageSection} />
                             </div>
                         );
                     case "cta":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData9 }} />
-                                <CTASection section={section as DocsSection & { data: ContentData9 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <CTASection section={section as DocsPageSection} />
                                 <PageHelpful />
                             </div>
                         )

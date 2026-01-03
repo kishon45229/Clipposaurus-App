@@ -13,7 +13,7 @@ interface StickyTOCProps {
     activeSection: string;
 }
 
-export const StickyTOC: React.FC<StickyTOCProps> = React.memo(({ title, items, activeSection }) => {
+export const StickyTOC = React.memo<StickyTOCProps>(({ title, items, activeSection }) => {
     return (
         <div className="hidden lg:block print:hidden">
             <nav className="sticky top-24 text-[clamp(0.75rem,1.2vw,0.9rem)] leading-6">

@@ -1,23 +1,32 @@
 import React from "react";
-import type { DocsSection, ContentData11 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
+
+interface DropKeySectionData {
+    label: string;
+    example: string;
+    type: string;
+    content: string;
+}
 
 interface DropKeySectionProps {
-    section: DocsSection & { data: ContentData11 };
+    section: DocsPageSection;
 };
 
 export const DropKeySection = React.memo<DropKeySectionProps>(({ section }) => {
-    const { data } = section as { data: ContentData11 };
+    if (!section.data || !Array.isArray(section.data)) return null;
+
+    const items = (section.data as unknown) as DropKeySectionData[];
 
     return (
         <section id={section.id}>
             <div className="mb-10 text-center">
                 <div className="inline-flex items-center gap-4 px-4 py-2 rounded-xl border border-zinc-300 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/40 shadow-sm">
-                    {data.map((item, index) => (
+                    {items.map((item, index) => (
                         <React.Fragment key={index}>
                             <span className="font-mono text-2xl text-emerald-500 dark:text-emerald-400">
                                 {item.example}
                             </span>
-                            {index < data.length - 1 && (
+                            {index < items.length - 1 && (
                                 <span className="mx-1 text-zinc-400">-</span>
                             )}
                         </React.Fragment>
@@ -25,7 +34,7 @@ export const DropKeySection = React.memo<DropKeySectionProps>(({ section }) => {
                 </div>
 
                 <div className="mt-3 flex items-center justify-center gap-8 text-xs text-zinc-500 dark:text-zinc-400">
-                    {data.map((item, index) => (
+                    {items.map((item, index) => (
                         <div key={index} className="flex flex-col items-center">
                             <span className="block h-2 w-px mb-1 bg-zinc-400"></span>
                             <span className="text-zinc-600 dark:text-zinc-400">
@@ -37,14 +46,14 @@ export const DropKeySection = React.memo<DropKeySectionProps>(({ section }) => {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6 mt-8">
-                {data.map((item, index) => (
+                {items.map((item, index) => (
                     <div key={index} className="p-5 rounded-xl border border-emerald-300 dark:border-emerald-700 bg-zinc-50 dark:bg-zinc-900/30">
-                        <h4 className="font-semibold mb-2 text-emerald-600 dark:text-emerald-400">
+                        <div className="font-semibold mb-2 text-emerald-600 dark:text-emerald-400">
                             {item.label}
-                        </h4>
-                        <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+                        </div>
+                        <div className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
                             {item.content}
-                        </p>
+                        </div>
                     </div>
                 ))}
             </div>

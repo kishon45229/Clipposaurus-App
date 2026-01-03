@@ -1,36 +1,37 @@
 import React from "react";
-import type { DocsSection, ContentData12 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
+
+interface BestPracticesSectionData {
+    title: string;
+    text: string;
+}
 
 interface BestPracticesSectionProps {
-    section: DocsSection & { data: ContentData12 };
+    section: DocsPageSection;
 }
 
 export const BestPracticesSection = React.memo<BestPracticesSectionProps>(({ section }) => {
-    const data = section.data as ContentData12;
-    if (!data) return null;
+    if (!section.data || !Array.isArray(section.data)) return null;
+
+    const practices = section.data as BestPracticesSectionData[];
 
     return (
-<section id={section.id}>
-    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <section id={section.id}>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
 
-        {data.map((practice, index) => (
-            <div key={index} className="space-y-3 group">
+                {practices.map((practice, index) => (
+                    <div key={index} className="space-y-3 group">
+                        <div className="text-lg font-semibold text-emerald-600 dark:text-emerald-400 border-b border-emerald-400/30 pb-1 group-hover:border-emerald-500 transition-colors">
+                            {practice.title}
+                        </div>
 
-                {/* Title with subtle underline */}
-                <h3 className="text-lg font-semibold text-emerald-600 dark:text-emerald-400 border-b border-emerald-400/30 pb-1 group-hover:border-emerald-500 transition-colors">
-                    {practice.title}
-                </h3>
-
-                <p className="text-base text-zinc-700 dark:text-zinc-400 leading-relaxed">
-                    {practice.text}
-                </p>
-
+                        <div className="text-base text-zinc-700 dark:text-zinc-400 leading-relaxed">
+                            {practice.text}
+                        </div>
+                    </div>
+                ))}
             </div>
-        ))}
-    </div>
-</section>
-
-
+        </section>
     );
 });
 

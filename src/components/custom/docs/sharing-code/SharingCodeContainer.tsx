@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useDocs } from "@/contexts/DocsContext";
-import type { DocsPage, DocsSection, ContentData1, ContentData6, ContentData7, ContentData9, ContentData29, ContentData12, ContentData30 } from "@/types/docs";
+import type { DocsPage, DocsPageSection } from "@/types/contentData-types/docs-types";
 import { SectionHeadline } from "@/components/custom/docs/SectionHeadline";
 import { FeaturesSection } from "@/components/custom/docs/FeaturesSection";
 import { StepsSection } from "@/components/custom/docs/StepsSection";
@@ -19,7 +19,7 @@ export const SharingCodeContainer = React.memo(() => {
         return null;
     }
 
-    const { sections } = currentPage as DocsPage & { sections: DocsSection[] } & { data: ContentData1 | ContentData6 | ContentData7 | ContentData9 | ContentData29 | ContentData30 };
+    const { sections } = currentPage as DocsPage & { sections: DocsPageSection[] };
 
     return (
         <div className="space-y-16">
@@ -28,40 +28,40 @@ export const SharingCodeContainer = React.memo(() => {
                     case "code-features":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <FeaturesSection section={section as DocsSection & { data: ContentData29 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <FeaturesSection section={section as DocsPageSection} />
                             </div>);
                     case "sharing-process":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <StepsSection section={section as DocsSection & { data: ContentData7 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <StepsSection section={section as DocsPageSection} />
                             </div>);
                     case "use-cases":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <UseCaseSection key={section.id} section={section as DocsSection & { data: ContentData6 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <UseCaseSection key={section.id} section={section as DocsPageSection} />
                             </div>);
                     case "best-practices":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <BestPracticesSection key={section.id} section={section as DocsSection & { data: ContentData12 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <BestPracticesSection key={section.id} section={section as DocsPageSection} />
                             </div>
                         );
                     case "supported-languages":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <SupportedLanguagesSection key={section.id} section={section as DocsSection & { data: ContentData30 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <SupportedLanguagesSection key={section.id} section={section as DocsPageSection} />
                             </div>
                         );
                     case "cta":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData9 }} />
-                                <CTASection section={section as DocsSection & { data: ContentData9 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <CTASection section={section as DocsPageSection} />
                                 <PageHelpful />
                             </div>
                         );

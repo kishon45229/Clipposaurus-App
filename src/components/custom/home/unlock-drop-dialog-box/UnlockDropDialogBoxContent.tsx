@@ -11,7 +11,7 @@ import { UnlockDropDialogBoxFooter } from "@/components/custom/home/unlock-drop-
 import { useDropOptions } from "@/contexts/DropOptionsContext";
 import { DialogBox } from "@/components/custom/home/DialogBox";
 
-export const UnlockDropDialogBoxContent: React.FC = React.memo(() => {
+export const UnlockDropDialogBoxContent = React.memo(() => {
     const { shouldShowModal, handleOpenChange } = useDropOptions();
 
     return (

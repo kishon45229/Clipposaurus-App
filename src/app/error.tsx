@@ -2,14 +2,13 @@
 
 import React from "react";
 import { useRollbar } from "@rollbar/react";
-import { AppError } from "@/types";
 import { ErrorUI } from "@/components/custom/ErrorUI";
 
 export default function ErrorFallback({
   error,
   reset,
 }: {
-  error: AppError | Error;
+  error: Error;
   reset: () => void;
 }) {
   const [supportId, setSupportId] = React.useState<string | null>(null);
@@ -36,7 +35,6 @@ export default function ErrorFallback({
       message: error.message || "Unknown error",
       cause: error.cause || null,
       stack: error.stack || null,
-      digest: (error as AppError).digest || null,
       userAgent: navigator.userAgent.substring(0, 100),
       url: window.location.href,
       timestamp: new Date().toISOString(),

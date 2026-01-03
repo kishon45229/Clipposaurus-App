@@ -4,7 +4,6 @@ import React from "react";
 import { useRouter } from "next/navigation";
 import { navigation } from "@/lib/navigation";
 import { useOpenDrop } from "@/contexts/OpenDropContext";
-import { useDropSidebar } from "@/contexts/DropSidebarContext";
 import { formatCountdown } from "@/lib/countdown";
 
 interface CountdownResult {

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useHeroComponent } from "@/contexts/ComponentDataContext";
-import { HeroComponent } from "@/types";
+import { HeroComponent } from "@/types/contentData-types/hero-types";
 
 interface HeroContextType {
     data: HeroComponent;

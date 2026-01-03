@@ -9,9 +9,9 @@ interface DocsProviderProps {
 
 const DocsContext = React.createContext<UseDocsManagerReturn | undefined>(undefined);
 
-export const DocsProvider: React.FC<DocsProviderProps> = ({
+export const DocsProvider = ({
     children
-}) => {
+}: DocsProviderProps) => {
     const docsData = useDocsManager();
 
     return (

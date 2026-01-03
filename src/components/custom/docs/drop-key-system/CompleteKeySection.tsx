@@ -1,30 +1,28 @@
 import React from "react";
-import type { DocsSection } from "@/types/docs";
-import { DropKeyVisual } from "./DropKeyVisual";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
+import { DropKeyVisual } from "@/components/custom/docs/drop-key-system/DropKeyVisual";
 
-interface CombinedKeyData {
-    format: string;
-    properties: string[];
+interface CombinedKeySectionData {
+    items: string[];
 }
 
 interface CombinedKeySectionProps {
-    section: DocsSection & { data: CombinedKeyData };
+    section: DocsPageSection;
 }
 
 export const CompleteKeySection = React.memo<CombinedKeySectionProps>(({ section }) => {
-    const { data } = section;
+    if (!section.data || !(Array.isArray(section.data))) return null;
 
-    if (!data) return null;
+    const { items } = (section.data as unknown) as CombinedKeySectionData;
 
     return (
         <section id={section.id} className="space-y-10">
-            {/* Drop Key Visual showing all three words equally */}
             <DropKeyVisual activeSection="identifier" combined={true} />
 
             {/* Properties List */}
             <div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {data.properties.map((property: string, index: number) => (
+                    {items.map((item: string, index: number) => (
                         <article
                             key={index}
                             className="relative overflow-hidden rounded-3xl border border-zinc-200 dark:border-zinc-800 bg-white/70 dark:bg-zinc-900/40 p-5 shadow-sm"
@@ -36,9 +34,9 @@ export const CompleteKeySection = React.memo<CombinedKeySectionProps>(({ section
                             <div className="flex items-center gap-3 mb-3">
                                 <div className="h-2.5 w-2.5 rounded-full bg-emerald-500" aria-hidden />
                             </div>
-                            <p className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                                {property}
-                            </p>
+                            <div className="text-sm text-zinc-700 dark:text-zinc-300 leading-relaxed">
+                                {item}
+                            </div>
                         </article>
                     ))}
                 </div>
@@ -53,13 +51,13 @@ export const CompleteKeySection = React.memo<CombinedKeySectionProps>(({ section
                         </svg>
                     </div>
                     <div>
-                        <h4 className="font-medium text-amber-900 dark:text-amber-100 mb-1">
+                        <div className="font-medium text-amber-900 dark:text-amber-100 mb-1">
                             Critical Security Notice
-                        </h4>
-                        <p className="text-sm text-amber-800 dark:text-amber-200">
+                        </div>
+                        <div className="text-sm text-amber-800 dark:text-amber-200">
                             The complete drop key is the ONLY way to access your content. If any word is lost or forgotten,
                             your data becomes permanently inaccessible. There is no recovery mechanism by design.
-                        </p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -2,18 +2,10 @@ import React from "react";
 import type { DragAndDropOptions } from "@/types";
 import { processFileWithSizeCheck } from "@/lib/fileSizeCheck";
 
-class DragAndDropError extends Error {
-  constructor(message: string) {
-    super(message);
-    this.name = "DragAndDropError";
-  }
-}
-
 export function useDragAndDrop({
   processFile,
   currentTotalSize,
   setFiles,
-  onError,
 }: Omit<DragAndDropOptions, "setIsDragOver" | "fileInputRef">) {
   const [isDragOver, setIsDragOver] = React.useState<boolean>(false);
 
@@ -61,23 +53,15 @@ export function useDragAndDrop({
               const processedFile = await fileProcessor(file);
               setFiles((prev) => [...prev, processedFile]);
             } catch (error) {
-              throw new DragAndDropError(
-                error instanceof Error
-                  ? error.message
-                  : `Failed to process ${file.name}`
-              );
+              throw error;
             }
           }
         } catch (error) {
-          const errorMessage =
-            error instanceof Error
-              ? error.message
-              : "Failed to process dropped files";
-          onError?.(errorMessage);
+          throw error;
         }
       }
     },
-    [fileProcessor, setFiles, setIsDragOver, onError]
+    [fileProcessor, setFiles, setIsDragOver]
   );
 
   const handlePaste = React.useCallback(
@@ -103,24 +87,15 @@ export function useDragAndDrop({
               setFiles((prev) => [...prev, processedFile]);
             } catch (error) {
               console.error(`Error processing file ${file.name}:`, error);
-              throw new DragAndDropError(
-                error instanceof Error
-                  ? error.message
-                  : `Failed to process ${file.name}`
-              );
+              throw error;
             }
           }
         } catch (error) {
-          const errorMessage =
-            error instanceof Error
-              ? error.message
-              : "Failed to process pasted files";
-          onError?.(errorMessage);
-          throw new DragAndDropError(errorMessage);
+          throw error;
         }
       }
     },
-    [fileProcessor, setFiles, onError]
+    [fileProcessor, setFiles]
   );
 
   const handleFileSelect = React.useCallback(
@@ -136,20 +111,11 @@ export function useDragAndDrop({
               const processedFile = await fileProcessor(file);
               setFiles((prev) => [...prev, processedFile]);
             } catch (error: unknown) {
-              throw new DragAndDropError(
-                error instanceof Error
-                  ? error.message
-                  : `Failed to process ${file.name}`
-              );
+              throw error;
             }
           }
         } catch (error: unknown) {
-          const errorMessage =
-            error instanceof Error
-              ? error.message
-              : "Failed to process selected files";
-          onError?.(errorMessage);
-          throw new DragAndDropError(errorMessage);
+          throw error;
         }
       }
 
@@ -157,7 +123,7 @@ export function useDragAndDrop({
         fileInputRef.current.value = "";
       }
     },
-    [fileProcessor, setFiles, onError]
+    [fileProcessor, setFiles]
   );
 
   return {

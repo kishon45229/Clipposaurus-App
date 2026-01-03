@@ -3,7 +3,7 @@
 import React from "react";
 import { useFAQ } from "@/contexts/FAQContext";
 
-export const FAQHeader: React.FC = React.memo(() => {
+export const FAQHeader = React.memo(() => {
     const { data } = useFAQ();
     const { headline, description } = data;
 

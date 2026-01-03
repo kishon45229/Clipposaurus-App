@@ -1,4 +1,4 @@
-import { tabList, TabType } from "./Tab.config";
+import { tabList } from "./Tab.config";
 
 export const validateTabList = (list: readonly string[]) => {
   if (!list || list.length !== 3) {

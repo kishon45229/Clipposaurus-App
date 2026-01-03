@@ -5,7 +5,6 @@ import { useDocs } from "@/contexts/DocsContext";
 import {
     Sidebar,
     SidebarContent,
-    SidebarFooter,
     SidebarGroup,
     SidebarGroupLabel,
     SidebarGroupContent,
@@ -13,7 +12,7 @@ import {
     SidebarMenuItem,
     SidebarMenuButton,
 } from "@/components/ui/sidebar";
-import { DocsSidebarItem } from "@/types/docs";
+import { DocsSidebarItem } from "@/types/contentData-types/docs-types";
 import { DocsLeftSidebarSkeleton } from "@/components/skeleton/DocsLeftSidebarSkeleton";
 import { ComponentError } from "@/components/custom/ComponentError";
 

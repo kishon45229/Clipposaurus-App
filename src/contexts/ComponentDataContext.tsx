@@ -2,24 +2,23 @@
 
 import React from "react";
 import { getComponentData } from "@/services/componentDataService";
-import { HeroComponent, PrivacyInfoCardComponent, UnlockDropDialogBoxComponent, OptionsComponent, MenuComponent, DropPreviewComponent, AppError, HomeIntroductionComponent, ComparisonComponent, DesignComponent, ContentTypesComponent, PlatformComponent, PrivacyComponent, TestimonialsComponent, TermsOfServiceComponent, FAQComponent, ChangelogComponent } from "@/types";
-import { DocsComponent } from "@/types/docs";
+import { HeroComponent } from "@/types/contentData-types/hero-types";
+import { PrivacyInfoCardComponent } from "@/types/contentData-types/privacyInfoCard-types";
+import { UnlockDropDialogBoxComponent } from "@/types/contentData-types/unlockDropDialogBox-types";
+import { MenuComponent } from "@/types/contentData-types/menu-types";
+import { DropPreviewComponent } from "@/types/contentData-types/dropPreview-types";
+import { TermsOfServiceComponent } from "@/types/contentData-types/termsOfService-types";
+import { FAQComponent } from "@/types/contentData-types/faq-types";
+import { ChangelogComponent } from "@/types/contentData-types/changelog-types";
+import { DocsComponent } from "@/types/contentData-types/docs-types";
 
 export type ComponentDataType =
     | HeroComponent
     | PrivacyInfoCardComponent
     | UnlockDropDialogBoxComponent
-    | OptionsComponent
     | MenuComponent
     | DropPreviewComponent
     | DocsComponent
-    | HomeIntroductionComponent
-    | ComparisonComponent
-    | DesignComponent
-    | ContentTypesComponent
-    | PlatformComponent
-    | PrivacyComponent
-    | TestimonialsComponent
     | TermsOfServiceComponent
     | FAQComponent
     | ChangelogComponent;
@@ -28,17 +27,9 @@ export type ComponentTypeMap = {
     HeroComponent: HeroComponent;
     PrivacyInfoCardComponent: PrivacyInfoCardComponent;
     UnlockDropDialogBoxComponent: UnlockDropDialogBoxComponent;
-    OptionsComponent: OptionsComponent;
     MenuComponent: MenuComponent;
     DropPreviewComponent: DropPreviewComponent;
     DocsComponent: DocsComponent;
-    HomeIntroductionComponent: HomeIntroductionComponent;
-    ComparisonComponent: ComparisonComponent;
-    DesignComponent: DesignComponent;
-    ContentTypesComponent: ContentTypesComponent;
-    PlatformComponent: PlatformComponent;
-    PrivacyComponent: PrivacyComponent;
-    TestimonialsComponent: TestimonialsComponent;
     TermsOfServiceComponent: TermsOfServiceComponent;
     FAQComponent: FAQComponent;
     ChangelogComponent: ChangelogComponent;
@@ -48,7 +39,7 @@ interface ComponentDataContextType {
     getComponentData: <T extends keyof ComponentTypeMap>(componentId: T) => Promise<ComponentTypeMap[T]>;
     cachedData: Partial<ComponentTypeMap>;
     loadingStates: Record<string, boolean>;
-    errorStates: Record<string, Error | AppError | null>;
+    errorStates: Record<string, Error | null>;
     clearComponentCache: (componentId: keyof ComponentTypeMap) => void;
     clearAllCache: () => void;
     preloadComponent: <T extends keyof ComponentTypeMap>(componentId: T) => Promise<void>;
@@ -63,13 +54,13 @@ interface ComponentDataProviderProps {
 export function ComponentDataProvider({ children }: ComponentDataProviderProps): React.ReactElement {
     const [cachedData, setCachedData] = React.useState<Partial<ComponentTypeMap>>({});
     const [loadingStates, setLoadingStates] = React.useState<Record<string, boolean>>({});
-    const [errorStates, setErrorStates] = React.useState<Record<string, Error | AppError | null>>({});
+    const [errorStates, setErrorStates] = React.useState<Record<string, Error | null>>({});
 
     const updateLoadingState = React.useCallback((componentId: string, isLoading: boolean) => {
         setLoadingStates(prev => ({ ...prev, [componentId]: isLoading }));
     }, []);
 
-    const updateErrorState = React.useCallback((componentId: string, error: Error | AppError | null) => {
+    const updateErrorState = React.useCallback((componentId: string, error: Error | null) => {
         setErrorStates(prev => ({ ...prev, [componentId]: error }));
     }, []);
 
@@ -93,7 +84,7 @@ export function ComponentDataProvider({ children }: ComponentDataProviderProps):
             updateLoadingState(componentId, false);
             return data;
         } catch (error) {
-            updateErrorState(componentId, error as Error | AppError);
+            updateErrorState(componentId, error as Error);
             updateLoadingState(componentId, false);
             throw error;
         }
@@ -194,22 +185,6 @@ export function useUnlockDropDialogBoxComponent() {
     };
 }
 
-export function useOptionsComponent() {
-    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
-
-    React.useEffect(() => {
-        if (!cachedData.OptionsComponent && !loadingStates.OptionsComponent && !errorStates.OptionsComponent) {
-            getComponentData('OptionsComponent').catch(console.error);
-        }
-    }, [cachedData.OptionsComponent, loadingStates.OptionsComponent, errorStates.OptionsComponent, getComponentData]);
-
-    return {
-        data: cachedData.OptionsComponent as OptionsComponent,
-        isLoading: loadingStates.OptionsComponent || false,
-        error: errorStates.OptionsComponent,
-    };
-}
-
 export function useMenuComponent() {
     const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
 
@@ -255,118 +230,6 @@ export function useDocsComponent() {
         data: cachedData.DocsComponent as DocsComponent,
         isLoading: loadingStates.DocsComponent || false,
         error: errorStates.DocsComponent,
-    };
-}
-
-export function useHomeIntroductionComponent() {
-    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
-
-    React.useEffect(() => {
-        if (!cachedData.HomeIntroductionComponent && !loadingStates.HomeIntroductionComponent && !errorStates.HomeIntroductionComponent) {
-            getComponentData('HomeIntroductionComponent').catch(console.error);
-        }
-    }, [cachedData.HomeIntroductionComponent, loadingStates.HomeIntroductionComponent, errorStates.HomeIntroductionComponent, getComponentData]);
-
-    return {
-        data: cachedData.HomeIntroductionComponent as HomeIntroductionComponent,
-        isLoading: loadingStates.HomeIntroductionComponent || false,
-        error: errorStates.HomeIntroductionComponent,
-    };
-}
-
-export function useComparisonComponent() {
-    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
-
-    React.useEffect(() => {
-        if (!cachedData.ComparisonComponent && !loadingStates.ComparisonComponent && !errorStates.ComparisonComponent) {
-            getComponentData('ComparisonComponent').catch(console.error);
-        }
-    }, [cachedData.ComparisonComponent, loadingStates.ComparisonComponent, errorStates.ComparisonComponent, getComponentData]);
-
-    return {
-        data: cachedData.ComparisonComponent as ComparisonComponent,
-        isLoading: loadingStates.ComparisonComponent || false,
-        error: errorStates.ComparisonComponent,
-    };
-}
-
-export function useDesignComponent() {
-    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
-
-    React.useEffect(() => {
-        if (!cachedData.DesignComponent && !loadingStates.DesignComponent && !errorStates.DesignComponent) {
-            getComponentData('DesignComponent').catch(console.error);
-        }
-    }, [cachedData.DesignComponent, loadingStates.DesignComponent, errorStates.DesignComponent, getComponentData]);
-
-    return {
-        data: cachedData.DesignComponent as DesignComponent,
-        isLoading: loadingStates.DesignComponent || false,
-        error: errorStates.DesignComponent,
-    };
-}
-
-export function useContentTypesComponent() {
-    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
-
-    React.useEffect(() => {
-        if (!cachedData.ContentTypesComponent && !loadingStates.ContentTypesComponent && !errorStates.ContentTypesComponent) {
-            getComponentData('ContentTypesComponent').catch(console.error);
-        }
-    }, [cachedData.ContentTypesComponent, loadingStates.ContentTypesComponent, errorStates.ContentTypesComponent, getComponentData]);
-
-    return {
-        data: cachedData.ContentTypesComponent as ContentTypesComponent,
-        isLoading: loadingStates.ContentTypesComponent || false,
-        error: errorStates.ContentTypesComponent,
-    };
-}
-
-export function usePlatformComponent() {
-    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
-
-    React.useEffect(() => {
-        if (!cachedData.PlatformComponent && !loadingStates.PlatformComponent && !errorStates.PlatformComponent) {
-            getComponentData('PlatformComponent').catch(console.error);
-        }
-    }, [cachedData.PlatformComponent, loadingStates.PlatformComponent, errorStates.PlatformComponent, getComponentData]);
-
-    return {
-        data: cachedData.PlatformComponent as PlatformComponent,
-        isLoading: loadingStates.PlatformComponent || false,
-        error: errorStates.PlatformComponent,
-    };
-}
-
-export function usePrivacyComponent() {
-    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
-
-    React.useEffect(() => {
-        if (!cachedData.PrivacyComponent && !loadingStates.PrivacyComponent && !errorStates.PrivacyComponent) {
-            getComponentData('PrivacyComponent').catch(console.error);
-        }
-    }, [cachedData.PrivacyComponent, loadingStates.PrivacyComponent, errorStates.PrivacyComponent, getComponentData]);
-
-    return {
-        data: cachedData.PrivacyComponent as PrivacyComponent,
-        isLoading: loadingStates.PrivacyComponent || false,
-        error: errorStates.PrivacyComponent,
-    };
-}
-
-export function useTestimonialsComponent() {
-    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
-
-    React.useEffect(() => {
-        if (!cachedData.TestimonialsComponent && !loadingStates.TestimonialsComponent && !errorStates.TestimonialsComponent) {
-            getComponentData('TestimonialsComponent').catch(console.error);
-        }
-    }, [cachedData.TestimonialsComponent, loadingStates.TestimonialsComponent, errorStates.TestimonialsComponent, getComponentData]);
-
-    return {
-        data: cachedData.TestimonialsComponent as TestimonialsComponent,
-        isLoading: loadingStates.TestimonialsComponent || false,
-        error: errorStates.TestimonialsComponent,
     };
 }
 

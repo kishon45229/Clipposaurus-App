@@ -9,9 +9,9 @@ import { useHero } from "@/contexts/HeroContext";
  * HeroFooter component
  * @returns React functional component
  */
-export const HeroFooter: React.FC = React.memo(() => {
+export const HeroFooter = React.memo(() => {
     const { data } = useHero();
-    const { consentDescription, consentLink1 } = data;
+    const { consentDescription, consentLink } = data;
 
     return (
         <div className="
@@ -34,7 +34,7 @@ export const HeroFooter: React.FC = React.memo(() => {
                     cursor-target
                 "
             >
-                {consentLink1}
+                {consentLink}
             </Link>
             {"."}
         </div >

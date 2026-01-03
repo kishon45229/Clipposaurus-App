@@ -2,9 +2,9 @@
 
 import React from "react";
 import { useDocs } from "@/contexts/DocsContext";
-import type { DocsPage, Header } from "@/types/docs";
+import type { DocsPage, DocsPageHeader} from "@/types/contentData-types/docs-types";
 
-export const DocsPageHeader = React.memo(() => {
+export const DocsHeader = React.memo(() => {
     const { currentPage } = useDocs();
 
     if (!currentPage || !currentPage.header) {
@@ -12,7 +12,7 @@ export const DocsPageHeader = React.memo(() => {
     }
 
     const { header } = currentPage as DocsPage;
-    const { title, description } = header as Header;
+    const { title, description } = header as DocsPageHeader;
 
     return (
         <div className="space-y-4">
@@ -27,4 +27,4 @@ export const DocsPageHeader = React.memo(() => {
     );
 });
 
-DocsPageHeader.displayName = "DocsPageHeader";
+DocsHeader.displayName = "DocsHeader";

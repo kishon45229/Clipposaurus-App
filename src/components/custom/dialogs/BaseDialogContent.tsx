@@ -5,7 +5,7 @@ import { ResponsiveDialogContent } from "@/components/ui/responsive-dialog";
 import type { BaseDialogContentProps } from "./types";
 import { cn } from "@/lib/utils";
 
-export const BaseDialogContent: React.FC<BaseDialogContentProps> = React.memo(
+export const BaseDialogContent = React.memo<BaseDialogContentProps>(
     ({ showCloseButton = true, className, children }) => {
         return (
             <ResponsiveDialogContent

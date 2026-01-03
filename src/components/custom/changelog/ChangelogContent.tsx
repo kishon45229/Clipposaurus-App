@@ -5,7 +5,7 @@ import { ChangelogHeader } from "@/components/custom/changelog/ChangelogHeader";
 import { ChangelogRelease } from "@/components/custom/changelog/ChangelogRelease";
 import { StickyTOC } from "@/components/custom/StickyTOC";
 
-export const ChangelogContent: React.FC = React.memo(() => {
+export const ChangelogContent = React.memo(() => {
     const { data } = useChangelog();
     const { releases } = data;
 

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useFAQComponent } from "@/contexts/ComponentDataContext";
-import { FAQComponent } from "@/types";
+import { FAQComponent } from "@/types/contentData-types/faq-types";
 
 interface FAQContextType {
     data: FAQComponent;

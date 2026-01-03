@@ -1,8 +1,8 @@
 import React from "react";
-import type { DocsSection, ContentData1 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 
 interface SectionHeadlineProps {
-    section: DocsSection & { data: ContentData1 };
+    section: DocsPageSection;
 }
 
 export const SectionHeadline = React.memo<SectionHeadlineProps>(({ section }) => {

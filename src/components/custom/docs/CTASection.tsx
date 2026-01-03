@@ -1,13 +1,22 @@
 import React from "react";
-import { DocsSection, ContentData9 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 import { Button } from "@/components/ui/button";
 
+interface CTASectionData {
+  text: string;
+  href: string;
+  target?: string;
+  style: string;
+}
+
 interface CTASectionProps {
-  section: DocsSection & { data: ContentData9 };
+  section: DocsPageSection;
 }
 
 export const CTASection = React.memo<CTASectionProps>(({ section }) => {
-  const ctaBtns = section.data as ContentData9;
+  if (!section.data || !(Array.isArray(section.data))) return null;
+
+  const ctaBtns = (section.data as unknown) as CTASectionData[];
 
   return (
     <section id={section.id}>

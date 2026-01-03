@@ -1,12 +1,19 @@
 import React from "react";
-import { DocsSection, ContentData3 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
+
+interface ContentTypesSectionData {
+  title: string;
+  items: string[];
+}
 
 interface ContentTypesSectionProps {
-  section: DocsSection & { data: ContentData3 };
+  section: DocsPageSection;
 }
 
 export const ContentTypesSection = React.memo<ContentTypesSectionProps>(({ section }) => {
-  const contentTypes = section.data as ContentData3;
+  if (!section.data || !Array.isArray(section.data)) return null;
+
+  const contentTypes = section.data as ContentTypesSectionData[];
 
   return (
     <section id={section.id}>

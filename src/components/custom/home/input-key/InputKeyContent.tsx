@@ -3,7 +3,7 @@ import { InputKeyField } from "@/components/custom/home/input-key/InputKeyField"
 import { useDropOptions } from "@/contexts/DropOptionsContext";
 import { useInputKeyVisibility } from "@/hooks/useInputCodeVisibility";
 
-export const InputKeyContent: React.FC = React.memo(() => {
+export const InputKeyContent = React.memo(() => {
     const {
         identifier,
         systemSecret,

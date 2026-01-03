@@ -7,7 +7,7 @@ import { BaseDialogBody } from "@/components/custom/dialogs/BaseDialogBody";
 import { BaseDialogActions } from "@/components/custom/dialogs/BaseDialogActions";
 import type { StandardDialogProps } from "./types";
 
-export const StandardDialog: React.FC<StandardDialogProps> = React.memo(({
+export const StandardDialog = React.memo<StandardDialogProps>(({
     open,
     onOpenChange,
     icon,

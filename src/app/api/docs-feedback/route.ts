@@ -12,14 +12,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Use Redis hash to store feedback counts per page
     const key = `docs-feedback:${pageId}`;
-    const field = type === "like" ? "likes" : "dislikes";
-
-    // Increment the count
-    const newCount = await upstashRedis.hincrby(key, field, 1);
-
-    // Get both counts to return
     const counts = await upstashRedis.hgetall(key);
 
     return NextResponse.json({

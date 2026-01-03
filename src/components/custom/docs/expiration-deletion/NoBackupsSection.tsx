@@ -1,15 +1,24 @@
 import React from "react";
-import type { DocsSection, ContentData25 } from "@/types/docs.d";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
+
+interface NoBackupsSectionData {
+    items: {
+        label: string;
+        text: string;
+    }[];
+    analogy: string;
+}
 
 interface NoBackupsSectionProps {
-    section: DocsSection & { data: ContentData25 };
+    section: DocsPageSection;
 }
 
 export const NoBackupsSection = React.memo<NoBackupsSectionProps>(({ section }) => {
-    const data = section.data as ContentData25;
-    if (!data) return null;
+    if (!section.data || !(Array.isArray(section.data))) return null;
 
-    const { items, analogy } = data as ContentData25;
+    const blocks = (section.data as unknown) as NoBackupsSectionData;
+
+    const { items, analogy } = blocks;
 
     return (
         <section id={section.id} className="space-y-12">

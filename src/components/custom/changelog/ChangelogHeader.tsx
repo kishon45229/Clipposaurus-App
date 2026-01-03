@@ -3,7 +3,7 @@
 import React from "react";
 import { useChangelog } from "@/contexts/ChangelogContext";
 
-export const ChangelogHeader: React.FC = React.memo(() => {
+export const ChangelogHeader = React.memo(() => {
     const { data } = useChangelog();
     const { headline, description } = data;
 

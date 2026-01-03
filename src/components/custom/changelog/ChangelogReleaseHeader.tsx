@@ -10,7 +10,7 @@ interface ChangelogReleaseHeaderProps {
     };
 }
 
-export const ChangelogReleaseHeader: React.FC<ChangelogReleaseHeaderProps> = React.memo(({ release }) => {
+export const ChangelogReleaseHeader = React.memo<ChangelogReleaseHeaderProps>(({ release }) => {
     const { version, type, date, title } = release;
 
     const getBadgeVariant = (type: string) => {

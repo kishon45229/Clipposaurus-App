@@ -4,17 +4,19 @@ import React from "react";
 import { DropOptionsProvider } from "@/contexts/DropOptionsContext";
 import { HeroHeader } from "@/components/custom/home/hero/HeroHeader";
 import { HeroCTAs } from "@/components/custom/home/hero/HeroCTAs";
-import { HeroFooter } from "./HeroFooter";
+import { HeroFooter } from "@/components/custom/home/hero/HeroFooter";
 
-export const HeroContent: React.FC = React.memo(() => {
+export const HeroContent = () => {
     return (
-        <div className="flex
-            flex-col
-            justify-between
-            gap-2
-            h-full
-            w-full
-            overflow-hidden">
+        <div className="
+                flex
+                flex-col
+                justify-between
+                gap-2
+                h-full
+                w-full
+                overflow-hidden
+            ">
             <HeroHeader />
             <DropOptionsProvider>
                 <HeroCTAs />
@@ -22,6 +24,4 @@ export const HeroContent: React.FC = React.memo(() => {
             <HeroFooter />
         </div>
     );
-});
-
-HeroContent.displayName = "HeroContent";
+};

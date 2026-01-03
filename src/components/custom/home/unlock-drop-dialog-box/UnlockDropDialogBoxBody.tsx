@@ -7,7 +7,7 @@ import { InputKey } from "@/components/custom/home/input-key";
 import { useDropOptions } from "@/contexts/DropOptionsContext";
 import { useUnlockDropDialogBox } from "@/contexts/UnlockDropDialogBoxContext";
 
-export const UnlockDropDialogBoxBody: React.FC = React.memo(() => {
+export const UnlockDropDialogBoxBody = React.memo(() => {
     const { data } = useUnlockDropDialogBox();
     const { label, loadingLabel } = data.ctaBtn;
 

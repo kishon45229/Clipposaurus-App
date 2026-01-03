@@ -1,11 +1,6 @@
-import type { RetrivedDrop, DecryptedDrop } from "@/types";
+import type { DecryptionResult, DecryptedDrop } from "@/types/decryption";
+import type { RetrivedDrop } from "@/types";
 import { decryptWithDropKey } from "@/lib/decryption";
-
-interface DecryptionResult {
-  success: boolean;
-  data?: DecryptedDrop;
-  error?: string;
-}
 
 /**
  * DECRYPT DROP

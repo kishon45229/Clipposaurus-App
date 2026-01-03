@@ -1,6 +1,5 @@
 import React from "react";
-import type { ActiveSection } from "@/types/docs";
-import { useDocsComponent } from "@/contexts/ComponentDataContext";
+import type { ActiveSection } from "@/types/contentData-types/docs-types";
 
 interface DropKeyVisualProps {
     activeSection: ActiveSection;
@@ -8,47 +7,16 @@ interface DropKeyVisualProps {
 }
 
 export const DropKeyVisual = React.memo<DropKeyVisualProps>(({ activeSection, combined = false }) => {
-    const { data: docsData } = useDocsComponent();
-
-    // Get words and labels from DocsComponent.json
-    const getDropKeyData = () => {
-        if (!docsData) {
-            // Fallback to hardcoded values if data not loaded
-            return {
-                words: {
-                    identifier: "apple",
-                    "system-secret": "beer",
-                    "user-secret": "ocean"
-                },
-                labels: {
-                    identifier: { name: "Identifier", type: "Public" },
-                    "system-secret": { name: "System Secret", type: "Auto-generated" },
-                    "user-secret": { name: "User Secret", type: "User-chosen" }
-                }
-            };
-        }
-
-        const dropKeyPage = docsData.pages.find(page => page.id === "drop-key-system");
-        if (!dropKeyPage) return null;
-
-        const words: Record<string, string> = {};
-        const labels: Record<string, { name: string; type: string }> = {};
-
-        dropKeyPage.sections.forEach(section => {
-            if (section.data && typeof section.data === 'object' && 'word' in section.data) {
-                const sectionData = section.data as { name: string; type: string; word: string };
-                words[section.id] = sectionData.word;
-                labels[section.id] = { name: sectionData.name, type: sectionData.type };
-            }
-        });
-
-        return { words, labels };
+    const words = {
+        identifier: "apple",
+        "system-secret": "beer",
+        "user-secret": "ocean"
     };
-
-    const dropKeyData = getDropKeyData();
-    if (!dropKeyData) return null;
-
-    const { words, labels } = dropKeyData;
+    const labels = {
+        identifier: { name: "Identifier", type: "Public" },
+        "system-secret": { name: "System Secret", type: "Auto-generated" },
+        "user-secret": { name: "User Secret", type: "User-chosen" }
+    };
 
     const getWordStyle = (section: keyof typeof words) => {
         const isActive = combined || activeSection === section;

@@ -5,7 +5,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { useDropOptions } from "@/contexts/DropOptionsContext";
 import { useUnlockDropDialogBox } from "@/contexts/UnlockDropDialogBoxContext";
 
-export const UnlockDropDialogBoxFooter: React.FC = React.memo(() => {
+export const UnlockDropDialogBoxFooter = React.memo(() => {
     const { data } = useUnlockDropDialogBox();
     const { hintText, sampleKey } = data;
 

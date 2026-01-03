@@ -6,7 +6,7 @@ import { oneDark, oneLight } from 'react-syntax-highlighter/dist/esm/styles/pris
 import { useTheme } from 'next-themes';
 import { useOpenDrop } from "@/contexts/OpenDropContext";
 
-export const DropCodeContent: React.FC = React.memo(() => {
+export const DropCodeContent = React.memo(() => {
     const { decryptedDrop, selectedContentType } = useOpenDrop();
     const { theme } = useTheme();
 

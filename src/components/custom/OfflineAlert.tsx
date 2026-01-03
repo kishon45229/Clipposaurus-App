@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { WifiOff } from "lucide-react";
 import useNetworkStatus from "@/hooks/useNetworkStatus";
 
-export const OfflineAlert: React.FC = React.memo(() => {
+export const OfflineAlert = React.memo(() => {
     const { isOnline } = useNetworkStatus();
     const [isMounted, setIsMounted] = useState(false);
 

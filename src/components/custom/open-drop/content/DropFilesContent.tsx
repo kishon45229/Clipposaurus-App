@@ -6,9 +6,8 @@ import { Button } from "@/components/ui/button";
 import { useOpenDrop } from "@/contexts/OpenDropContext";
 import { formatFileSize } from "@/lib/openDropUtils";
 
-export const DropFilesContent: React.FC = React.memo(() => {
+export const DropFilesContent = React.memo(() => {
     const { decryptedDrop, selectedContentType, handleDownload } = useOpenDrop();
-    const dropKey = decryptedDrop.dropKey || decryptedDrop.identifier;
 
     if (selectedContentType !== "files" || !Array.isArray(decryptedDrop.decryptedFiles)) {
         return null;
@@ -32,7 +31,7 @@ export const DropFilesContent: React.FC = React.memo(() => {
                         </div>
                     </div>
                     <Button
-                        onClick={() => handleDownload(file.url, file.name, dropKey)}
+                        onClick={() => handleDownload(file.url, file.name, decryptedDrop.dropKey)}
                         className="flex items-center gap-1 bg-emerald-500 text-zinc-50 font-semibold rounded-2xl 
                                    hover:scale-[1.02] shadow-lg shadow-emerald-600/30 transition-all duration-300 
                                    hover:-translate-y-1 hover:shadow-xl disabled:opacity-70 px-3 py-2"

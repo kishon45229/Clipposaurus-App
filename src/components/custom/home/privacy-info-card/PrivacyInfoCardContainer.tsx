@@ -12,13 +12,11 @@ const COMPONENT_ID = "PrivacyInfoCardComponent" as const;
  * PrivacyInfoCardContainer component
  * @returns PrivacyInfoCardContainer component
  */
-export const PrivacyInfoCardContainer: React.FC = React.memo(() => {
+export const PrivacyInfoCardContainer = () => {
   const { data, isLoading, error } = usePrivacyInfoCard();
 
   if (isLoading || !data) return <PrivacyInfoContentSkeleton />;
   if (error) return <ComponentError componentId={COMPONENT_ID} />;
 
   return <PrivacyInfoCardContent />;
-});
-
-PrivacyInfoCardContainer.displayName = "PrivacyInfoCardContainer";
+};

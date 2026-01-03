@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { DocsSection } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 import { Monitor, Smartphone, Globe, WifiOff } from "lucide-react";
 
 interface MultiDeviceAccessSectionProps {
-    section: DocsSection;
+    section: DocsPageSection;
 }
 
 const platformIcons = {
@@ -15,7 +15,7 @@ const platformIcons = {
     "Offline Capability": WifiOff,
 };
 
-export const MultiDeviceAccessSection: React.FC<MultiDeviceAccessSectionProps> = React.memo(({ section }) => {
+export const MultiDeviceAccessSection = React.memo<MultiDeviceAccessSectionProps>(({ section }) => {
     if (section.type !== "platform" || !section.data || typeof section.data !== "object") {
         return null;
     }

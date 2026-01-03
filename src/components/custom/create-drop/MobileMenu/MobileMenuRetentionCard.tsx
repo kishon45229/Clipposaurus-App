@@ -6,7 +6,7 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useMenu } from "@/contexts/MenuContext";
 
-export const MobileMenuRetentionCard: React.FC = React.memo(() => {
+export const MobileMenuRetentionCard = React.memo(() => {
   const { data, retention, setRetention } = useMenu();
 
   const { title, retentionSection } = data;

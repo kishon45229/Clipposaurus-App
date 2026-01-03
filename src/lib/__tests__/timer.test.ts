@@ -24,7 +24,7 @@ describe("timer", () => {
 
       try {
         await getTimeout({ interval, errMsg: "Test timeout" });
-      } catch (error) {
+      } catch {
         const elapsed = Date.now() - start;
         expect(elapsed).toBeGreaterThanOrEqual(interval - 10); // Allow small margin
         expect(elapsed).toBeLessThan(interval + 50); // Allow reasonable margin

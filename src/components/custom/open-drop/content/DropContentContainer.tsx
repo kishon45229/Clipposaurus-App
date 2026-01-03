@@ -4,7 +4,7 @@ import { DropTextContent } from "@/components/custom/open-drop/content/DropTextC
 import { DropCodeContent } from "@/components/custom/open-drop/content/DropCodeContent";
 import { DropFilesContent } from "@/components/custom/open-drop/content/DropFilesContent";
 
-export const DropContentContainer = React.memo(() => {
+export const DropContentContainer = () => {
     return (
         <div className="flex flex-col h-full">
             {/* ACTION BAR */}
@@ -18,6 +18,4 @@ export const DropContentContainer = React.memo(() => {
             </div>
         </div>
     );
-});
-
-DropContentContainer.displayName = "DropContentContainer";
+};

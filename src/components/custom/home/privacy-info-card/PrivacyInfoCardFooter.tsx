@@ -3,7 +3,7 @@
 import React from "react";
 import { usePrivacyInfoCard } from "@/contexts/PrivacyInforCardContext";
 
-export const PrivacyInfoCardFooter: React.FC = React.memo(() => {
+export const PrivacyInfoCardFooter = React.memo(() => {
     const { data } = usePrivacyInfoCard();
     const stats = data.stats;
 

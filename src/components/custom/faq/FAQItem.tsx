@@ -13,7 +13,7 @@ interface FAQItemProps {
     answer: string;
 }
 
-export const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
+export const FAQItem = React.memo<FAQItemProps>(({ question, answer }) => {
     const itemId = React.useId();
 
     return (
@@ -28,4 +28,6 @@ export const FAQItem: React.FC<FAQItemProps> = ({ question, answer }) => {
             </AccordionItem>
         </Accordion>
     );
-};
+});
+
+FAQItem.displayName = "FAQItem";

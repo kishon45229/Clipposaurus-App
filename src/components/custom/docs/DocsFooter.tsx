@@ -1,18 +1,18 @@
 "use client";
 
 import React from "react";
-import type { Footer } from "@/types/docs";
+import type { DocsPageFooter } from "@/types/contentData-types/docs-types";
 import { useDocs } from "@/contexts/DocsContext";
 import { Button } from "@/components/ui/button";
 
-export const DocsPageFooter: React.FC = React.memo(() => {
+export const DocsFooter = React.memo(() => {
   const { data, currentPage, navigateToNext, navigateToPrevious } = useDocs();
 
   if (!data || !currentPage || !currentPage.footer) {
     return null;
   }
 
-  const { nextPage, previousPage } = currentPage.footer as Footer;
+  const { nextPage, previousPage } = currentPage.footer as DocsPageFooter;
 
   const currentIndex = data.pages.findIndex(page => page.id === currentPage.id);
   const hasPrevious = currentIndex > 0;
@@ -57,4 +57,4 @@ export const DocsPageFooter: React.FC = React.memo(() => {
 
 });
 
-DocsPageFooter.displayName = "DocsPageFooter";
+DocsFooter.displayName = "DocsFooter";

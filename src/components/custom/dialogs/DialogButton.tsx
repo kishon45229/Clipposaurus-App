@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import type { DialogButtonProps } from "./types";
 
-export const DialogButton: React.FC<DialogButtonProps> = React.memo(
+export const DialogButton = React.memo<DialogButtonProps>(
     ({ text, onClick, variant = "default", size = "lg", icon }) => {
         return (
             <Button

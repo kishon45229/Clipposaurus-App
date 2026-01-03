@@ -14,7 +14,7 @@ import { MobileMenuFooter } from "./MobileMenuFooter";
 import { useMenu } from "@/contexts/MenuContext";
 import { AmbientGlow } from "@/components/ui/ambient-glow";
 
-export const MobileMenuContent: React.FC = React.memo(() => {
+export const MobileMenuContent = () => {
     const { isMobileMenuOpen, setIsMobileMenuOpen, createDropRequestStatus } =
         useMenu();
 
@@ -52,6 +52,4 @@ export const MobileMenuContent: React.FC = React.memo(() => {
             </ResponsiveDialogContent>
         </ResponsiveDialog>
     );
-});
-
-MobileMenuContent.displayName = "MobileMenuContent";
+};

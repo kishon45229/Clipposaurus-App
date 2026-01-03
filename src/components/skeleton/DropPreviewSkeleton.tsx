@@ -4,7 +4,7 @@ import React from "react";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { Skeleton } from "@/components/ui/skeleton";
 
-const DropSidebarSkeleton = React.memo(() => {
+const DropSidebarSkeleton = () => {
     return (
         <div className="w-80 border-r border-zinc-200/60 dark:border-zinc-800/60 bg-linear-to-b from-zinc-50/60 to-white/30 dark:from-zinc-900/50 dark:to-zinc-950/30">
             {/* Sidebar Header */}
@@ -40,11 +40,9 @@ const DropSidebarSkeleton = React.memo(() => {
             </div>
         </div>
     );
-});
+};
 
-DropSidebarSkeleton.displayName = "DropSidebarSkeleton";
-
-const DropMainContentSkeleton = React.memo(() => {
+const DropMainContentSkeleton = () => {
     return (
         <div className="flex-1 flex flex-col">
             {/* Action Bar */}
@@ -71,11 +69,9 @@ const DropMainContentSkeleton = React.memo(() => {
             </div>
         </div>
     );
-});
+};
 
-DropMainContentSkeleton.displayName = "DropMainContentSkeleton";
-
-export const DropPreviewSkeleton = React.memo(() => {
+export const DropPreviewSkeleton = () => {
     return (
         <SidebarProvider
             defaultOpen={true}
@@ -90,6 +86,4 @@ export const DropPreviewSkeleton = React.memo(() => {
             </div>
         </SidebarProvider>
     );
-});
-
-DropPreviewSkeleton.displayName = "DropPreviewSkeleton";
+};

@@ -8,7 +8,7 @@ interface ComponentErrorProps {
     componentId?: string;
 }
 
-export const ComponentError: React.FC<ComponentErrorProps> = React.memo(({ componentId }) => {
+export const ComponentError = ({ componentId }: ComponentErrorProps) => {
     const isDev = process.env.NODE_ENV === "development";
 
     return (
@@ -101,6 +101,4 @@ export const ComponentError: React.FC<ComponentErrorProps> = React.memo(({ compo
             </div>
         </div>
     );
-});
-
-ComponentError.displayName = "ComponentError";
+};

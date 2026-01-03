@@ -35,20 +35,6 @@ const envSchema = z.object({
 
   // Rollbar configuration
   ROLLBAR_SERVER_TOKEN: z.string().min(1),
-
-  // Contentful Configuration
-  CONTENTFUL_SPACE_ID: z.string().min(1),
-  CONTENTFUL_ENVIRONMENT: z.string().min(1),
-  CONTENTFUL_ACCESS_TOKEN: z.string().min(1),
-  CONTENTFUL_HOME_PAGE_ID: z.string().min(1),
-  CONTENTFUL_CREATE_DROP_PAGE_ID: z.string().min(1),
-  CONTENTFUL_OPEN_DROP_PAGE_ID: z.string().min(1),
-  CONTENTFUL_PRIVACY_POLICY_PAGE_ID: z.string().min(1),
-  CONTENTFUL_TERMS_OF_SERVICE_PAGE_ID: z.string().min(1),
-  CONTENTFUL_DOCS_PAGE_ID: z.string().min(1),
-  CONTENTFUL_HERO_COMPONENT_ID: z.string().min(1),
-  CONTENTFUL_OPTIONS_COMPONENT_ID: z.string().min(1),
-  CONTENTFUL_INPUT_CODE_COMPONENT_ID: z.string().min(1),
 });
 
 const _env = envSchema.safeParse(process.env);

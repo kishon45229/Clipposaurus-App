@@ -1,11 +1,10 @@
 import { validateComponentData } from "../validation";
-import { COMPONENT_SCHEMAS } from "../registry";
 
 // Mock the registry
 jest.mock("../registry", () => ({
   COMPONENT_SCHEMAS: {
     TestComponent: {
-      parse: jest.fn((data: any) => {
+      parse: jest.fn((data) => {
         if (data && data.valid === true) {
           return data;
         }

@@ -51,12 +51,6 @@ export interface UseCreateDropManagerReturn {
 
   handleClearContent: () => void;
 
-  // QRRef: React.RefObject<HTMLCanvasElement | null>;
-  // showQR: boolean;
-  // setShowQR: React.Dispatch<React.SetStateAction<boolean>>;
-  // handleDownloadQR: () => void;
-  // urlQR: string;
-
   copied: boolean;
   handleCopy: () => void;
 
@@ -87,16 +81,8 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
   const [fullKeyVisible, setFullKeyVisible] = React.useState(false);
   const isGeneratingRef = React.useRef<boolean>(false);
   const shouldCleanupRef = React.useRef<boolean>(true);
-  // const QRRef = React.useRef<HTMLCanvasElement>(null);
   const identifierExpiryRef = React.useRef<number | null>(null);
   const validationIntervalRef = React.useRef<NodeJS.Timeout | null>(null);
-
-  const baseUrl =
-    process.env.NODE_ENV === "production"
-      ? process.env.NEXT_PUBLIC_BASE_URL || "https://clipposaurus.com"
-      : "http://localhost:3000";
-
-  const urlQR = `${baseUrl}${navigation.openDrop}?dropKey=${identifier}-${systemSecret}-${userSecret}`;
 
   const dropData: DropData = React.useMemo(
     () => ({
@@ -286,19 +272,6 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
     handleKeyGeneration,
   ]);
 
-  // DOWNLOAD QR HANDLER
-  // const handleDownloadQR = () => {
-  //   if (!identifier || !systemSecret || !userSecret) return;
-
-  //   const canvas = QRRef.current;
-  //   if (!canvas) return;
-  //   const url = canvas.toDataURL("image/png");
-  //   const link = document.createElement("a");
-  //   link.download = `clipposaurus-${identifier}-${systemSecret}-${userSecret}.png`;
-  //   link.href = url;
-  //   link.click();
-  // };
-
   // COPY TO CLIPBOARD HANDLER
   const handleCopy = async () => {
     if (!identifier || !systemSecret || !userSecret) return;
@@ -400,12 +373,6 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
     handleDialogBoxOpenChange,
 
     handleClearContent,
-
-    // QRRef,
-    // showQR,
-    // setShowQR,
-    // handleDownloadQR,
-    // urlQR,
 
     copied,
     handleCopy,

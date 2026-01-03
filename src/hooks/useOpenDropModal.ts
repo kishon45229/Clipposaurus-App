@@ -8,10 +8,10 @@ import { sendOpenDropRequest } from "@/services/dropService";
 import { decryptFullDrop } from "@/lib/dropDecryption";
 import type {
   CreateDropRequestStatus,
-  DecryptedDrop,
   DropKeyVerificationRequestStatus,
   RetrivedDrop,
 } from "@/types";
+import type { DecryptedDrop } from "@/types/decryption";
 import { setDropSession } from "@/lib/sessionStorage";
 
 interface UseOpenDropModalProps {

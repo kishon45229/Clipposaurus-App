@@ -3,7 +3,15 @@
 import React from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useDocsComponent } from "@/contexts/ComponentDataContext";
-import { DocsComponent, DocsPage } from "@/types/docs";
+import {
+  DocsComponent,
+  DocsPage,
+  DocsPageSection,
+} from "@/types/contentData-types/docs-types";
+
+interface Step {
+  title: string;
+}
 
 export interface UseDocsManagerReturn {
   // Data
@@ -138,15 +146,15 @@ export const useDocsManager = (): UseDocsManagerReturn => {
   // Language styles for SupportedLanguagesSection
   const languageStyles = React.useMemo(() => {
     // Find the supported languages section in the current page
-    const supportedLanguagesSection = (currentPage as any)?.sections?.find(
-      (section: any) => section.id === "supported-languages"
+    const supportedLanguagesSection = currentPage?.sections?.find(
+      (section: DocsPageSection) => section.id === "supported-languages"
     );
 
     if (!supportedLanguagesSection?.data?.languages) {
       return [];
     }
 
-    const languages = supportedLanguagesSection.data.languages;
+    const languages = supportedLanguagesSection.data.languages as string[];
     const shuffled = [...languages].sort(() => Math.random() - 0.5);
 
     return shuffled.map((lang: string) => ({
@@ -174,91 +182,59 @@ export const useDocsManager = (): UseDocsManagerReturn => {
 
   const [activeId, setActiveId] = React.useState<string>("");
 
-  // Extract headings from currentPage (sections or markdown content)
+  // Extract headings from currentPage sections
   React.useEffect(() => {
     if (!currentPage) {
       setHeadings([]);
       return;
     }
 
-    // Structured sections
-    if ((currentPage as any).sections) {
-      const extracted: typeof headings = [];
-
-      (currentPage as any).sections.forEach((section: any, index: number) => {
-        if (section.title) {
-          const id =
-            section.id ||
-            section.title
-              .toLowerCase()
-              .replace(/[^a-z0-9\s]/g, "")
-              .replace(/\s+/g, "-");
-
-          extracted.push({
-            id,
-            title: section.title,
-            level: 2,
-            offset: index * 1000,
-          });
-
-          // Quick-start steps
-          if (
-            currentPage.id === "quick-start" &&
-            section.data &&
-            Array.isArray(section.data)
-          ) {
-            section.data.forEach((step: any, stepIndex: number) => {
-              if (step.title) {
-                const stepId = step.title
-                  .toLowerCase()
-                  .replace(/^step \d+:\s*/i, "")
-                  .replace(/[^a-z0-9\s]/g, "")
-                  .replace(/\s+/g, "-");
-
-                extracted.push({
-                  id: stepId,
-                  title: step.title.replace(/^Step \d+:\s*/i, ""),
-                  level: 3,
-                  offset: index * 1000 + stepIndex * 100,
-                });
-              }
-            });
-          }
-        }
-      });
-
-      setHeadings(extracted);
-      return;
-    }
-
-    // Markdown content
-    if (!(currentPage as any).content) {
-      setHeadings([]);
-      return;
-    }
-
-    const content = (currentPage as any).content as string;
-    const regex = /^(#{1,6})\s+(.+)$/gm;
     const extracted: typeof headings = [];
-    let match: RegExpExecArray | null;
 
-    while ((match = regex.exec(content)) !== null) {
-      const level = match[1].length;
-      const title = match[2].trim();
-      const id = title
-        .toLowerCase()
-        .replace(/[^a-z0-9\s]/g, "")
-        .replace(/\s+/g, "-");
+    currentPage.sections.forEach((section: DocsPageSection, index: number) => {
+      if (section.title) {
+        const id =
+          section.id ||
+          section.title
+            .toLowerCase()
+            .replace(/[^a-z0-9\s]/g, "")
+            .replace(/\s+/g, "-");
 
-      extracted.push({ id, title, level, offset: match.index });
-    }
+        extracted.push({
+          id,
+          title: section.title,
+          level: 2,
+          offset: index * 1000,
+        });
+
+        // Quick-start steps
+        if (
+          currentPage.id === "quick-start" &&
+          section.data &&
+          Array.isArray(section.data)
+        ) {
+          section.data.forEach((step: Step, stepIndex: number) => {
+            if (step.title) {
+              const stepId = step.title
+                .toLowerCase()
+                .replace(/^step \d+:\s*/i, "")
+                .replace(/[^a-z0-9\s]/g, "")
+                .replace(/\s+/g, "-");
+
+              extracted.push({
+                id: stepId,
+                title: step.title.replace(/^Step \d+:\s*/i, ""),
+                level: 3,
+                offset: index * 1000 + stepIndex * 100,
+              });
+            }
+          });
+        }
+      }
+    });
 
     setHeadings(extracted);
-  }, [
-    currentPage?.id,
-    (currentPage as any)?.sections,
-    (currentPage as any)?.content,
-  ]);
+  }, [currentPage]);
 
   // Scroll handling to set active heading
   React.useEffect(() => {

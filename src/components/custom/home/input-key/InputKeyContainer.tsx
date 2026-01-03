@@ -7,7 +7,7 @@ import { InputKeyContent } from "@/components/custom/home/input-key/InputKeyCont
  * InputKeyContainer component
  * @returns InputKeyContainer component
  */
-export const InputKeyContainer: React.FC = React.memo(() => {
+export const InputKeyContainer = React.memo(() => {
     return <InputKeyContent />;
 });
 

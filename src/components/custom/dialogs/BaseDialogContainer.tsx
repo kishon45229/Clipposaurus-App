@@ -4,7 +4,7 @@ import React from "react";
 import { ResponsiveDialog } from "@/components/ui/responsive-dialog";
 import type { BaseDialogProps } from "./types";
 
-export const BaseDialogContainer: React.FC<BaseDialogProps> = React.memo(({
+export const BaseDialogContainer = React.memo<BaseDialogProps>(({
     open,
     onOpenChange,
     children,

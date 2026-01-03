@@ -1,6 +1,6 @@
 import React from "react";
 import { useDocs } from "@/contexts/DocsContext";
-import type { DocsPage, DocsSection, ContentData1, ContentData9, ContentData18, ContentData19, ContentData20 } from "@/types/docs.d";
+import type { DocsPage, DocsPageSection } from "@/types/contentData-types/docs-types";
 import { EncryptionSectionTemplate } from "@/components/custom/docs/encryption/EncryptionSectionTemplate";
 import { LocalEncryptionSection } from "@/components/custom/docs/encryption/LocalEncryptionSection";
 import { LocalDecryptionSection } from "@/components/custom/docs/encryption/LocalDecryptionSection";
@@ -15,7 +15,7 @@ export const EncryptionContainer = React.memo(() => {
         return null;
     }
 
-    const { sections } = currentPage as DocsPage & { sections: DocsSection[] } & { data: ContentData1 | ContentData9 | ContentData18 | ContentData19 | ContentData20 };
+    const { sections } = currentPage as DocsPage & { sections: DocsPageSection[] };
 
     return (
 
@@ -25,32 +25,32 @@ export const EncryptionContainer = React.memo(() => {
                     case "key-derivation":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <EncryptionSectionTemplate key={section.id} section={section as DocsSection & { data: ContentData18 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <EncryptionSectionTemplate key={section.id} section={section as DocsPageSection} />
                             </div>);
                     case "aes":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <EncryptionSectionTemplate key={section.id} section={section as DocsSection & { data: ContentData18 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <EncryptionSectionTemplate key={section.id} section={section as DocsPageSection} />
                             </div>);
                     case "local-encryption":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <LocalEncryptionSection key={section.id} section={section as DocsSection & { data: ContentData19 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <LocalEncryptionSection key={section.id} section={section as DocsPageSection} />
                             </div>);
                     case "local-decryption":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <LocalDecryptionSection key={section.id} section={section as DocsSection & { data: ContentData20 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <LocalDecryptionSection key={section.id} section={section as DocsPageSection} />
                             </div>);
                     case "cta":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData9 }} />
-                                <CTASection section={section as DocsSection & { data: ContentData9 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <CTASection section={section as DocsPageSection} />
                                 <PageHelpful />
                             </div>);
                     default:

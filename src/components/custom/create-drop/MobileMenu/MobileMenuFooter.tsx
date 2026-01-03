@@ -5,7 +5,7 @@ import { useMenu } from "@/contexts/MenuContext";
 import { Button } from "@/components/ui/button";
 import { Save, X } from "lucide-react";
 
-export const MobileMenuFooter: React.FC = React.memo(() => {
+export const MobileMenuFooter = React.memo(() => {
     const {
         data,
         createDropRequestStatus,

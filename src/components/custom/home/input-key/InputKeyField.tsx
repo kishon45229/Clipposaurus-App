@@ -14,7 +14,7 @@ interface InputKeyFieldProps {
     disabled: boolean;
 }
 
-export const InputKeyField: React.FC<InputKeyFieldProps> = React.memo(({
+export const InputKeyField = React.memo<InputKeyFieldProps>(({
     value,
     onChange,
     onKeyPress,

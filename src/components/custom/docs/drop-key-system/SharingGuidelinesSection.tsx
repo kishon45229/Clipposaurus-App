@@ -1,5 +1,5 @@
 import React from "react";
-import type { DocsSection } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 import { Check, X } from "lucide-react";
 
 interface SharingGuidelinesData {
@@ -8,14 +8,13 @@ interface SharingGuidelinesData {
 }
 
 interface SharingGuidelinesSectionProps {
-    section: DocsSection & { data: SharingGuidelinesData };
+    section: DocsPageSection;
 }
 
 export const SharingGuidelinesSection = React.memo<SharingGuidelinesSectionProps>(({ section }) => {
-    const { data } = section;
+    if (!section.data || !(Array.isArray(section.data))) return null;
 
-    if (!data) return null;
-
+const { recommended, avoid } = (section.data as unknown) as SharingGuidelinesData;
     return (
         <section id={section.id} className="space-y-6">
             {/* Guidelines Table */}
@@ -42,25 +41,25 @@ export const SharingGuidelinesSection = React.memo<SharingGuidelinesSectionProps
                         </tr>
                     </thead>
                     <tbody>
-                        {Math.max(data.recommended.length, data.avoid.length) > 0 &&
-                            Array.from({ length: Math.max(data.recommended.length, data.avoid.length) }).map((_, index) => (
+                        {Math.max(recommended.length, avoid.length) > 0 &&
+                            Array.from({ length: Math.max(recommended.length, avoid.length) }).map((_, index) => (
                                 <tr key={index} className="border-b border-zinc-100 dark:border-zinc-800 last:border-b-0">
                                     <td className="px-6 py-4">
-                                        {data.recommended[index] && (
+                                        {recommended[index] && (
                                             <div className="flex items-start gap-3">
                                                 <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 shrink-0"></div>
                                                 <span className="text-base text-zinc-700 dark:text-zinc-300 leading-relaxed">
-                                                    {data.recommended[index]}
+                                                    {recommended[index]}
                                                 </span>
                                             </div>
                                         )}
                                     </td>
                                     <td className="px-6 py-4">
-                                        {data.avoid[index] && (
+                                        {avoid[index] && (
                                             <div className="flex items-start gap-3">
                                                 <div className="w-2 h-2 bg-zinc-400 rounded-full mt-2 shrink-0"></div>
                                                 <span className="text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                                                    {data.avoid[index]}
+                                                    {avoid[index]}
                                                 </span>
                                             </div>
                                         )}

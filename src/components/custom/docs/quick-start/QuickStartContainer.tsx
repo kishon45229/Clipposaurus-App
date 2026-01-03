@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useDocs } from "@/contexts/DocsContext";
-import type { DocsPage, DocsSection, ContentData7, ContentData8, ContentData9 } from "@/types/docs";
+import type { DocsPage, DocsPageSection } from "@/types/contentData-types/docs-types";
 import { StepsSection } from "@/components/custom/docs/StepsSection";
 import { ProTipsSection } from "@/components/custom/docs/quick-start/ProTipsSection";
 import { CTASection } from "@/components/custom/docs/CTASection";
@@ -16,7 +16,7 @@ export const QuickStartContainer = React.memo(() => {
         return null;
     }
 
-    const { sections } = currentPage as DocsPage & { sections: DocsSection[] } & { data: ContentData7 | ContentData8 | ContentData9 };
+    const { sections } = currentPage as DocsPage & { sections: DocsPageSection[] };
 
     return (
         <div className="space-y-16">
@@ -25,29 +25,29 @@ export const QuickStartContainer = React.memo(() => {
                     case "sharing":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection} />
-                                <StepsSection section={section as DocsSection & { data: ContentData7 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <StepsSection section={section as DocsPageSection} />
                             </div>
                         )
                     case "accessing":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection} />
-                                <StepsSection section={section as DocsSection & { data: ContentData7 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <StepsSection section={section as DocsPageSection} />
                             </div>
                         )
                     case "tips":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection} />
-                                <ProTipsSection section={section as DocsSection & { data: ContentData8 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <ProTipsSection section={section as DocsPageSection} />
                             </div>
                         )
                     case "cta":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData9 }} />
-                                <CTASection section={section as DocsSection & { data: ContentData9 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <CTASection section={section as DocsPageSection} />
                                 <PageHelpful />
                             </div>
                         )

@@ -3,7 +3,7 @@
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export const HeroSkeleton: React.FC = React.memo(() => {
+export const HeroSkeleton = () => {
     return (
         <div className="flex
             flex-col
@@ -34,6 +34,4 @@ export const HeroSkeleton: React.FC = React.memo(() => {
             </div>
         </div>
     );
-});
-
-HeroSkeleton.displayName = "HeroSkeleton";
+};

@@ -1,15 +1,19 @@
 import React from "react";
-import type { DocsSection, ContentData25 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
+
+interface WhatIsZeroKnowledgeSectionData {
+    label: string;
+    text: string;
+}
 
 interface WhatIsZeroKnowledgeSectionProps {
-    section: DocsSection & { data: ContentData25 };
+    section: DocsPageSection;
 }
 
 export const WhatIsZeroKnowledgeSection = React.memo<WhatIsZeroKnowledgeSectionProps>(({ section }) => {
-    const data = section.data;
-    if (!data) return null;
+    if (!section.data || !(Array.isArray(section.data))) return null;
 
-    const { items, analogy } = data as ContentData25;
+    const items = (section.data as unknown) as WhatIsZeroKnowledgeSectionData[];
 
     return (
         <section id={section.id} className="space-y-16">
@@ -25,15 +29,6 @@ export const WhatIsZeroKnowledgeSection = React.memo<WhatIsZeroKnowledgeSectionP
                         </div>
                     </div>
                 ))}
-            </div>
-
-            <div className="rounded-xl p-6 md:p-8 bg-gradient-to-r from-emerald-50 to-zinc-100 dark:from-emerald-950/20 dark:to-zinc-900 border border-emerald-200/40 dark:border-emerald-800/30">
-                <div className="text-base font-semibold text-zinc-900 dark:text-zinc-300 mb-3">
-                    Simple Analogy
-                </div>
-                <div className="text-sm md:text-base text-zinc-700 dark:text-zinc-400 leading-relaxed">
-                    {analogy}
-                </div>
             </div>
         </section>
     );

@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { DocsRightSidebarSkeleton } from "@/components/skeleton/DocsRightSidebarSkeleton";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 
-export const DocsRightSidebar: React.FC = () => {
+export const DocsRightSidebar = () => {
     const { currentPage, isLoading, error, headings, scrollToHeading } = useDocs();
 
     // Create heading IDs for scroll spy

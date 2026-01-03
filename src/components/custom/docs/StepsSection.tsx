@@ -1,17 +1,24 @@
 import React from "react";
-import { DocsSection, ContentData7 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 
-interface StepsSectionProps {
-    section: DocsSection & { data: ContentData7 };
+interface StepsSectionData {
+    title: string;
+    items: string[];
+    screenshot?: string;
 }
 
-export const StepsSection: React.FC<StepsSectionProps> = React.memo(({ section }) => {
+interface StepsSectionProps {
+    section: DocsPageSection;
+}
+
+export const StepsSection = React.memo<StepsSectionProps>(({ section }) => {
     if (!section || !Array.isArray(section.data)) return null;
+    const steps = section.data as StepsSectionData[];
 
     return (
         <section id={section.id}>
             <div className="space-y-12">
-                {section.data.map((step, index) => (
+                {steps.map((step, index) => (
                     <div key={index} className="relative">
                         <div className="flex items-start space-x-6">
                             <div className="relative z-10 shrink-0 w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center border-4 border-white dark:border-zinc-900">
@@ -50,7 +57,7 @@ export const StepsSection: React.FC<StepsSectionProps> = React.memo(({ section }
                             </div>
                         </div>
 
-                        {index < section.data.length - 1 && (
+                        {index < steps.length - 1 && (
                             <div className="absolute left-6 top-12 w-px h-full bg-gradient-to-b from-emerald-500/50 to-transparent" />
                         )}
                     </div>

@@ -5,7 +5,7 @@ import { FAQHeader } from "@/components/custom/faq/FAQHeader";
 import { FAQCategory } from "@/components/custom/faq/FAQCategory";
 import { StickyTOC } from "@/components/custom/StickyTOC";
 
-export const FAQContent: React.FC = React.memo(() => {
+export const FAQContent = () => {
     const { data } = useFAQ();
     const { categories } = data;
 
@@ -33,6 +33,4 @@ export const FAQContent: React.FC = React.memo(() => {
             </div>
         </div >
     );
-});
-
-FAQContent.displayName = "FAQContent";
+};

@@ -42,7 +42,7 @@ const FileTab = dynamic(
     { loading: () => <TabsSkeleton type="file" /> }
 );
 
-export const TabContainer: React.FC = React.memo(() => {
+export const TabContainer = React.memo(() => {
     const { defaultTab, handleTabChange } = useTabNavigation();
 
     return (

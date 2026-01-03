@@ -1,18 +1,24 @@
 import React from "react";
-import type { DocsSection, ContentData29 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
+
+interface FeaturesSectionData {
+    title: string;
+    items: string[];
+}
 
 interface FeaturesSectionProps {
-    section: DocsSection & { data: ContentData29 };
+    section: DocsPageSection;
 }
 
 export const FeaturesSection = React.memo<FeaturesSectionProps>(({ section }) => {
-    const data = section.data as ContentData29;
-    if (!data) return null;
+    if (!section.data || !Array.isArray(section.data)) return null;
+
+    const features = section.data as FeaturesSectionData[];
 
     return (
         <section id={section.id}>
             <div className="grid md:grid-cols-3 gap-6">
-                {data.map((feature, index) => (
+                {features.map((feature, index) => (
                     <div key={index} className="space-y-3 p-6 border-e border-zinc-200 dark:border-zinc-800">
                         <div className="text-lg font-semibold text-emerald-600 dark:text-emerald-500">
                             {feature.title}

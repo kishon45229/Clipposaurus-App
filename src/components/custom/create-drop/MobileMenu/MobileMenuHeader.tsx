@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/responsive-dialog";
 import { useMenu } from "@/contexts/MenuContext";
 
-export const MobileMenuHeader: React.FC = React.memo(() => {
+export const MobileMenuHeader = React.memo(() => {
   const { data } = useMenu();
   const { title, description } = data;
 

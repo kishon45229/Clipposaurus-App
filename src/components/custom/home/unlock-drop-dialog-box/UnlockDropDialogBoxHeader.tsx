@@ -11,7 +11,7 @@ import { useUnlockDropDialogBox } from "@/contexts/UnlockDropDialogBoxContext";
 /**
  * UnlockDropDialogBoxHeader component
  */
-export const UnlockDropDialogBoxHeader: React.FC = React.memo(() => {
+export const UnlockDropDialogBoxHeader = React.memo(() => {
     const { data } = useUnlockDropDialogBox();
     const { title, description } = data;
 

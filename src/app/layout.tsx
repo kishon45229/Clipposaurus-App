@@ -15,7 +15,6 @@ import TargetCursor from "@/components/TargetCursor";
 import { OfflineAlert } from "@/components/custom/OfflineAlert";
 import { ThemeProvider } from "@/components/theme-provider";
 import { BetaNotice } from "@/components/custom/BetaNotice";
-import { Breadcrumb } from "@/components/custom/Breadcrumb";
 
 export { siteMetadata as metadata };
 

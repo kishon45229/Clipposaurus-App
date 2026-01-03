@@ -18,7 +18,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { GITHUB_REPO_URL } from "@/constants/githubConfig";
 
-export const NavbarLinks: React.FC = React.memo(() => {
+export const NavbarLinks = React.memo(() => {
   const stars = useGitHubStars();
 
   return (

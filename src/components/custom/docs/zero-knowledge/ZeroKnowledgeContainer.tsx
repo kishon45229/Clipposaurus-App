@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useDocs } from "@/contexts/DocsContext";
-import type { DocsPage, DocsSection, ContentData1, ContentData9, ContentData22, ContentData24, ContentData25, ContentData26 } from "@/types/docs.d";
+import type { DocsPage, DocsPageSection } from "@/types/contentData-types/docs-types";
 import { SectionHeadline } from "@/components/custom/docs/SectionHeadline";
 import { WhatIsZeroKnowledgeSection } from "@/components/custom/docs/zero-knowledge/WhatIsZeroKnowledgeSection";
 import { WhatWeStoreSection } from "@/components/custom/docs/zero-knowledge/WhatWeStoreSection";
@@ -18,7 +18,7 @@ export const ZeroKnowledgeContainer = React.memo(() => {
         return null;
     }
 
-    const { sections } = currentPage as DocsPage & { sections: DocsSection[] } & { data: ContentData1 | ContentData22 | ContentData24 | ContentData25 | ContentData26 };
+    const { sections } = currentPage as DocsPage & { sections: DocsPageSection[] };
 
     return (
         <div className="space-y-16">
@@ -27,32 +27,32 @@ export const ZeroKnowledgeContainer = React.memo(() => {
                     case "what-zero-knowledge-means":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <WhatIsZeroKnowledgeSection section={section as DocsSection & { data: ContentData25 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <WhatIsZeroKnowledgeSection section={section as DocsPageSection} />
                             </div>);
                     case "why-zero-knowledge":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <WhyZeroKnowledgeSection section={section as DocsSection & { data: ContentData26 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <WhyZeroKnowledgeSection section={section as DocsPageSection} />
                             </div>);
                     case "what-we-store":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <WhatWeStoreSection section={section as DocsSection & { data: ContentData22 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <WhatWeStoreSection section={section as DocsPageSection} />
                             </div>);
                     case "verification":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <VerificationSection section={section as DocsSection & { data: ContentData24 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <VerificationSection section={section as DocsPageSection} />
                             </div>);
                     case "cta":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData9 }} />
-                                <CTASection section={section as DocsSection & { data: ContentData9 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <CTASection section={section as DocsPageSection} />
                                 <PageHelpful />
                             </div>);
                     default:

@@ -8,7 +8,7 @@ import { ChangelogContent } from "@/components/custom/changelog/ChangelogContent
 
 const COMPONENT_ID = "ChangelogComponent" as const;
 
-export const ChangelogContainer: React.FC = () => {
+export const ChangelogContainer = () => {
     const { data, isLoading, error } = useChangelog();
 
     if (error) return <ComponentError componentId={COMPONENT_ID} />;

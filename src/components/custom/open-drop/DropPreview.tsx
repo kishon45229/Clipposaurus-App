@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { OpenDropProvider, useOpenDrop } from "@/contexts/OpenDropContext";
-import { ComponentDataProvider, useDropPreview } from "@/contexts/ComponentDataContext";
+import { useDropPreview } from "@/contexts/ComponentDataContext";
 import { DropSidebarProvider } from "@/contexts/DropSidebarContext";
 import { DropSidebar } from "@/components/custom/open-drop/sidebar";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
@@ -12,7 +12,7 @@ import { DropPreviewSkeleton } from "@/components/skeleton/DropPreviewSkeleton";
 
 const COMPONENT_ID = "DropPreviewComponent" as const;
 
-export const DropPreview = React.memo(() => {
+export const DropPreview = () => {
     const { decryptedDrop } = useOpenDrop();
     const { data, isLoading, error } = useDropPreview();
 
@@ -37,6 +37,4 @@ export const DropPreview = React.memo(() => {
             </SidebarProvider>
         </OpenDropProvider>
     );
-});
-
-DropPreview.displayName = "DropPreview";
+};

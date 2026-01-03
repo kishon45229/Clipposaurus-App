@@ -25,7 +25,7 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { useGitHubStars } from "@/hooks/useGitHubStars";
 import { GITHUB_REPO_URL } from "@/constants/githubConfig";
 
-export const HamburgerMenu: React.FC = React.memo(() => {
+export const HamburgerMenu = React.memo(() => {
     const stars = useGitHubStars();
 
     return (

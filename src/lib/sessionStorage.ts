@@ -1,4 +1,4 @@
-import type { DecryptedDrop } from "@/types";
+import type { DecryptedDrop } from "@/types/decryption";
 import { DecryptedDropSchema } from "@/lib/schema";
 
 export function setDropSession(value: DecryptedDrop): boolean | null {

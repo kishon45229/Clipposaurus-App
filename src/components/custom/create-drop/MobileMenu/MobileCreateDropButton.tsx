@@ -11,7 +11,7 @@ const COMPONENT_ID = "MenuContainer" as const;
 /**
  * Mobile Create Drop Button Component
  */
-export const MobileCreateDropButton: React.FC = React.memo(() => {
+export const MobileCreateDropButton = React.memo(() => {
     const { data, isLoading, error, handleMobileMenuOpen } = useMenu();
 
     if (isLoading || !data) return null;

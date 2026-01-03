@@ -1,7 +1,7 @@
 import React from "react";
 import { useTermsOfService } from "@/contexts/TermsOfServiceContext";
 
-export const TermsOfServiceHeader: React.FC = React.memo(() => {
+export const TermsOfServiceHeader = () => {
     const { data } = useTermsOfService();
     const { headline, lastUpdated } = data;
 
@@ -21,6 +21,4 @@ export const TermsOfServiceHeader: React.FC = React.memo(() => {
             <div className="h-px w-full mt-4 bg-gradient-to-r from-transparent via-zinc-200 dark:via-zinc-800 to-transparent" />
         </header>
     );
-});
-
-TermsOfServiceHeader.displayName = "TermsOfServiceHeader";
+};

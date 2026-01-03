@@ -1,15 +1,15 @@
 "use client";
 
 import React from "react";
-import { DocsSection } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 import Link from "next/link";
 import { ArrowRight, ExternalLink } from "lucide-react";
 
 interface AccessCTASectionProps {
-    section: DocsSection;
+    section: DocsPageSection;
 }
 
-export const AccessCTASection: React.FC<AccessCTASectionProps> = React.memo(({ section }) => {
+export const AccessCTASection = React.memo<AccessCTASectionProps>(({ section }) => {
     if (section.type !== "cta" || !section.data || typeof section.data !== "object") {
         return null;
     }

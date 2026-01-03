@@ -8,13 +8,11 @@ import { TermsOfServiceSkeleton } from "@/components/skeleton/TermsOfServiceSkel
 
 const COMPONENT_ID = "TermsOfServiceComponent" as const;
 
-export const TermsOfServiceContainer = React.memo(() => {
+export const TermsOfServiceContainer = () => {
     const { data, isLoading, error } = useTermsOfService();
 
     if (isLoading || !data) return <TermsOfServiceSkeleton />;
     if (error) return <ComponentError componentId={COMPONENT_ID} />;
 
     return <TermsOfServiceContent />;
-});
-
-TermsOfServiceContainer.displayName = "TermsOfServiceContainer";
+};

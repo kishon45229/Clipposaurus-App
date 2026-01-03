@@ -5,7 +5,7 @@ import { useChangelog } from "@/contexts/ChangelogContext";
 import { ChangelogSection } from "@/components/custom/changelog/ChangelogSection";
 import { ChangelogReleaseHeader } from "./ChangelogReleaseHeader";
 
-export const ChangelogRelease: React.FC = React.memo(() => {
+export const ChangelogRelease = React.memo(() => {
     const { data } = useChangelog();
     const { releases } = data;
 

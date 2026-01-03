@@ -1,16 +1,23 @@
 import React from "react";
-import type { DocsSection, ContentData10 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
+
+interface LocalFirstSectionData {
+    heading: string;
+    text: string;
+}
 
 interface LocalFirstSectionProps {
-    section: DocsSection & { data: ContentData10 };
+    section: DocsPageSection;
 };
 
 export const LocalFirstSection = React.memo<LocalFirstSectionProps>(({ section }) => {
-    const { data } = section as { data: ContentData10 };
+    if (!section.data || !Array.isArray(section.data)) return null;
+
+    const blocks = (section.data as unknown) as LocalFirstSectionData[];
 
     return (
         <section id={section.id} className="space-y-6">
-            {data.map((block, idx) => (
+            {blocks.map((block, idx) => (
                 <div key={idx} className="group">
                     <div className="text-lg font-medium text-emerald-500 mb-3 tracking-tight">
                         {block.heading}

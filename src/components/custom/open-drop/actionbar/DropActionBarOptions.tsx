@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useOpenDrop } from "@/contexts/OpenDropContext";
 
-export const DropActionBarOptions: React.FC = React.memo(() => {
+export const DropActionBarOptions = React.memo(() => {
     const {
         showCopyButton,
         showDownloadButton,

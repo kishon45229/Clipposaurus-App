@@ -12,14 +12,14 @@ import { SharingCode } from "@/components/custom/docs/sharing-code";
 import { SharingFiles } from "@/components/custom/docs/sharing-files";
 import { AccessingContent } from "./accessing-content";
 import { EncryptionContainer } from "./encryption/EncryptionContainer";
-import { DocsPageHeader } from "./DocsPageHeader";
-import { DocsPageFooter } from "./DocsPageFooter";
+import { DocsHeader } from "@/components/custom/docs/DocsHeader";
+import { DocsFooter } from "@/components/custom/docs/DocsFooter";
 import { DropKeySystem } from "./drop-key-system";
 import { ZeroKnowledge } from "./zero-knowledge";
 import { ExpirationDeletion } from "./expiration-deletion";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 
-export const DocsContent = React.memo(() => {
+export const DocsContent = () => {
     const {
         data,
         currentPage,
@@ -40,7 +40,7 @@ export const DocsContent = React.memo(() => {
                 <SidebarTrigger className="shadow-lg bg-primary text-primary-foreground hover:bg-primary/90" />
             </div>
             <div>
-                <DocsPageHeader />
+                <DocsHeader />
             </div>
             <div className="prose prose-slate dark:prose-invert max-w-none leading-relaxed text-lg">
                 {currentPage.id === "introduction" ? (
@@ -68,10 +68,8 @@ export const DocsContent = React.memo(() => {
                 ) : null}
             </div>
             <div>
-                <DocsPageFooter />
+                <DocsFooter />
             </div>
         </div>
     );
-});
-
-DocsContent.displayName = 'DocsContent';
+};

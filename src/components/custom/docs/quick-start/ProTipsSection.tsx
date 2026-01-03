@@ -1,27 +1,31 @@
 import React from "react";
-import type { DocsSection, ContentData8 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 
-interface ProTipsSectionProps {
-    section: DocsSection & { data: ContentData8 };
+interface ProTipsSectionData {
+    title: string;
+    items: string[];
 }
 
-export const ProTipsSection: React.FC<ProTipsSectionProps> = React.memo(({ section }) => {
-    if (section.type !== "tips" || !Array.isArray(section.data)) {
-        return null;
-    }
+interface ProTipsSectionProps {
+    section: DocsPageSection;
+}
+
+export const ProTipsSection = React.memo<ProTipsSectionProps>(({ section }) => {
+    if (section.type !== "tips" || !Array.isArray(section.data)) return null;
+
+    const categories = section.data as ProTipsSectionData[];
 
     return (
         <section id={section.id} className="space-y-16">
             <div className="space-y-12">
-                {(section.data as ContentData8).map((category, index) => {
+                {categories.map((category, index) => {
 
                     return (
                         <div key={index} className="space-y-6">
-                            {/* Header with icon and title */}
                             <div className="flex items-center gap-4 pb-3 border-b border-zinc-200 dark:border-zinc-800">
-                                <h3 className="text-xl text-emerald-500 font-medium tracking-tight">
+                                <div className="text-xl text-emerald-500 font-medium tracking-tight">
                                     {category.title}
-                                </h3>
+                                </div>
                             </div>
 
                             {/* Items list */}

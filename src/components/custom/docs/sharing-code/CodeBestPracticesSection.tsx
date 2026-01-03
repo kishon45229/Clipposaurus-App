@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { DocsSection } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 import { Shield, MessageSquare, Clock, Code, CheckCircle } from "lucide-react";
 
 interface CodeBestPracticesSectionProps {
-    section: DocsSection;
+    section: DocsPageSection;
 }
 
 const getIcon = (iconName: string) => {
@@ -25,7 +25,7 @@ const getIcon = (iconName: string) => {
     }
 };
 
-export const CodeBestPracticesSection: React.FC<CodeBestPracticesSectionProps> = React.memo(({ section }) => {
+export const CodeBestPracticesSection = React.memo<CodeBestPracticesSectionProps>(({ section }) => {
     if (section.type !== "design" || !Array.isArray(section.data)) {
         return null;
     }

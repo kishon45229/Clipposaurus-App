@@ -3,7 +3,7 @@
 import React from "react";
 import { useMenu } from "@/contexts/MenuContext";
 
-export const MobileMenuInfoSection: React.FC = React.memo(() => {
+export const MobileMenuInfoSection = React.memo(() => {
   const { data } = useMenu();
   const { label, text } = data.noteSection;
 

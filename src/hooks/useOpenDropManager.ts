@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import type { DecryptedDrop, DropContentType } from "@/types";
-import type { OpenDropAlertStatus } from "@/types";
+import type { DecryptedDrop } from "@/types/decryption";
+import type { OpenDropAlertStatus, DropContentType } from "@/types";
 import {
   copyTextToClipboard,
   downloadFileWithFallback,

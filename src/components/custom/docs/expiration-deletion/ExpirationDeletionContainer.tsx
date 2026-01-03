@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useDocs } from "@/contexts/DocsContext";
-import type { DocsPage, DocsSection, ContentData1, ContentData9, ContentData14, ContentData25, ContentData28 } from "@/types/docs.d";
+import type { DocsPage, DocsPageSection } from "@/types/contentData-types/docs-types";
 import { SectionHeadline } from "@/components/custom/docs/SectionHeadline";
 import { ExpirationDeletionOptionsSection } from "@/components/custom/docs/expiration-deletion/ExpirationDeletionOptionsSection";
 import { TTLEnforcementSection } from "@/components/custom/docs/expiration-deletion/TTLEnforcementSection";
@@ -18,7 +18,7 @@ export const ExpirationDeletionContainer = React.memo(() => {
         return null;
     }
 
-    const { sections } = currentPage as DocsPage & { sections: DocsSection[] } & { data: ContentData1 | ContentData14 | ContentData25 | ContentData28 };
+    const { sections } = currentPage as DocsPage & { sections: DocsPageSection[] };
 
     return (
         <div className="space-y-16">
@@ -27,32 +27,32 @@ export const ExpirationDeletionContainer = React.memo(() => {
                     case "retention-options":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <ExpirationDeletionOptionsSection section={section as DocsSection & { data: ContentData28 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <ExpirationDeletionOptionsSection section={section as DocsPageSection} />
                             </div>);
                     case "ttl-enforcement":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <TTLEnforcementSection section={section as DocsSection & { data: ContentData28 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <TTLEnforcementSection section={section as DocsPageSection} />
                             </div>);
                     case "no-backups":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <NoBackupsSection section={section as DocsSection & { data: ContentData25 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <NoBackupsSection section={section as DocsPageSection} />
                             </div>);
                     case "irreversible":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData1 }} />
-                                <IrreversibleSection section={section as DocsSection & { data: ContentData28 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <IrreversibleSection section={section as DocsPageSection} />
                             </div>);
                     case "cta":
                         return (
                             <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsSection & { data: ContentData9 }} />
-                                <CTASection section={section as DocsSection & { data: ContentData9 }} />
+                                <SectionHeadline section={section as DocsPageSection} />
+                                <CTASection section={section as DocsPageSection} />
                                 <PageHelpful />
                             </div>);
                     default:

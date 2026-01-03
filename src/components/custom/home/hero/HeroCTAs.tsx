@@ -7,7 +7,7 @@ import { useDropOptions } from "@/contexts/DropOptionsContext";
 import { UnlockDropDialogBox } from "@/components/custom/home/unlock-drop-dialog-box";
 import { UnlockDropDialogBoxProvider } from "@/contexts/UnlockDropDialogBoxContext";
 
-export const HeroCTAs: React.FC = React.memo(() => {
+export const HeroCTAs = React.memo(() => {
     const {
         createDropRequestStatus,
         handleCreateDrop,

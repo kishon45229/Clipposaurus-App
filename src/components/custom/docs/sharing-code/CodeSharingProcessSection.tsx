@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import { DocsSection } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 
 interface CodeSharingProcessSectionProps {
-    section: DocsSection;
+    section: DocsPageSection;
 }
 
-export const CodeSharingProcessSection: React.FC<CodeSharingProcessSectionProps> = React.memo(({ section }) => {
+export const CodeSharingProcessSection = React.memo<CodeSharingProcessSectionProps>(({ section }) => {
     if (section.type !== "sharing" || !Array.isArray(section.data)) {
         return null;
     }

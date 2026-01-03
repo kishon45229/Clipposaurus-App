@@ -3,7 +3,7 @@
 import React from "react";
 import { useOpenDrop } from "@/contexts/OpenDropContext";
 
-export const DropTextContent: React.FC = React.memo(() => {
+export const DropTextContent = React.memo(() => {
     const { decryptedDrop, selectedContentType } = useOpenDrop();
 
     if (selectedContentType !== "note" || typeof decryptedDrop.decryptedText !== "string") {

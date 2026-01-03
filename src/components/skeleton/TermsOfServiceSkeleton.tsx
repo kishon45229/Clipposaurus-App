@@ -3,7 +3,7 @@
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export const TermsOfServiceSkeleton: React.FC = React.memo(() => {
+export const TermsOfServiceSkeleton = () => {
     return (
         <div className="mx-auto max-w-[1920px] px-4 py-2 grid grid-cols-1 lg:grid-cols-[240px_auto] gap-[clamp(2rem,5vw,2.5rem)]">
             {/* Sticky TOC — Desktop only */}
@@ -50,6 +50,4 @@ export const TermsOfServiceSkeleton: React.FC = React.memo(() => {
             </div>
         </div>
     );
-});
-
-TermsOfServiceSkeleton.displayName = "TermsOfServiceSkeleton";
+};

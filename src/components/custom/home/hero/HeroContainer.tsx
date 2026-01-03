@@ -12,13 +12,11 @@ const COMPONENT_ID = "HeroComponent" as const;
  * HeroContainer component
  * @returns HeroContainer component
  */
-export const HeroContainer: React.FC = React.memo(() => {
+export const HeroContainer = () => {
   const { data, isLoading, error } = useHero();
 
   if (isLoading || !data) return <HeroSkeleton />;
   if (error) return <ComponentError componentId={COMPONENT_ID} />;
 
   return <HeroContent />;
-});
-
-HeroContainer.displayName = "HeroContainer";
+};

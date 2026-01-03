@@ -1,5 +1,4 @@
 import React from 'react';
-import type { CreateDropPage } from '@/types';
 import ErrorFallback from "@/app/error";
 import LoadingFallback from "@/app/loading";
 import { Menu } from "@/components/custom/create-drop/Menu";

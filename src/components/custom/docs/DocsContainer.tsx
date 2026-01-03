@@ -14,7 +14,7 @@ import { ComponentError } from "@/components/custom/ComponentError";
 
 const COMPONENT_ID = "DocsComponent" as const;
 
-export const DocsContainer: React.FC = () => {
+export const DocsContainer = () => {
     const { error } = useDocsComponent();
 
     if (error) return <ComponentError componentId={COMPONENT_ID} />;

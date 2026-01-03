@@ -1,15 +1,19 @@
 import React from "react";
-import type { DocsSection, ContentData28 } from "@/types/docs.d";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
+
+interface ExpirationDeletionOptionsSectionData {
+    label: string;
+    text: string;
+}
 
 interface ExpirationDeletionOptionsSectionProps {
-    section: DocsSection & { data: ContentData28 };
+    section: DocsPageSection;
 }
 
 export const ExpirationDeletionOptionsSection = React.memo<ExpirationDeletionOptionsSectionProps>(({ section }) => {
-    const data = section.data as ContentData28;
-    if (!data) return null;
+    if (!section.data || !(Array.isArray(section.data))) return null;
 
-    const { items } = data as ContentData28;
+    const items = section.data as ExpirationDeletionOptionsSectionData[];
 
     return (
         <section id={section.id}>
@@ -20,7 +24,7 @@ export const ExpirationDeletionOptionsSection = React.memo<ExpirationDeletionOpt
                     <div className="absolute top-6 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-500 via-emerald-400 to-emerald-300 dark:from-emerald-600 dark:via-emerald-500 dark:to-emerald-400" />
 
                     <div className="grid grid-cols-3 gap-8">
-                        {data.items.map((item, index) => {
+                        {items.map((item, index) => {
                             return (
                                 <div key={index} className="relative">
                                     {/* Icon Circle */}

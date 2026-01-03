@@ -1,16 +1,16 @@
 "use client";
 
 import React from "react";
-import { DocsSection } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 import { Key, Download, Shield, Eye, CheckCircle } from "lucide-react";
 
 interface AccessProcessSectionProps {
-    section: DocsSection;
+    section: DocsPageSection;
 }
 
 const stepIcons = [Key, Download, Shield, Eye, CheckCircle];
 
-export const AccessProcessSection: React.FC<AccessProcessSectionProps> = React.memo(({ section }) => {
+export const AccessProcessSection = React.memo<AccessProcessSectionProps>(({ section }) => {
     if (section.type !== "sharing" || !Array.isArray(section.data)) {
         return null;
     }

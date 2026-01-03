@@ -1,6 +1,6 @@
 {
   "name": "clipposaurus",
-  "version": "1.0.0-beta",
+  "version": "1.1.0-beta",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -32,7 +32,6 @@
     "@radix-ui/react-tooltip": "^1.2.8",
     "@rollbar/react": "^1.0.0",
     "@types/mime-types": "^3.0.1",
-    "@types/mongodb": "^4.0.6",
     "@types/react-google-recaptcha": "^2.1.9",
     "@types/react-syntax-highlighter": "^15.5.13",
     "@upstash/redis": "^1.35.3",
@@ -40,7 +39,6 @@
     "canvas-confetti": "^1.9.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "contentful": "^11.7.19",
     "gsap": "^3.13.0",
     "input-otp": "^1.4.2",
     "isomorphic-dompurify": "^2.28.0",

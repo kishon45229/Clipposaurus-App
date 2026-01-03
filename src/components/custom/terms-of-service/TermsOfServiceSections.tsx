@@ -1,7 +1,7 @@
 import React from "react";
 import { useTermsOfService } from "@/contexts/TermsOfServiceContext";
 
-export const TermsOfServiceSections: React.FC = React.memo(() => {
+export const TermsOfServiceSections = () => {
     const { data } = useTermsOfService();
     const { sections } = data;
 
@@ -24,6 +24,4 @@ export const TermsOfServiceSections: React.FC = React.memo(() => {
             ))}
         </section>
     );
-});
-
-TermsOfServiceSections.displayName = "TermsOfServiceSections";
+};

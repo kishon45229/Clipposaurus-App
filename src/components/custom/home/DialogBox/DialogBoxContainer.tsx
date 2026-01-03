@@ -11,7 +11,7 @@ import {
 } from "./DialogBox.utils";
 
 export const DialogBoxContainer = React.memo(() => {
-    const { dropKeyVerificationRequestStatus, createDropRequestStatus, handleClose, handleDialogClose, handleDropKeyVerificationSuccess } = useDropOptions();
+    const { dropKeyVerificationRequestStatus, createDropRequestStatus, handleDialogClose, handleDropKeyVerificationSuccess } = useDropOptions();
 
     const handleOpenChange = React.useCallback((open: boolean) => {
         if (!open && dropKeyVerificationRequestStatus !== "verifying") {

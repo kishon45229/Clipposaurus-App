@@ -1,7 +1,7 @@
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export const ChangelogSkeleton: React.FC = React.memo(() => {
+export const ChangelogSkeleton = () => {
     return (
         <div className="min-h-screen bg-background">
             <div className="container mx-auto px-4 py-12 max-w-5xl">
@@ -24,6 +24,4 @@ export const ChangelogSkeleton: React.FC = React.memo(() => {
             </div>
         </div>
     );
-});
-
-ChangelogSkeleton.displayName = "ChangelogSkeleton";
+};

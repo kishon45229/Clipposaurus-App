@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useTermsOfServiceComponent } from "@/contexts/ComponentDataContext";
-import { TermsOfServiceComponent } from "@/types";
+import { TermsOfServiceComponent } from "@/types/contentData-types/termsOfService-types";
 
 interface TermsOfServiceContextType {
     data: TermsOfServiceComponent;

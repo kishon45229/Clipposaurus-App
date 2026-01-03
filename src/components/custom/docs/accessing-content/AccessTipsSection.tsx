@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { DocsSection } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 import { Shield, Wifi, Download, Eye, Lock, LucideIcon } from "lucide-react";
 
 interface AccessTipsSectionProps {
-    section: DocsSection;
+    section: DocsPageSection;
 }
 
 const iconMap: Record<string, LucideIcon> = {
@@ -16,7 +16,7 @@ const iconMap: Record<string, LucideIcon> = {
     Lock,
 };
 
-export const AccessTipsSection: React.FC<AccessTipsSectionProps> = React.memo(({ section }) => {
+export const AccessTipsSection = React.memo<AccessTipsSectionProps>(({ section }) => {
     if (section.type !== "design" || !Array.isArray(section.data)) {
         return null;
     }

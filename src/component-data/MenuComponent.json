@@ -19,8 +19,8 @@
   },
   "noteSection": {
     "label": "Note:",
-    "text": "Once created, you will not be able to change the Drop Key or Retention Settings."
+    "text": "Once created, you will not be able to change the Drop Key or Expiration Settings."
   },
   "mobileMenuButton": "I'm Ready to Create Drop",
-  "ctaButton": "Make a Drop"
+  "ctaButton": "Create My Drop"
 }

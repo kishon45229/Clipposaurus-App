@@ -8,13 +8,11 @@ import { FAQSkeleton } from "@/components/skeleton/FAQSkeleton";
 
 const COMPONENT_ID = "FAQComponent" as const;
 
-export const FAQContainer: React.FC = React.memo(() => {
+export const FAQContainer = () => {
     const { data, isLoading, error } = useFAQ();
 
     if (error) return <ComponentError componentId={COMPONENT_ID} />;
     if (isLoading || !data) return <FAQSkeleton />;
 
     return <FAQContent />;
-});
-
-FAQContainer.displayName = "FAQContainer";
+};

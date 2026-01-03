@@ -55,7 +55,6 @@ interface PreviewState {
 export function FilePreview({
     fileItem,
     className,
-    showFileName = false,
     maxTextLength = 80
 }: FilePreviewProps) {
     const [previewState, setPreviewState] = useState<PreviewState>({

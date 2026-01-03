@@ -1,18 +1,24 @@
 import React from "react";
-import type { DocsSection, ContentData26 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
+
+interface WhyZeroKnowledgeSectionData {
+    label: string;
+    text: string;
+}
 
 interface WhyZeroKnowledgeSectionProps {
-    section: DocsSection & { data: ContentData26 };
+    section: DocsPageSection;
 }
 
 export const WhyZeroKnowledgeSection = React.memo<WhyZeroKnowledgeSectionProps>(({ section }) => {
-    const data = section.data as ContentData26;
-    if (!data) return null;
+    if (!section.data || !Array.isArray(section.data)) return null;
+
+    const items = section.data as WhyZeroKnowledgeSectionData[];
 
     return (
         <section id={section.id} className="space-y-16">
             <div className="space-y-10">
-                {data.map((item, index) => (
+                {items.map((item, index) => (
                     <div key={index} className="relative pl-10">
                         <div className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full bg-emerald-500 shadow-[0_0_4px_rgba(16,185,129,0.5)]" />
 

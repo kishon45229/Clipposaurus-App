@@ -1,17 +1,34 @@
 import React from "react";
-import type { DocsSection, ContentData18 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 import { SectionTitle } from "@/components/custom/docs/encryption/SectionTitle";
 import { NumberedSteps } from "@/components/custom/docs/encryption/NumberedSteps";
 
+interface EncryptionSectionTemplateData {
+    whatIs: {
+        title: string;
+        items: string[];
+    };
+    howWeUseIt: {
+        title: string;
+        items: string[];
+    };
+    whyItMatters: {
+        title: string;
+        items: {
+            label: string;
+            text: string;
+        }[];
+    };
+};
+
 interface EncryptionSectionTemplateProps {
-    section: DocsSection & { data: ContentData18 };
+    section: DocsPageSection
 };
 
 export const EncryptionSectionTemplate = React.memo<EncryptionSectionTemplateProps>(({ section }) => {
-    const data = section.data as ContentData18;
-    if (!data) return null;
+    if (!section.data || !(typeof section.data === "object")) return null;
 
-    const { whatIs, howWeUseIt, whyItMatters } = data;
+    const { whatIs, howWeUseIt, whyItMatters } = (section.data as unknown) as EncryptionSectionTemplateData;
 
     return (
         <section id={section.id} className="space-y-12">

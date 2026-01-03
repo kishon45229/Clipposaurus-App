@@ -3,7 +3,7 @@
 import React from "react";
 import { usePrivacyInfoCard } from "@/contexts/PrivacyInforCardContext";
 import { ShieldCheck } from "lucide-react";
-import { PrivacyInfoCardComponent } from "@/types";
+import { PrivacyInfoCardComponent } from "@/types/contentData-types/privacyInfoCard-types";
 
 export const PrivacyInfoCardHeader = React.memo(() => {
   const { data } = usePrivacyInfoCard();

@@ -1,15 +1,31 @@
 import React from "react";
-import type { DocsSection, ContentData22 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
+
+interface WhatWeStoreSectionData {
+    stored: {
+        title: string;
+        items: {
+            label: string;
+            text: string;
+        }[];
+    };
+    notStored: {
+        title: string;
+        items: {
+            label: string;
+            text: string;
+        }[];
+    };
+}
 
 interface WhatWeStoreSectionProps {
-    section: DocsSection & { data: ContentData22 };
+    section: DocsPageSection;
 }
 
 export const WhatWeStoreSection = React.memo<WhatWeStoreSectionProps>(({ section }) => {
-    const data = section.data as ContentData22;
-    if (!data) return null;
+    if (!section.data || typeof section.data !== "object") return null;
 
-    const { stored, notStored } = data;
+    const { stored, notStored } = section.data as WhatWeStoreSectionData;
 
     return (
         <section id={section.id} className="space-y-16">

@@ -2,7 +2,7 @@ import { cache } from "react";
 import loadJsonFile from "@/lib/jsonUtils";
 import getTimeout from "@/lib/timer";
 
-export const loadFallbackData = cache(async (componentId: string): Promise<unknown> => {
+export const loadContentData = cache(async (componentId: string): Promise<unknown> => {
   if (!componentId || typeof componentId !== "string" || componentId.trim() === "") {
     throw new Error(`Invalid componentId: "${componentId}" received`);
   }

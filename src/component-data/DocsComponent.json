@@ -1,6 +1,5 @@
 {
   "title": "Documentation",
-  "description": "Comprehensive guide to using and understanding Clipposaurus",
   "defaultPage": "introduction",
   "sidebar": [
     {
@@ -634,8 +633,7 @@
           "title": "The Complete Drop Key",
           "description": "When the three words are combined with hyphens (example: 'apple-beer-ocean'), they form your complete access key. This triplet is required to derive the encryption key using PBKDF2.",
           "data": {
-            "format": "apple-beer-ocean",
-            "properties": [
+            "items": [
               "The combined drop key is processed through PBKDF2 on your device to produce a strong 256-bit AES-GCM encryption key. This ensures encryption is done entirely locally and never on our servers.",
               "Even if an attacker knows the public identifier, the token and user secret dramatically increase entropy, making it practically impossible to brute-force or predict the full key.",
               "Each word contributes independently to the overall strength: the identifier helps locate the drop, the token adds random cryptographic strength, and the user secret adds personalized entropy.",
@@ -870,23 +868,20 @@
           "id": "what-zero-knowledge-means",
           "title": "What Zero-Knowledge Means",
           "description": "Zero-knowledge architecture is a design principle where the service provider cannot access, reconstruct, or infer your content — even if they wanted to. Clipposaurus follows this principle at every layer.",
-          "data": {
-            "items": [
-              {
-                "label": "We Never See Your Plaintext",
-                "text": "Your device encrypts everything locally before it is sent. Clipposaurus servers never receive readable text, files, or code."
-              },
-              {
-                "label": "We Never See Your Secret Key",
-                "text": "Your three-word drop key is used only inside your browser to generate the actual encryption key. We never learn any part of it."
-              },
-              {
-                "label": "We Store Only Useless Noise",
-                "text": "The encrypted blob stored on our servers is mathematically impossible to reverse without your key — which we never have."
-              }
-            ],
-            "analogy": "Zero-knowledge is like sealing a message inside an unbreakable capsule in your home before handing it to a courier. They can deliver it, but they can never open it — because the sealing process happened before they ever touched it."
-          }
+          "data": [
+            {
+              "label": "We Never See Your Plaintext",
+              "text": "Your device encrypts everything locally before it is sent. Clipposaurus servers never receive readable text, files, or code."
+            },
+            {
+              "label": "We Never See Your Secret Key",
+              "text": "Your three-word drop key is used only inside your browser to generate the actual encryption key. We never learn any part of it."
+            },
+            {
+              "label": "We Store Only Useless Noise",
+              "text": "The encrypted blob stored on our servers is mathematically impossible to reverse without your key — which we never have."
+            }
+          ]
         },
         {
           "id": "why-zero-knowledge",
@@ -1017,43 +1012,39 @@
           "id": "retention-options",
           "title": "Retention Options",
           "description": "When you create a drop, you control its lifespan. A shorter lifespan means a smaller window for anyone to attempt unauthorized access.",
-          "data": {
-            "items": [
-              {
-                "label": "Delete After First Access",
-                "text": "Ideal for sharing passwords or one-time secrets. Once the receiver opens the drop, it is instantly removed."
-              },
-              {
-                "label": "30 Minutes",
-                "text": "Good for quick collaboration or temporary sharing. Enough time for someone to open it once or twice."
-              },
-              {
-                "label": "1 Hour",
-                "text": "For situations where the receiver might not be available immediately. Still intentionally short to maintain privacy."
-              }
-            ]
-          }
+          "data": [
+            {
+              "label": "Delete After First Access",
+              "text": "Ideal for sharing passwords or one-time secrets. Once the receiver opens the drop, it is instantly removed."
+            },
+            {
+              "label": "30 Minutes",
+              "text": "Good for quick collaboration or temporary sharing. Enough time for someone to open it once or twice."
+            },
+            {
+              "label": "1 Hour",
+              "text": "For situations where the receiver might not be available immediately. Still intentionally short to maintain privacy."
+            }
+          ]
         },
         {
           "id": "ttl-enforcement",
           "title": "Time-To-Live (TTL) Enforcement",
           "description": "Expiration is not dependent on user actions. The system enforces deletion automatically, even if the drop is never accessed.",
-          "data": {
-            "items": [
-              {
-                "label": "Database TTL",
-                "text": "every drop is inserted with an automatic expiration timer. Once the timer runs out, the database itself removes the encrypted blob."
-              },
-              {
-                "label": "Background Cleanup Jobs",
-                "text": "periodic tasks run on the backend to detect expired items and forcefully remove any lingering data."
-              },
-              {
-                "label": "Provider-Level Deletion",
-                "text": "storage partners (such as hosted databases or file storage systems) apply their own TTL or purge mechanisms, adding a second layer of enforcement."
-              }
-            ]
-          }
+          "data": [
+            {
+              "label": "Database TTL",
+              "text": "every drop is inserted with an automatic expiration timer. Once the timer runs out, the database itself removes the encrypted blob."
+            },
+            {
+              "label": "Background Cleanup Jobs",
+              "text": "periodic tasks run on the backend to detect expired items and forcefully remove any lingering data."
+            },
+            {
+              "label": "Provider-Level Deletion",
+              "text": "storage partners (such as hosted databases or file storage systems) apply their own TTL or purge mechanisms, adding a second layer of enforcement."
+            }
+          ]
         },
         {
           "id": "no-backups",
@@ -1085,26 +1076,24 @@
           "id": "irreversible",
           "title": "Irreversible Deletion",
           "description": "Once your data reaches its expiration time or is manually consumed (in the case of one-time drops), the removal is permanent. Not even Clipposaurus staff can restore it.",
-          "data": {
-            "items": [
-              {
-                "label": "Primary Storage",
-                "text": "The encrypted blob and identifier are removed from the database."
-              },
-              {
-                "label": "CDN Caches",
-                "text": "Temporary caches are explicitly invalidated or disabled so no trace remains."
-              },
-              {
-                "label": "Distributed Nodes",
-                "text": "Any edge or distributed copies are purged or prevented from existing in the first place."
-              },
-              {
-                "label": "Index References",
-                "text": "All pointers that once directed to your drop are removed so the system cannot locate it again."
-              }
-            ]
-          }
+          "data": [
+            {
+              "label": "Primary Storage",
+              "text": "The encrypted blob and identifier are removed from the database."
+            },
+            {
+              "label": "CDN Caches",
+              "text": "Temporary caches are explicitly invalidated or disabled so no trace remains."
+            },
+            {
+              "label": "Distributed Nodes",
+              "text": "Any edge or distributed copies are purged or prevented from existing in the first place."
+            },
+            {
+              "label": "Index References",
+              "text": "All pointers that once directed to your drop are removed so the system cannot locate it again."
+            }
+          ]
         },
         {
           "id": "cta",

@@ -5,7 +5,7 @@ import {
     SidebarContent,
 } from "@/components/ui/sidebar";
 
-export const DocsLeftSidebarSkeleton: React.FC = () => {
+export const DocsLeftSidebarSkeleton = () => {
     return (
         <Sidebar side="left" variant="sidebar" collapsible="offcanvas" className="*:data-[slot=sidebar-inner]:bg-black *:data-[slot=sidebar-inner]:text-white">
             <SidebarContent className="bg-black">

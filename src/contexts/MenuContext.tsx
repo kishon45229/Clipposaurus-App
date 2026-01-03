@@ -3,7 +3,8 @@
 import React from "react";
 import { useCreateDrop } from "@/contexts/CreateDropContext";
 import { useMenuComponent } from "@/contexts/ComponentDataContext";
-import type { CreateDropAlertStatus, MenuComponent } from "@/types";
+import type { CreateDropAlertStatus } from "@/types";
+import type { MenuComponent } from "@/types/contentData-types/menu-types";
 import { useMobileMenu } from "@/hooks/useMobileMenu";
 
 export interface MenuContextValue {

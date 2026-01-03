@@ -8,13 +8,11 @@ import { ComponentError } from "@/components/custom/ComponentError";
 
 const COMPONENT_ID = "MenuContainer" as const;
 
-export const MobileMenuContainer: React.FC = React.memo(() => {
+export const MobileMenuContainer = () => {
     const { data, isLoading, error } = useMenu();
 
     if (isLoading || !data) return <MenuSkeleton />;
     if (error) return <ComponentError componentId={COMPONENT_ID} />;
 
     return <MobileMenuContent />;
-});
-
-MobileMenuContainer.displayName = "MobileMenuContainer";
+};

@@ -1,4 +1,4 @@
-import { formatCountdown, FormatCountdownResult } from "../countdown";
+import { formatCountdown } from "../countdown";
 
 describe("countdown", () => {
   describe("formatCountdown", () => {

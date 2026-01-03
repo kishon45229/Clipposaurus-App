@@ -7,7 +7,7 @@ import { StickyTOC } from "@/components/custom/StickyTOC";
 import { TermsOfServiceHeader } from "@/components/custom/terms-of-service/TermsOfServiceHeader";
 import { TermsOfServiceSections } from "@/components/custom/terms-of-service/TermsOfServiceSections";
 
-export const TermsOfServiceContent = React.memo(() => {
+export const TermsOfServiceContent = () => {
     const { data } = useTermsOfService();
     const { sections } = data;
 
@@ -38,6 +38,4 @@ export const TermsOfServiceContent = React.memo(() => {
             </div>
         </div>
     );
-});
-
-TermsOfServiceContent.displayName = "TermsOfServiceContent";
+};

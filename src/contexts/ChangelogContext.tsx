@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useChangelogComponent } from "@/contexts/ComponentDataContext";
-import { ChangelogComponent } from "@/types";
+import { ChangelogComponent } from "@/types/contentData-types/changelog-types";
 
 interface ChangelogContextType {
     data: ChangelogComponent;

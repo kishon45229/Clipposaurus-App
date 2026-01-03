@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import { DocsSection } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 
 interface SupportedContentSectionProps {
-    section: DocsSection;
+    section: DocsPageSection;
 }
 
-export const SupportedContentSection: React.FC<SupportedContentSectionProps> = React.memo(({ section }) => {
+export const SupportedContentSection = React.memo<SupportedContentSectionProps>(({ section }) => {
     if (section.type !== "comparison" || !section.data || typeof section.data !== "object") {
         return null;
     }

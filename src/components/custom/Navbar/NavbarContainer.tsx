@@ -6,7 +6,7 @@ import { NavbarLinks } from "@/components/custom/Navbar/NavbarLinks";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { HamburgerMenu } from "./HamburgerMenu";
 
-export const NavbarContainer: React.FC = React.memo(() => {
+export const NavbarContainer = React.memo(() => {
     return (
         <div className="
             max-w-[1920px]

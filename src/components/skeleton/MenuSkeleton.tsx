@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/card";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export const MenuSkeleton: React.FC = React.memo(() => {
+export const MenuSkeleton = () => {
     return (
         <aside className="hidden xl:flex h-full">
             <div className="w-full h-full flex flex-col py-auto">
@@ -68,6 +68,4 @@ export const MenuSkeleton: React.FC = React.memo(() => {
             </div>
         </aside>
     );
-});
-
-MenuSkeleton.displayName = "MenuSkeleton";
+};

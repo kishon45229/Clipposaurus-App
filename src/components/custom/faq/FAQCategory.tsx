@@ -5,7 +5,7 @@ import { FAQItem } from "@/components/custom/faq/FAQItem";
 import { useFAQ } from "@/contexts/FAQContext";
 import { FAQCategoryHeader } from "@/components/custom/faq/FAQCategoryHeader";
 
-export const FAQCategory: React.FC = React.memo(() => {
+export const FAQCategory = React.memo(() => {
     const { data } = useFAQ();
     const { categories } = data;
 

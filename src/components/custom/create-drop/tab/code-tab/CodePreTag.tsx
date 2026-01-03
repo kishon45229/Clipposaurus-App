@@ -6,7 +6,7 @@ interface PreTagProps {
     className?: string;
 }
 
-export const CodePreTag: React.FC<PreTagProps> = ({ children, ...props }) => (
+export const CodePreTag = ({ children, ...props }: PreTagProps) => (
     <pre
         {...props}
         style={{

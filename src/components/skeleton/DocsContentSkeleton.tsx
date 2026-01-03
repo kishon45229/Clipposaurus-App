@@ -1,7 +1,7 @@
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export const DocsContentSkeleton: React.FC = () => {
+export const DocsContentSkeleton = () => {
     return (
         <div className="h-full w-full flex flex-col overflow-hidden">
             {/* Header with Sidebar Trigger */}

@@ -1,7 +1,7 @@
 import React from "react";
 import { Frown } from "lucide-react";
 
-export const Unavailable = React.memo(() => {
+export const Unavailable = () => {
     return (
         <div
             className="
@@ -83,6 +83,4 @@ export const Unavailable = React.memo(() => {
             </div>
         </div>
     );
-});
-
-Unavailable.displayName = "Unavailable";
+};

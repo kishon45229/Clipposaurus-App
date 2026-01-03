@@ -2,7 +2,6 @@ import {
   encryptWithDropKey,
   encryptFileContentWithDropKey,
 } from "../encryption";
-import { EncryptedData } from "@/types/encryption";
 
 describe("Encryption Functions", () => {
   const mockIdentifier = "test-identifier";

@@ -3,7 +3,7 @@
 import React from "react";
 import { Copyright } from "lucide-react";
 
-export const FooterCopyright: React.FC = React.memo(() => {
+export const FooterCopyright = React.memo(() => {
   return (
     <div
       className="

@@ -1,14 +1,9 @@
 {
-  "badge": "End-to-end encrypted • Privacy by design",
   "title": "Temporary drops, permanent privacy.",
   "titleHighlight": "Share without accounts.",
-  "subTitle": "Exchange encrypted notes, code, and files with zero",
-  "rotatingTexts": ["accounts.", "tracking.", "leftovers."],
-  "description": "Clipposaurus is a privacy-first buffer for moving content between devices. Each drop is encrypted on your device, delivered once, and auto-expires so nothing personal lives on our servers.",
+  "description": "Clipposaurus is a privacy-first zero knowledge web app for moving content between devices. Each drop is encrypted on your device, delivered once, and auto-expires so nothing personal lives on our servers.",
   "ctaButton1": "Get Started",
   "ctaButton2": "Learn More",
   "consentDescription": "By using this application, you agree to our",
-  "consentLink1": "terms of service",
-  "consentLinkSeparator": "&",
-  "consentLink2": "privacy policy"
+  "consentLink": "terms of service"
 }

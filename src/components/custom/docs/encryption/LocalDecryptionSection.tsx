@@ -1,16 +1,22 @@
 import React from "react";
-import type { DocsSection, ContentData20 } from "@/types/docs";
-import { NumberedSteps } from "./NumberedSteps";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
+import { NumberedSteps } from "@/components/custom/docs/encryption/NumberedSteps";
 
-interface LocalEncryptionSectionProps {
-    section: DocsSection & { data: ContentData20 };
-}
+interface LocalDecryptionSectionData {
+    flow: {
+        title: string;
+        items: string[];
+    };
+};
 
-export const LocalDecryptionSection = React.memo<LocalEncryptionSectionProps>(({ section }) => {
-    const data = section.data as ContentData20;
-    if (!data) return null;
+interface LocalDecryptionSectionProps {
+    section: DocsPageSection;
+};
 
-    const { flow } = data;
+export const LocalDecryptionSection = React.memo<LocalDecryptionSectionProps>(({ section }) => {
+    if (!section.data || !(typeof section.data === "object")) return null;
+
+    const { flow } = section.data as LocalDecryptionSectionData;
 
     return (
         <section id={section.id} className="space-y-16">

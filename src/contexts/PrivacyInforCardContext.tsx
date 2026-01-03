@@ -2,7 +2,7 @@
 
 import React from "react";
 import { usePrivacyInfoCardComponent } from "@/contexts/ComponentDataContext";
-import { PrivacyInfoCardComponent } from "@/types";
+import { PrivacyInfoCardComponent } from "@/types/contentData-types/privacyInfoCard-types";
 
 interface PrivacyInfoCardContextType {
     data: PrivacyInfoCardComponent;

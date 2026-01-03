@@ -10,7 +10,7 @@ const footerLinks = [
   { href: "/terms-of-service", label: "Terms" },
 ];
 
-export const FooterLinks: React.FC = React.memo(() => {
+export const FooterLinks = React.memo(() => {
   return (
     <nav
       className="

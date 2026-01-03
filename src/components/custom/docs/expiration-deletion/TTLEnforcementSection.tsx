@@ -1,18 +1,19 @@
 import React from "react";
-import type { DocsSection, ContentData28 } from "@/types/docs.d";
-import { Database, RefreshCw, Shield, CheckCircle2 } from "lucide-react";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 
-interface TTLEnforcementSectionProps {
-    section: DocsSection & { data: ContentData28 };
+interface TTLEnforcementSectionData {
+    label: string;
+    text: string;
 }
 
-const systemIcons = [Database, RefreshCw, Shield];
+interface TTLEnforcementSectionProps {
+    section: DocsPageSection;
+}
 
 export const TTLEnforcementSection = React.memo<TTLEnforcementSectionProps>(({ section }) => {
-    const data = section.data as ContentData28;
-    if (!data) return null;
+    if (!section.data || !Array.isArray(section.data)) return null;
 
-    const { items } = data;
+    const items = section.data as TTLEnforcementSectionData[];
 
     return (
         <section id={section.id}>

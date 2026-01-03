@@ -1,14 +1,13 @@
 "use client";
 
 import React from "react";
-import { ChangelogCategory } from "@/types";
-import { CheckCircle2, Wrench, Sparkles } from "lucide-react";
+import type { ChangelogCategory } from "@/types/contentData-types/changelog-types";
 
 interface ChangelogSectionProps {
     section: ChangelogCategory;
 }
 
-export const ChangelogSection: React.FC<ChangelogSectionProps> = React.memo(({ section }) => {
+export const ChangelogSection = React.memo<ChangelogSectionProps>(({ section }) => {
     const { category } = section;
     const items = section.items;
 
@@ -21,7 +20,7 @@ export const ChangelogSection: React.FC<ChangelogSectionProps> = React.memo(({ s
                 {items.map((item, index) => (
                     <li key={index} className="space-y-1">
                         <div className="font-medium text-foreground">
-                           {index + 1}. {item.title}
+                            {index + 1}. {item.title}
                         </div>
                         <div className="text-sm text-muted-foreground ml-7">
                             {item.description}

@@ -4,7 +4,7 @@ import React from "react";
 import type { BaseDialogActionsProps } from "./types";
 import { DialogButton } from "@/components/custom/dialogs/DialogButton";
 
-export const BaseDialogActions: React.FC<BaseDialogActionsProps> = React.memo(
+export const BaseDialogActions = React.memo<BaseDialogActionsProps>(
     ({ buttons, children }) => {
         if (children) {
             return (

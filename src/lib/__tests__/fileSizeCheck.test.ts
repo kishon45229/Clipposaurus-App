@@ -13,7 +13,7 @@ jest.mock("../utils", () => ({
     const mb = bytes / (1024 * 1024);
     return `${mb.toFixed(1)} MB`;
   }),
-  readFileAsDataUrl: jest.fn((fileItem: any) =>
+  readFileAsDataUrl: jest.fn((_file: File) =>
     Promise.resolve("data:text/plain;base64,dGVzdA==")
   ),
   createFileItem: jest.fn((file: File) => ({
@@ -94,15 +94,17 @@ describe("fileSizeCheck", () => {
 
       try {
         await processFileWithSizeCheck(currentSize, file);
-      } catch (error: any) {
-        expect(error.message).toContain("Available space");
-        expect(error.message).toContain("0.0 MB"); // 1000 bytes ≈ 0.0 MB
+      } catch (error) {
+        expect((error as Error).message).toContain("Available space");
+        expect((error as Error).message).toContain("0.0 MB"); // 1000 bytes ≈ 0.0 MB
       }
     });
 
     it("should handle file read errors gracefully", async () => {
-      const utils = require("../utils");
-      utils.readFileAsDataUrl.mockRejectedValueOnce(new Error("Read failed"));
+      const { readFileAsDataUrl } = await import("../utils");
+      (readFileAsDataUrl as jest.Mock).mockRejectedValueOnce(
+        new Error("Read failed")
+      );
 
       const file = new File(["content"], "test.txt", { type: "text/plain" });
 
@@ -138,31 +140,31 @@ describe("fileSizeCheck", () => {
     });
 
     it("should handle files with undefined size", () => {
-      const files: FileItem[] = [
+      const files = [
         { id: "1", name: "file1.txt", size: 100, content: "", file: null },
         {
           id: "2",
           name: "file2.txt",
-          size: undefined as any,
+          size: undefined,
           content: "",
           file: null,
         },
-      ];
+      ] as unknown as FileItem[];
       const total = getCurrentTotalSize(files);
       expect(total).toBe(100);
     });
 
     it("should handle files with null size", () => {
-      const files: FileItem[] = [
+      const files = [
         { id: "1", name: "file1.txt", size: 100, content: "", file: null },
         {
           id: "2",
           name: "file2.txt",
-          size: null as any,
+          size: null,
           content: "",
           file: null,
         },
-      ];
+      ] as unknown as FileItem[];
       const total = getCurrentTotalSize(files);
       expect(total).toBe(100);
     });

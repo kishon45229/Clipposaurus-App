@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useUnlockDropDialogBoxComponent } from "@/contexts/ComponentDataContext";
-import { UnlockDropDialogBoxComponent } from "@/types";
+import { UnlockDropDialogBoxComponent } from "@/types/contentData-types/unlockDropDialogBox-types";
 
 interface UnlockDropDialogBoxContextType {
     data: UnlockDropDialogBoxComponent;

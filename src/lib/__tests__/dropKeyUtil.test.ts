@@ -2,7 +2,6 @@ import {
   validateAndSanitizeDropKey,
   validateDropKey,
   formatDropKey,
-  CodeInputValidation,
 } from "../dropKeyUtil";
 
 describe("dropKeyUtil", () => {

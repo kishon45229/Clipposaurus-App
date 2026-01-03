@@ -2,7 +2,7 @@ import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
-export const TabsSkeleton = React.memo(({ type }: { type: string }) => {
+export const TabsSkeleton = ({ type }: { type: string }) => {
     if (type === "note") {
         return (
             <Card className="flex flex-col h-full w-full xl:w-2/3 py-2 gap-2 border-0
@@ -73,6 +73,4 @@ export const TabsSkeleton = React.memo(({ type }: { type: string }) => {
             </Card>
         );
     }
-});
-
-TabsSkeleton.displayName = "TabsSkeleton";
+};

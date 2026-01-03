@@ -8,10 +8,16 @@ import {
   ChevronDown,
   ArrowRight,
 } from 'lucide-react';
-import { DocsSection, ContentData2 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
+
+interface DesignSectionData {
+  title: string;
+  icon: string;
+  description: string;
+}
 
 interface DesignSectionProps {
-  section: DocsSection & { data: ContentData2 };
+  section: DocsPageSection;
 }
 
 const getIcon = (iconName: string) => {
@@ -26,7 +32,9 @@ const getIcon = (iconName: string) => {
 };
 
 export const DesignSection = React.memo<DesignSectionProps>(({ section }) => {
-  const stages = section.data as ContentData2;
+  if (!section.data || !Array.isArray(section.data)) return null;
+
+  const stages = section.data as DesignSectionData[];
 
   return (
     <section id={section.id}>

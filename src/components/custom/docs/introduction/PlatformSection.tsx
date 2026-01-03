@@ -1,11 +1,13 @@
 import React from "react";
-import type { DocsSection, ContentData5 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 
 interface PlatformSectionProps {
-  section: DocsSection & { data: ContentData5 };
+  section: DocsPageSection;
 }
 
 export const PlatformSection = React.memo<PlatformSectionProps>(({ section }) => {
+  if (!section.data || !(typeof section.data === "object")) return null;
+
   const platformEntries = Object.entries(section.data) as [string, string[]][];
 
   return (

@@ -1,6 +1,6 @@
 import React from "react";
 
-export const AmbientGlow: React.FC = React.memo(() => {
+export const AmbientGlow = React.memo(() => {
     return (
         <div className="
             absolute inset-0 pointer-events-none rounded-2xl

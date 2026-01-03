@@ -3,7 +3,7 @@ import { PrivacyInfoCardHeader } from "@/components/custom/home/privacy-info-car
 import { PrivacyInfoCardBody } from "@/components/custom/home/privacy-info-card/PrivacyInfoCardBody";
 import { PrivacyInfoCardFooter } from "@/components/custom/home/privacy-info-card/PrivacyInfoCardFooter";
 
-export const PrivacyInfoCardContent: React.FC = React.memo(() => {
+export const PrivacyInfoCardContent = () => {
   return (
     <div
       className="
@@ -34,6 +34,4 @@ export const PrivacyInfoCardContent: React.FC = React.memo(() => {
       </div>
     </div>
   );
-});
-
-PrivacyInfoCardContent.displayName = "PrivacyInfoCardContent";
+};

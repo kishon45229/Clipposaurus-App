@@ -1,26 +1,32 @@
 import React from "react";
-import type { DocsSection, ContentData24 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
+
+interface VerificationSectionData {
+    label: string;
+    text: string;
+}
 
 interface VerificationSectionProps {
-    section: DocsSection & { data: ContentData24 };
+    section: DocsPageSection;
 }
 
 export const VerificationSection = React.memo<VerificationSectionProps>(({ section }) => {
-    const data = section.data as ContentData24;
-    if (!data) return null;
+    if (!section.data || !Array.isArray(section.data)) return null;
+
+    const items = section.data as VerificationSectionData[];
 
     return (
         <section id={section.id}>
             <div className="grid grid-cols-3 gap-8 items-start">
-                {data.map((item, index) => {
+                {items.map((item, index) => {
                     return (
                         <div key={index} className="relative flex flex-col items-start">
                             <div className="relative z-10 px-3 py-1.5 rounded-full bg-emerald-500 text-zinc-900 font-semibold text-sm shadow-md mb-4">
                                 Option {index + 1}
                             </div>
 
-                            {index < data.length && (
-                                <div className="absolute top-3 w-full h-[2px] bg-emerald-300/50 dark:bg-emerald-700/40" />
+                            {index < items.length && (
+                                <div className="absolute top-3 w-full h-0.5 bg-emerald-300/50 dark:bg-emerald-700/40" />
                             )}
 
                             <div className="text-base font-semibold text-zinc-900 dark:text-zinc-300 mb-2">

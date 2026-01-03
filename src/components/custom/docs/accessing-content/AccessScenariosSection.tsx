@@ -1,16 +1,16 @@
 "use client";
 
 import React from "react";
-import { DocsSection } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 import { Users, GraduationCap, Palette, Shield } from "lucide-react";
 
 interface AccessScenariosSectionProps {
-    section: DocsSection;
+    section: DocsPageSection;
 }
 
 const scenarioIcons = [Users, GraduationCap, Palette, Shield];
 
-export const AccessScenariosSection: React.FC<AccessScenariosSectionProps> = React.memo(({ section }) => {
+export const AccessScenariosSection = React.memo<AccessScenariosSectionProps>(({ section }) => {
     if (section.type !== "testimonials" || !Array.isArray(section.data)) {
         return null;
     }

@@ -3,7 +3,7 @@
 import React from "react";
 import { useHero } from "@/contexts/HeroContext";
 
-export const HeroHeader: React.FC = React.memo(() => {
+export const HeroHeader = React.memo(() => {
     const { data } = useHero();
     const { title, titleHighlight, description } = data;
 

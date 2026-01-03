@@ -1,13 +1,21 @@
 import React from "react";
-import { DocsSection, ContentData4 } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 import { X, Check } from "lucide-react";
 
+interface PrivacySectionData {
+  title: string;
+  icon: string;
+  items: string[];
+}
+
 interface PrivacySectionProps {
-  section: DocsSection & { data: ContentData4 };
+  section: DocsPageSection;
 }
 
 export const PrivacySection = React.memo<PrivacySectionProps>(({ section }) => {
-  const privacyData = section.data as ContentData4;
+  if (!section.data || !Array.isArray(section.data)) return null;
+
+  const privacyData = section.data as PrivacySectionData[];
 
   return (
     <section id={section.id}>
@@ -16,17 +24,16 @@ export const PrivacySection = React.memo<PrivacySectionProps>(({ section }) => {
           <div key={panelIdx} className="space-y-3 border-l border-dashed border-zinc-300 dark:border-zinc-700 pl-4">
             <div className="flex items-center gap-2">
               <span
-                className={`inline-flex h-5 w-5 items-center justify-center text-xs ${
-                  panel.icon === "x"
-                    ? "text-red-500 dark:text-red-400"
-                    : "text-emerald-500 dark:text-emerald-400"
-                }`}
+                className={`inline-flex h-5 w-5 items-center justify-center text-xs ${panel.icon === "x"
+                  ? "text-red-500 dark:text-red-400"
+                  : "text-emerald-500 dark:text-emerald-400"
+                  }`}
               >
                 {panel.icon === "x" ? <X className="h-4 w-4" /> : <Check className="h-4 w-4" />}
               </span>
-              <h3 className="text-base md:text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+              <div className="text-base md:text-lg font-semibold text-zinc-900 dark:text-zinc-100">
                 {panel.title}
-              </h3>
+              </div>
             </div>
 
             <ul className="space-y-1.5">

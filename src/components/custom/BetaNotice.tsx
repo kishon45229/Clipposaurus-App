@@ -14,7 +14,7 @@ import { AlertTriangle } from "lucide-react";
 
 const BETA_NOTICE_KEY = "clipposaurus_beta_notice_acknowledged";
 
-export const BetaNotice: React.FC = React.memo(() => {
+export const BetaNotice = React.memo(() => {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {

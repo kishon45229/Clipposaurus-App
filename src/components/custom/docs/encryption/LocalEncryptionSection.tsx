@@ -1,17 +1,31 @@
 import React from "react";
-import type { DocsSection, ContentData19 } from "@/types/docs";
-import { NumberedSteps } from "./NumberedSteps";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
+import { NumberedSteps } from "@/components/custom/docs/encryption/NumberedSteps";
 import { Check, X } from "lucide-react";
 
+interface LocalEncryptionSectionData {
+    flow: {
+        title: string;
+        items: string[];
+    };
+    weReceive: {
+        title: string;
+        items: string[];
+    };
+    weNeverReceive: {
+        title: string;
+        items: string[];
+    };
+}
+
 interface LocalEncryptionSectionProps {
-    section: DocsSection & { data: ContentData19 };
+    section: DocsPageSection;
 }
 
 export const LocalEncryptionSection = React.memo<LocalEncryptionSectionProps>(({ section }) => {
-    const data = section.data as ContentData19;
-    if (!data) return null;
-
-    const { flow, weReceive, weNeverReceive } = data;
+    if (!section.data || !(typeof section.data === "object")) return null;
+    
+    const  { flow, weReceive, weNeverReceive } = section.data as LocalEncryptionSectionData;
 
     const DataSection = ({ title, items, icon: Icon, bulletColor }: {
         title: string;

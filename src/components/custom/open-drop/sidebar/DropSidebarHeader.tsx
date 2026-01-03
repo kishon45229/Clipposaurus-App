@@ -4,7 +4,7 @@ import React from "react";
 import { SidebarHeader } from "@/components/ui/sidebar";
 import { useDropSidebar } from "@/contexts/DropSidebarContext";
 
-export const DropSidebarHeader: React.FC = React.memo(() => {
+export const DropSidebarHeader = React.memo(() => {
     const { title, subtitle, isCollapsed } = useDropSidebar();
 
     return (

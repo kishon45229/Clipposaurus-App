@@ -1,11 +1,11 @@
 "use client";
 
 import React from "react";
-import { DocsSection } from "@/types/docs";
+import type { DocsPageSection } from "@/types/contentData-types/docs-types";
 import { Monitor, Smartphone, Globe, Code } from "lucide-react";
 
 interface CodeMultiDeviceSectionProps {
-    section: DocsSection;
+    section: DocsPageSection;
 }
 
 const getPlatformIcon = (title: string) => {
@@ -15,7 +15,7 @@ const getPlatformIcon = (title: string) => {
     return Code;
 };
 
-export const CodeMultiDeviceSection: React.FC<CodeMultiDeviceSectionProps> = React.memo(({ section }) => {
+export const CodeMultiDeviceSection = React.memo<CodeMultiDeviceSectionProps>(({ section }) => {
     if (section.type !== "platform" || !section.data?.platforms) {
         return null;
     }

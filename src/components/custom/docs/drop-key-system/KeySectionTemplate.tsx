@@ -1,17 +1,24 @@
 import React from "react";
-import type { ContentData15, DocsSection, ActiveSection } from "@/types/docs";
+import type { DocsPageSection, ActiveSection } from "@/types/contentData-types/docs-types";
 import { DropKeyVisual } from "@/components/custom/docs/drop-key-system/DropKeyVisual";
-import { da } from "zod/v4/locales";
 import { Check, X } from "lucide-react";
 
+interface KeySectionData {
+    name: string;
+    word: string;
+    can: string[];
+    cannot: string[];
+}
+
 interface KeySectionTemplateProps {
-    section: DocsSection & { data: ContentData15 };
+    section: DocsPageSection;
     activeSection: ActiveSection;
 }
 
 export const KeySectionTemplate = React.memo<KeySectionTemplateProps>(({ section, activeSection }) => {
-    const { data } = section as { data: ContentData15 };
-    if (!data) return null;
+    if (!section.data || !Array.isArray(section.data) || !activeSection) return null;
+
+    const items = (section.data as unknown) as KeySectionData;
 
     return (
         <section id={section.id} className="space-y-10">
@@ -29,7 +36,7 @@ export const KeySectionTemplate = React.memo<KeySectionTemplateProps>(({ section
 
                 <div className="grid grid-cols-2 divide-x divide-zinc-200 dark:divide-zinc-800">
                     <div className="p-4 space-y-4">
-                        {data.can.map((item, idx) => (
+                        {items.can.map((item, idx) => (
                             <div key={idx} className="flex items-start gap-3">
                                 <span className="text-emerald-500 dark:text-emerald-400 mt-1"><Check /></span>
                                 <span className="text-zinc-700 dark:text-zinc-300 text-base leading-relaxed">
@@ -39,7 +46,7 @@ export const KeySectionTemplate = React.memo<KeySectionTemplateProps>(({ section
                         ))}
                     </div>
                     <div className="p-4 space-y-4 bg-zinc-50 dark:bg-zinc-900/20">
-                        {data.cannot.map((item, idx) => (
+                        {items.cannot.map((item, idx) => (
                             <div key={idx} className="flex items-start justify-start gap-3">
                                 <span className="text-emerald-500 dark:text-emerald-400"><X /></span>
                                 <span className="text-zinc-700 dark:text-zinc-300 text-base leading-relaxed">

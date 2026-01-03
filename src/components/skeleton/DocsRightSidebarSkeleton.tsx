@@ -1,7 +1,7 @@
 import React from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 
-export const DocsRightSidebarSkeleton: React.FC = () => {
+export const DocsRightSidebarSkeleton = () => {
     return (
         <div className="w-64 h-screen bg-background/95 backdrop-blur border-l border-border shrink-0 hidden lg:flex flex-col overflow-hidden">
             {/* Header */}
