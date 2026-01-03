@@ -23,7 +23,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { useGitHubStars } from "@/hooks/useGitHubStars";
-import { GITHUB_REPO_URL } from "@/constants/githubConfig";
+import { GITHUB_REPO_URL, GITHUB_SPONSOR_URL } from "@/constants/githubConfig";
 
 export const HamburgerMenu = React.memo(() => {
     const stars = useGitHubStars();
@@ -142,7 +142,7 @@ export const HamburgerMenu = React.memo(() => {
 
                 {/* Donate */}
                 <DropdownMenuItem
-                    onClick={() => window.open(`${GITHUB_REPO_URL}/sponsors`, "_blank")}
+                    onClick={() => window.open(`${GITHUB_SPONSOR_URL}`, "_blank")}
                     className="
                 hamburger-menu-item
                 bg-emerald-50text-emerald-700

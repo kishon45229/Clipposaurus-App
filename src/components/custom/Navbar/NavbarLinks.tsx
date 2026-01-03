@@ -16,7 +16,7 @@ import {
   NavigationMenuTrigger,
   NavigationMenuContent,
 } from "@/components/ui/navigation-menu";
-import { GITHUB_REPO_URL } from "@/constants/githubConfig";
+import { GITHUB_REPO_URL, GITHUB_SPONSOR_URL } from "@/constants/githubConfig";
 
 export const NavbarLinks = React.memo(() => {
   const stars = useGitHubStars();
@@ -102,7 +102,7 @@ export const NavbarLinks = React.memo(() => {
                   dark:bg-zinc-800
                 " />
                 <NavItem
-                  href={GITHUB_REPO_URL + "/sponsors"}
+                  href={GITHUB_SPONSOR_URL}
                   icon={HeartHandshake}
                   title="Support the Project"
                   description="Help keep Clipposaurus free"
