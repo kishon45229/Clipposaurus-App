@@ -136,9 +136,7 @@ export async function POST(request: NextRequest) {
       await upstashRedis.del(`used:${identifier}`);
       await upstashRedis.del(dropFilesKey);
       await upstashRedis.sadd("available_keys", identifier);
-      console.log(
-        `[OPEN-DROP] Expired drop cleaned up, identifier recycled: ${identifier}`
-      );
+
       return NextResponse.json(
         {
           success: false,
@@ -147,8 +145,6 @@ export async function POST(request: NextRequest) {
         { status: 410 }
       );
     }
-
-    // dropContent.identifier = identifier;
 
     return NextResponse.json(
       {

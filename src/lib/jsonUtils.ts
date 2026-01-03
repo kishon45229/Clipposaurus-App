@@ -16,8 +16,6 @@ export default async function loadJsonFile(
       errMsg: "File import operation timed out",
     });
 
-    console.log("file name", fileName);
-
     const jsonModulePromise = import(`@/component-data/${fileName}`);
     const jsonModule = await Promise.race([jsonModulePromise, readTimeout]);
 

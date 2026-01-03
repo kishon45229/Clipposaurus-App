@@ -166,7 +166,6 @@ function OpenDropAlert() {
     const buttons = showButton ? [{
         text: buttonLabel,
         onClick: () => {
-            console.log("🔘 Button clicked - Current alertType:", alertType);
             handleClose();
         },
         className: "rounded-lg mt-6"

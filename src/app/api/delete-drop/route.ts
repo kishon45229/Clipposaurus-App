@@ -16,8 +16,6 @@ export async function DELETE(request: NextRequest): Promise<NextResponse> {
       );
     }
 
-    console.log(`[DELETE-DROP] Deleting drop with identifier: ${identifier}`);
-
     const dropKey = `${env.DROP}:${identifier}`;
     const dropFilesKey = `drop-files:${identifier}`;
 
@@ -39,10 +37,7 @@ export async function DELETE(request: NextRequest): Promise<NextResponse> {
             .filter((url: string | undefined): url is string => Boolean(url));
         }
       } catch (error) {
-        console.warn("[DELETE-DROP] Failed to parse drop for file cleanup", {
-          identifier,
-          error,
-        });
+        throw error;
       }
     }
 
@@ -55,10 +50,7 @@ export async function DELETE(request: NextRequest): Promise<NextResponse> {
           fileUrls = [...fileUrls, ...parsed.filter(Boolean)];
         }
       } catch (error) {
-        console.warn("[DELETE-DROP] Failed to parse drop-files entry", {
-          identifier,
-          error,
-        });
+        throw error;
       }
     }
 

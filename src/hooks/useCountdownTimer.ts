@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { navigation } from "@/lib/navigation";
 import { useOpenDrop } from "@/contexts/OpenDropContext";
 import { formatCountdown } from "@/lib/countdown";
+import { error } from "console";
 
 interface CountdownResult {
   timeLeft: string;
@@ -38,7 +39,6 @@ export function useCountdownTimer(): CountdownResult {
       setIsExpired(expired);
 
       if (expired && expiresAt instanceof Date && expiresAt.getTime() > 0) {
-        console.log("🚨 Drop expired - redirecting to home");
         if (!hasHandledExpiry.current) {
           hasHandledExpiry.current = true;
           try {
@@ -47,14 +47,6 @@ export function useCountdownTimer(): CountdownResult {
             throw error;
           }
         }
-      } else if (
-        expired &&
-        expiresAt instanceof Date &&
-        expiresAt.getTime() === 0
-      ) {
-        console.log(
-          "⏳ Drop appears expired but still decrypting or invalid timestamp - not redirecting"
-        );
       }
     };
 

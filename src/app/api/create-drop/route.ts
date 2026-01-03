@@ -79,7 +79,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         JSON.stringify(dropContent)
       );
 
-      // Persist file URLs separately with a slight buffer for cleanup jobs.
       if (Array.isArray(files) && files.length > 0) {
         const fileUrls = files
           .map((file: StoredFileItem) => file.url)
@@ -114,7 +113,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       { status: 200 }
     );
   } catch (error) {
-    console.log("Error in create-drop route:", error);
     return NextResponse.json(
       {
         success: false,

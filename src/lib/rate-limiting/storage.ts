@@ -54,12 +54,8 @@ export async function blockIdentifier(
       { blockedUntil, reason, timestamp: Date.now() },
       { px: RATE_LIMIT_CONFIG.blockDurationMs }
     );
-
-    console.log(
-      `Blocked ${identifier} until ${new Date(blockedUntil).toISOString()}`
-    );
   } catch (error) {
-    console.error("Error blocking identifier:", error);
+    throw error;
   }
 }
 

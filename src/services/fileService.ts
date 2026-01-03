@@ -15,8 +15,6 @@ async function uploadToProvider(
   provider: StorageProvider
 ): Promise<string> {
   try {
-    console.log(`Uploading file ${file.id} to provider ${provider.name}`);
-
     const s3Client = s3Clients.get(provider.name);
     if (!s3Client) {
       throw new Error(`S3 client not found for provider: ${provider.name}`);
@@ -29,7 +27,6 @@ async function uploadToProvider(
 
     let contentType = "application/octet-stream";
 
-    // Check if content is a data URI for content type detection
     if (typeof file.content === "string" && file.content.startsWith("data:")) {
       const match = file.content.match(/^data:([^;]+);base64,/);
       if (match && match[1]) {
@@ -41,13 +38,6 @@ async function uploadToProvider(
       contentType = mimeTypes.lookup(file.name) || "application/octet-stream";
     }
 
-    console.log(`File ${file.id} upload info:`, {
-      contentType: typeof file.content,
-      originalName: file.name,
-      size: file.size,
-    });
-
-    // Use file content as-is (expected to be already encrypted from dropService)
     const fileToUpload = {
       ...file,
     };
@@ -80,47 +70,28 @@ async function uploadToProvider(
   }
 }
 
-/**
- * Processes and uploads files to storage
- */
 export async function uploadFile(files: FileItem[]): Promise<string[]> {
-  console.log(`Starting upload process for ${files.length} files`);
-
   const uploadPromises = files.map(async (file) => {
-    console.log(`Processing upload for file: ${file.id}`);
 
     for (const provider of getStorageProviders()) {
       try {
-        console.log(`Checking quota for provider: ${provider.name}`);
         const quota = await checkFileStorageQuota(provider);
-        console.log(`Provider ${provider.name} quota: ${quota}%`);
 
         if (quota >= 95) {
-          console.log(`Provider ${provider.name} quota too high, skipping`);
           continue;
         } else {
-          console.log(`Attempting upload to provider: ${provider.name}`);
           const url = await uploadToProvider(file, provider);
-          console.log(
-            `Successfully uploaded file ${file.id} to ${provider.name}: ${url}`
-          );
           return url;
         }
-      } catch (error) {
-        console.error(
-          `Upload failed for file ${file.id} on provider ${provider.name}:`,
-          error
-        );
+      } catch {
         // continue to next provider
       }
     }
     // no provider available or all uploads failed
-    console.error(`All upload attempts failed for file: ${file.id}`);
     return "";
   });
 
   const urls = await Promise.all(uploadPromises);
-  console.log(`Upload process complete. Results:`, urls);
   return urls;
 }
 
@@ -139,8 +110,7 @@ export async function deleteFiles(fileUrls: string[]): Promise<{
       } else {
         failed.push(url);
       }
-    } catch (error) {
-      console.error("File delete failed", { url, error });
+    } catch {
       failed.push(url);
     }
   });
