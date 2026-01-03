@@ -3,6 +3,9 @@ import { upstashRedis } from "@/lib/redis";
 import env from "@/lib/env";
 import { deleteFiles } from "@/services/fileService";
 
+// Vercel: Allow up to 5 minutes execution time for cleanup
+export const maxDuration = 300;
+
 /**
  * Cleanup endpoint to recycle expired identifiers
  * This is called periodically via cron job (every 5 minutes)
@@ -10,8 +13,11 @@ import { deleteFiles } from "@/services/fileService";
 export async function POST() {
   try {
     const startTime = Date.now();
+    const MAX_EXECUTION_TIME = 240000; // 4 minutes (leave 1 min buffer)
     const recycledPending: string[] = [];
     const recycledUsed: string[] = [];
+    const filesDeleted: string[] = [];
+    let processedCount = 0;
 
     const availableKeys = await upstashRedis.smembers("available_keys");
     const availableSet = new Set(availableKeys);
@@ -20,44 +26,59 @@ export async function POST() {
       .map((k) => k.trim())
       .filter((k) => k.length > 0);
 
-    for (const key of allKeys) {
-      const dropKey = `${env.DROP}:${key}`;
-      const dropFilesKey = `drop-files:${key}`;
+    console.log(`[CLEANUP] Starting cleanup for ${allKeys.length} keys`);
 
-      const dropExists = await upstashRedis.exists(dropKey);
-      const dropFiles = await upstashRedis.get(dropFilesKey);
-
-      if (!dropExists && dropFiles) {
-        try {
-          const parsedFiles = Array.isArray(dropFiles)
-            ? dropFiles
-            : (JSON.parse(dropFiles as string) as unknown);
-
-          if (Array.isArray(parsedFiles) && parsedFiles.length > 0) {
-            const fileUrls = parsedFiles.filter(Boolean);
-            if (fileUrls.length > 0) {
-              await deleteFiles(fileUrls);
-              await upstashRedis.del(dropFilesKey);
-            }
-          }
-        } catch (error) {
-          throw error;
-        }
+    const BATCH_SIZE = 50;
+    for (let i = 0; i < allKeys.length; i += BATCH_SIZE) {
+      if (Date.now() - startTime > MAX_EXECUTION_TIME) {
+        break;
       }
 
-      if (!availableSet.has(key)) {
-        const isPending = await upstashRedis.exists(`pending:${key}`);
-        const isUsed = await upstashRedis.exists(`used:${key}`);
+      const batch = allKeys.slice(i, i + BATCH_SIZE);
 
-        if (!isPending && !isUsed) {
+      const batchOperations = batch.map(async (key) => {
+        const dropKey = `${env.DROP}:${key}`;
+        const dropFilesKey = `drop-files:${key}`;
+
+        const [dropExists, dropFiles, isPending, isUsed] = await Promise.all([
+          upstashRedis.exists(dropKey),
+          upstashRedis.get(dropFilesKey),
+          availableSet.has(key)
+            ? Promise.resolve(1)
+            : upstashRedis.exists(`pending:${key}`),
+          availableSet.has(key)
+            ? Promise.resolve(0)
+            : upstashRedis.exists(`used:${key}`),
+        ]);
+
+        if (!dropExists && dropFiles) {
+          try {
+            const parsedFiles = Array.isArray(dropFiles)
+              ? dropFiles
+              : (JSON.parse(dropFiles as string) as unknown);
+
+            if (Array.isArray(parsedFiles) && parsedFiles.length > 0) {
+              const fileUrls = parsedFiles.filter(Boolean);
+              if (fileUrls.length > 0) {
+                const result = await deleteFiles(fileUrls);
+                filesDeleted.push(...result.deleted);
+                await upstashRedis.del(dropFilesKey);
+              }
+            }
+          } catch (error) {
+            throw error;
+          }
+        }
+
+        if (!availableSet.has(key) && !isPending && !isUsed) {
           await upstashRedis.sadd("available_keys", key);
           recycledPending.push(key);
-        } else if (isPending) {
-          console.log("Key still pending, skipping");
-        } else if (isUsed) {
-          console.log("Key still in use (within grace period), skipping");
         }
-      }
+
+        processedCount++;
+      });
+
+      await Promise.all(batchOperations);
     }
 
     const duration = Date.now() - startTime;
@@ -67,6 +88,9 @@ export async function POST() {
       success: true,
       recycledCount: totalRecycled,
       recycledKeys: recycledPending,
+      filesDeletedCount: filesDeleted.length,
+      processedKeys: processedCount,
+      totalKeys: allKeys.length,
       duration,
       timestamp: new Date().toISOString(),
     });

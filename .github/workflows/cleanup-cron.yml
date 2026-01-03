@@ -3,36 +3,68 @@ name: Cleanup Cron Job
 on:
   schedule:
     # Run every 5 minutes
-    - cron: '*/5 * * * *'
-  workflow_dispatch: # Allows manual triggering from GitHub UI
+    - cron: "*/5 * * * *"
+  workflow_dispatch: 
 
 jobs:
   cleanup:
     runs-on: ubuntu-latest
-    
+    timeout-minutes: 6 
+
     steps:
       - name: Call Cleanup Endpoint
+        continue-on-error: false
+        timeout-minutes: 5
         run: |
-          response=$(curl -X POST https://clipposaurus.com/api/drop-key/cleanup \
-            -H "Content-Type: application/json" \
-            -w "\n%{http_code}" \
-            -s \
-            --max-time 60)
-          
-          http_code=$(echo "$response" | tail -n1)
-          body=$(echo "$response" | sed '$d')
-          
-          echo "HTTP Status Code: $http_code"
-          echo "Response Body: $body"
-          
-          if [ "$http_code" -ne 200 ]; then
-            echo "Error: Cleanup endpoint returned status code $http_code"
+          echo "Starting cleanup request at $(date)"
+
+          # Retry logic: 3 attempts with increasing timeouts
+          max_attempts=3
+          attempt=1
+          success=false
+
+          while [ $attempt -le $max_attempts ] && [ "$success" = false ]; do
+            echo "Attempt $attempt of $max_attempts"
+            
+            # Calculate timeout (2min, 3min, 4min)
+            timeout=$((60 + 60 * $attempt))
+            
+            response=$(curl -X POST https://clipposaurus.com/api/drop-key/cleanup \
+              -H "Content-Type: application/json" \
+              -w "\n%{http_code}" \
+              -s \
+              --max-time $timeout \
+              --connect-timeout 10 \
+              --retry 0) || curl_exit_code=$?
+            
+            http_code=$(echo "$response" | tail -n1)
+            body=$(echo "$response" | sed '$d')
+            
+            echo "HTTP Status Code: $http_code"
+            echo "Response Body: $body"
+            
+            if [ "$http_code" = "200" ]; then
+              echo "✓ Cleanup completed successfully on attempt $attempt"
+              success=true
+            else
+              echo "✗ Attempt $attempt failed with status code: $http_code"
+              if [ $attempt -lt $max_attempts ]; then
+                echo "Waiting 10 seconds before retry..."
+                sleep 10
+              fi
+            fi
+            
+            attempt=$((attempt + 1))
+          done
+
+          if [ "$success" = false ]; then
+            echo "ERROR: All $max_attempts attempts failed"
             exit 1
           fi
-          
-          echo "Cleanup completed successfully"
 
       - name: Notify on Failure
         if: failure()
         run: |
-          echo "Cleanup job failed. Check the logs above for details."
+          echo "Cleanup job failed after all retry attempts"
+          echo "Check the logs above for details"
+          echo "Time: $(date)"
