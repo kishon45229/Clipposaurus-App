@@ -1,0 +1,38 @@
+name: Cleanup Cron Job
+
+on:
+  schedule:
+    # Run every 5 minutes
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # Allows manual triggering from GitHub UI
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Call Cleanup Endpoint
+        run: |
+          response=$(curl -X POST https://clipposaurus.com/api/drop-key/cleanup \
+            -H "Content-Type: application/json" \
+            -w "\n%{http_code}" \
+            -s \
+            --max-time 60)
+          
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | sed '$d')
+          
+          echo "HTTP Status Code: $http_code"
+          echo "Response Body: $body"
+          
+          if [ "$http_code" -ne 200 ]; then
+            echo "Error: Cleanup endpoint returned status code $http_code"
+            exit 1
+          fi
+          
+          echo "Cleanup completed successfully"
+
+      - name: Notify on Failure
+        if: failure()
+        run: |
+          echo "Cleanup job failed. Check the logs above for details."
