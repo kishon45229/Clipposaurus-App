@@ -238,7 +238,7 @@ export function useTermsOfServiceComponent() {
 
     React.useEffect(() => {
         if (!cachedData.TermsOfServiceComponent && !loadingStates.TermsOfServiceComponent && !errorStates.TermsOfServiceComponent) {
-            getComponentData('TermsOfServiceComponent').catch(console.error);
+            getComponentData("TermsOfServiceComponent").catch(console.error);
         }
     }, [cachedData.TermsOfServiceComponent, loadingStates.TermsOfServiceComponent, errorStates.TermsOfServiceComponent, getComponentData]);
 

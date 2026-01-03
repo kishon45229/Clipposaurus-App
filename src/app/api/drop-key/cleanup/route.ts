@@ -26,8 +26,6 @@ export async function POST() {
       .map((k) => k.trim())
       .filter((k) => k.length > 0);
 
-    console.log(`[CLEANUP] Starting cleanup for ${allKeys.length} keys`);
-
     const BATCH_SIZE = 50;
     for (let i = 0; i < allKeys.length; i += BATCH_SIZE) {
       if (Date.now() - startTime > MAX_EXECUTION_TIME) {

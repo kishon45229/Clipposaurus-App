@@ -194,7 +194,7 @@ export const PrivacyInfoCardComponentSchema = z.object({
 
 // Terms of Service
 const AccordionItemSchema = z.object({
-  id: z.number(),
+  id: z.string(),
   title: z.string(),
   description: z.string(),
 });
