@@ -12,9 +12,9 @@ interface SharingGuidelinesSectionProps {
 }
 
 export const SharingGuidelinesSection = React.memo<SharingGuidelinesSectionProps>(({ section }) => {
-    if (!section.data || !(Array.isArray(section.data))) return null;
+    if (!section.data || !(typeof section.data === "object")) return null;
 
-const { recommended, avoid } = (section.data as unknown) as SharingGuidelinesData;
+    const { recommended, avoid } = (section.data as unknown) as SharingGuidelinesData;
     return (
         <section id={section.id} className="space-y-6">
             {/* Guidelines Table */}

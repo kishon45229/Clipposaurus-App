@@ -78,8 +78,7 @@ const DocsPageHeaderSchema = z.object({
 const DocsPageSectionSchema = z.object({
   id: z.string(),
   title: z.string(),
-  type: z.string(),
-  description: z.string(),
+  description: z.string().optional(),
   data: z.any(),
 });
 
@@ -90,7 +89,6 @@ const DocsPageFooterSchema = z.object({
 
 const DocsPageSchema = z.object({
   id: z.string(),
-  title: z.string(),
   header: DocsPageHeaderSchema,
   sections: z.array(DocsPageSectionSchema),
   footer: DocsPageFooterSchema,

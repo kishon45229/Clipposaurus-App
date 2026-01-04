@@ -63,7 +63,7 @@ export const DocsContent = () => {
                     <SharingCode />
                 ) : currentPage.id === "sharing-files" ? (
                     <SharingFiles />
-                ) : currentPage.id === "accessing-content" ? (
+                ) : currentPage.id === "access-drop" ? (
                     <AccessingContent />
                 ) : null}
             </div>

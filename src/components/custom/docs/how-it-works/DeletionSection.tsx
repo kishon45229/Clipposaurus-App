@@ -10,7 +10,7 @@ interface DeletionModuleProps {
 }
 
 export const DeletionSection = React.memo<DeletionModuleProps>(({ section }) => {
-    if (!section.data || !Array.isArray(section.data)) return null;
+    if (!section.data || !(typeof section.data === "object")) return null;
 
     const { items } = (section.data as unknown) as DeletionModuleData;
 

@@ -25,6 +25,7 @@ export async function getComponentData<T = unknown>(
     }
 
     if (!validateComponentData(contentData, componentId)) {
+      console.log(`Data validation failed for component: ${componentId}`, contentData);
       throw new Error(`Data validation failed for component: ${componentId}`);
     }
 

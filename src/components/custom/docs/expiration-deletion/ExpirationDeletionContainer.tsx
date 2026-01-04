@@ -7,7 +7,6 @@ import { SectionHeadline } from "@/components/custom/docs/SectionHeadline";
 import { ExpirationDeletionOptionsSection } from "@/components/custom/docs/expiration-deletion/ExpirationDeletionOptionsSection";
 import { TTLEnforcementSection } from "@/components/custom/docs/expiration-deletion/TTLEnforcementSection";
 import { NoBackupsSection } from "@/components/custom/docs/expiration-deletion/NoBackupsSection";
-import { IrreversibleSection } from "@/components/custom/docs/expiration-deletion/IrreversibleSection";
 import { CTASection } from "@/components/custom/docs/CTASection";
 import { PageHelpful } from "@/components/custom/docs/PageHelpful";
 
@@ -41,12 +40,6 @@ export const ExpirationDeletionContainer = React.memo(() => {
                             <div key={section.id} className="space-y-8">
                                 <SectionHeadline section={section as DocsPageSection} />
                                 <NoBackupsSection section={section as DocsPageSection} />
-                            </div>);
-                    case "irreversible":
-                        return (
-                            <div key={section.id} className="space-y-8">
-                                <SectionHeadline section={section as DocsPageSection} />
-                                <IrreversibleSection section={section as DocsPageSection} />
                             </div>);
                     case "cta":
                         return (

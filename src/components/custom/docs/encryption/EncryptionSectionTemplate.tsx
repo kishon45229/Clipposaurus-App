@@ -42,7 +42,11 @@ export const EncryptionSectionTemplate = React.memo<EncryptionSectionTemplatePro
                 ))}
             </div>
 
-            <NumberedSteps title={howWeUseIt.title} items={howWeUseIt.items} />
+
+            <div className="space-y-6">
+                <SectionTitle title={howWeUseIt.title} />
+                <NumberedSteps items={howWeUseIt.items} />
+            </div>
 
             <div className="space-y-6">
                 <SectionTitle title={whyItMatters.title} />
@@ -65,10 +69,7 @@ export const EncryptionSectionTemplate = React.memo<EncryptionSectionTemplatePro
                             )}
                         </div>
                     ))}
-
                 </div>
-
-
             </div>
         </section>
     );

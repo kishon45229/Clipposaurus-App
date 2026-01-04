@@ -25,8 +25,7 @@ export interface DocsPageHeader {
 export interface DocsPageSection {
   id: string;
   title: string;
-  type: string;
-  description: string;
+  description?: string;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
 }
@@ -38,7 +37,6 @@ export interface DocsPageFooter {
 
 export interface DocsPage {
   id: string;
-  title: string;
   header: DocsPageHeader;
   sections: DocsPageSection[];
   footer: DocsPageFooter;

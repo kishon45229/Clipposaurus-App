@@ -11,7 +11,7 @@ interface AccessModuleProps {
 }
 
 export const AccessSection = React.memo<AccessModuleProps>(({ section }) => {
-    if (!section.data || !Array.isArray(section.data)) return null;
+    if (!section.data || !(typeof section.data === "object")) return null;
 
     const { items } = (section.data as unknown) as AccessModuleData;
 

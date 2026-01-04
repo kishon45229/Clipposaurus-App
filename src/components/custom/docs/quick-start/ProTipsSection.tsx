@@ -11,7 +11,7 @@ interface ProTipsSectionProps {
 }
 
 export const ProTipsSection = React.memo<ProTipsSectionProps>(({ section }) => {
-    if (section.type !== "tips" || !Array.isArray(section.data)) return null;
+    if (!section.data || !Array.isArray(section.data)) return null;
 
     const categories = section.data as ProTipsSectionData[];
 

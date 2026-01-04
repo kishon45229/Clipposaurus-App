@@ -25,7 +25,7 @@ export const IntroductionContainer = React.memo(() => {
   return (
     <div className="space-y-16">
       {sections.map((section) => {
-        switch (section.type) {
+        switch (section.id) {
           case "comparison":
             return (
               <div key={section.id} className="space-y-8">
@@ -51,7 +51,7 @@ export const IntroductionContainer = React.memo(() => {
                 <PrivacySection section={section as DocsPageSection} />
               </div>
             )
-          case "platform":
+          case "cross-platform":
             return (
               <div key={section.id} className="space-y-8">
                 <SectionHeadline section={section as DocsPageSection} />

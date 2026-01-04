@@ -6,7 +6,7 @@ export function validateComponentData(data: unknown, componentId: string): boole
     if (!schema) return false;
 
     return schema.parse(data) ? true : false;
-  } catch (error: unknown) {
+  } catch (error) {
     throw error;
   }
 }

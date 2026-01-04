@@ -21,22 +21,22 @@ export const QuickStartContainer = React.memo(() => {
     return (
         <div className="space-y-16">
             {sections.map((section) => {
-                switch (section.type) {
-                    case "sharing":
+                switch (section.id) {
+                    case "sharing-content":
                         return (
                             <div key={section.id} className="space-y-8">
                                 <SectionHeadline section={section as DocsPageSection} />
                                 <StepsSection section={section as DocsPageSection} />
                             </div>
                         )
-                    case "accessing":
+                    case "accessing-content":
                         return (
                             <div key={section.id} className="space-y-8">
                                 <SectionHeadline section={section as DocsPageSection} />
                                 <StepsSection section={section as DocsPageSection} />
                             </div>
                         )
-                    case "tips":
+                    case "pro-tips":
                         return (
                             <div key={section.id} className="space-y-8">
                                 <SectionHeadline section={section as DocsPageSection} />

@@ -13,6 +13,13 @@ interface Step {
   title: string;
 }
 
+interface Heading {
+  id: string;
+  title: string;
+  level: number;
+  offset: number;
+}
+
 export interface UseDocsManagerReturn {
   // Data
   data: DocsComponent | undefined;
@@ -33,7 +40,6 @@ export interface UseDocsManagerReturn {
   activeId: string;
 
   // Feedback
-  feedbackCounts: { likes: number; dislikes: number };
   isSubmittingFeedback: boolean;
 
   // Language styles for SupportedLanguagesSection
@@ -54,7 +60,6 @@ export interface UseDocsManagerReturn {
 
   // Feedback functions
   submitFeedback: (type: "like" | "dislike") => Promise<void>;
-  refreshFeedbackCounts: () => Promise<void>;
 
   // Helper functions
   getPageById: (pageId: string) => DocsPage | undefined;
@@ -68,16 +73,12 @@ export const useDocsManager = (): UseDocsManagerReturn => {
 
   const { data, isLoading, error } = useDocsComponent();
 
-  // Set default page or from URL
   const defaultPageId = pageFromUrl || data?.defaultPage || "introduction";
   const [currentPageId, setCurrentPageId] = React.useState(defaultPageId);
-
-  // Feedback state
-  const [feedbackCounts, setFeedbackCounts] = React.useState({
-    likes: 0,
-    dislikes: 0,
-  });
   const [isSubmittingFeedback, setIsSubmittingFeedback] = React.useState(false);
+  const [headings, setHeadings] = React.useState<Heading[]>([]);
+
+  const [activeId, setActiveId] = React.useState<string>("");
 
   // Update currentPageId when URL changes or data loads
   React.useEffect(() => {
@@ -144,20 +145,30 @@ export const useDocsManager = (): UseDocsManagerReturn => {
   }, [data?.pages]);
 
   // Language styles for SupportedLanguagesSection
-  const languageStyles = React.useMemo(() => {
+  const [languageStyles, setLanguageStyles] = React.useState<
+    Array<{
+      lang: string;
+      fontSize: number;
+      opacity: number;
+      emerald: boolean;
+    }>
+  >([]);
+
+  React.useEffect(() => {
     // Find the supported languages section in the current page
     const supportedLanguagesSection = currentPage?.sections?.find(
       (section: DocsPageSection) => section.id === "supported-languages"
     );
 
     if (!supportedLanguagesSection?.data?.languages) {
-      return [];
+      setLanguageStyles([]);
+      return;
     }
 
     const languages = supportedLanguagesSection.data.languages as string[];
     const shuffled = [...languages].sort(() => Math.random() - 0.5);
 
-    return shuffled.map((lang: string) => ({
+    const styles = shuffled.map((lang: string) => ({
       lang,
       fontSize:
         Math.random() < 0.15
@@ -168,19 +179,9 @@ export const useDocsManager = (): UseDocsManagerReturn => {
       opacity: Math.random() * (1 - 0.65) + 0.65,
       emerald: Math.random() > 0.7,
     }));
+
+    setLanguageStyles(styles);
   }, [currentPage]);
-
-  // Table of contents state
-  const [headings, setHeadings] = React.useState<
-    {
-      id: string;
-      title: string;
-      level: number;
-      offset: number;
-    }[]
-  >([]);
-
-  const [activeId, setActiveId] = React.useState<string>("");
 
   // Extract headings from currentPage sections
   React.useEffect(() => {
@@ -193,12 +194,10 @@ export const useDocsManager = (): UseDocsManagerReturn => {
 
     currentPage.sections.forEach((section: DocsPageSection, index: number) => {
       if (section.title) {
-        const id =
-          section.id ||
-          section.title
-            .toLowerCase()
-            .replace(/[^a-z0-9\s]/g, "")
-            .replace(/\s+/g, "-");
+        const id = section.id
+          .toLowerCase()
+          .replace(/[^a-z0-9\s]/g, "")
+          .replace(/\s+/g, "-");
 
         extracted.push({
           id,
@@ -206,30 +205,30 @@ export const useDocsManager = (): UseDocsManagerReturn => {
           level: 2,
           offset: index * 1000,
         });
+      }
 
-        // Quick-start steps
-        if (
-          currentPage.id === "quick-start" &&
-          section.data &&
-          Array.isArray(section.data)
-        ) {
-          section.data.forEach((step: Step, stepIndex: number) => {
-            if (step.title) {
-              const stepId = step.title
-                .toLowerCase()
-                .replace(/^step \d+:\s*/i, "")
-                .replace(/[^a-z0-9\s]/g, "")
-                .replace(/\s+/g, "-");
+      // Quick-start steps - extract step headings if section has step-based data
+      if (
+        currentPage.id === "quick-start" &&
+        section.data &&
+        Array.isArray(section.data)
+      ) {
+        section.data.forEach((step: Step, stepIndex: number) => {
+          if (step.title) {
+            const stepId = step.title
+              .toLowerCase()
+              .replace(/^step \d+:\s*/i, "")
+              .replace(/[^a-z0-9\s]/g, "")
+              .replace(/\s+/g, "-");
 
-              extracted.push({
-                id: stepId,
-                title: step.title.replace(/^Step \d+:\s*/i, ""),
-                level: 3,
-                offset: index * 1000 + stepIndex * 100,
-              });
-            }
-          });
-        }
+            extracted.push({
+              id: stepId,
+              title: step.title.replace(/^Step \d+:\s*/i, ""),
+              level: 3,
+              offset: index * 1000 + stepIndex * 100,
+            });
+          }
+        });
       }
     });
 
@@ -283,24 +282,6 @@ export const useDocsManager = (): UseDocsManagerReturn => {
     }
   }, []);
 
-  // Feedback functions
-  const refreshFeedbackCounts = React.useCallback(async () => {
-    if (!currentPageId) return;
-
-    try {
-      const response = await fetch(
-        `/api/docs-feedback?pageId=${currentPageId}`
-      );
-      const result = await response.json();
-
-      if (result.success) {
-        setFeedbackCounts(result.counts);
-      }
-    } catch (error) {
-      console.error("Error fetching feedback counts:", error);
-    }
-  }, [currentPageId]);
-
   const submitFeedback = React.useCallback(
     async (type: "like" | "dislike") => {
       if (!currentPageId || isSubmittingFeedback) return;
@@ -318,12 +299,6 @@ export const useDocsManager = (): UseDocsManagerReturn => {
             type,
           }),
         });
-
-        const result = await response.json();
-
-        if (result.success) {
-          setFeedbackCounts(result.counts);
-        }
       } catch (error) {
         console.error("Error submitting feedback:", error);
       } finally {
@@ -332,13 +307,6 @@ export const useDocsManager = (): UseDocsManagerReturn => {
     },
     [currentPageId, isSubmittingFeedback]
   );
-
-  // Load feedback counts when page changes
-  React.useEffect(() => {
-    if (currentPageId) {
-      refreshFeedbackCounts();
-    }
-  }, [currentPageId, refreshFeedbackCounts]);
 
   return {
     // Data
@@ -355,7 +323,6 @@ export const useDocsManager = (): UseDocsManagerReturn => {
     activeId,
 
     // Feedback
-    feedbackCounts,
     isSubmittingFeedback,
 
     // Language styles
@@ -371,7 +338,6 @@ export const useDocsManager = (): UseDocsManagerReturn => {
 
     // Feedback functions
     submitFeedback,
-    refreshFeedbackCounts,
 
     // Helper functions
     getPageById,

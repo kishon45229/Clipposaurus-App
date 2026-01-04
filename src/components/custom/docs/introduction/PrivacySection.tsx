@@ -20,8 +20,8 @@ export const PrivacySection = React.memo<PrivacySectionProps>(({ section }) => {
   return (
     <section id={section.id}>
       <div className="grid md:grid-cols-2 gap-8">
-        {privacyData.map((panel, panelIdx) => (
-          <div key={panelIdx} className="space-y-3 border-l border-dashed border-zinc-300 dark:border-zinc-700 pl-4">
+        {privacyData.map((panel, index) => (
+          <div key={index} className="space-y-3 border-l border-dashed border-zinc-300 dark:border-zinc-700 pl-4">
             <div className="flex items-center gap-2">
               <span
                 className={`inline-flex h-5 w-5 items-center justify-center text-xs ${panel.icon === "x"
@@ -31,7 +31,7 @@ export const PrivacySection = React.memo<PrivacySectionProps>(({ section }) => {
               >
                 {panel.icon === "x" ? <X className="h-4 w-4" /> : <Check className="h-4 w-4" />}
               </span>
-              <div className="text-base md:text-lg font-semibold text-zinc-900 dark:text-zinc-100">
+              <div className={`text-base md:text-lg font-semibold ${index === 1 ? "text-emerald-600 dark:text-emerald-500" : "text-zinc-900 dark:text-zinc-100"}`}>
                 {panel.title}
               </div>
             </div>

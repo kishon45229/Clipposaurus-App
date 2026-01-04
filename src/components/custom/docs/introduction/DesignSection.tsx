@@ -41,7 +41,7 @@ export const DesignSection = React.memo<DesignSectionProps>(({ section }) => {
       <div className="relative">
         {/* Desktop Flow */}
         <div className="hidden md:block">
-          <div className="flex items-start justify-around gap-4 p-6 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100/50 dark:bg-zinc-900/30">
+          <div className="flex items-start justify-around gap-4 p-6">
             {stages.map((stage, index) => {
               const IconComponent = getIcon(stage.icon);
 

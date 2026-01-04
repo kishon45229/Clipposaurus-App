@@ -20,7 +20,7 @@ export const ContentTypesSection = React.memo<ContentTypesSectionProps>(({ secti
       <div className="grid md:grid-cols-3 gap-6">
         {contentTypes.map((type, index) => (
           <div key={index}>
-            <div className="text-lg font-semibold text-zinc-900 dark:text-zinc-200 mb-2">
+            <div className="text-lg font-semibold text-emerald-600 dark:text-emerald-500 mb-2">
               {type.title}
             </div>
 

@@ -14,7 +14,7 @@ interface NoBackupsSectionProps {
 }
 
 export const NoBackupsSection = React.memo<NoBackupsSectionProps>(({ section }) => {
-    if (!section.data || !(Array.isArray(section.data))) return null;
+    if (!section.data || !(typeof section.data === "object")) return null;
 
     const blocks = (section.data as unknown) as NoBackupsSectionData;
 

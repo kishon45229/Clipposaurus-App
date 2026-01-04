@@ -9,7 +9,6 @@ import { useScrollSpy } from "@/hooks/useScrollSpy";
 export const DocsRightSidebar = () => {
     const { currentPage, isLoading, error, headings, scrollToHeading } = useDocs();
 
-    // Create heading IDs for scroll spy
     const headingIds = React.useMemo(() =>
         headings?.map(heading => heading.id) || [],
         [headings]
@@ -17,19 +16,13 @@ export const DocsRightSidebar = () => {
 
     const activeSection = useScrollSpy(headingIds, 150, "docs-content-scroll");
 
-    if (isLoading || error || !currentPage) {
-        return <DocsRightSidebarSkeleton />;
-    }
-
-    if (!headings || headings.length === 0) {
-        return null;
-    }
+    if (isLoading || error || !currentPage) return <DocsRightSidebarSkeleton />;
+    if (!headings || headings.length === 0) return null;
 
     return (
         <>
             {/* Right Sidebar for Desktop */}
             <div className="hidden w-64 shrink-0 h-full border-l border-border bg-background/95 backdrop-blur lg:flex lg:flex-col">
-                {/* Header */}
                 <div className="flex items-center justify-between p-4 border-b border-border shrink-0">
                     <h3 className="font-semibold text-sm text-foreground">
                         On This Page

@@ -16,7 +16,7 @@ interface KeySectionTemplateProps {
 }
 
 export const KeySectionTemplate = React.memo<KeySectionTemplateProps>(({ section, activeSection }) => {
-    if (!section.data || !Array.isArray(section.data) || !activeSection) return null;
+    if (!section.data || !(typeof section.data === "object") || !activeSection) return null;
 
     const items = (section.data as unknown) as KeySectionData;
 

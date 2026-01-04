@@ -70,9 +70,9 @@
           "href": "/docs/sharing-files"
         },
         {
-          "id": "accessing-content",
-          "title": "Accessing Content",
-          "href": "/docs/accessing-content"
+          "id": "access-drop",
+          "title": "Access Drop",
+          "href": "/docs/access-drop"
         }
       ]
     }
@@ -82,12 +82,11 @@
       "id": "introduction",
       "header": {
         "title": "Welcome to Clipposaurus",
-        "description": "Clipposaurus is your instant, zero-signup, open-source digital clipboard with true end-to-end encryption. Share text, code, and files (up to 50MB total) across any device in seconds by creating a Drop. Your Drop lives for up to 1 hour — then it's automatically and permanently erased. We can't see your content, track you, or recover anything later. Privacy isn’t a feature here — it’s the foundation."
+        "description": "Clipposaurus is your instant, zero-signup, open-source digital clipboard with true end-to-end encryption. Share text, code, and files (up to 50MB total) across any device in seconds by creating a Drop. Your Drop lives for up to 1 hour — then it's automatically and permanently erased. We can't see your content, track you, or recover anything later. Privacy isn't a feature here — it's the foundation."
       },
       "sections": [
         {
           "id": "comparison",
-          "type": "comparison",
           "title": "What Makes Us Different?",
           "description": "Most sharing tools are built around accounts and data collection. Clipposaurus flips the entire model: your privacy is protected by design, not by policy. We engineered a system where we never see your content, can't track you, and automatically delete everything.",
           "data": {
@@ -112,8 +111,7 @@
         {
           "id": "design",
           "title": "Privacy by Design — Not by Promise",
-          "type": "design",
-          "description": "We don’t just promise privacy — our architecture makes it mathematically impossible for us to read your content. Every Drop is encrypted on your device before it ever touches our servers.",
+          "description": "We don't just promise privacy — our architecture makes it mathematically impossible for us to read your content. Every Drop is encrypted on your device before it ever touches our servers.",
           "data": [
             {
               "title": "Generate Your Secret Key",
@@ -138,19 +136,18 @@
             {
               "title": "Auto-Delete Everything",
               "icon": "Trash2",
-              "description": "After 1 hour, your encrypted Drop is permanently erased."
+              "description": "Based on your retention choice your Drop is permanently erased."
             }
           ]
         },
         {
           "id": "content-types",
           "title": "What Can You Share?",
-          "type": "content-types",
-          "description": "Share anything from simple text notes to complex code snippets or large files. Clipposaurus is built to handle your everyday workflow securely and instantly.",
+          "description": "Share anything from simple notes to complex code snippets or files. Clipposaurus is built to handle your everyday workflow securely and instantly.",
           "data": [
             {
               "title": "Text",
-              "items": ["No character limit", "Formatting preserved"]
+              "items": ["Formatting preserved"]
             },
             {
               "title": "Code",
@@ -172,9 +169,8 @@
         },
         {
           "id": "privacy",
-          "title": "We Can’t Spy — Even If We Tried",
-          "type": "privacy",
-          "description": "Many platforms collect your data quietly. Clipposaurus collects nothing — not your identity, not your files, not your usage history. We designed the platform so we’re blind by default.",
+          "title": "We Can't Spy — Even If We Tried",
+          "description": "Many platforms collect your data quietly. Clipposaurus collects nothing — not your identity, not your files, not your usage history. We designed the platform so we're blind by default.",
           "data": [
             {
               "title": "What We DON'T Collect",
@@ -193,7 +189,7 @@
               "icon": "check",
               "items": [
                 "GDPR/CCPA compliant by architecture",
-                "We can’t sell your data — we don’t have it",
+                "We can't sell your data — we don't have it",
                 "No ad tracking or analytics",
                 "No government requests possible (nothing to provide)"
               ]
@@ -203,7 +199,6 @@
         {
           "id": "cross-platform",
           "title": "Works Everywhere — Instantly",
-          "type": "platform",
           "description": "Clipposaurus is a progressive web app that works on every modern device and browser — no installation, no updates, no friction. Whether you're switching devices or sharing with someone else, everything works the moment you open the site.",
           "data": {
             "Desktop": ["Windows", "macOS", "Linux", "Chromebook"],
@@ -214,8 +209,7 @@
         {
           "id": "use-cases",
           "title": "Who Uses Clipposaurus?",
-          "type": "use-cases",
-          "description": "Clipposaurus is designed for anyone who needs to move information quickly, securely, and without friction. Here’s how different people use it daily:",
+          "description": "Clipposaurus is designed for anyone who needs to move information quickly, securely, and without friction. Here's how different people use it daily:",
           "data": [
             {
               "title": "Students",
@@ -238,7 +232,6 @@
         {
           "id": "cta",
           "title": "Ready to Try?",
-          "type": "cta",
           "data": [
             {
               "text": "Quickstart — Learn the basics in 2 minutes",
@@ -262,7 +255,6 @@
     },
     {
       "id": "quick-start",
-      "title": "Quick Start Guide",
       "header": {
         "title": "Get Started in 2 Minutes",
         "description": "Create a Drop, share securely, and open it on any device — all without signups, installations, or setup."
@@ -271,14 +263,12 @@
         {
           "id": "sharing-content",
           "title": "Create a Drop",
-          "type": "sharing",
-          "description": "Follow these simple steps to securely share text, code, or files using Clipposaurus.",
+          "description": "Follow these simple steps to create a Drop to share text, code, or files using Clipposaurus.",
           "data": [
             {
               "title": "Step 1: Visit Clipposaurus",
               "items": [
-                "Go to **clipposaurus.com** in any modern browser — desktop or mobile. No login, no app download, and nothing to install.",
-                "The site loads instantly as a lightweight progressive web app."
+                "Go to **clipposaurus.com** in any modern browser — desktop or mobile. No login, no app download, and nothing to install."
               ],
               "screenshot": "/docs/screenshots/step1-open-browser.gif"
             },
@@ -286,7 +276,7 @@
               "title": "Step 2: Click “Create Drop”",
               "items": [
                 "Press the **Create Drop** button on the homepage.",
-                "This opens the secure editor where you’ll add your content."
+                "This opens the secure editor where you'll add your content."
               ],
               "screenshot": "/docs/screenshots/step2-create-drop.gif"
             },
@@ -294,7 +284,7 @@
               "title": "Step 3: Add Your Content",
               "items": [
                 "**Text** — type or paste anything. Unlimited characters, formatting preserved.",
-                "**Code** — paste a snippet. Auto-highlighting detects 100+ languages.",
+                "**Code** — paste a snippet. Auto-highlighting detects 20+ languages.",
                 "**Files** — drag & drop or upload any file type (up to 50MB total).",
                 "You can add one type or mix all three in the same Drop."
               ],
@@ -303,9 +293,9 @@
             {
               "title": "Step 4: Set Your Drop Key",
               "items": [
-                "Create your Drop Key by choosing the second word (the secret word).",
-                "Clipposaurus generates the first word automatically (the public locator).",
-                "Together they form a simple, memorable key like **apple-ocean**.",
+                "Create your Drop Key by choosing the third word (the user secret). Use any letters, numbers, or symbols (6-8 characters).",
+                "Clipposaurus generates the first and second words automatically (the identifier and system secret).",
+                "Together they form a simple, memorable key like **apple-beer-ocean**.",
                 "Only the full key unlocks your Drop — we never store or see it."
               ],
               "screenshot": "/docs/screenshots/step4-set-key.gif"
@@ -313,10 +303,7 @@
             {
               "title": "Step 5: Choose How Long It Lives",
               "items": [
-                "Pick a retention period:",
-                " • **Delete after first access** (one-time Drop)",
-                " • **30 minutes**",
-                " • **1 hour (max)**",
+                "Pick a retention period: **Delete after first access** (max access time 1 hour), **30 minutes** or **1 hour**.",
                 "Your Drop deletes automatically based on your choice — nothing remains afterward."
               ],
               "screenshot": "/docs/screenshots/step4-retention.gif"
@@ -324,19 +311,18 @@
             {
               "title": "Step 6: Create & Save Your Drop",
               "items": [
-                "Click **Make Drop**.",
+                "Click **Create My Drop**.",
                 "Your content is encrypted locally in your browser before uploading — Clipposaurus never sees it.",
-                "Copy or save your final Drop Key (e.g., **apple-ocean**). It's the ONLY way to access your Drop."
+                "Copy or save your final Drop Key (e.g., **apple-beer-ocean**). It's the ONLY way to access your Drop."
               ],
               "screenshot": "/docs/screenshots/step5-copy-key.gif"
             }
           ]
         },
         {
-          "id": "accessing-content",
+          "id": "access-drop",
           "title": "Open a Drop",
-          "type": "accessing",
-          "description": "Use a Drop Key to securely access shared content.",
+          "description": "Use a Drop Key to securely open a Drop and access shared content.",
           "data": [
             {
               "title": "Step 1: Visit Clipposaurus",
@@ -349,18 +335,18 @@
             {
               "title": "Step 2: Enter the Drop Key",
               "items": [
-                "Type or paste the full Drop Key (e.g., **apple-ocean**).",
-                "The first word finds the encrypted Drop.",
-                "The second word decrypts it — on your device only."
+                "Type the full Drop Key (e.g., **apple-beer-ocean**).",
+                "The first word (identifier) finds the encrypted Drop.",
+                "The full Drop Key decrypts it — on your device only."
               ],
               "screenshot": "/docs/screenshots/step6-enter-key.gif"
             },
             {
-              "title": "Step 3: Access Your Content",
+              "title": "Step 3: Get Access to Your Content",
               "items": [
                 "Your content decrypts instantly in your browser — never on our servers.",
-                "Copy text or code, preview files, or download them in their original quality.",
-                "If the Drop was set to “delete after access,” it will be erased immediately."
+                "Copy text or code, download files.",
+                "If the Drop was set to “delete after access,” it will be erased immediately. Otherwise, it remains available until the retention time expires."
               ],
               "screenshot": "/docs/screenshots/step7-access-content.gif"
             }
@@ -368,16 +354,15 @@
         },
         {
           "id": "pro-tips",
-          "title": "Pro Tips for Smooth Sharing",
-          "type": "tips",
-          "description": "Quick tips to make your sharing experience even better.",
+          "title": "Pro Tips for Smooth Experience",
+          "description": "Quick tips to make your Clipposaurus experience even better.",
           "data": [
             {
               "title": "Security Tips",
               "items": [
-                "Save your Drop Key — it’s the only way to open the Drop.",
-                "Share keys over encrypted messengers or in person.",
-                "Use “delete after access” for sensitive information.",
+                "Save or copy your Drop Key — it's the only way to open the Drop.",
+                "Share Drop Key over encrypted messengers or in person.",
+                "Use “delete after access” retention option for sensitive information.",
                 "Avoid sending Drop Keys through unencrypted email or public chats."
               ]
             },
@@ -387,7 +372,7 @@
                 "Combine text, code, and files in one Drop for convenience.",
                 "Rename files before uploading for better organization.",
                 "Test your Drop Key once if you want peace of mind.",
-                "Remember: Drops expire automatically after your chosen time."
+                "Always remember the Drops expire automatically after your chosen time. Don't forget to access them before then!"
               ]
             },
             {
@@ -396,15 +381,14 @@
                 "If access fails, double-check the Drop Key spelling.",
                 "If the Drop expired, it cannot be recovered — by design.",
                 "Ensure a stable connection for large file uploads.",
-                "If you can't decrypt, verify you're using the full Drop Key."
+                "If you can't decrypt, verify you're using the correct Drop Key."
               ]
             }
           ]
         },
         {
           "id": "cta",
-          "title": "Start sharing in under 2 minutes",
-          "type": "cta",
+          "title": "Create Drop in under 2 minutes",
           "data": [
             {
               "text": "Try Clipposaurus Now",
@@ -432,7 +416,6 @@
     },
     {
       "id": "how-it-works",
-      "title": "How Clipposaurus Works",
       "header": {
         "title": "A Deep Dive into Clipposaurus Architecture",
         "description": "Clipposaurus is built on a true zero-knowledge foundation: your content is encrypted on your device, stored only in encrypted form, and deleted automatically. This page explains the complete high-level flow of how a drop is created, stored, accessed, and destroyed."
@@ -440,7 +423,6 @@
       "sections": [
         {
           "id": "local-first",
-          "type": "local-first",
           "title": "Everything Starts on Your Device",
           "data": [
             {
@@ -459,35 +441,33 @@
         },
         {
           "id": "drop-key",
-          "type": "drop-key",
           "title": "You Create a Drop Key",
-          "description": "A drop key is composed of two human-readable words. One tells Clipposaurus which encrypted blob to retrieve. The other unlocks it locally on your device using encryption — ensuring that only someone with the full drop key can ever decrypt the content.",
+          "description": "A drop key is composed of three human-readable words. The first word is called the identifier and tells Clipposaurus which encrypted blob to retrieve. The complete Drop Key unlocks it locally on your device using — ensuring that only someone with the full drop key can ever decrypt the content.",
           "data": [
             {
               "label": "Identifier",
               "example": "apple",
               "type": "public part",
-              "content": "Randomly generated by your browser. This word (e.g., “apple”) becomes the lookup index for the encrypted blob stored on the server."
+              "content": "Randomly generated by Clipposaurus (e.g., “apple”). This word becomes the lookup index for the encrypted blob stored on the server."
             },
             {
               "label": "System Secret",
               "example": "beer",
               "type": "secret part",
-              "content": "This word is generated automatically similar to the identifier but is never shared with or stored by the server. This word (e.g., beer) adds a critical layer of entropy to the drop key, making it vastly more difficult to guess or brute-force."
+              "content": "This word is generated automatically similar to the identifier but is never shared with or stored by the server (e.g., beer). This word adds a critical layer of entropy to the Drop Key, making it vastly more difficult to guess or brute-force."
             },
             {
               "label": "User Secret",
               "example": "ocean",
               "type": "secret part",
-              "content": "Chosen by you. This word never leaves your device and is never sent to the server. Without it, the encrypted data is impossible to decrypt."
+              "content": "Choose this word yourself. It stays on your device and is never sent to our servers (for example, 'ocean'). Without it, the encrypted content cannot be decrypted. For best security, make it 6-8 characters long. For highly sensitive content, use a mix of letters, special characters, and numbers."
             }
           ]
         },
         {
           "id": "encryption",
-          "type": "encryption",
           "title": "Client-Side Encryption",
-          "description": "Before any upload, Clipposaurus derives a strong cryptographic key from the full drop key and encrypts your content locally using AES-256-GCM.",
+          "description": "Before any creating Drop, Clipposaurus derives a strong cryptographic key from the full drop key and encrypts your content locally using AES-256-GCM.",
           "data": [
             {
               "title": "Key Derivation",
@@ -505,7 +485,6 @@
         },
         {
           "id": "storage",
-          "type": "storage",
           "title": "Storage: Only Ciphertext",
           "description": "The server stores a single object: the encrypted blob, indexed by the public identifier. No part of the drop key, no metadata, and no content details are visible.",
           "data": {
@@ -522,8 +501,8 @@
           "description": "When someone enters the full drop key, Clipposaurus retrieves the encrypted blob and decrypts it directly in the browser. At no point does the server see, process, or reconstruct the decrypted content.",
           "data": {
             "items": [
-              "User enters drop key",
-              "Server locates blob using public identifier",
+              "User enters Drop Key",
+              "Server locates blob using first word (identifier)",
               "Encrypted blob is downloaded",
               "Browser derives key using the secret word",
               "Content is decrypted locally using WebCrypto"
@@ -533,7 +512,6 @@
         {
           "id": "deletion",
           "title": "Automatic Expiration & Destruction",
-          "type": "deletion",
           "description": "Every drop has a strict retention policy. Once the timer expires—or the drop is accessed one time if configured—the encrypted blob is permanently deleted.",
           "data": {
             "items": [
@@ -546,7 +524,6 @@
         {
           "id": "cta",
           "title": "Ready to Experience Zero-Knowledge Sharing?",
-          "type": "cta",
           "data": [
             {
               "text": "Create Your First Drop",
@@ -568,28 +545,27 @@
     },
     {
       "id": "drop-key-system",
-      "title": "Drop Key System",
       "header": {
         "title": "The Key to Absolute Privacy.",
-        "description": "Clipposaurus now uses a three-word drop key for significantly stronger protection against guessing, brute-forcing, and pattern-based attacks. Each part has a different role and only the complete triplet — identifier, token, and secret — can decrypt your content."
+        "description": "Clipposaurus uses a three-word Drop Key for stronger protection against guessing, brute-forcing, and pattern-based attacks. Each part has a different role and only the complete Drop Key — identifier, system secret, and user secret — can decrypt your content."
       },
       "sections": [
         {
           "id": "identifier",
           "title": "Identifier (1st Word)",
-          "description": "The first word is generated using cryptographically-secure randomness and is the only part of the key visible to the server. It acts solely as a locator for your encrypted drop.",
+          "description": "The first word is generated randomly and is the only part of the key visible to the server. It acts solely as a locator for your encrypted drop.",
           "data": {
             "name": "Identifier",
             "type": "Auto-generated",
             "word": "apple",
             "can": [
-              "Locate your encrypted blob on our servers",
-              "Be stored in plain form without exposing secrets"
+              "Locate your encrypted blob on our servers.",
+              "Be stored in plain form without exposing secrets."
             ],
             "cannot": [
-              "Decrypt or reveal any part of your content",
-              "Expose or hint at the system secret or user secret",
-              "Be used to guess the rest of your drop key"
+              "Decrypt or reveal any part of your content.",
+              "Expose or hint at the system secret or user secret.",
+              "Be used to guess the rest of your drop key."
             ]
           }
         },
@@ -602,50 +578,53 @@
             "type": "Auto-generated",
             "word": "beer",
             "can": [
-              "Increase overall drop key entropy",
+              "Increase overall Drop Key entropy.",
               "Protect against guessing attacks on user secrets"
             ],
             "cannot": [
-              "Store or retrieved by the server",
-              "Be used alone to decrypt content"
+              "Store or retrieved by the server.",
+              "Be used alone to decrypt content."
             ]
           }
         },
         {
           "id": "user-secret",
           "title": "User Secret (3rd Word)",
-          "description": "The third word is chosen entirely by the user and must be 6–8 characters long. This forms the private part of the key known only to the user and device.",
+          "description": "The third word is chosen entirely by the user and must be 6-8 characters long. This forms the private part of the key known only to the user and device.",
           "data": {
             "name": "User Secret",
             "type": "User-chosen",
             "word": "ocean",
             "can": [
-              "Be chosen by yourself for memorability",
-              "Be any combination of letters, numbers, or symbols within 6-8 characters",
-              "Be memorized or stored securely by the user",
-              "Provide the final layer of security for decryption"
+              "Be chosen by yourself for memorability and more randomness.",
+              "Be any combination of letters, numbers, or symbols within 6-8 characters.",
+              "Be memorized or stored securely by the user.",
+              "Provide the final layer of security for decryption."
             ],
-            "cannot": ["Store or retrieved by the server"]
+            "cannot": [
+              "Store or retrieved by the server.",
+              "Be used alone to decrypt content."
+            ]
           }
         },
         {
           "id": "combined-key",
           "title": "The Complete Drop Key",
-          "description": "When the three words are combined with hyphens (example: 'apple-beer-ocean'), they form your complete access key. This triplet is required to derive the encryption key using PBKDF2.",
+          "description": "When the three words are combined with hyphens (example: 'apple-beer-ocean'), they form your complete Drop Key. This triplet is required to derive the encryption key using PBKDF2.",
           "data": {
             "items": [
               "The combined drop key is processed through PBKDF2 on your device to produce a strong 256-bit AES-GCM encryption key. This ensures encryption is done entirely locally and never on our servers.",
-              "Even if an attacker knows the public identifier, the token and user secret dramatically increase entropy, making it practically impossible to brute-force or predict the full key.",
-              "Each word contributes independently to the overall strength: the identifier helps locate the drop, the token adds random cryptographic strength, and the user secret adds personalized entropy.",
+              "Even if an attacker knows the identifier, the system secret and user secret dramatically increase entropy, making it practically impossible to brute-force or predict the full key.",
+              "Each word contributes independently to the overall strength: the identifier helps locate the drop, the system secret adds random cryptographic strength, and the user secret adds personalized entropy.",
               "If any one of the three words is lost, the drop becomes permanently inaccessible. This ensures that only someone with the complete triplet can decrypt the content, protecting your privacy.",
-              "The format balances memorability and security: all words are pronounceable, making sharing easier, while maintaining cryptographic strength thanks to the token and secret components."
+              "The format balances memorability and security: the identifier and system secret are pronounceable, making sharing easier while maintaining cryptographic strength. The user secret is completely your choice—you can make it memorable for easy access or more complex for enhanced security."
             ]
           }
         },
         {
           "id": "sharing-guidelines",
           "title": "Sharing Your Drop Key Securely",
-          "description": "Anyone with the complete three-word drop key can access your content. Choose secure communication channels and consider the sensitivity of your shared data when deciding how to transmit the key.",
+          "description": "Anyone with the complete three-word drop key can unlock your drop and access your content. Choose secure communication channels and consider the sensitivity of your shared data when deciding how to transmit the key.",
           "data": {
             "recommended": [
               "Encrypted messaging (Signal, iMessage, WhatsApp)",
@@ -662,7 +641,6 @@
         {
           "id": "cta",
           "title": "Secure Your Content with Strong Keys",
-          "type": "cta",
           "data": [
             {
               "text": "Start Creating Drops",
@@ -684,7 +662,6 @@
     },
     {
       "id": "encryption-and-decryption",
-      "title": "Encryption & Decryption",
       "header": {
         "title": "End-to-End Encryption You Can Trust",
         "description": "Clipposaurus uses modern, battle-tested cryptography. Your browser derives keys, encrypts your content, and decrypts it locally. Our servers only ever see encrypted data — never your plaintext, drop key, or AES keys."
@@ -693,13 +670,13 @@
         {
           "id": "key-derivation",
           "title": "Key Derivation with PBKDF2",
-          "description": "Your human-friendly drop key (like `apple-beer-ocean`) is great for people, but too weak and structured for cryptography. We need to turn it into a long, unpredictable, machine-strength key. That's where PBKDF2 comes in.",
+          "description": "Your human-friendly Drop Key (like `apple-beer-ocean`) is great for people, but too weak and structured for cryptography. We need to turn it into a long, unpredictable, machine-strength key. That's where PBKDF2 comes in.",
           "data": {
             "whatIs": {
               "title": "What is PBKDF2?",
               "items": [
                 "PBKDF2 (Password-Based Key Derivation Function 2) is a standard way to turn a password or phrase into a strong cryptographic key. It doesn't just hash your password once; it runs it through a hash function many times with a unique salt.",
-                "In Clipposaurus, your drop key is fed into PBKDF2 with SHA-256, along with a unique salt generated for each drop. PBKDF2 is configured with a high number of iterations (e.g. 100,000+), which makes each guessing attempt computationally expensive."
+                "In Clipposaurus, your Drop Key is fed into PBKDF2 with SHA-256, along with a unique salt generated for each drop. PBKDF2 is configured with a high number of iterations (e.g. 100,000+), which makes each guessing attempt computationally expensive."
               ]
             },
             "howWeUseIt": {
@@ -719,8 +696,8 @@
                   "text": "PBKDF2 makes every guessing attempt computationally expensive, preventing attackers from trying millions of keys per second."
                 },
                 {
-                  "label": "Salted uniqueness",
-                  "text": "Even if two users create the exact same drop key, each drop produces a completely different AES key due to unique per-drop salts."
+                  "label": "Unique Encryption Keys",
+                  "text": "Each drop generates a unique encryption key through the use of random salts, ensuring that even drops with similar inputs produce completely different encrypted results."
                 },
                 {
                   "label": "No raw passwords",
@@ -747,7 +724,7 @@
               "items": [
                 "Your browser generates a random IV/nonce for each encryption operation. Reusing IVs is dangerous; we always use fresh values.",
                 "Your content (text, code, files) is encrypted with AES-256 using the derived key plus the IV.",
-                "GCM also produces an authentication tag. When someone later decrypts the content, this tag is checked to ensure the ciphertext hasn’t been altered.",
+                "GCM also produces an authentication tag. When someone later decrypts the content, this tag is checked to ensure the ciphertext hasn't been altered.",
                 "If any bit of the encrypted data or tag is modified, decryption fails — preventing silent corruption or tampering."
               ]
             },
@@ -777,7 +754,7 @@
         {
           "id": "local-encryption",
           "title": "Local-Only Encryption",
-          "description": "All of this happens entirely inside your browser before anything touches the network. Only encrypted blobs ever leave your device, and without your drop key, those blobs are cryptographically useless.",
+          "description": "All of this happens entirely inside your browser before anything touches the network. Only encrypted blobs ever leave your device, and without your Drop Key, those blobs are cryptographically useless.",
           "data": {
             "flow": {
               "title": "Encryption Flow",
@@ -793,17 +770,17 @@
               "title": "What we receive",
               "items": [
                 "Encrypted content (ciphertext + auth tag)",
-                "The public identifier (first word of your key)",
+                "The identifier (first word of your Drop Key)",
                 "Retention/expiration configuration"
               ]
             },
             "weNeverReceive": {
               "title": "What we NEVER receive",
               "items": [
-                "Your drop key",
+                "Your Drop Key",
                 "Your PBKDF2-derived AES key",
                 "Your plaintext content",
-                "Your secret word or encrypted token in plaintext"
+                "Your system secret or user secret words"
               ]
             }
           }
@@ -811,17 +788,17 @@
         {
           "id": "local-decryption",
           "title": "Local-Only Decryption",
-          "description": "Decryption is simply the same process in reverse — and it also happens entirely inside the browser of whoever has the drop key. The servers never see the decrypted content or the keys. The only place your data exists in readable form is on the devices of people who know the full drop key.",
+          "description": "Decryption is simply the same process in reverse — and it also happens entirely inside the browser of whoever has the Drop Key. The servers never see the decrypted content or the full Drop Key. The only place your data exists in readable form is on the devices of people who know the full Drop Key.",
           "data": {
             "flow": {
               "title": "Decryption Flow",
               "items": [
-                "The user visits Clipposaurus and enters the full three-word drop key.",
-                "The public identifier (word 1) is used to locate the encrypted blob on our servers.",
+                "The user visits Clipposaurus and enters the full three-word Drop Key.",
+                "The identifier (word 1) is used to locate the encrypted blob on our servers.",
                 "The encrypted data is downloaded to the browser — still encrypted.",
-                "PBKDF2 runs again in the browser with the same drop key + stored salt to derive the same AES-256 key.",
+                "PBKDF2 runs again in the browser with the same Drop Key + stored salt to derive the same AES-256 key.",
                 "AES-256-GCM uses that key, plus the original IV and authentication tag, to decrypt the content and verify integrity.",
-                "If the key is wrong or the data has been tampered with, decryption fails and the content is not shown."
+                "If the Drop Key is wrong or the data has been tampered with, decryption fails and the content is not shown."
               ]
             }
           }
@@ -829,7 +806,6 @@
         {
           "id": "cta",
           "title": "Experience Zero-Knowledge Encryption",
-          "type": "cta",
           "data": [
             {
               "text": "Start Creating Encrypted Drops",
@@ -858,7 +834,6 @@
     },
     {
       "id": "zero-knowledge-architecture",
-      "title": "Zero-Knowledge Architecture",
       "header": {
         "title": "We CAN'T See Your Data — By Design",
         "description": "Clipposaurus is engineered so that your data is never exposed to us at any stage. Your device encrypts everything locally, and what reaches our servers is unusable without your drop key — which we never receive."
@@ -890,7 +865,7 @@
           "data": [
             {
               "label": "Server Breaches Are Harmless",
-              "text": "Even if an attacker stole every encrypted blob, they would only have unreadable noise without your drop key."
+              "text": "Even if an attacker stole every encrypted blob, they would only have unreadable noise without your Drop Key."
             },
             {
               "label": "Legal Requests Produce Nothing",
@@ -919,7 +894,7 @@
                   "text": "This is your content after it has been fully scrambled by your browser. We cannot turn it back into readable text or files."
                 },
                 {
-                  "label": "Public Identifier",
+                  "label": "Identifier",
                   "text": "A harmless first word of your drop key used only to locate your encrypted blob. It reveals nothing about your secret key."
                 },
                 {
@@ -945,7 +920,7 @@
                 },
                 {
                   "label": "Password or Keys",
-                  "text": "Your drop key, secret word, and AES key never reach our servers. They stay inside your browser."
+                  "text": "Your complete Drop Key and AES key never reach our servers. They stay inside your browser."
                 }
               ]
             }
@@ -956,6 +931,10 @@
           "title": "You Can Verify This Yourself",
           "description": "Zero-knowledge is not something you are asked to trust — you can observe it directly.",
           "data": [
+            {
+              "label": "Open Source Transparency",
+              "text": "Our entire codebase is open source, allowing you to inspect the encryption and zero-knowledge implementation directly on GitHub."
+            },
             {
               "label": "Inspect Network Traffic",
               "text": "Open your browser's developer tools. You will see only encrypted blobs being uploaded — never your actual content or key."
@@ -973,7 +952,6 @@
         {
           "id": "cta",
           "title": "Experience True Zero-Knowledge Privacy",
-          "type": "cta",
           "data": [
             {
               "text": "Start Creating Secure Drops",
@@ -1002,7 +980,6 @@
     },
     {
       "id": "expiration-and-deletion",
-      "title": "Expiration & Deletion",
       "header": {
         "title": "Short-Lived by Design",
         "description": "Clipposaurus is intentionally ephemeral. Your encrypted drop exists only for a short window — and once it disappears, it is gone forever with no way to recover it. This minimizes the exposure of your sensitive content and ensures there is never a long-term copy stored anywhere."
@@ -1015,7 +992,7 @@
           "data": [
             {
               "label": "Delete After First Access",
-              "text": "Ideal for sharing passwords or one-time secrets. Once the receiver opens the drop, it is instantly removed."
+              "text": "Ideal for sharing passwords or one-time secrets. Once someone opens the drop, it is instantly removed. The drop is kept for a maximum of 1 hour, during which it should be unlocked and the content accessed. Otherwise, after 1 hour, the drop is deleted even if no one has accessed it."
             },
             {
               "label": "30 Minutes",
@@ -1034,15 +1011,15 @@
           "data": [
             {
               "label": "Database TTL",
-              "text": "every drop is inserted with an automatic expiration timer. Once the timer runs out, the database itself removes the encrypted blob."
+              "text": "Every drop is inserted with an automatic expiration timer. Once the timer runs out, the database itself removes the encrypted blob."
             },
             {
               "label": "Background Cleanup Jobs",
-              "text": "periodic tasks run on the backend to detect expired items and forcefully remove any lingering data."
+              "text": "Periodic tasks run on the backend to detect expired items and forcefully remove any lingering data."
             },
             {
               "label": "Provider-Level Deletion",
-              "text": "storage partners (such as hosted databases or file storage systems) apply their own TTL or purge mechanisms, adding a second layer of enforcement."
+              "text": "Storage partners (such as hosted databases or file storage systems) apply their own TTL or purge mechanisms, adding a second layer of enforcement."
             }
           ]
         },
@@ -1069,31 +1046,8 @@
                 "text": "Drops are not versioned and there is never an earlier copy preserved anywhere."
               }
             ],
-            "analogy": "If something is deleted or expires, it is not recoverable by us, law enforcement, or even forensic analysis of our systems."
+            "analogy": "If Drop is deleted or expires, it is not recoverable by us."
           }
-        },
-        {
-          "id": "irreversible",
-          "title": "Irreversible Deletion",
-          "description": "Once your data reaches its expiration time or is manually consumed (in the case of one-time drops), the removal is permanent. Not even Clipposaurus staff can restore it.",
-          "data": [
-            {
-              "label": "Primary Storage",
-              "text": "The encrypted blob and identifier are removed from the database."
-            },
-            {
-              "label": "CDN Caches",
-              "text": "Temporary caches are explicitly invalidated or disabled so no trace remains."
-            },
-            {
-              "label": "Distributed Nodes",
-              "text": "Any edge or distributed copies are purged or prevented from existing in the first place."
-            },
-            {
-              "label": "Index References",
-              "text": "All pointers that once directed to your drop are removed so the system cannot locate it again."
-            }
-          ]
         },
         {
           "id": "cta",
@@ -1122,7 +1076,6 @@
     },
     {
       "id": "sharing-text",
-      "title": "Sharing Text Content",
       "header": {
         "title": "Share Text Securely & Instantly",
         "description": "Learn how to share text messages, notes, documents, and any written content securely with Clipposaurus. No character limits, perfect formatting preservation, and zero-knowledge encryption."
@@ -1147,8 +1100,7 @@
               "items": [
                 "Line breaks maintained exactly",
                 "Indentation and spacing preserved",
-                "Markdown-style formatting supported",
-                "Real-time preview while typing"
+                "Markdown-style formatting supported"
               ]
             },
             {
@@ -1165,13 +1117,12 @@
         {
           "id": "sharing-process",
           "title": "How to Share Text Content",
-          "type": "sharing",
           "description": "Follow these simple steps to securely share any text content across all your devices using Clipposaurus.",
           "data": [
             {
               "title": "Step 1: Choose Text Mode",
               "items": [
-                "Visit **clipposaurus.com** in any modern browser. No downloads, installations, or accounts required - just open the website and you're ready to start sharing instantly.",
+                "Visit **clipposaurus.com** in any modern browser and click **Create Drop**. No downloads, installations, or accounts required - just open the website and you're ready to start sharing instantly.",
                 "Click the **Text** tab to access the text editor. This specialized mode is optimized for written content with unlimited character support and real-time formatting preview."
               ],
               "screenshot": "/docs/screenshots/text-step1-select-mode.gif"
@@ -1185,25 +1136,33 @@
               "screenshot": "/docs/screenshots/text-step2-add-content.gif"
             },
             {
-              "title": "Step 3: Set Expiration",
+              "title": "Step 3: Generate Drop Key",
               "items": [
-                "Choose your content retention period: delete after first access, 30 minutes, or 1 hour maximum. These automatic deletion settings provide built-in privacy protection.",
+                "The system generates the first two words (identifier and system secret) for you. You need to enter the user secret, which can be up to 6-8 characters. For easy recall, choose a memorable word; for better security, use a mix of letters, special characters, and numbers.",
+                "Now you have a Drop Key, for example: apple-beer-ocean. Please save or memorize this key. If you forget it, you cannot access your content anymore."
+              ],
+              "screenshot": "/docs/screenshots/text-step4-create-drop.gif"
+            },
+            {
+              "title": "Step 4: Set Expiration",
+              "items": [
+                "Choose your content retention period: delete after first access(kept for maximum 1 hour), 30 minutes, or 1 hour. These automatic deletion settings provide built-in privacy protection.",
                 "Consider who needs access and when. Delete-after-access works great for one-time sharing, while timed deletion is perfect for temporary collaboration."
               ],
               "screenshot": "/docs/screenshots/text-step3-set-expiration.gif"
             },
             {
-              "title": "Step 4: Generate Drop Key",
+              "title": "Step 5: Create Your Drop",
               "items": [
-                "Click **'Create Drop'** to encrypt and upload your content. The system generates a unique drop key like 'mountain-river' that's both secure and easy to remember.",
+                "Click **'Create My Drop'** to encrypt and upload your content.",
                 "Your content is encrypted locally using AES-256-GCM before transmission. Our servers only receive encrypted data - we never see your original text."
               ],
               "screenshot": "/docs/screenshots/text-step4-create-drop.gif"
             },
             {
-              "title": "Step 5: Share Securely",
+              "title": "Step 6: Share Securely",
               "items": [
-                "Copy your unique drop key and share it through secure channels. The key format is human-friendly like 'ocean-sunset' for easy verbal sharing or secure messaging.",
+                "Copy your Drop Key and share it through secure channels. The key format is human-friendly like 'apple-beer-ocean' for easy verbal sharing or secure messaging.",
                 "Recipients can access your content by entering the drop key on any device. The decryption happens locally in their browser, maintaining end-to-end security."
               ],
               "screenshot": "/docs/screenshots/text-step5-share-key.gif"
@@ -1236,7 +1195,6 @@
         {
           "id": "best-practices",
           "title": "Security & Organization Tips",
-          "type": "design",
           "description": "Maximize security and efficiency when sharing text content. These best practices ensure your content stays private while being easily accessible.",
           "data": [
             {
@@ -1258,73 +1216,6 @@
             {
               "title": "Keep Backups When Needed",
               "text": "Save important content locally before sharing since drops auto-delete permanently"
-            }
-          ]
-        },
-        {
-          "id": "content-examples",
-          "title": "What You Can Share",
-          "type": "comparison",
-          "description": "Clipposaurus text sharing handles any written content you can imagine. From simple notes to complex documents, everything is supported with perfect formatting preservation.",
-          "data": {
-            "headers": ["Content Type", "Perfect For"],
-            "rows": [
-              [
-                "Quick Notes",
-                "To-do lists, reminders, grocery lists, phone numbers"
-              ],
-              [
-                "Meeting Minutes",
-                "Project discussions, team updates, action items"
-              ],
-              [
-                "Travel Information",
-                "Flight details, hotel confirmations, itineraries"
-              ],
-              [
-                "Study Materials",
-                "Research notes, assignment instructions, reading lists"
-              ],
-              [
-                "Creative Writing",
-                "Story drafts, poem collections, script ideas"
-              ],
-              [
-                "Technical Docs",
-                "API specifications, configuration files, troubleshooting guides"
-              ],
-              [
-                "Personal Messages",
-                "Letters, journal entries, private thoughts"
-              ],
-              [
-                "Collaboration",
-                "Shared documents, project outlines, feedback notes"
-              ]
-            ]
-          }
-        },
-        {
-          "id": "multi-device",
-          "title": "Seamless Multi-Device Access",
-          "type": "platform",
-          "description": "Access your shared text content from any device, anywhere. Clipposaurus works identically across all modern browsers and devices with no apps or installations required.",
-          "data": [
-            {
-              "label": "Create on Phone",
-              "text": "Type notes on mobile, access on desktop"
-            },
-            {
-              "label": "Share from Laptop",
-              "text": "Draft documents on computer, view on tablet"
-            },
-            {
-              "label": "Cross-Platform",
-              "text": "Works identically on iOS, Android, Windows, Mac, Linux"
-            },
-            {
-              "label": "Universal Access",
-              "text": "Any modern browser - Chrome, Safari, Firefox, Edge"
             }
           ]
         },
@@ -1358,7 +1249,6 @@
     },
     {
       "id": "sharing-code",
-      "title": "Sharing Code Snippets",
       "header": {
         "title": "Share Code with Perfect Syntax Highlighting",
         "description": "Learn how to share code snippets, scripts, and programming files securely with Clipposaurus. Features automatic language detection, syntax highlighting, and zero-knowledge encryption for developers."
@@ -1372,10 +1262,9 @@
             {
               "title": "Advanced Syntax Highlighting",
               "items": [
-                "Support for 150+ programming languages",
+                "Support for 20+ programming languages",
                 "Automatic language detection from code content",
-                "Dark and light theme support",
-                "Line numbers and copy-to-clipboard functionality"
+                "Dark and light theme support"
               ]
             },
             {
@@ -1401,14 +1290,13 @@
         {
           "id": "sharing-process",
           "title": "How to Share Code Securely",
-          "type": "sharing",
           "description": "Follow these steps to securely share any code snippet, script, or programming file with perfect formatting and syntax highlighting.",
           "data": [
             {
               "title": "Step 1: Select Code Mode",
               "items": [
-                "Visit **clipposaurus.com** and click the **Code** tab. No installations required - the advanced code editor loads instantly in your browser with full syntax highlighting support.",
-                "The code editor automatically detects your programming language or you can manually select from 150+ supported languages including JavaScript, Python, Java, C++, and more."
+                "Visit **clipposaurus.com** in any modern browser and click **Create Drop**. No downloads, installations, or accounts required - just open the website and you're ready to start sharing instantly.",
+                "Click the **Code** tab to access the code editor. The code editor automatically detects your programming language or you can manually select from 20+ supported languages including JavaScript, Python, Java, C++, and more."
               ],
               "screenshot": "/docs/screenshots/code-step1-select-mode.gif"
             },
@@ -1421,23 +1309,38 @@
               "screenshot": "/docs/screenshots/code-step2-add-content.gif"
             },
             {
-              "title": "Step 3: Choose Language & Theme",
+              "title": "Step 3: Choose Language",
               "items": [
-                "Select the correct programming language if auto-detection didn't work perfectly. This ensures optimal syntax highlighting and proper code formatting.",
-                "Choose between dark and light themes for optimal readability. The theme selection affects both the editor and how recipients will view your shared code."
+                "Select the correct programming language if auto-detection didn't work perfectly. This ensures optimal syntax highlighting and proper code formatting."
               ],
               "screenshot": "/docs/screenshots/code-step3-language-theme.gif"
             },
             {
-              "title": "Step 4: Set Security Options",
+              "title": "Step 4: Generate Drop Key",
               "items": [
-                "Choose your retention period: delete after first access for maximum security, or 30 minutes to 1 hour for temporary collaboration scenarios.",
-                "Click **'Create Drop'** to encrypt your code locally and generate a unique drop key. Your code is encrypted using AES-256-GCM before any network transmission occurs."
+                "The system generates the first two words (identifier and system secret) for you. You need to enter the user secret, which can be up to 6-8 characters. For easy recall, choose a memorable word; for better security, use a mix of letters, special characters, and numbers.",
+                "Now you have a Drop Key, for example: apple-beer-ocean. Please save or memorize this key. If you forget it, you cannot access your content anymore."
               ],
-              "screenshot": "/docs/screenshots/code-step4-security-create.gif"
+              "screenshot": "/docs/screenshots/text-step4-create-drop.gif"
             },
             {
-              "title": "Step 5: Share with Developers",
+              "title": "Step 5: Set Expiration",
+              "items": [
+                "Choose your content retention period: delete after first access(kept for maximum 1 hour), 30 minutes, or 1 hour. These automatic deletion settings provide built-in privacy protection.",
+                "Consider who needs access and when. Delete-after-access works great for one-time sharing, while timed deletion is perfect for temporary collaboration."
+              ],
+              "screenshot": "/docs/screenshots/text-step3-set-expiration.gif"
+            },
+            {
+              "title": "Step 6: Create Your Drop",
+              "items": [
+                "Click **'Create My Drop'** to encrypt and upload your content.",
+                "Your content is encrypted locally using AES-256-GCM before transmission. Our servers only receive encrypted data - we never see your original text."
+              ],
+              "screenshot": "/docs/screenshots/text-step4-create-drop.gif"
+            },
+            {
+              "title": "Step 7: Share with Developers",
               "items": [
                 "Copy the generated drop key and share it through secure channels. Recipients can view your code with full syntax highlighting on any device or browser.",
                 "The code is decrypted locally in the recipient's browser, maintaining end-to-end encryption. They can easily copy the code or view it with line numbers for debugging."
@@ -1449,7 +1352,6 @@
         {
           "id": "use-cases",
           "title": "Real-World Code Sharing Examples",
-          "type": "testimonials",
           "description": "Discover how developers use Clipposaurus for everything from quick debugging help to secure code review, all while maintaining complete privacy and perfect formatting.",
           "data": [
             {
@@ -1473,16 +1375,11 @@
         {
           "id": "best-practices",
           "title": "Developer Security & Best Practices",
-          "type": "design",
           "description": "Maximize security and efficiency when sharing code. These developer-focused practices ensure your code stays private and professionally formatted.",
           "data": [
             {
               "title": "Remove Sensitive Data",
               "text": "Strip API keys, passwords, database credentials, and personal information before sharing"
-            },
-            {
-              "title": "Use Descriptive Comments",
-              "text": "Add context comments explaining complex logic or the purpose of the code snippet"
             },
             {
               "title": "Choose Appropriate Retention",
@@ -1493,8 +1390,12 @@
               "text": "Confirm correct syntax highlighting language for optimal readability"
             },
             {
-              "title": "Test Code Before Sharing",
-              "text": "Verify your code works and is properly formatted before creating the drop"
+              "title": "Test Drop Key Immediately",
+              "text": "Ensure your drop key works right after creation to avoid access issues"
+            },
+            {
+              "title": "Keep Local Backups",
+              "text": "Save important code snippets locally before sharing since drops auto-delete permanently"
             }
           ]
         },
@@ -1535,21 +1436,8 @@
           }
         },
         {
-          "id": "multi-device",
-          "title": "Code Sharing Across All Platforms",
-          "type": "platform",
-          "description": "Access your shared code from any development environment. Clipposaurus works seamlessly across all devices and platforms that developers use daily.",
-          "data": {
-            "Desktop IDEs": "Share code from VS Code, IntelliJ, Vim - view in any browser",
-            "Mobile Development": "Share snippets from phone, debug on desktop workstation",
-            "Cross-Platform": "Works on Windows, Mac, Linux - identical syntax highlighting",
-            "Browser Agnostic": "Full feature support in Chrome, Firefox, Safari, Edge"
-          }
-        },
-        {
           "id": "cta",
           "title": "Ready to Share Code Securely?",
-          "type": "cta",
           "data": [
             {
               "text": "Start sharing code now",
@@ -1558,7 +1446,7 @@
             },
             {
               "text": "Learn about file uploads",
-              "href": "/docs/sharing-files",
+              "href": "/docs?page=sharing-files",
               "style": "secondary"
             }
           ]
@@ -1577,7 +1465,6 @@
     },
     {
       "id": "sharing-files",
-      "title": "Sharing Files",
       "header": {
         "title": "Secure File Uploads with Client-Side Encryption",
         "description": "Learn how to upload and share files securely with Clipposaurus. Support for any file type up to 50MB with client-side encryption, drag-and-drop interface, and automatic security deletion."
@@ -1592,7 +1479,7 @@
               "title": "Universal File Support",
               "items": [
                 "Any file type accepted - documents, images, videos, archives",
-                "Up to 50MB total per drop for generous file sharing",
+                "Up to 50MB total per Drop for generous file sharing",
                 "Multiple file uploads in a single drop",
                 "Drag-and-drop interface with progress indicators"
               ]
@@ -1610,9 +1497,7 @@
               "title": "Professional Upload Experience",
               "items": [
                 "Real-time upload progress tracking",
-                "File validation and error handling",
-                "Preview support for common formats",
-                "Resume capability for interrupted uploads"
+                "Preview support for common formats"
               ]
             }
           ]
@@ -1620,14 +1505,13 @@
         {
           "id": "sharing-process",
           "title": "How to Upload Files Securely",
-          "type": "sharing",
           "description": "Follow these steps to securely upload any files and share them with perfect security and convenience across all devices.",
           "data": [
             {
               "title": "Step 1: Select Files Mode",
               "items": [
-                "Visit **clipposaurus.com** and click the **Files** tab. The drag-and-drop upload interface loads instantly with support for any file type up to 50MB total.",
-                "You can either drag files directly onto the upload area or click to browse and select files from your device. Multiple files can be uploaded together in one drop."
+                "Visit **clipposaurus.com** in any modern browser and click **Create Drop**. No downloads, installations, or accounts required - just open the website and you're ready to start sharing instantly.",
+                "Click the **File** tab to access the file uploader. You can either drag files directly onto the upload area or click to browse and select files from your device. Multiple files can be uploaded together in one drop."
               ],
               "screenshot": "/docs/screenshots/files-step1-select-mode.gif"
             },
@@ -1648,27 +1532,42 @@
               "screenshot": "/docs/screenshots/files-step3-preview.gif"
             },
             {
-              "title": "Step 4: Configure Security",
+              "title": "Step 4: Generate Drop Key",
               "items": [
-                "Choose your retention period: delete after first download for maximum security, or set timed deletion for collaboration scenarios up to 1 hour maximum.",
-                "Click **'Create Drop'** to begin encryption. Files are encrypted locally using AES-256-GCM before any network transmission begins."
+                "The system generates the first two words (identifier and system secret) for you. You need to enter the user secret, which can be up to 6-8 characters. For easy recall, choose a memorable word; for better security, use a mix of letters, special characters, and numbers.",
+                "Now you have a Drop Key, for example: apple-beer-ocean. Please save or memorize this key. If you forget it, you cannot access your content anymore."
               ],
-              "screenshot": "/docs/screenshots/files-step4-security.gif"
+              "screenshot": "/docs/screenshots/text-step4-create-drop.gif"
             },
             {
-              "title": "Step 5: Monitor Upload Progress",
+              "title": "Step 5: Set Expiration",
               "items": [
-                "Watch real-time upload progress with per-file and overall completion indicators. Large files show detailed progress to keep you informed throughout the process.",
-                "Once complete, copy your unique drop key and share it securely. Recipients can download all files with a single click while maintaining end-to-end encryption."
+                "Choose your content retention period: delete after first access(kept for maximum 1 hour), 30 minutes, or 1 hour. These automatic deletion settings provide built-in privacy protection.",
+                "Consider who needs access and when. Delete-after-access works great for one-time sharing, while timed deletion is perfect for temporary collaboration."
               ],
-              "screenshot": "/docs/screenshots/files-step5-progress-share.gif"
+              "screenshot": "/docs/screenshots/text-step3-set-expiration.gif"
+            },
+            {
+              "title": "Step 5: Create Your Drop",
+              "items": [
+                "Click **'Create My Drop'** to encrypt and upload your content.",
+                "Your content is encrypted locally using AES-256-GCM before transmission. Our servers only receive encrypted data - we never see your original files."
+              ],
+              "screenshot": "/docs/screenshots/text-step4-create-drop.gif"
+            },
+            {
+              "title": "Step 6: Share Securely",
+              "items": [
+                "Copy your Drop Key and share it through secure channels. The key format is human-friendly like 'apple-beer-ocean' for easy verbal sharing or secure messaging.",
+                "Recipients can access your content by entering the drop key on any device. The decryption happens locally in their browser, maintaining end-to-end security."
+              ],
+              "screenshot": "/docs/screenshots/text-step5-share-key.gif"
             }
           ]
         },
         {
           "id": "use-cases",
           "title": "Real-World File Sharing Examples",
-          "type": "testimonials",
           "description": "Discover how people use Clipposaurus file uploads for everything from personal photo sharing to professional document collaboration, all with complete privacy.",
           "data": [
             {
@@ -1692,7 +1591,6 @@
         {
           "id": "best-practices",
           "title": "File Security & Organization Tips",
-          "type": "design",
           "description": "Maximize security and efficiency when uploading files. These best practices ensure your files stay private while being easily accessible to intended recipients.",
           "data": [
             {
@@ -1720,7 +1618,6 @@
         {
           "id": "supported-files",
           "title": "Supported File Types & Formats",
-          "type": "comparison",
           "description": "Clipposaurus accepts virtually any file type with no restrictions on format. Perfect for sharing everything from documents to media files with complete security.",
           "data": {
             "headers": ["File Category", "Common Formats"],
@@ -1740,23 +1637,8 @@
           }
         },
         {
-          "id": "multi-device",
-          "title": "File Access Across All Devices",
-          "type": "platform",
-          "description": "Upload files from any device and access them anywhere. Clipposaurus works seamlessly across all platforms for maximum flexibility in file sharing.",
-          "data": {
-            "platforms": {
-              "Desktop Upload": "Full drag-and-drop support on Windows, Mac, Linux",
-              "Mobile Upload": "Camera integration and file picker on iOS and Android",
-              "Cross-Platform Access": "Download files on any device with drop key",
-              "Browser Universal": "Works in all modern browsers without plugins"
-            }
-          }
-        },
-        {
           "id": "cta",
           "title": "Ready to Share Files Securely?",
-          "type": "cta",
           "data": [
             {
               "text": "Start sharing files now",
@@ -1765,7 +1647,7 @@
             },
             {
               "text": "Learn about the accessing content",
-              "href": "/docs/accessing-content",
+              "href": "/docs?page=access-drop",
               "style": "secondary"
             }
           ]
@@ -1773,7 +1655,7 @@
       ],
       "footer": {
         "nextPage": {
-          "id": "accessing-content",
+          "id": "access-drop",
           "title": "Accessing Content"
         },
         "previousPage": {
@@ -1783,8 +1665,7 @@
       }
     },
     {
-      "id": "accessing-content",
-      "title": "Accessing Content",
+      "id": "access-drop",
       "header": {
         "title": "Access Shared Content Instantly & Securely",
         "description": "Learn how to retrieve text, code, and files shared through Clipposaurus using drop keys. Simple access process with client-side decryption and complete privacy protection."
@@ -1809,7 +1690,7 @@
               "items": [
                 "Client-side decryption - servers never see content",
                 "Zero-knowledge architecture protects your data",
-                "Automatic deletion after retrieval (if configured)",
+                "Automatic deletion after retrieval (if choose delete on access)",
                 "No access logging or content scanning"
               ]
             },
@@ -1818,8 +1699,7 @@
               "items": [
                 "Lightning-fast content loading",
                 "Real-time syntax highlighting for code",
-                "Bulk file downloads with progress tracking",
-                "One-click copy functionality"
+                "Bulk file downloads with progress tracking"
               ]
             }
           ]
@@ -1833,14 +1713,14 @@
               "title": "Step 1: Visit Clipposaurus",
               "items": [
                 "Go to **clipposaurus.com** in any modern browser. The access interface loads instantly without requiring any downloads, installations, or account registration.",
-                "You'll see the main interface with options for creating new drops or accessing existing content. Click on the **Access Content** area or enter your drop key directly."
+                "You'll see the main interface with options for creating new drops or accessing existing content. Click on the **Open Drop**."
               ],
               "screenshot": "/docs/screenshots/access-step1-visit-site.gif"
             },
             {
               "title": "Step 2: Enter Drop Key",
               "items": [
-                "Type or paste the drop key you received into the access field. Drop keys are human-friendly phrases like **'mountain-river-42'** that are easy to remember and share.",
+                "Type the drop key you received into the access field. Drop keys are human-friendly phrases like **apple-beer-ocean** that are easy to remember and share.",
                 "The system automatically validates the key format and checks availability. Invalid or expired keys are detected immediately with clear error messages."
               ],
               "screenshot": "/docs/screenshots/access-step2-enter-key.gif"
@@ -1848,7 +1728,7 @@
             {
               "title": "Step 3: Retrieve Content",
               "items": [
-                "Click **'Access Drop'** to begin secure retrieval. The encrypted content is downloaded and decrypted locally in your browser using the drop key.",
+                "Click **Unlock Drop** to begin secure retrieval. The encrypted content is downloaded and decrypted locally in your browser using the drop key.",
                 "Watch the progress indicator as content is fetched and decrypted. Large files show detailed progress while maintaining end-to-end encryption throughout."
               ],
               "screenshot": "/docs/screenshots/access-step3-retrieve.gif"
@@ -1864,7 +1744,7 @@
             {
               "title": "Step 5: Secure Cleanup",
               "items": [
-                "Content automatically deletes from servers if configured for 'delete-after-access'. This ensures maximum privacy for sensitive information sharing.",
+                "Content automatically deletes from servers if configured for 'delete-on-access'. This ensures maximum privacy for sensitive information sharing.",
                 "Your browser clears temporary data automatically. No traces of accessed content remain on the device unless explicitly saved by you."
               ],
               "screenshot": "/docs/screenshots/access-step5-cleanup.gif"
@@ -1922,72 +1802,17 @@
           ]
         },
         {
-          "id": "supported-content",
-          "title": "Supported Content Types & Access",
-          "description": "Clipposaurus supports accessing any type of shared content with specialized viewing and download options for different formats.",
-          "data": {
-            "headers": ["Content Type", "Access Features"],
-            "rows": [
-              [
-                "Text Content",
-                "Instant viewing, copy to clipboard, formatting preservation, search functionality"
-              ],
-              [
-                "Code Snippets",
-                "Syntax highlighting, language detection, copy functionality, line numbers"
-              ],
-              [
-                "Document Files",
-                "Direct download, preview support, batch download, file validation"
-              ],
-              [
-                "Image Files",
-                "Thumbnail previews, full-size viewing, batch download, format conversion"
-              ],
-              [
-                "Video Files",
-                "Preview thumbnails, direct download, size indicators, format support"
-              ],
-              [
-                "Audio Files",
-                "Preview player, download options, metadata display, format support"
-              ],
-              [
-                "Archive Files",
-                "Content listing, individual file access, bulk extraction, security scanning"
-              ],
-              [
-                "Mixed Content",
-                "Organized display, selective download, preview support, batch operations"
-              ]
-            ]
-          }
-        },
-        {
-          "id": "multi-device-access",
-          "title": "Access Content from Any Device",
-          "description": "Retrieve shared content from any device, anywhere. Clipposaurus access works identically across all modern browsers and platforms.",
-          "data": {
-            "platforms": {
-              "Desktop Access": "Full-featured viewing on Windows, Mac, Linux with download management",
-              "Mobile Access": "Optimized interface for phones and tablets with touch-friendly controls",
-              "Cross-Browser": "Works perfectly in Chrome, Firefox, Safari, Edge with consistent experience",
-              "Offline Capability": "Downloaded content available offline, cached for disconnected access"
-            }
-          }
-        },
-        {
           "id": "cta",
-          "title": "Ready to Access Shared Content?",
+          "title": "Ready to Access Created Drop?",
           "data": [
             {
-              "text": "Access content now",
+              "text": "Open Drop Now",
               "href": "/",
               "style": "primary"
             },
             {
-              "text": "Learn about the API",
-              "href": "/docs/api-overview",
+              "text": "Learn How It Works",
+              "href": "/docs?page=how-it-works",
               "style": "secondary"
             }
           ]

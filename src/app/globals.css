@@ -333,10 +333,13 @@
   position: relative;
 }
 
+.navbar-button {
+  @apply rounded-2xl transition-colors text-zinc-700 dark:text-zinc-300 hover:text-emerald-600 dark:hover:text-emerald-400;
+}
+
 .navbar-icon {
-  width: clamp(1rem, 1.5vw, 1.1rem);
-  height: clamp(1rem, 1.5vw, 1.1rem);
-  @apply text-zinc-700 dark:text-zinc-300;
+  width: clamp(1rem, 1.5vw, 1rem);
+  height: clamp(1rem, 1.5vw, 1rem);
 }
 
 .hamburger-menu-content {
@@ -348,10 +351,6 @@
   font-size: clamp(0.875rem, 2vw, 1.125rem);
   gap: clamp(0.5rem, 1vw, 0.75rem);
   @apply flex items-center rounded-lg px-3 py-2;
-}
-
-.navbar-button {
-  @apply rounded-2xl text-zinc-900 transition-colors hover:text-emerald-600 dark:text-zinc-200 dark:hover:text-emerald-400;
 }
 
 .base-button-classes {

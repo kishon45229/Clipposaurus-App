@@ -15,7 +15,7 @@ import { CTASection } from "@/components/custom/docs/CTASection";
 export const AccessingContentContainer = React.memo(() => {
     const { currentPage } = useDocs();
 
-    if (!currentPage || currentPage.id !== "accessing-content") {
+    if (!currentPage || currentPage.id !== "access-drop") {
         return null;
     }
 
