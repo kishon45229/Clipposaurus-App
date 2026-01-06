@@ -22,7 +22,7 @@ Our code is publicly available for review. We welcome security audits to ensure 
 
 ### Creating a Drop
 
-1. Visit [clipposaurus.com](https://clipposaurus.com) and click the **"Create Drop"** button
+1. Visit [clipposaurus.com](https://app.clipposaurus.com) and click the **"Create Drop"** button
 2. Add your content: text, code, files, or any combination
 3. Enter a user secret passphrase
 4. Choose a retention period:
@@ -36,11 +36,11 @@ Our code is publicly available for review. We welcome security audits to ensure 
 
 ### Opening a Drop
 
-1. Visit [clipposaurus.com](https://clipposaurus.com) and click **"Open Drop"**
+1. Visit [clipposaurus.com](https://app.clipposaurus.com) and click **"Open Drop"**
 2. Enter your Drop Key
 3. Your content will be decrypted and displayed
 
-For detailed documentation, visit [docs.clipposaurus.com](https://docs.clipposaurus.com).
+For detailed documentation, visit [docs.clipposaurus.com](https://docs.clipposaurus.com). The docs are also available in the repository [https://github.com/kishon45229/Clipposaurus-Docs.git](https://github.com/kishon45229/Clipposaurus-Docs.git).
 
 ## Technical Architecture
 
