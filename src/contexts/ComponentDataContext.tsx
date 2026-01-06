@@ -9,7 +9,6 @@ import { MenuComponent } from "@/types/contentData-types/menu-types";
 import { DropPreviewComponent } from "@/types/contentData-types/dropPreview-types";
 import { TermsOfServiceComponent } from "@/types/contentData-types/termsOfService-types";
 import { FAQComponent } from "@/types/contentData-types/faq-types";
-import { ChangelogComponent } from "@/types/contentData-types/changelog-types";
 
 export type ComponentDataType =
     | HeroComponent
@@ -18,8 +17,7 @@ export type ComponentDataType =
     | MenuComponent
     | DropPreviewComponent
     | TermsOfServiceComponent
-    | FAQComponent
-    | ChangelogComponent;
+    | FAQComponent;
 
 export type ComponentTypeMap = {
     HeroComponent: HeroComponent;
@@ -29,7 +27,6 @@ export type ComponentTypeMap = {
     DropPreviewComponent: DropPreviewComponent;
     TermsOfServiceComponent: TermsOfServiceComponent;
     FAQComponent: FAQComponent;
-    ChangelogComponent: ChangelogComponent;
 };
 
 interface ComponentDataContextType {
@@ -243,21 +240,5 @@ export function useFAQComponent() {
         data: cachedData.FAQComponent as FAQComponent,
         isLoading: loadingStates.FAQComponent || false,
         error: errorStates.FAQComponent,
-    };
-}
-
-export function useChangelogComponent() {
-    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
-
-    React.useEffect(() => {
-        if (!cachedData.ChangelogComponent && !loadingStates.ChangelogComponent && !errorStates.ChangelogComponent) {
-            getComponentData("ChangelogComponent").catch(console.error);
-        }
-    }, [cachedData.ChangelogComponent, loadingStates.ChangelogComponent, errorStates.ChangelogComponent, getComponentData]);
-
-    return {
-        data: cachedData.ChangelogComponent as ChangelogComponent,
-        isLoading: loadingStates.ChangelogComponent || false,
-        error: errorStates.ChangelogComponent,
     };
 }

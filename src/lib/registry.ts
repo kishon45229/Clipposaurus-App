@@ -1,6 +1,5 @@
 import { z } from "zod";
 import {
-  ChangelogComponentSchema,
   DropPreviewComponentSchema,
   FAQComponentSchema,
   HeroComponentSchema,
@@ -18,7 +17,6 @@ export const COMPONENT_SCHEMAS: Record<string, z.ZodSchema> = {
   PrivacyInfoCardComponent: PrivacyInfoCardComponentSchema,
   MenuComponent: MenuComponentSchema,
   FAQComponent: FAQComponentSchema,
-  ChangelogComponent: ChangelogComponentSchema,
   HeroComponent: HeroComponentSchema,
   DropPreviewComponent: DropPreviewComponentSchema,
   TermsOfServiceComponent: TermsOfServiceComponentSchema,

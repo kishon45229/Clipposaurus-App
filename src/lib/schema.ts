@@ -27,31 +27,6 @@ export const DecryptedDropSchema = z.object({
     }),
 });
 
-// Changelog
-const ChangelogItemSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-});
-
-const ChangelogCategorySchema = z.object({
-  category: z.string(),
-  items: z.array(ChangelogItemSchema),
-});
-
-const ChangelogReleaseSchema = z.object({
-  version: z.string(),
-  date: z.string(),
-  title: z.string(),
-  type: z.enum(["major", "minor", "patch"]),
-  changes: z.array(ChangelogCategorySchema),
-});
-
-export const ChangelogComponentSchema = z.object({
-  headline: z.string(),
-  description: z.string(),
-  releases: z.array(ChangelogReleaseSchema),
-});
-
 // Drop Preview
 export const DropPreviewComponentSchema = z.object({
   title: z.string(),
