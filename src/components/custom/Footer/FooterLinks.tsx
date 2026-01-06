@@ -3,11 +3,13 @@
 import React from "react";
 import Link from "next/link";
 
+const DOCS_URL = process.env.NEXT_PUBLIC_DOCS_URL || "http://localhost:3001";
+
 const footerLinks = [
-  { href: "/docs", label: "Docs" },
-  { href: "/faq", label: "FAQ" },
-  { href: "/changelog", label: "Changelog" },
-  { href: "/terms-of-service", label: "Terms" },
+  { href: DOCS_URL, label: "Docs", external: true },
+  { href: "/faq", label: "FAQ", external: false },
+  { href: "/changelog", label: "Changelog", external: false },
+  { href: "/terms-of-service", label: "Terms", external: false },
 ];
 
 export const FooterLinks = React.memo(() => {
@@ -21,19 +23,37 @@ export const FooterLinks = React.memo(() => {
       "
     >
       {footerLinks.map((link) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          className="
-            whitespace-nowrap
-            text-[clamp(0.75rem,1.6vw,1rem)]
-            text-zinc-600 hover:text-zinc-900
+        link.external ? (
+          <a
+            key={link.href}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              whitespace-nowrap
+              text-[clamp(0.75rem,1.6vw,1rem)]
+              text-zinc-600 hover:text-zinc-900
             dark:text-zinc-400 dark:hover:text-zinc-200
             transition-colors duration-200
           "
-        >
-          {link.label}
-        </Link>
+          >
+            {link.label}
+          </a>
+        ) : (
+          <Link
+            key={link.href}
+            href={link.href}
+            className="
+              whitespace-nowrap
+              text-[clamp(0.75rem,1.6vw,1rem)]
+              text-zinc-600 hover:text-zinc-900
+            dark:text-zinc-400 dark:hover:text-zinc-200
+            transition-colors duration-200
+          "
+          >
+            {link.label}
+          </Link>
+        )
       ))}
     </nav>
   );

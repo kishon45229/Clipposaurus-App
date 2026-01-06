@@ -52,55 +52,6 @@ export const ChangelogComponentSchema = z.object({
   releases: z.array(ChangelogReleaseSchema),
 });
 
-// Docs
-const CTASchema = z.object({
-  id: z.string(),
-  title: z.string(),
-});
-
-const DocsSidebarItemSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  href: z.string(),
-});
-
-const DocsSidebarSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  children: z.array(DocsSidebarItemSchema),
-});
-
-const DocsPageHeaderSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-});
-
-const DocsPageSectionSchema = z.object({
-  id: z.string(),
-  title: z.string(),
-  description: z.string().optional(),
-  data: z.any(),
-});
-
-const DocsPageFooterSchema = z.object({
-  nextPage: CTASchema.optional(),
-  previousPage: CTASchema.optional(),
-});
-
-const DocsPageSchema = z.object({
-  id: z.string(),
-  header: DocsPageHeaderSchema,
-  sections: z.array(DocsPageSectionSchema),
-  footer: DocsPageFooterSchema,
-});
-
-export const DocsComponentSchema = z.object({
-  title: z.string(),
-  defaultPage: z.string(),
-  sidebar: z.array(DocsSidebarSchema),
-  pages: z.array(DocsPageSchema),
-});
-
 // Drop Preview
 export const DropPreviewComponentSchema = z.object({
   title: z.string(),

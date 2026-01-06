@@ -78,7 +78,7 @@ export const DropPreviewSkeleton = () => {
             mobileBehavior="inline"
             mobileDefaultOpen={false}
         >
-            <div className="flex w-full max-w-[1920px] mx-auto box-border rounded-lg shadow-lg overflow-hidden bg-zinc-100 dark:bg-zinc-900" role="main">
+            <div className="flex w-full max-w-480mx-auto box-border rounded-lg shadow-lg overflow-hidden bg-zinc-100 dark:bg-zinc-900" role="main">
                 <DropSidebarSkeleton />
                 <SidebarInset className="flex-1 w-full h-full">
                     <DropMainContentSkeleton />

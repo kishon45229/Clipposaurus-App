@@ -1,1 +1,0 @@
-export { SharingTextContainer as SharingText } from "./SharingTextContainer";

@@ -5,7 +5,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 
 export const TermsOfServiceSkeleton = () => {
     return (
-        <div className="mx-auto max-w-[1920px] px-4 py-2 grid grid-cols-1 lg:grid-cols-[240px_auto] gap-[clamp(2rem,5vw,2.5rem)]">
+        <div className="mx-auto max-w-480px-4 py-2 grid grid-cols-1 lg:grid-cols-[240px_auto] gap-[clamp(2rem,5vw,2.5rem)]">
             {/* Sticky TOC — Desktop only */}
             <aside className="hidden lg:block print:hidden">
                 <nav className="sticky top-24 text-[clamp(0.75rem,1.2vw,0.9rem)] leading-6">

@@ -1,1 +1,0 @@
-export { ExpirationDeletionContainer as ExpirationDeletion } from "./ExpirationDeletionContainer";

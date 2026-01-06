@@ -10,7 +10,6 @@ import { DropPreviewComponent } from "@/types/contentData-types/dropPreview-type
 import { TermsOfServiceComponent } from "@/types/contentData-types/termsOfService-types";
 import { FAQComponent } from "@/types/contentData-types/faq-types";
 import { ChangelogComponent } from "@/types/contentData-types/changelog-types";
-import { DocsComponent } from "@/types/contentData-types/docs-types";
 
 export type ComponentDataType =
     | HeroComponent
@@ -18,7 +17,6 @@ export type ComponentDataType =
     | UnlockDropDialogBoxComponent
     | MenuComponent
     | DropPreviewComponent
-    | DocsComponent
     | TermsOfServiceComponent
     | FAQComponent
     | ChangelogComponent;
@@ -29,7 +27,6 @@ export type ComponentTypeMap = {
     UnlockDropDialogBoxComponent: UnlockDropDialogBoxComponent;
     MenuComponent: MenuComponent;
     DropPreviewComponent: DropPreviewComponent;
-    DocsComponent: DocsComponent;
     TermsOfServiceComponent: TermsOfServiceComponent;
     FAQComponent: FAQComponent;
     ChangelogComponent: ChangelogComponent;
@@ -214,22 +211,6 @@ export function useDropPreview() {
         data: cachedData.DropPreviewComponent as DropPreviewComponent,
         isLoading: loadingStates.DropPreviewComponent || false,
         error: errorStates.DropPreviewComponent,
-    };
-}
-
-export function useDocsComponent() {
-    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
-
-    React.useEffect(() => {
-        if (!cachedData.DocsComponent && !loadingStates.DocsComponent && !errorStates.DocsComponent) {
-            getComponentData('DocsComponent').catch(console.error);
-        }
-    }, [cachedData.DocsComponent, loadingStates.DocsComponent, errorStates.DocsComponent, getComponentData]);
-
-    return {
-        data: cachedData.DocsComponent as DocsComponent,
-        isLoading: loadingStates.DocsComponent || false,
-        error: errorStates.DocsComponent,
     };
 }
 

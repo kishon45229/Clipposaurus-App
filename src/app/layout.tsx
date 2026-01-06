@@ -35,9 +35,7 @@ export default function RootLayout({
         <head>
           <HeadTags baseUrl={process.env.NEXT_PUBLIC_BASE_URL} />
         </head>
-        <body
-          className={`${funnelSans.className} antialiased h-screen md:portrait:h-fit overflow-auto bg-zinc-100 dark:bg-zinc-950 text-foreground`}
-        >
+        <body className={`${funnelSans.className} antialiased h-screen md:portrait:h-fit overflow-auto bg-zinc-100 dark:bg-zinc-950 text-foreground`}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

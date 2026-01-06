@@ -4,6 +4,8 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 import { AmbientGlow } from "../ui/ambient-glow";
 
+const DOCS_URL = process.env.NEXT_PUBLIC_DOCS_URL || "http://localhost:3001";
+
 interface ErrorUIProps {
     isDev: boolean;
     error: Error;
@@ -80,7 +82,7 @@ function ErrorUI({ isDev, error, supportId, reset }: ErrorUIProps) {
                         Try again
                     </Button>
 
-                    <Link href="/docs">
+                    <a href={DOCS_URL} target="_blank" rel="noopener noreferrer">
                         <Button
                             size="lg"
                             variant="outline"
@@ -96,7 +98,7 @@ function ErrorUI({ isDev, error, supportId, reset }: ErrorUIProps) {
                         >
                             View documentation
                         </Button>
-                    </Link>
+                    </a>
                 </div>
 
                 {/* Support note */}

@@ -25,6 +25,8 @@ import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { useGitHubStars } from "@/hooks/useGitHubStars";
 import { GITHUB_REPO_URL, GITHUB_SPONSOR_URL } from "@/constants/githubConfig";
 
+const DOCS_URL = process.env.NEXT_PUBLIC_DOCS_URL || "http://localhost:3001";
+
 export const HamburgerMenu = React.memo(() => {
     const stars = useGitHubStars();
 
@@ -47,7 +49,7 @@ export const HamburgerMenu = React.memo(() => {
             >
                 {/* Docs */}
                 <DropdownMenuItem
-                    onClick={() => window.open("/docs")}
+                    onClick={() => window.open(DOCS_URL, "_blank")}
                     className="hamburger-menu-item"
                 >
                     <BookOpen className="hamburger-menu-icon-item" />

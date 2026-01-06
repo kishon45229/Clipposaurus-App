@@ -26,7 +26,7 @@ export const DropPreview = () => {
                 mobileBehavior="inline"
                 mobileDefaultOpen={false}
             >
-                <div className="flex h-full w-full max-w-[1920px] mx-auto box-border rounded-2xl shadow-lg overflow-hidden bg-zinc-100 dark:bg-zinc-900" role="main">
+                <div className="flex h-full w-full max-w-480mx-auto box-border rounded-2xl shadow-lg overflow-hidden bg-zinc-100 dark:bg-zinc-900" role="main">
                     <DropSidebarProvider>
                         <DropSidebar />
                     </DropSidebarProvider>

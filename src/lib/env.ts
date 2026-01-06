@@ -2,12 +2,10 @@ import { z } from "zod";
 
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "production"]),
-  DB_NAME: z.string().min(1).max(14),
-  DB_URI: z.string().min(1).max(131),
   CACHE_TTL: z.coerce.number().min(0),
 
   // Upstash Redis Configuration
-  UPSTASH_REDIS_REST_URL: z.string().min(1).max(100),
+  UPSTASH_REDIS_REST_URL: z.url(),
   UPSTASH_REDIS_REST_TOKEN: z.string().min(1).max(100),
 
   // Cloudflare R2 Configuration
@@ -15,15 +13,15 @@ const envSchema = z.object({
   CLOUDFLARE_R2_SECRET_ACCESS_KEY: z.string().min(1),
   CLOUDFLARE_R2_BUCKET_NAME: z.string().min(1),
   CLOUDFLARE_R2_ENDPOINT: z.string().min(1),
-  CLOUDFLARE_R2_PUBLIC_URL: z.string().min(1),
+  CLOUDFLARE_R2_PUBLIC_URL: z.url(),
 
   // Backblaze B2 Configuration
   BACKBLAZE_B2_ACCESS_KEY_ID: z.string().min(1),
   BACKBLAZE_B2_SECRET_ACCESS_KEY: z.string().min(1),
   BACKBLAZE_B2_BUCKET_NAME: z.string().min(1),
   BACKBLAZE_B2_ENDPOINT: z.string().min(1),
-  BACKBLAZE_B2_DOWNLOAD_URL: z.string().min(1),
-  
+  BACKBLAZE_B2_DOWNLOAD_URL: z.url(),
+
   // Encryption Configuration
   DROP: z.string().min(1),
 
@@ -35,6 +33,10 @@ const envSchema = z.object({
 
   // Rollbar configuration
   ROLLBAR_SERVER_TOKEN: z.string().min(1),
+
+  // Documentation URL
+  NEXT_PUBLIC_DEVELOPMENT_DOCS_URL: z.url(),
+  NEXT_PUBLIC_PRODUCTION_DOCS_URL: z.url()
 });
 
 const _env = envSchema.safeParse(process.env);

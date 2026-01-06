@@ -9,8 +9,7 @@ export interface TargetCursorProps {
   hideDefaultCursor?: boolean;
 }
 
-const
-  TargetCursor: React.FC<TargetCursorProps> = ({
+const TargetCursor: React.FC<TargetCursorProps> = ({
     targetSelector = '.cursor-target',
     spinDuration = 2,
     hideDefaultCursor = true

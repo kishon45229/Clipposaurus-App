@@ -21,7 +21,7 @@ export default async function CreateDropPage(): Promise<React.ReactElement> {
                 <React.Suspense fallback={<LoadingFallback />}>
                     <CreateDropProvider>
                         <MenuProvider>
-                            <section className="h-screen xs-min:h-[84dvh] max-w-[1920px] mx-auto py-2 sm:py-4">
+                            <section className="h-screen xs-min:h-[84dvh] max-w-480mx-auto py-2 sm:py-4">
                                 <div className="xl:hidden grid grid-rows-[auto] h-full">
                                     <Tab />
                                 </div>

@@ -19,8 +19,8 @@ export default function OpenDropPage(): React.ReactElement {
         <ComponentDataProvider>
           <OpenDropProvider>
             <React.Suspense fallback={<LoadingFallback />}>
-              <section className="h-[84dvh] max-w-[1920px] mx-auto py-4 overflow-hidden">
-                  <DropPreview />
+              <section className="h-[84dvh] max-w-480mx-auto py-4 overflow-hidden">
+                <DropPreview />
               </section>
             </React.Suspense>
           </OpenDropProvider>

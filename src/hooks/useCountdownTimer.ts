@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 import { navigation } from "@/lib/navigation";
 import { useOpenDrop } from "@/contexts/OpenDropContext";
 import { formatCountdown } from "@/lib/countdown";
-import { error } from "console";
 
 interface CountdownResult {
   timeLeft: string;

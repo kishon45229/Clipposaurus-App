@@ -22,7 +22,7 @@ export const ChangelogContent = React.memo(() => {
     const activeSection = useScrollSpy(releaseIds, 120);
 
     return (
-        <div className="mx-auto max-w-[1920px] px-4 py-2 grid grid-cols-1 lg:grid-cols-[240px_auto] gap-[clamp(2rem,5vw,2.5rem)]">
+        <div className="mx-auto max-w-480px-4 py-2 grid grid-cols-1 lg:grid-cols-[240px_auto] gap-[clamp(2rem,5vw,2.5rem)]">
             {/* Sticky TOC — Desktop only */}
             <StickyTOC title="Releases" items={items} activeSection={activeSection} />
 

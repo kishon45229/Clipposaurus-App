@@ -17,7 +17,7 @@ export default function ChangelogPage(): React.ReactElement {
             <ComponentDataProvider>
                 <React.Suspense fallback={<LoadingFallback />}>
                     <ChangelogProvider>
-                        <section className="xl:min-h-screen max-w-[1920px] mx-auto py-2 sm:py-4">
+                        <section className="xl:min-h-screen max-w-480mx-auto py-2 sm:py-4">
                             <ChangelogContainer />
                         </section>
                     </ChangelogProvider>
