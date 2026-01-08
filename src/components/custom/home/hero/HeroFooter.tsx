@@ -15,29 +15,36 @@ export const HeroFooter = React.memo(() => {
 
     return (
         <div className="
-            text-[clamp(0.5rem,2vw,0.75rem)]
-            text-zinc-400
+            text-center
+            text-sm
+            text-zinc-500
             dark:text-zinc-500
-        " >
+            max-w-md
+            mx-auto
+        ">
             {consentDescription}{" "}
             <Link
                 href={navigation.terms}
                 aria-label="Read our Terms of Service"
                 className="
-                    text-zinc-500
-                    dark:text-zinc-400
-                    hover:text-zinc-700
-                    dark:hover:text-zinc-300
+                    text-emerald-600
+                    dark:text-emerald-500
+                    hover:text-emerald-500
+                    dark:hover:text-emerald-400
                     underline
-                    underline-offset-2
-                    transition-colors
+                    underline-offset-4
+                    decoration-emerald-500/30
+                    hover:decoration-emerald-500/60
+                    transition-all
+                    duration-200
                     cursor-target
+                    font-medium
                 "
             >
                 {consentLink}
             </Link>
             {"."}
-        </div >
+        </div>
     );
 });
 

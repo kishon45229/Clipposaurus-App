@@ -4,8 +4,6 @@ import LoadingFallback from "@/app/loading";
 import { ComponentDataProvider } from "@/contexts/ComponentDataContext";
 import { HeroProvider } from "@/contexts/HeroContext";
 import { Hero } from "@/components/custom/home/hero";
-import { PrivacyInfoCardProvider } from "@/contexts/PrivacyInforCardContext";
-import { PrivacyInfoCard } from "@/components/custom/home/privacy-info-card";
 
 const PAGE_ID = "HomePage" as const;
 
@@ -14,28 +12,37 @@ export default async function HomePage(): Promise<React.ReactElement> {
     return (
       <ComponentDataProvider>
         <React.Suspense fallback={<LoadingFallback />}>
+          {/* Hero Section - Full width */}
           <section
-            aria-label="Hero and Privacy Information"
+            aria-label="Hero Section"
             className="
-              grid
-              grid-cols-1
-              2xl-min:grid-cols-[1.25fr_1fr]
-              gap-[clamp(1rem,4vw,3rem)]
-              px-[clamp(0.75rem,3vw,2rem)]
-              py-[clamp(0.75rem,3vw,1rem)]
-              max-w-[1920px]
-              mx-auto
-              lg:landscape:min-h-[84dvh]
+              w-full
+              min-h-[calc(100dvh-5rem)]
+              flex
+              items-center
+              justify-center
+              px-4
+              py-8
             "
           >
             <HeroProvider>
               <Hero />
             </HeroProvider>
-
-            <PrivacyInfoCardProvider>
-              <PrivacyInfoCard />
-            </PrivacyInfoCardProvider>
           </section>
+
+          {/* Features Section */}
+          {/* <FeaturesSection /> */}
+
+          {/* How It Works Section */}
+          {/* <HowItWorksSection /> */}
+
+          {/* Security Section */}
+          {/* <SecuritySection /> */}
+
+          {/* CTA Section */}
+          {/* <DropOptionsProvider>
+            <CTASection />
+          </DropOptionsProvider> */}
         </React.Suspense>
       </ComponentDataProvider>
     );

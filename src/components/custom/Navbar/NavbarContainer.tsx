@@ -9,11 +9,12 @@ import { HamburgerMenu } from "./HamburgerMenu";
 export const NavbarContainer = React.memo(() => {
     return (
         <div className="
-            max-w-[1920px]
+            max-w-7xl
             h-full
             mx-auto
-            px-2
-            sm:px-4
+            px-4
+            sm:px-6
+            lg:px-8
         ">
             <div className="
                 flex
@@ -26,12 +27,16 @@ export const NavbarContainer = React.memo(() => {
                 <HamburgerMenu />
                 <NavbarBrand />
                 <AnimatedThemeToggler className="
-                    bg-transparent
-                    text-zinc-950
-                    hover:bg-none
-                    hover:text-emerald-700
-                    dark:text-zinc-200
-                    dark:hover:text-emerald-300
+                    h-10
+                    w-10
+                    text-zinc-700
+                    dark:text-zinc-300
+                    hover:text-emerald-600
+                    dark:hover:text-emerald-500
+                    hover:bg-emerald-50
+                    dark:hover:bg-emerald-950
+                    transition-all
+                    duration-200
                 " />
             </div>
             <div className="

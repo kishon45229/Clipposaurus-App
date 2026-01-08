@@ -8,16 +8,27 @@ export const FooterCopyright = React.memo(() => {
     <div
       className="
         flex items-center
-        justify-center xl:justify-start
-        gap-[clamp(0.25rem,1vw,0.5rem)]
-        order-2 xl:order-1
-        text-[clamp(0.625rem,1.4vw,0.875rem)]
-        text-zinc-600 dark:text-zinc-400
+        justify-center md:justify-start
+        gap-2
+        order-2 md:order-1
       "
     >
-      <Copyright className="size-[clamp(0.75rem,1.5vw,1rem)]" />
-      <span>
-        {new Date().getFullYear()} Clipposaurus. All rights reserved.
+      <div className="
+        flex
+        items-center
+        justify-center
+        w-8
+        h-8
+        rounded-lg
+        bg-emerald-500/10
+        dark:bg-emerald-500/20
+        border
+        border-emerald-500/20
+      ">
+        <Copyright className="w-4 h-4 text-emerald-600 dark:text-emerald-500" />
+      </div>
+      <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">
+        {new Date().getFullYear()} <span className="font-bold text-zinc-900 dark:text-zinc-200">Clipposaurus</span>. All rights reserved.
       </span>
     </div>
   );

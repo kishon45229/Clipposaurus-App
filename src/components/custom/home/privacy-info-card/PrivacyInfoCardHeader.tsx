@@ -10,38 +10,55 @@ export const PrivacyInfoCardHeader = React.memo(() => {
   const { title, subtitle } = data as PrivacyInfoCardComponent;
 
   return (
-    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-[clamp(0.75rem,2vw,1rem)]">
-      {/* Icon */}
+    <div className="flex flex-col gap-6">
+      {/* Icon with modern design */}
       <div className="
-          flex items-center justify-center
-          rounded-[clamp(0.75rem,2vw,1rem)]
-          bg-emerald-500/15
-          text-emerald-600 dark:text-emerald-400
-          size-[clamp(2.5rem,6vw,3.5rem)]
-        "
-      >
-        <ShieldCheck className="size-[clamp(1.25rem,3vw,2rem)]" />
+        relative
+        inline-flex
+        items-center
+        justify-center
+        w-20
+        h-20
+        rounded-2xl
+        bg-gradient-to-br
+        from-emerald-500/20
+        to-emerald-600/10
+        dark:from-emerald-500/10
+        dark:to-emerald-600/5
+        border
+        border-emerald-500/30
+        dark:border-emerald-500/20
+        shadow-lg
+        shadow-emerald-500/20
+      ">
+        <ShieldCheck className="w-10 h-10 text-emerald-600 dark:text-emerald-500" strokeWidth={2.5} />
+        {/* Decorative ring */}
+        <div className="absolute inset-0 rounded-2xl border-2 border-emerald-500/20 animate-pulse" />
       </div>
 
-      {/* Text */}
-      <div className="space-y-[clamp(0.25rem,1vw,0.3rem)]">
+      {/* Text content */}
+      <div className="space-y-2">
         <div className="
-          text-[clamp(0.65rem,1.2vw,0.85rem)]
-          font-semibold
+          text-xs
+          font-bold
           uppercase
-          tracking-[0.25em]
-          text-zinc-400 dark:text-zinc-500
+          tracking-[0.2em]
+          text-emerald-600
+          dark:text-emerald-500
         ">
           {subtitle}
         </div>
 
-        <div className="
-          text-[clamp(1rem,2.5vw,1.25rem)]
-          leading-[1.1]
-          text-zinc-900 dark:text-zinc-50
+        <h2 className="
+          text-3xl
+          lg:text-4xl
+          font-black
+          leading-tight
+          text-zinc-900
+          dark:text-zinc-50
         ">
           {title}
-        </div>
+        </h2>
       </div>
     </div>
   );

@@ -4,26 +4,64 @@ import Image from "next/image";
 
 export const NavbarBrand = React.memo(() => {
     return (
-        <Link href="/" className="flex items-center cursor-target gap-2 pr-2">
-            <Image
-                src="/icon0.svg"
-                alt="Clipposaurus Logo"
-                width={48}
-                height={48}
-                className="w-[clamp(1.5rem,5vw,1.75rem)] h-[clamp(1.5rem,5vw,1.75rem)]"
-            />
-            <span
-                className="text-[clamp(1rem,2vw,1.25rem)] font-semibold"
-                aria-label="Clipposaurus"
-            >
-                Clipposaurus
-            </span>
-            <span
-                className="rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-emerald-600 ring-1 ring-emerald-200"
-                aria-label="Testing mode: beta"
-            >
-                Beta
-            </span>
+        <Link href="/" className="group flex items-center cursor-target gap-3 pr-2">
+            <div className="
+                relative
+                flex
+                items-center
+                justify-center
+                w-10
+                h-10
+                rounded-xl
+                bg-gradient-to-br
+                from-emerald-500
+                to-emerald-600
+                shadow-lg
+                shadow-emerald-500/30
+                group-hover:shadow-emerald-500/40
+                transition-all
+                duration-300
+                group-hover:scale-110
+            ">
+                <Image
+                    src="/icon0.svg"
+                    alt="Clipposaurus Logo"
+                    width={24}
+                    height={24}
+                    className="w-6 h-6 brightness-0 invert"
+                />
+            </div>
+            <div className="flex items-center gap-2">
+                <span
+                    className="text-xl font-black text-zinc-900 dark:text-zinc-50 group-hover:text-emerald-600 dark:group-hover:text-emerald-500 transition-colors"
+                    aria-label="Clipposaurus"
+                >
+                    Clipposaurus
+                </span>
+                <span
+                    className="
+                        hidden
+                        sm:inline-flex
+                        items-center
+                        rounded-lg
+                        bg-emerald-500/10
+                        dark:bg-emerald-500/20
+                        px-2.5
+                        py-1
+                        text-[10px]
+                        font-bold
+                        uppercase
+                        tracking-wider
+                        text-emerald-600
+                        dark:text-emerald-400
+                        border
+                        border-emerald-500/20
+                    "
+                    aria-label="Testing mode: beta"
+                >
+                    Beta
+                </span>
+            </div>
         </Link>
     );
 });

@@ -8,7 +8,8 @@ import { useGitHubStars } from "@/hooks/useGitHubStars";
 import { Button } from "@/components/ui/button";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
 import { GITHUB_REPO_URL } from "@/constants/githubConfig";
-import { MoreMenu } from "./MoreMenu";
+import { ResourcesMenu } from "./ResourcesMenu";
+import { HelpMenu } from "./HelpMenu";
 
 const DOCS_URL = process.env.NEXT_PUBLIC_DOCS_URL || "http://localhost:3001";
 
@@ -16,33 +17,77 @@ export const NavbarLinks = React.memo(() => {
   const stars = useGitHubStars();
 
   return (
-    <nav className="hidden sm:flex items-center gap-2" role="navigation" aria-label="Main navigation">
+    <nav className="hidden sm:flex items-center gap-1.5" role="navigation" aria-label="Main navigation">
       {/* Docs */}
-      < Button
+      <Button
         variant="ghost"
         onClick={() => window.open(DOCS_URL)}
-        className="navbar-button"
+        className="
+          h-10
+          px-4
+          text-sm
+          font-semibold
+          text-zinc-700
+          dark:text-zinc-300
+          hover:text-emerald-600
+          dark:hover:text-emerald-500
+          hover:bg-emerald-50
+          dark:hover:bg-emerald-950
+          transition-all
+          duration-200
+        "
       >
-        <BookOpen className="mr-1 navbar-icon" />
-        <span className=" text-[clamp(1rem, 2vw, 1.25rem)]">Docs</span>
-      </Button >
+        <BookOpen className="w-4 h-4 mr-2" />
+        <span>Docs</span>
+      </Button>
 
       {/* GitHub */}
-      < Button
+      <Button
         variant="ghost"
         onClick={() => window.open(GITHUB_REPO_URL, "_blank")}
-        className="navbar-button"
+        className="
+          h-10
+          px-4
+          text-sm
+          font-semibold
+          text-zinc-700
+          dark:text-zinc-300
+          hover:text-emerald-600
+          dark:hover:text-emerald-500
+          hover:bg-emerald-50
+          dark:hover:bg-emerald-950
+          transition-all
+          duration-200
+        "
       >
-        <FontAwesomeIcon icon={faGithub} className="mr-2 navbar-icon" />
-        <Star className="-mr-0.5 navbar-icon" />
-        <span className="font-medium text-[clamp(0.875rem, 2vw, 1.25rem)]">{stars}</span>
-      </Button >
+        <FontAwesomeIcon icon={faGithub} className="w-4 h-4 mr-2" />
+        <Star className="w-3.5 h-3.5 mr-1 fill-yellow-500 text-yellow-500" />
+        <span>{stars}</span>
+      </Button>
 
-      <MoreMenu />
+      {/* Resources Menu */}
+      <ResourcesMenu />
+
+      {/* Help Menu */}
+      <HelpMenu />
+
+      {/* Divider */}
+      <div className="w-px h-6 bg-zinc-200 dark:bg-zinc-800 mx-1" />
 
       {/* Theme Toggle */}
-      < AnimatedThemeToggler className="ml-1 text-zinc-900 transition-colors hover:text-emerald-600 dark:text-zinc-200 dark:hover:text-emerald-400" />
-    </nav >
+      <AnimatedThemeToggler className="
+        h-10
+        w-10
+        text-zinc-700
+        dark:text-zinc-300
+        hover:text-emerald-600
+        dark:hover:text-emerald-500
+        hover:bg-emerald-50
+        dark:hover:bg-emerald-950
+        transition-all
+        duration-200
+      " />
+    </nav>
   );
 });
 

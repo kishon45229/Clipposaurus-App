@@ -12,40 +12,70 @@ export const PrivacyInfoCardBody = React.memo(() => {
             grid
             grid-cols-1
             md:grid-cols-2
-            gap-[clamp(0.75rem,2.5vw,0.9rem)]
-        "
-        >
+            gap-4
+            flex-1
+        ">
             {privacyPillars.map(({ title, detail }, index) => (
-                <div key={index} className="
-                    rounded-2xl
-                    border border-zinc-200/70 dark:border-zinc-800/60
-                    bg-gradient-to-br from-zinc-50 to-zinc-100
-                    dark:from-emerald-950/10 dark:to-emerald-900/10
-                    backdrop-blur-sm
-                    px-[clamp(0.75rem,3vw,1.25rem)]
-                    py-[clamp(0.75rem,2.5vw,1.25rem)]
-                "
+                <div
+                    key={index}
+                    className="
+                        group
+                        relative
+                        rounded-2xl
+                        border-2
+                        border-zinc-200
+                        dark:border-zinc-800
+                        bg-white/80
+                        dark:bg-zinc-900/50
+                        backdrop-blur-sm
+                        p-6
+                        hover:border-emerald-500/50
+                        dark:hover:border-emerald-500/50
+                        hover:shadow-lg
+                        hover:shadow-emerald-500/10
+                        transition-all
+                        duration-300
+                    "
                 >
+                    {/* Decorative corner accent */}
+                    <div className="
+                        absolute
+                        top-0
+                        right-0
+                        w-16
+                        h-16
+                        bg-gradient-to-bl
+                        from-emerald-500/10
+                        to-transparent
+                        dark:from-emerald-500/5
+                        rounded-tr-2xl
+                        rounded-bl-full
+                        opacity-0
+                        group-hover:opacity-100
+                        transition-opacity
+                        duration-300
+                    " />
+
                     {/* Title */}
                     <div className="
-                        text-[clamp(0.7rem,1.2vw,0.9rem)]
-                        font-semibold
+                        text-sm
+                        font-bold
                         uppercase
-                        tracking-wide
-                        text-emerald-600 dark:text-emerald-400
-                    "
-                    >
+                        tracking-wider
+                        text-emerald-600
+                        dark:text-emerald-500
+                        mb-2
+                    ">
                         {title}
                     </div>
 
                     {/* Detail */}
                     <div className="
-                        mt-[clamp(0.25rem,1vw,0.3rem)]
-                        text-[clamp(0.8rem,1.5vw,1rem)]
+                        text-base
                         leading-relaxed
-                        text-zinc-600 dark:text-zinc-400
-                    "
-                    >
+                        text-zinc-600
+                        dark:text-zinc-400
+                    ">
                         {detail}
                     </div>
                 </div>

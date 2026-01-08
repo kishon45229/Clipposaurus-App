@@ -8,44 +8,50 @@ export const HeroHeader = React.memo(() => {
     const { title, titleHighlight, description } = data;
 
     return (
-        <div className="
-            flex
-            flex-col
-            gap-[clamp(0.5rem,2vw,1.5rem)]
-        ">
-            <div className="
-                text-[clamp(1.75rem,5vw,4rem)]
-                text-zinc-900
-                dark:text-zinc-50
-                font-extrabold
-                leading-tight
+        <div className="text-center space-y-6">
+            {/* Title with gradient */}
+            <h1 className="
+                text-[clamp(2.5rem,6vw,5rem)]
+                font-black
+                leading-[1.05]
+                tracking-tight
             ">
-                {title}{" "}
+                <span className="
+                    text-zinc-900
+                    dark:text-zinc-50
+                ">
+                    {title}{" "}
+                </span>
                 {titleHighlight && (
                     <span className="
-                        bg-linear-to-r
-                        from-zinc-900
-                        via-zinc-700
-                        to-zinc-500
-                        dark:from-zinc-50
-                        dark:via-zinc-200
-                        dark:to-zinc-400
+                        inline-block
+                        bg-gradient-to-br
+                        from-emerald-600
+                        via-emerald-500
+                        to-emerald-400
+                        dark:from-emerald-400
+                        dark:via-emerald-500
+                        dark:to-emerald-600
                         bg-clip-text
                         text-transparent
+                        [text-shadow:0_0_80px_rgba(16,185,129,0.3)]
                     ">
                         {titleHighlight}
                     </span>
                 )}
-            </div>
+            </h1>
 
-            <div className="
-                text-[clamp(0.95rem,1.8vw,1.5rem)]
+            {/* Description */}
+            <p className="
+                text-[clamp(1.1rem,2vw,1.4rem)]
                 text-zinc-600
                 dark:text-zinc-400
                 leading-relaxed
+                max-w-2xl
+                mx-auto
             ">
                 {description}
-            </div>
+            </p>
         </div>
     );
 });

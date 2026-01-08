@@ -17,9 +17,9 @@ export const FooterLinks = React.memo(() => {
     <nav
       className="
         flex flex-wrap items-center
-        justify-center xl:justify-end
-        gap-[clamp(0.75rem,3vw,2rem)]
-        order-1 xl:order-2
+        justify-center md:justify-end
+        gap-6
+        order-1 md:order-2
       "
     >
       {footerLinks.map((link) => (
@@ -30,12 +30,26 @@ export const FooterLinks = React.memo(() => {
             target="_blank"
             rel="noopener noreferrer"
             className="
+              relative
               whitespace-nowrap
-              text-[clamp(0.75rem,1.6vw,1rem)]
-              text-zinc-600 hover:text-zinc-900
-            dark:text-zinc-400 dark:hover:text-zinc-200
-            transition-colors duration-200
-          "
+              text-sm
+              font-semibold
+              text-zinc-600
+              hover:text-emerald-600
+              dark:text-zinc-400
+              dark:hover:text-emerald-500
+              transition-colors
+              duration-200
+              after:absolute
+              after:bottom-0
+              after:left-0
+              after:h-0.5
+              after:w-0
+              after:bg-emerald-500
+              after:transition-all
+              after:duration-200
+              hover:after:w-full
+            "
           >
             {link.label}
           </a>
@@ -44,12 +58,26 @@ export const FooterLinks = React.memo(() => {
             key={link.href}
             href={link.href}
             className="
+              relative
               whitespace-nowrap
-              text-[clamp(0.75rem,1.6vw,1rem)]
-              text-zinc-600 hover:text-zinc-900
-            dark:text-zinc-400 dark:hover:text-zinc-200
-            transition-colors duration-200
-          "
+              text-sm
+              font-semibold
+              text-zinc-600
+              hover:text-emerald-600
+              dark:text-zinc-400
+              dark:hover:text-emerald-500
+              transition-colors
+              duration-200
+              after:absolute
+              after:bottom-0
+              after:left-0
+              after:h-0.5
+              after:w-0
+              after:bg-emerald-500
+              after:transition-all
+              after:duration-200
+              hover:after:w-full
+            "
           >
             {link.label}
           </Link>
