@@ -8,7 +8,7 @@ import {
     TabsList,
     TabsTrigger,
 } from "@/components/ui/tabs";
-import { TabsSkeleton } from "@/components/skeleton/TabsSkeleton";
+// import { TabsSkeleton } from "@/components/skeleton/TabsSkeleton";
 import { tabList } from "@/components/custom/create-drop/tab/Tab.config";
 import { TextTabProvider } from "@/contexts/TextTabContext";
 import { CodeTabProvider } from "@/contexts/CodeTabContext";
@@ -23,7 +23,7 @@ const TextTab = dynamic(
         import("@/components/custom/create-drop/tab/text-tab").then((m) => ({
             default: m.TextTab,
         })),
-    { loading: () => <TabsSkeleton type="note" /> }
+    { loading: () => <>Loading..</> }
 );
 
 const CodeTab = dynamic(
@@ -31,7 +31,7 @@ const CodeTab = dynamic(
         import("@/components/custom/create-drop/tab/code-tab").then((m) => ({
             default: m.CodeTab,
         })),
-    { loading: () => <TabsSkeleton type="code" /> }
+    { loading: () => <>Loading..</> }
 );
 
 const FileTab = dynamic(
@@ -39,7 +39,7 @@ const FileTab = dynamic(
         import("@/components/custom/create-drop/tab/file-tab").then((m) => ({
             default: m.FileTab,
         })),
-    { loading: () => <TabsSkeleton type="file" /> }
+    { loading: () => <>Loading..</> }
 );
 
 export const TabContainer = React.memo(() => {

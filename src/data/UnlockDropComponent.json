@@ -1,0 +1,82 @@
+{
+  "title": "Unlock Your Drop",
+  "description": "Complete the steps below to securely unlock and access your Drop",
+  "stepIndicators": ["Enter Key", "Verify Key", "Access Drop"],
+  "enterKey": {
+    "title": "Enter Your Drop Key",
+    "inputPlaceholders": ["apple", "beer", "ocean"],
+    "ctaBtn": {
+      "label": "Verify Drop Key",
+      "loadingLabel": "Verifying..."
+    },
+    "hintText": "Your drop key looks like:",
+    "sampleKey": "apple-beer-ocean",
+    "additionalInfo": {
+      "title": "Need help? Make sure you have the complete drop key from the sender.",
+      "description": "Drop keys expire after viewing or on the scheduled date."
+    }
+  },
+  "verifyKey": {
+    "verificationStatuses": {
+      "verifying": {
+        "title": "Verifying Your Drop Key",
+        "description": "Please wait while we securely verify your credentials and decrypt your content...",
+        "icon": "LoaderCircle"
+      },
+      "notfound": {
+        "title": "Drop Not Found",
+        "description": "The drop key you entered doesn't exist or has already expired. Please check your key and try again.",
+        "icon": "AlertCircle"
+      },
+      "error": {
+        "title": "Verification Failed",
+        "description": "Something went wrong during verification. Please check your connection and try again.",
+        "icon": "AlertCircle"
+      },
+      "rateLimited": {
+        "title": "Too Many Attempts",
+        "description": "You've made too many verification attempts. Please wait a moment before trying again.",
+        "icon": "AlertCircle"
+      },
+      "decryptionError": {
+        "title": "Decryption Failed",
+        "description": "Unable to decrypt the content with the provided key. Please verify your drop key is correct.",
+        "icon": "AlertCircle"
+      }
+    },
+    "ctaTryAgainBtn": {
+      "label": "Try Again",
+      "loadingLabel": "Loading..."
+    },
+    "ctaRateLimitedBtn": {
+      "label": "I Understand",
+      "loadingLabel": "Loading..."
+    }
+  },
+  "accessDrop": {
+    "title": "Verification Successful!",
+    "description": "Your drop key has been verified and your content is ready to view.",
+    "ctaBtn": {
+      "label": "Open Drop",
+      "loadingLabel": "Opening..."
+    },
+    "additionalInfo": "You'll be redirected to view the decrypted drop content. Remember, some drops can only be viewed once."
+  },
+  "info": [
+    {
+      "icon": "Shield",
+      "title": "End-to-End Encrypted",
+      "description": "Your content is secured with strong encryption, ensuring only you can access it."
+    },
+    {
+      "icon": "Lock",
+      "title": "Zero-Knowledge",
+      "description": "No accounts, no login. Only you have access to your drop key."
+    },
+    {
+      "icon": "Code",
+      "title": "Open Source",
+      "description": "Our code is publicly available for transparency and trust"
+    }
+  ]
+}

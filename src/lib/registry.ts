@@ -6,14 +6,14 @@ import {
   MenuComponentSchema,
   PrivacyInfoCardComponentSchema,
   TermsOfServiceComponentSchema,
-  UnlockDropDialogBoxComponentSchema,
+  UnlockDropComponentSchema,
 } from "@/lib/schema";
 
 /**
  * Global schema registry for all components
  */
 export const COMPONENT_SCHEMAS: Record<string, z.ZodSchema> = {
-  UnlockDropDialogBoxComponent: UnlockDropDialogBoxComponentSchema,
+  UnlockDropComponent: UnlockDropComponentSchema,
   PrivacyInfoCardComponent: PrivacyInfoCardComponentSchema,
   MenuComponent: MenuComponentSchema,
   FAQComponent: FAQComponentSchema,

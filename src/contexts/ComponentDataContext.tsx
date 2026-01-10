@@ -2,31 +2,16 @@
 
 import React from "react";
 import { getComponentData } from "@/services/componentDataService";
-import { HeroComponent } from "@/types/contentData-types/hero-types";
-import { PrivacyInfoCardComponent } from "@/types/contentData-types/privacyInfoCard-types";
-import { UnlockDropDialogBoxComponent } from "@/types/contentData-types/unlockDropDialogBox-types";
+import { UnlockDropComponent } from "@/types/contentData-types/unlockDrop-types";
 import { MenuComponent } from "@/types/contentData-types/menu-types";
 import { DropPreviewComponent } from "@/types/contentData-types/dropPreview-types";
-import { TermsOfServiceComponent } from "@/types/contentData-types/termsOfService-types";
-import { FAQComponent } from "@/types/contentData-types/faq-types";
 
-export type ComponentDataType =
-    | HeroComponent
-    | PrivacyInfoCardComponent
-    | UnlockDropDialogBoxComponent
-    | MenuComponent
-    | DropPreviewComponent
-    | TermsOfServiceComponent
-    | FAQComponent;
+export type ComponentDataType = UnlockDropComponent | MenuComponent | DropPreviewComponent;
 
 export type ComponentTypeMap = {
-    HeroComponent: HeroComponent;
-    PrivacyInfoCardComponent: PrivacyInfoCardComponent;
-    UnlockDropDialogBoxComponent: UnlockDropDialogBoxComponent;
+    UnlockDropComponent: UnlockDropComponent;
     MenuComponent: MenuComponent;
     DropPreviewComponent: DropPreviewComponent;
-    TermsOfServiceComponent: TermsOfServiceComponent;
-    FAQComponent: FAQComponent;
 };
 
 interface ComponentDataContextType {
@@ -131,51 +116,19 @@ export function useComponentData(): ComponentDataContextType {
     return context;
 }
 
-export function useHeroComponent() {
+export function useUnlockDropComponent() {
     const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
 
     React.useEffect(() => {
-        if (!cachedData.HeroComponent && !loadingStates.HeroComponent && !errorStates.HeroComponent) {
-            getComponentData('HeroComponent').catch(console.error);
+        if (!cachedData.UnlockDropComponent && !loadingStates.UnlockDropComponent && !errorStates.UnlockDropComponent) {
+            getComponentData("UnlockDropComponent").catch(console.error);
         }
-    }, [cachedData.HeroComponent, loadingStates.HeroComponent, errorStates.HeroComponent, getComponentData]);
+    }, [cachedData.UnlockDropComponent, loadingStates.UnlockDropComponent, errorStates.UnlockDropComponent, getComponentData]);
 
     return {
-        data: cachedData.HeroComponent as HeroComponent,
-        isLoading: loadingStates.HeroComponent || false,
-        error: errorStates.HeroComponent,
-    };
-}
-
-export function usePrivacyInfoCardComponent() {
-    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
-
-    React.useEffect(() => {
-        if (!cachedData.PrivacyInfoCardComponent && !loadingStates.PrivacyInfoCardComponent && !errorStates.PrivacyInfoCardComponent) {
-            getComponentData('PrivacyInfoCardComponent').catch(console.error);
-        }
-    }, [cachedData.PrivacyInfoCardComponent, loadingStates.PrivacyInfoCardComponent, errorStates.PrivacyInfoCardComponent, getComponentData]);
-
-    return {
-        data: cachedData.PrivacyInfoCardComponent as PrivacyInfoCardComponent,
-        isLoading: loadingStates.PrivacyInfoCardComponent || false,
-        error: errorStates.PrivacyInfoCardComponent,
-    };
-}
-
-export function useUnlockDropDialogBoxComponent() {
-    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
-
-    React.useEffect(() => {
-        if (!cachedData.UnlockDropDialogBoxComponent && !loadingStates.UnlockDropDialogBoxComponent && !errorStates.UnlockDropDialogBoxComponent) {
-            getComponentData('UnlockDropDialogBoxComponent').catch(console.error);
-        }
-    }, [cachedData.UnlockDropDialogBoxComponent, loadingStates.UnlockDropDialogBoxComponent, errorStates.UnlockDropDialogBoxComponent, getComponentData]);
-
-    return {
-        data: cachedData.UnlockDropDialogBoxComponent as UnlockDropDialogBoxComponent,
-        isLoading: loadingStates.UnlockDropDialogBoxComponent || false,
-        error: errorStates.UnlockDropDialogBoxComponent,
+        data: cachedData.UnlockDropComponent as UnlockDropComponent,
+        isLoading: loadingStates.UnlockDropComponent || false,
+        error: errorStates.UnlockDropComponent,
     };
 }
 
@@ -184,7 +137,7 @@ export function useMenuComponent() {
 
     React.useEffect(() => {
         if (!cachedData.MenuComponent && !loadingStates.MenuComponent && !errorStates.MenuComponent) {
-            getComponentData('MenuComponent').catch(console.error);
+            getComponentData("MenuComponent").catch(console.error);
         }
     }, [cachedData.MenuComponent, loadingStates.MenuComponent, errorStates.MenuComponent, getComponentData]);
 
@@ -208,37 +161,5 @@ export function useDropPreview() {
         data: cachedData.DropPreviewComponent as DropPreviewComponent,
         isLoading: loadingStates.DropPreviewComponent || false,
         error: errorStates.DropPreviewComponent,
-    };
-}
-
-export function useTermsOfServiceComponent() {
-    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
-
-    React.useEffect(() => {
-        if (!cachedData.TermsOfServiceComponent && !loadingStates.TermsOfServiceComponent && !errorStates.TermsOfServiceComponent) {
-            getComponentData("TermsOfServiceComponent").catch(console.error);
-        }
-    }, [cachedData.TermsOfServiceComponent, loadingStates.TermsOfServiceComponent, errorStates.TermsOfServiceComponent, getComponentData]);
-
-    return {
-        data: cachedData.TermsOfServiceComponent as TermsOfServiceComponent,
-        isLoading: loadingStates.TermsOfServiceComponent || false,
-        error: errorStates.TermsOfServiceComponent,
-    };
-}
-
-export function useFAQComponent() {
-    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
-
-    React.useEffect(() => {
-        if (!cachedData.FAQComponent && !loadingStates.FAQComponent && !errorStates.FAQComponent) {
-            getComponentData("FAQComponent").catch(console.error);
-        }
-    }, [cachedData.FAQComponent, loadingStates.FAQComponent, errorStates.FAQComponent, getComponentData]);
-
-    return {
-        data: cachedData.FAQComponent as FAQComponent,
-        isLoading: loadingStates.FAQComponent || false,
-        error: errorStates.FAQComponent,
     };
 }

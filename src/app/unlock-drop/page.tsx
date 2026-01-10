@@ -1,19 +1,16 @@
 "use client";
 
 import React from "react";
-import { UnlockDrop } from "@/components/custom/unlock-drop";
-import { DropOptionsProvider } from "@/contexts/DropOptionsContext";
-import { UnlockDropDialogBoxProvider } from "@/contexts/UnlockDropDialogBoxContext";
+import { UnlockDrop } from "@/components/custom/unlock-drop/form";
+import { UnlockDropProvider } from "@/contexts/UnlockDropContext";
 import { ComponentDataProvider } from "@/contexts/ComponentDataContext";
 
 export default function UnlockDropPage(): React.ReactElement {
     return (
         <ComponentDataProvider>
-            <UnlockDropDialogBoxProvider>
-                <DropOptionsProvider>
-                    <UnlockDrop />
-                </DropOptionsProvider>
-            </UnlockDropDialogBoxProvider>
+            <UnlockDropProvider>
+                <UnlockDrop />
+            </UnlockDropProvider>
         </ComponentDataProvider>
     );
 }

@@ -8,7 +8,7 @@ import { DropSidebar } from "@/components/custom/open-drop/sidebar";
 import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
 import { DropContent } from "@/components/custom/open-drop/content";
 import { ComponentError } from "@/components/custom/ComponentError"
-import { DropPreviewSkeleton } from "@/components/skeleton/DropPreviewSkeleton";
+// import { DropPreviewSkeleton } from "@/components/skeleton/DropPreviewSkeleton";
 
 const COMPONENT_ID = "DropPreviewComponent" as const;
 
@@ -16,7 +16,7 @@ export const DropPreview = () => {
     const { decryptedDrop } = useOpenDrop();
     const { data, isLoading, error } = useDropPreview();
 
-    if (isLoading || !data) return <DropPreviewSkeleton />;
+    if (isLoading || !data) return <>Loading..</>;
     if (!decryptedDrop || error) return <ComponentError componentId={COMPONENT_ID} />;
 
     return (

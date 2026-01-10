@@ -130,7 +130,7 @@ export const TermsOfServiceComponentSchema = z.object({
 });
 
 // Unlock Drop Dialog Box
-export const UnlockDropDialogBoxComponentSchema = z.object({
+export const UnlockDropComponentSchema = z.object({
   title: z.string(),
   description: z.string(),
   ctaBtn: z.object({
