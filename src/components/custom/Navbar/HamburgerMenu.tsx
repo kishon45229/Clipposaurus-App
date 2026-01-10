@@ -23,12 +23,12 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { useGitHubStars } from "@/hooks/useGitHubStars";
-import { GITHUB_REPO_URL, GITHUB_SPONSOR_URL } from "@/constants/githubConfig";
+import { useRedirects } from "@/hooks/useRedirect";
 
-const DOCS_URL = process.env.NEXT_PUBLIC_DOCS_URL || "http://localhost:3001";
 
 export const HamburgerMenu = React.memo(() => {
     const stars = useGitHubStars();
+    const { handleRedirectToDocs, handleRedirectToChangelog, handleRedirectToGitHub, handleRedirectToGitHubIssues, handleRedirectToGitHubSponsor } = useRedirects();
 
     return (
         <DropdownMenu>
@@ -49,7 +49,7 @@ export const HamburgerMenu = React.memo(() => {
             >
                 {/* Docs */}
                 <DropdownMenuItem
-                    onClick={() => window.open(DOCS_URL, "_blank")}
+                    onClick={handleRedirectToDocs}
                     className="hamburger-menu-item"
                 >
                     <BookOpen className="hamburger-menu-icon-item" />
@@ -73,7 +73,7 @@ export const HamburgerMenu = React.memo(() => {
 
                 {/* GitHub */}
                 <DropdownMenuItem
-                    onClick={() => window.open(GITHUB_REPO_URL, "_blank")}
+                    onClick={handleRedirectToGitHub}
                     className="hamburger-menu-item"
                 >
                     <FontAwesomeIcon icon={faGithub} className="hamburger-menu-icon-item" />
@@ -101,13 +101,7 @@ export const HamburgerMenu = React.memo(() => {
 
                 {/* Report Issue */}
                 <DropdownMenuItem
-                    onClick={() => {
-                        const link = document.createElement('a');
-                        link.href = `${GITHUB_REPO_URL}/issues`;
-                        link.target = '_blank';
-                        link.rel = 'noopener noreferrer';
-                        link.click();
-                    }}
+                    onClick={handleRedirectToGitHubIssues}
                     className="hamburger-menu-item"
                 >
                     <Bug className="hamburger-menu-icon-item" />
@@ -144,7 +138,7 @@ export const HamburgerMenu = React.memo(() => {
 
                 {/* Donate */}
                 <DropdownMenuItem
-                    onClick={() => window.open(`${GITHUB_SPONSOR_URL}`, "_blank")}
+                    onClick={handleRedirectToGitHubSponsor}
                     className="
                 hamburger-menu-item
                 bg-emerald-50text-emerald-700

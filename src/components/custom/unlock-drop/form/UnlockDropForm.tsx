@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button";
 
 export const UnlockDropForm = () => {
     const { data, handleOpenDrop, dropKeyVerificationRequestStatus, emptyFields } = useUnlockDrop();
-    const { ctaBtn, errorSection, hintText, sampleKey } = data;
-    const { title, messages } = errorSection;
+    const { enterKey } = data;
+    const { title, ctaBtn, errorMessages, hintText, sampleKey } = enterKey;
 
     const isVerifying = dropKeyVerificationRequestStatus === "verifying";
     const showIncompleteError = dropKeyVerificationRequestStatus === "incomplete";
@@ -18,7 +18,7 @@ export const UnlockDropForm = () => {
             {/**header */}
             <div className="text-center space-y-2">
                 <div className="text-[clamp(1rem,6vw,1.5rem)] font-black leading-[1.05] tracking-tight text-zinc-900 dark:text-zinc-100">
-                    Enter Your Drop Key
+                    {title}
                 </div>
             </div>
 
@@ -35,12 +35,12 @@ export const UnlockDropForm = () => {
                             </div>
                             <div className="text-sm text-zinc-700 dark:text-zinc-400">
                                 {emptyFields.length === 3
-                                    ? `${messages.allEmpty}`
+                                    ? `${errorMessages.allEmpty}`
                                     : emptyFields.length === 2
-                                        ? `${messages.oneOrTwoEmpty} ${emptyFields.join(" and ")}`
+                                        ? `${errorMessages.oneOrTwoEmpty} ${emptyFields.join(" and ")}`
                                         : emptyFields.length === 1
-                                            ? `${messages.oneOrTwoEmpty} ${emptyFields[0]}`
-                                            : `${messages.general}`}
+                                            ? `${errorMessages.oneOrTwoEmpty} ${emptyFields[0]}`
+                                            : `${errorMessages.general}`}
                             </div>
                         </div>
                     </div>

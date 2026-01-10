@@ -130,13 +130,71 @@ export const TermsOfServiceComponentSchema = z.object({
 });
 
 // Unlock Drop Dialog Box
+const CtaBtnSchema = z.object({
+  label: z.string(),
+  loadingLabel: z.string(),
+});
+
+const AdditionalInfoSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+});
+
+const VerificationStatusSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  icon: z.string(),
+});
+
+const VerificationStatusesSchema = z.object({
+  verifying: VerificationStatusSchema,
+  notfound: VerificationStatusSchema,
+  error: VerificationStatusSchema,
+  rateLimited: VerificationStatusSchema,
+  decryptionError: VerificationStatusSchema,
+});
+
+const ErrorMessageSchema = z.object({
+  allEmpty: z.string(),
+  oneOrTwoEmpty: z.string(),
+  general: z.string(),
+});
+
+const EnterKeySchema = z.object({
+  title: z.string(),
+  inputPlaceholders: z.array(z.string()),
+  ctaBtn: CtaBtnSchema,
+  hintText: z.string(),
+  sampleKey: z.string(),
+  additionalInfo: AdditionalInfoSchema,
+  errorMessages: ErrorMessageSchema,
+});
+
+const VerifyKeySchema = z.object({
+  verificationStatuses: VerificationStatusesSchema,
+  ctaTryAgainBtn: CtaBtnSchema,
+  ctaRateLimitedBtn: CtaBtnSchema,
+});
+
+const AccessDropSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  ctaBtn: CtaBtnSchema,
+  additionalInfo: z.string(),
+});
+
+const InfoItemSchema = z.object({
+  icon: z.string(),
+  title: z.string(),
+  description: z.string(),
+});
+
 export const UnlockDropComponentSchema = z.object({
   title: z.string(),
   description: z.string(),
-  ctaBtn: z.object({
-    label: z.string(),
-    loadingLabel: z.string(),
-  }),
-  hintText: z.string(),
-  sampleKey: z.string(),
+  stepIndicators: z.array(z.string()),
+  enterKey: EnterKeySchema,
+  verifyKey: VerifyKeySchema,
+  accessDrop: AccessDropSchema,
+  info: z.array(InfoItemSchema),
 });

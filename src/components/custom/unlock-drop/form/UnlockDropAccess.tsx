@@ -1,24 +1,14 @@
 "use client";
 
-import React from "react";
-import { CheckCircle2, ExternalLink, Sparkles } from "lucide-react";
+import { CheckCircle2, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useUnlockDrop } from "@/contexts/UnlockDropContext";
-import { useRouter } from "next/navigation";
 
-/**
- * UnlockDropAccess component
- * Displays success state with "Open Drop" button
- */
 export const UnlockDropAccess = () => {
-    const { redirectUrl } = useUnlockDrop();
-    const router = useRouter();
+    const { data, handleOpenDrop } = useUnlockDrop();
 
-    const handleOpenDrop = () => {
-        if (redirectUrl) {
-            router.push(redirectUrl);
-        }
-    };
+    const { accessDrop } = data;
+    const { title, description, ctaBtn, additionalInfo } = accessDrop;
 
     return (
         <div className="flex flex-col items-center w-full gap-6 p-8">
@@ -27,10 +17,10 @@ export const UnlockDropAccess = () => {
             {/* Success Messages */}
             <div className="text-center space-y-3 max-w-md">
                 <div className="text-[clamp(1rem,6vw,1.5rem)] font-black leading-[1.05] tracking-tight text-zinc-900 dark:text-zinc-100">
-                    Verification Successful!
+                    {title}
                 </div>
                 <div className="text-[clamp(0.5rem,6vw,1rem)] text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                    Your drop key has been verified and your content is ready to view.
+                    {description}
                 </div>
             </div>
 
@@ -41,15 +31,15 @@ export const UnlockDropAccess = () => {
                 className="relative w-full h-10 max-w-sm rounded-2xl text-white text-xl font-bold shadow-2xl shadow-emerald-600/40 bg-emerald-600 dark:bg-emerald-500 transition-all duration-300 hover:scale-[1.02] hover:shadow-emerald-600/50 disabled:opacity-70 disabled:hover:scale-100"
             >
                 <span className="flex items-center gap-3">
-                    <span>Open Drop</span>
+                    <span>{ctaBtn.label}</span>
                     <ExternalLink className="w-6 h-6 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
                 </span>
             </Button>
 
             {/* Additional Info */}
-            <p className="text-sm text-zinc-500 dark:text-zinc-500 text-center max-w-md">
-                You&apos;ll be redirected to view the decrypted drop content. Remember, some drops can only be viewed once.
-            </p>
+            <div className="text-sm text-zinc-500 dark:text-zinc-500 text-center max-w-md">
+                {additionalInfo}
+            </div>
         </div>
     );
 };

@@ -15,7 +15,10 @@ export const UnlockDropVerify = () => {
     const isVerifying = dropKeyVerificationRequestStatus === "verifying";
     const isRateLimited = dropKeyVerificationRequestStatus === "rateLimited";
 
-    const statusData = data.verificationStatuses[dropKeyVerificationRequestStatus as keyof typeof data.verificationStatuses];
+    const { verifyKey } = data;
+    const { verificationStatuses, ctaTryAgainBtn, ctaRateLimitedBtn } = verifyKey;
+
+    const statusData = verificationStatuses[dropKeyVerificationRequestStatus as keyof typeof verificationStatuses];
     const IconComponent = iconMap[statusData.icon as keyof typeof iconMap] || LoaderCircle;
 
     return (
@@ -40,7 +43,7 @@ export const UnlockDropVerify = () => {
                 >
                     <span className="flex items-center gap-3">
                         <RotateCcw className="w-6 h-6" />
-                        <span>Try Again</span>
+                        <span>{ctaTryAgainBtn.label}</span>
                     </span>
                 </Button>
             ) : isRateLimited && (
@@ -52,7 +55,7 @@ export const UnlockDropVerify = () => {
                 >
                     <span className="flex items-center gap-3">
                         <RotateCcw className="w-6 h-6" />
-                        <span>I Understand</span>
+                        <span>{ctaRateLimitedBtn.label}</span>
                     </span>
                 </Button>
             )

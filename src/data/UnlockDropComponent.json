@@ -14,6 +14,11 @@
     "additionalInfo": {
       "title": "Need help? Make sure you have the complete drop key from the sender.",
       "description": "Drop keys expire after viewing or on the scheduled date."
+    },
+    "errorMessages": {
+      "allEmpty": "Please enter your drop key to proceed.",
+      "oneOrTwoEmpty": "Please fill the ",
+      "general": "There was an issue with your drop key. Please check and try again."
     }
   },
   "verifyKey": {
