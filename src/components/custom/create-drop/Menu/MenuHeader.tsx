@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { useMenu } from "@/contexts/MenuContext";
+import { useHeader } from "@/contexts/HeaderContext";
 
 export const MenuHeader = React.memo(() => {
-  const { data } = useMenu();
+  const { data } = useHeader();
   const { title, description } = data;
 
   return (

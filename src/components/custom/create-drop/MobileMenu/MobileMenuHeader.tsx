@@ -5,10 +5,10 @@ import {
   ResponsiveDialogTitle,
   ResponsiveDialogDescription,
 } from "@/components/ui/responsive-dialog";
-import { useMenu } from "@/contexts/MenuContext";
+import { useHeader } from "@/contexts/HeaderContext";
 
 export const MobileMenuHeader = React.memo(() => {
-  const { data } = useMenu();
+  const { data } = useHeader();
   const { title, description } = data;
 
   return (

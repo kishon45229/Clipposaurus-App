@@ -3,7 +3,7 @@ import {
   DropPreviewComponentSchema,
   FAQComponentSchema,
   HeroComponentSchema,
-  MenuComponentSchema,
+  HeaderComponentSchema,
   PrivacyInfoCardComponentSchema,
   TermsOfServiceComponentSchema,
   UnlockDropComponentSchema,
@@ -15,7 +15,7 @@ import {
 export const COMPONENT_SCHEMAS: Record<string, z.ZodSchema> = {
   UnlockDropComponent: UnlockDropComponentSchema,
   PrivacyInfoCardComponent: PrivacyInfoCardComponentSchema,
-  MenuComponent: MenuComponentSchema,
+  HeaderComponent: HeaderComponentSchema,
   FAQComponent: FAQComponentSchema,
   HeroComponent: HeroComponentSchema,
   DropPreviewComponent: DropPreviewComponentSchema,

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useMenu } from "@/contexts/MenuContext";
+import { useHeader } from "@/contexts/HeaderContext";
 import {
     CheckCircle2,
     XCircle,
@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 
 export function CreateDropDialogBoxContent() {
-    const { createDropRequestStatus } = useMenu();
+    const { createDropRequestStatus } = useHeader();
 
     const icon = (): React.ReactElement => {
         switch (createDropRequestStatus) {

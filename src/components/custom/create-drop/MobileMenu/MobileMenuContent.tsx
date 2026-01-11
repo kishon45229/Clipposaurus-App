@@ -11,12 +11,12 @@ import { MobileMenuKeySection } from "./MobileMenuKeySection";
 import { MobileMenuRetentionCard } from "./MobileMenuRetentionCard";
 import { MobileMenuInfoSection } from "./MobileMenuInfoSection";
 import { MobileMenuFooter } from "./MobileMenuFooter";
-import { useMenu } from "@/contexts/MenuContext";
+import { useHeader } from "@/contexts/HeaderContext";
 import { AmbientGlow } from "@/components/ui/ambient-glow";
 
 export const MobileMenuContent = () => {
     const { isMobileMenuOpen, setIsMobileMenuOpen, createDropRequestStatus } =
-        useMenu();
+        useHeader();
 
     return (
         <ResponsiveDialog

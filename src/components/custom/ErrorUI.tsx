@@ -32,7 +32,7 @@ function ErrorUI({ isDev, error, supportId, reset }: ErrorUIProps) {
                 "
             >
                 {/* Ambient background glow */}
-                <AmbientGlow />
+                {/* <AmbientGlow /> */}
 
                 {/* Icon */}
                 <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">

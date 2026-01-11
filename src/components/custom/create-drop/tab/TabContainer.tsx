@@ -13,10 +13,8 @@ import { tabList } from "@/components/custom/create-drop/tab/Tab.config";
 import { TextTabProvider } from "@/contexts/TextTabContext";
 import { CodeTabProvider } from "@/contexts/CodeTabContext";
 import { FileTabProvider } from "@/contexts/FileTabContext";
-import { MobileCreateDropButton } from "@/components/custom/create-drop/MobileMenu/MobileCreateDropButton";
-import { MobileMenu } from "@/components/custom/create-drop/MobileMenu";
 import { useTabNavigation } from "@/hooks/useTabNavigation";
-import { CreateDropDialogBox } from "@/components/custom/create-drop/dialog-box";
+import { HeaderDropKeyPreview } from "@/components/custom/create-drop/Header/HeaderDropKeyPreview";
 
 const TextTab = dynamic(
     () =>
@@ -52,7 +50,7 @@ export const TabContainer = React.memo(() => {
             className="flex h-full w-full flex-col"
         >
             {/* Header */}
-            <div className="flex w-full items-center justify-between shrink-0">
+            <div className="flex w-full items-center justify-between shrink-0 pb-3">
                 <TabsList
                     className="
             flex w-fit items-center rounded-2xl p-1
@@ -80,12 +78,7 @@ export const TabContainer = React.memo(() => {
                         </TabsTrigger>
                     ))}
                 </TabsList>
-
-                {/* Mobile actions */}
-                <div className="flex flex-1 justify-end xl:hidden">
-                    < MobileCreateDropButton />
-                    <MobileMenu />
-                </div>
+                <HeaderDropKeyPreview />
             </div>
 
             {/* Content */}
@@ -108,8 +101,6 @@ export const TabContainer = React.memo(() => {
                     </FileTabProvider>
                 </TabsContent>
             </div>
-
-            <CreateDropDialogBox />
         </Tabs >
     );
 });

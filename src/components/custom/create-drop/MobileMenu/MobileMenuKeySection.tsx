@@ -5,7 +5,7 @@ import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Loader } from "lucide-react";
-import { useMenu } from "@/contexts/MenuContext";
+import { useHeader } from "@/contexts/HeaderContext";
 
 export const MobileMenuKeySection = React.memo(() => {
     const {
@@ -15,7 +15,7 @@ export const MobileMenuKeySection = React.memo(() => {
         userSecret,
         setUserSecret,
         isLoadingKeys,
-    } = useMenu();
+    } = useHeader();
 
     const {
         title,

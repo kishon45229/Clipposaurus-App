@@ -4,10 +4,10 @@ import React from "react";
 import { Card, CardTitle, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { useMenu } from "@/contexts/MenuContext";
+import { useHeader } from "@/contexts/HeaderContext";
 
 export const MobileMenuRetentionCard = React.memo(() => {
-  const { data, retention, setRetention } = useMenu();
+  const { data, retention, setRetention } = useHeader();
 
   const { title, retentionSection } = data;
   const { deleteOnAccess, keep30Minutes, keep1Hour } =

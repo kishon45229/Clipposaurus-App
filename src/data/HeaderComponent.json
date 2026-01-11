@@ -7,7 +7,8 @@
     "systemSecretLabel": "System Secret",
     "userSecretLabel": "Add a personal touch to your drop key",
     "dropKeyLabel": "Drop Key:",
-    "dropKeyPlaceholder": "Enter your secret key to see your drop key"
+    "dropKeyPlaceholder": "Enter your secret key to see your drop key",
+    "inputPlaceholder": "Enter here"
   },
   "retentionSection": {
     "title": "Drop Expiration Settings",
@@ -21,6 +22,12 @@
     "label": "Note:",
     "text": "Once created, you will not be able to change the Drop Key or Expiration Settings."
   },
-  "mobileMenuButton": "I'm Ready to Create Drop",
-  "ctaButton": "Create My Drop"
+  "mobileMenuButton": {
+    "label": "I'm Ready to Create Drop",
+    "loadingLabel": "Loading..."
+  },
+  "ctaButton": {
+    "label": "Create My Drop",
+    "loadingLabel": "Creating..."
+  }
 }

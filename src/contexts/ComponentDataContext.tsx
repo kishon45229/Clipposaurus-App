@@ -3,14 +3,14 @@
 import React from "react";
 import { getComponentData } from "@/services/componentDataService";
 import { UnlockDropComponent } from "@/types/contentData-types/unlockDrop-types";
-import { MenuComponent } from "@/types/contentData-types/menu-types";
+import { HeaderComponent } from "@/types/contentData-types/header-types";
 import { DropPreviewComponent } from "@/types/contentData-types/dropPreview-types";
 
-export type ComponentDataType = UnlockDropComponent | MenuComponent | DropPreviewComponent;
+export type ComponentDataType = UnlockDropComponent | HeaderComponent | DropPreviewComponent;
 
 export type ComponentTypeMap = {
     UnlockDropComponent: UnlockDropComponent;
-    MenuComponent: MenuComponent;
+    HeaderComponent: HeaderComponent;
     DropPreviewComponent: DropPreviewComponent;
 };
 
@@ -132,19 +132,19 @@ export function useUnlockDropComponent() {
     };
 }
 
-export function useMenuComponent() {
+export function useHeaderComponent() {
     const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
 
     React.useEffect(() => {
-        if (!cachedData.MenuComponent && !loadingStates.MenuComponent && !errorStates.MenuComponent) {
-            getComponentData("MenuComponent").catch(console.error);
+        if (!cachedData.HeaderComponent && !loadingStates.HeaderComponent && !errorStates.HeaderComponent) {
+            getComponentData("HeaderComponent").catch(console.error);
         }
-    }, [cachedData.MenuComponent, loadingStates.MenuComponent, errorStates.MenuComponent, getComponentData]);
+    }, [cachedData.HeaderComponent, loadingStates.HeaderComponent, errorStates.HeaderComponent, getComponentData]);
 
     return {
-        data: cachedData.MenuComponent as MenuComponent,
-        isLoading: loadingStates.MenuComponent || false,
-        error: errorStates.MenuComponent,
+        data: cachedData.HeaderComponent as HeaderComponent,
+        isLoading: loadingStates.HeaderComponent || false,
+        error: errorStates.HeaderComponent,
     };
 }
 

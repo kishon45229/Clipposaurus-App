@@ -1,4 +1,4 @@
-export interface MenuComponent {
+export interface HeaderComponent {
   title: string;
   description: string;
   keySection: {
@@ -8,6 +8,7 @@ export interface MenuComponent {
     userSecretLabel: string;
     dropKeyLabel: string;
     dropKeyPlaceholder: string;
+    inputPlaceholder: string;
   };
   retentionSection: {
     title: string;
@@ -21,6 +22,12 @@ export interface MenuComponent {
     label: string;
     text: string;
   };
-  mobileMenuButton: string;
-  ctaButton: string;
+  mobileMenuButton: {
+    label: string;
+    loadingLabel: string;
+  };
+  ctaButton: {
+    label: string;
+    loadingLabel: string;
+  };
 }

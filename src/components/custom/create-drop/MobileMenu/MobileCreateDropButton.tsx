@@ -3,7 +3,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-import { useMenu } from "@/contexts/MenuContext";
+import { useHeader } from "@/contexts/HeaderContext";
 import { ComponentError } from "../../ComponentError";
 
 const COMPONENT_ID = "MenuContainer" as const;
@@ -12,7 +12,7 @@ const COMPONENT_ID = "MenuContainer" as const;
  * Mobile Create Drop Button Component
  */
 export const MobileCreateDropButton = React.memo(() => {
-    const { data, isLoading, error, handleMobileMenuOpen } = useMenu();
+    const { data, isLoading, error, handleMobileMenuOpen } = useHeader();
 
     if (isLoading || !data) return null;
     if (error) return <ComponentError componentId={COMPONENT_ID} />;

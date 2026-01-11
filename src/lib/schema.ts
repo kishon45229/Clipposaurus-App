@@ -70,7 +70,7 @@ export const HeroComponentSchema = z.object({
 });
 
 // Menu
-export const MenuComponentSchema = z.object({
+export const HeaderComponentSchema = z.object({
   title: z.string(),
   description: z.string(),
   keySection: z.object({
@@ -80,6 +80,7 @@ export const MenuComponentSchema = z.object({
     userSecretLabel: z.string(),
     dropKeyLabel: z.string(),
     dropKeyPlaceholder: z.string(),
+    inputPlaceholder: z.string(),
   }),
   retentionSection: z.object({
     title: z.string(),
@@ -93,8 +94,14 @@ export const MenuComponentSchema = z.object({
     label: z.string(),
     text: z.string(),
   }),
-  mobileMenuButton: z.string(),
-  ctaButton: z.string(),
+  mobileMenuButton: z.object({
+    label: z.string(),
+    loadingLabel: z.string(),
+  }),
+  ctaButton: z.object({
+    label: z.string(),
+    loadingLabel: z.string(),
+  }),
 });
 
 // Privacy Info Card

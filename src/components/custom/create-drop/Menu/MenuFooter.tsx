@@ -3,10 +3,10 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Loader } from "lucide-react";
-import { useMenu } from "@/contexts/MenuContext";
+import { useHeader } from "@/contexts/HeaderContext";
 
 export const MenuFooter = React.memo(() => {
-  const { handleCreateDrop, createDropRequestStatus, data } = useMenu();
+  const { handleCreateDrop, createDropRequestStatus, data } = useHeader();
   const ctaLabel = data.ctaButton;
 
   const isCreating = createDropRequestStatus === "creating";

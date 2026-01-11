@@ -2,14 +2,14 @@
 
 import React from "react";
 import { useCreateDrop } from "@/contexts/CreateDropContext";
-import { useMenuComponent } from "@/contexts/ComponentDataContext";
+import { useHeaderComponent } from "@/contexts/ComponentDataContext";
 import type { CreateDropAlertStatus } from "@/types";
-import type { MenuComponent } from "@/types/contentData-types/menu-types";
+import type { HeaderComponent } from "@/types/contentData-types/header-types";
 import { useMobileMenu } from "@/hooks/useMobileMenu";
 
-export interface MenuContextValue {
+export interface HeaderContextValue {
     // Component data
-    data: MenuComponent;
+    data: HeaderComponent;
     isLoading: boolean;
     error: Error | null;
 
@@ -37,6 +37,11 @@ export interface MenuContextValue {
     handleMobileMenuOpen: () => void;
     handleCloseMobileMenu: () => void;
 
+    // Drawer state
+    isDrawerOpen: boolean;
+    setIsDrawerOpen: (open: boolean) => void;
+    handleDrawerToggle: () => void;
+
     copied: boolean;
     handleCopy: () => void;
 
@@ -44,18 +49,24 @@ export interface MenuContextValue {
     setFullKeyVisible: (visible: boolean) => void;
 }
 
-const MenuContext = React.createContext<MenuContextValue | undefined>(undefined);
+const HeaderContext = React.createContext<HeaderContextValue | undefined>(undefined);
 
-interface MenuProviderProps {
+interface HeaderProviderProps {
     children: React.ReactNode;
 }
 
-export function MenuProvider({ children }: MenuProviderProps): React.ReactElement {
+export function HeaderProvider({ children }: HeaderProviderProps): React.ReactElement {
     const { createDropRequestStatus, handleCreateDrop, handleDialogClose, handleDialogBoxOpenChange, handleCopy, copied, identifier, systemSecret, userSecret, setUserSecret, isLoadingKeys, handleKeyGeneration, retention, setRetention, fullKeyVisible, setFullKeyVisible } = useCreateDrop();
-    const { data, isLoading, error } = useMenuComponent();
+    const { data, isLoading, error } = useHeaderComponent();
     const { isMobileMenuOpen, setIsMobileMenuOpen, handleMobileMenuOpen, handleCloseMobileMenu } = useMobileMenu();
 
-    const contextValue: MenuContextValue = React.useMemo(() => ({
+    // Drawer state
+    const [isDrawerOpen, setIsDrawerOpen] = React.useState(false);
+    const handleDrawerToggle = React.useCallback(() => {
+        setIsDrawerOpen(prev => !prev);
+    }, []);
+
+    const contextValue: HeaderContextValue = React.useMemo(() => ({
         // Component data
         data,
         isLoading,
@@ -83,6 +94,11 @@ export function MenuProvider({ children }: MenuProviderProps): React.ReactElemen
         setIsMobileMenuOpen,
         handleMobileMenuOpen,
         handleCloseMobileMenu,
+
+        // Drawer state
+        isDrawerOpen,
+        setIsDrawerOpen,
+        handleDrawerToggle,
 
         copied,
         handleCopy,
@@ -113,19 +129,21 @@ export function MenuProvider({ children }: MenuProviderProps): React.ReactElemen
         handleCopy,
         fullKeyVisible,
         setFullKeyVisible,
+        isDrawerOpen,
+        handleDrawerToggle,
     ]);
 
     return (
-        <MenuContext.Provider value={contextValue}>
+        <HeaderContext.Provider value={contextValue}>
             {children}
-        </MenuContext.Provider>
+        </HeaderContext.Provider>
     );
 }
 
-export function useMenu(): MenuContextValue {
-    const context = React.useContext(MenuContext);
+export function useHeader(): HeaderContextValue {
+    const context = React.useContext(HeaderContext);
     if (context === undefined) {
-        throw new Error('useMenu must be used within a MenuProvider');
+        throw new Error('useHeader must be used within a HeaderProvider');
     }
     return context;
 }

@@ -3,7 +3,7 @@
 import React from "react";
 import { StandardDialog } from "@/components/custom/dialogs";
 import type { DialogButtonProps } from "@/components/custom/dialogs/types";
-import { useMenu } from "@/contexts/MenuContext";
+import { useHeader } from "@/contexts/HeaderContext";
 import { CreateDropDialogBoxContent } from "./CreateDropDialogBox.utils";
 import { ClipboardCheck, Clipboard, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -21,7 +21,7 @@ export const CreateDropDialogBoxContainer = React.memo(() => {
     retention,
     fullKeyVisible,
     setFullKeyVisible,
-  } = useMenu();
+  } = useHeader();
 
   const maskKey = (key: string) =>
     key.length <= 2 ? key : key.slice(0, 2) + "*".repeat(key.length - 2);

@@ -2,7 +2,7 @@ export const COMPONENT_ORIGINS = [
   "HeroComponent",
   "PrivacyInfoCardComponent",
   "UnlockDropComponent",
-  "MenuComponent",
+  "HeaderComponent",
   "DropPreviewComponent",
   "TermsOfServiceComponent",
   "FAQComponent",

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { useMenu } from "@/contexts/MenuContext";
+import { useHeader } from "@/contexts/HeaderContext";
 import { Button } from "@/components/ui/button";
 import { Save, X } from "lucide-react";
 
@@ -11,7 +11,7 @@ export const MobileMenuFooter = React.memo(() => {
         createDropRequestStatus,
         handleCreateDrop,
         handleCloseMobileMenu,
-    } = useMenu();
+    } = useHeader();
 
     const { ctaButton } = data;
 
