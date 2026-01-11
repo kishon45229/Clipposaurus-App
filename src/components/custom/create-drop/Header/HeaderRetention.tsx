@@ -39,11 +39,7 @@ export const HeaderRetention = () => {
                         />
                         <Label
                             htmlFor={`header-${value}`}
-                            className="cursor-pointer px-3 py-1.5 text-xs font-medium rounded-md transition-all
-                                text-zinc-600 dark:text-zinc-400
-                                hover:bg-zinc-100 dark:hover:bg-zinc-800
-                                peer-data-[state=checked]:bg-emerald-500 peer-data-[state=checked]:text-white
-                                peer-data-[state=checked]:font-semibold"
+                            className="cursor-target px-3 py-1.5 text-xs font-medium rounded-md transition-all text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800 peer-data-[state=checked]:bg-emerald-500 hover:peer-data-[state=checked]:bg-emerald-300 dark:hover:peer-data-[state=checked]:bg-emerald-300 peer-data-[state=checked]:text-zinc-950 dark:peer-data-[state=checked]:text-zinc-950 peer-data-[state=checked]:font-semibold"
                         >
                             {shortLabel}
                         </Label>

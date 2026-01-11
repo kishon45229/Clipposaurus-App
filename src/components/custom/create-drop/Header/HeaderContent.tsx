@@ -6,7 +6,7 @@ import { HeaderCreateButton } from "@/components/custom/create-drop/Header/Heade
 
 export const HeaderContent = () => {
     return (
-        <div className="w-full shrink-0 bg-white dark:bg-zinc-900 border-b border-zinc-200 dark:border-zinc-800">
+        <div className="w-full shrink-0 bg-gradient-to-r from-zinc-50 via-zinc-100 to-zinc-50 dark:from-zinc-950 dark:via-zinc-900 dark:to-zinc-950 border-b border-zinc-200 dark:border-zinc-800">
             <div className="flex items-center justify-between gap-4 max-w-7xl mx-auto px-4 h-14">
                 {/* Left: Retention Controls */}
                 <div className="flex items-center">

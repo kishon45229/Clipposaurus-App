@@ -15,13 +15,16 @@ import { CodeTabProvider } from "@/contexts/CodeTabContext";
 import { FileTabProvider } from "@/contexts/FileTabContext";
 import { useTabNavigation } from "@/hooks/useTabNavigation";
 import { HeaderDropKeyPreview } from "@/components/custom/create-drop/Header/HeaderDropKeyPreview";
+import { TextTabSkeleton } from "@/components/custom/skeleton/TextTabSkeleton";
+import { CodeTabSkeleton } from "@/components/custom/skeleton/CodeTabSkeleton";
+import { FileTabSkeleton } from "@/components/custom/skeleton/FileTabSkeleton";
 
 const TextTab = dynamic(
     () =>
         import("@/components/custom/create-drop/tab/text-tab").then((m) => ({
             default: m.TextTab,
         })),
-    { loading: () => <>Loading..</> }
+    { loading: () => <TextTabSkeleton /> }
 );
 
 const CodeTab = dynamic(
@@ -29,7 +32,7 @@ const CodeTab = dynamic(
         import("@/components/custom/create-drop/tab/code-tab").then((m) => ({
             default: m.CodeTab,
         })),
-    { loading: () => <>Loading..</> }
+    { loading: () => <CodeTabSkeleton /> }
 );
 
 const FileTab = dynamic(
@@ -37,7 +40,7 @@ const FileTab = dynamic(
         import("@/components/custom/create-drop/tab/file-tab").then((m) => ({
             default: m.FileTab,
         })),
-    { loading: () => <>Loading..</> }
+    { loading: () => <FileTabSkeleton /> }
 );
 
 export const TabContainer = React.memo(() => {
@@ -50,11 +53,11 @@ export const TabContainer = React.memo(() => {
             className="flex h-full w-full flex-col"
         >
             {/* Header */}
-            <div className="flex w-full items-center justify-between shrink-0 pb-3">
+            <div className="flex w-full items-center justify-between shrink-0 pb-2">
                 <TabsList
                     className="
             flex w-fit items-center rounded-2xl p-1
-            bg-linear-to-b from-zinc-100/70 to-zinc-50/50
+            bg-gradient-to-b from-zinc-100/70 to-zinc-50/50
             dark:from-zinc-900/70 dark:to-zinc-950/50
             border border-zinc-200/50 dark:border-zinc-800/50
             shadow-inner backdrop-blur-xl
