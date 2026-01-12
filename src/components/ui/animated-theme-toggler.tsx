@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
 
 import { cn } from "@/lib/utils"
+import { ZCOOL_KuaiLe } from "next/font/google"
 
 interface AnimatedThemeTogglerProps
   extends React.ComponentPropsWithoutRef<"button"> {
@@ -19,12 +20,11 @@ export const AnimatedThemeToggler = ({
   ...props
 }: AnimatedThemeTogglerProps) => {
   const { theme, setTheme } = useTheme()
-  const [mounted, setMounted] = useState(false)
+  const mounted = useRef(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
-  // Prevent hydration mismatch by only rendering after mount
   useEffect(() => {
-    setMounted(true)
+    mounted.current = true
   }, [])
 
   const toggleTheme = useCallback(async () => {
