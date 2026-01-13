@@ -1,0 +1,25 @@
+{
+  "brand": {
+    "name": "Clipposaurus",
+    "description": "Privacy-first zero-knowledge web app for secure content sharing. No accounts, no tracking, just pure privacy."
+  },
+  "columns": [
+    {
+      "category": "product",
+      "links": ["Create Drop", "Unlock Drop"]
+    },
+    {
+      "category": "resources",
+      "links": ["Documentation", "Changelog", "FAQ", "GitHub"]
+    },
+    {
+      "category": "legal",
+      "links": ["Terms of Service"]
+    },
+    {
+      "category": "community",
+      "links": ["GitHub Discussions"]
+    }
+  ],
+  "copyrightNote": "All rights reserved"
+}

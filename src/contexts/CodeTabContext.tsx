@@ -3,7 +3,7 @@
 import React, { createContext, useContext } from "react";
 import { useCreateDrop } from "@/contexts/CreateDropContext";
 import useCode from "@/hooks/useCode";
-import { MAX_LINES } from "@/components/custom/create-drop/tab/code-tab/config";
+import { MAX_LINES } from "@/components/create-drop/tab/code-tab/config";
 
 interface CodeTabContextValue {
     // Core state

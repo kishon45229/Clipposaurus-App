@@ -7,6 +7,8 @@ import {
   PrivacyInfoCardComponentSchema,
   TermsOfServiceComponentSchema,
   UnlockDropComponentSchema,
+  FooterComponentSchema,
+  NavbarComponentSchema,
 } from "@/lib/schema";
 
 /**
@@ -20,4 +22,6 @@ export const COMPONENT_SCHEMAS: Record<string, z.ZodSchema> = {
   HeroComponent: HeroComponentSchema,
   DropPreviewComponent: DropPreviewComponentSchema,
   TermsOfServiceComponent: TermsOfServiceComponentSchema,
+  FooterComponent: FooterComponentSchema,
+  NavbarComponent: NavbarComponentSchema,
 };

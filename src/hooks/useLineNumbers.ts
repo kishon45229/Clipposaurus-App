@@ -1,6 +1,6 @@
 import React from "react";
 import { computeLineNumbers, LineNumbersResult } from "@/lib/lineNumbers";
-import { MAX_LINES } from "@/components/custom/create-drop/tab/code-tab/config";
+import { MAX_LINES } from "@/components/create-drop/tab/code-tab/config";
 
 interface Props {
   codeContent: string;

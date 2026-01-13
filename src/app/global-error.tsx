@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Rollbar from "rollbar";
 import { clientConfig } from "@/lib/rollbar";
 import { useEffect } from "react";
-import { ErrorUI } from "@/components/custom/ErrorUI";
+import { ErrorUI } from "@/components/common/ErrorUI";
 
 /**
  * Global Error Component.

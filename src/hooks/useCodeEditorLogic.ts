@@ -3,7 +3,7 @@ import { useCodeTab } from "@/contexts/CodeTabContext";
 import {
   getSyntaxHighlighterLanguage,
   getSyntaxHighlighterStyle,
-} from "@/components/custom/create-drop/tab/code-tab/utils";
+} from "@/components/create-drop/tab/code-tab/utils";
 import { useTheme } from "next-themes";
 
 interface UseCodeEditorProps {

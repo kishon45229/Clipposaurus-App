@@ -1,6 +1,6 @@
 import React from "react";
 import { detectLanguageFromContent } from "@/lib/languageDetection";
-import { MAX_LINES as DEFAULT_MAX_LINES } from "@/components/custom/create-drop/tab/code-tab/config";
+import { MAX_LINES as DEFAULT_MAX_LINES } from "@/components/create-drop/tab/code-tab/config";
 
 interface Props {
   codeContent: string;

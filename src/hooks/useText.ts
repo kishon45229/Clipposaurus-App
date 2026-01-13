@@ -2,8 +2,8 @@ import React from "react";
 import {
   countChars,
   truncateToChars,
-} from "../components/custom/create-drop/tab/text-tab/textTabUtils";
-import { MAX_CHARS } from "@/components/custom/create-drop/tab/text-tab/textTabConfig";
+} from "../components/create-drop/tab/text-tab/textTabUtils";
+import { MAX_CHARS } from "@/components/create-drop/tab/text-tab/textTabConfig";
 
 interface UseTextOptions {
   textContent: string;
@@ -57,6 +57,6 @@ export function useText(options: UseTextOptions): UseTextReturn {
     MAX_CHARS,
     handleTextChange,
     handleTextPaste,
-    clearTextContent
+    clearTextContent,
   };
 }

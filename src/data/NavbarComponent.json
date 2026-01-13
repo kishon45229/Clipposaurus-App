@@ -1,0 +1,64 @@
+{
+  "brand": {
+    "name": "Clipposaurus",
+    "alt": "Clipposaurus Logo",
+    "ariaLabel": "Clipposaurus",
+    "beta": {
+      "text": "Beta",
+      "ariaLabel": "Testing mode: beta"
+    }
+  },
+  "links": {
+    "docs": "Docs",
+    "github": "GitHub",
+    "resources": "Resources",
+    "help": "Help"
+  },
+  "menus": {
+    "resourcesDropDown": {
+      "changelog": {
+        "title": "Changelog",
+        "description": "See what's new and improved"
+      },
+      "terms": {
+        "title": "Terms of Service",
+        "description": "Read our terms and conditions"
+      },
+      "support": {
+        "title": "Support the Project",
+        "description": "Help keep Clipposaurus free"
+      }
+    },
+    "helpDropDown": {
+      "faq": {
+        "title": "FAQ",
+        "description": "Common questions and answers"
+      },
+      "issue": {
+        "title": "Report an Issue",
+        "description": "Found a bug? Let us know"
+      },
+      "contact": {
+        "title": "Contact Support",
+        "description": "Get in touch with our team"
+      }
+    },
+    "hamburger": {
+      "openMenu": "Open menu",
+      "documentation": "Documentation",
+      "faq": "FAQ",
+      "github": "GitHub",
+      "changelog": "Changelog",
+      "reportIssue": "Report an Issue",
+      "termsOfService": "Terms of Service",
+      "contactUs": "Contact Us",
+      "supportProject": "Support the Project"
+    }
+  },
+  "themeToggle": {
+    "ariaLabel": "Toggle theme"
+  },
+  "ariaLabels": {
+    "mainNavigation": "Main navigation"
+  }
+}

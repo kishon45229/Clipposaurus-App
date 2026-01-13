@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useRollbar } from "@rollbar/react";
-import { ErrorUI } from "@/components/custom/ErrorUI";
+import { ErrorUI } from "@/components/common/ErrorUI";
 
 export default function ErrorFallback({
   error,

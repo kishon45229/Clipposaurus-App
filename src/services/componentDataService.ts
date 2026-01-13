@@ -1,5 +1,5 @@
-import { isValidOrigin } from "@/lib/component-data/config";
-import { loadContentData } from "@/lib/component-data/loadContentData";
+import { isValidOrigin } from "@/lib/origin";
+import { loadContentData } from "@/lib/loadContentData";
 import getTimeout from "@/lib/timer";
 import { validateComponentData } from "@/lib/validation";
 
@@ -25,7 +25,6 @@ export async function getComponentData<T = unknown>(
     }
 
     if (!validateComponentData(contentData, componentId)) {
-      console.log(`Data validation failed for component: ${componentId}`, contentData);
       throw new Error(`Data validation failed for component: ${componentId}`);
     }
 

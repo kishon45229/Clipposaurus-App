@@ -27,13 +27,13 @@ interface UseUnlockDropReturn {
   createDropRequestStatus: CreateDropRequestStatus;
   handleCaptchaChange: (token: string | null) => void;
   handleCreateDrop: () => void;
-  handleOpenDrop: () => void;
+  handleUnlockDrop: () => void;
+  handlePreviewDrop: () => void;
   handleKeyPress: (e: React.KeyboardEvent) => void;
   handleTryAgain: () => void;
   handleRateLimit: () => void;
   recaptchaRef: React.RefObject<ReCAPTCHA | null>;
   shouldShowRecaptcha: boolean;
-  redirectUrl: string | null;
   isEnterKeyStep: boolean;
   isVerifyStep: boolean;
   isAccessStep: boolean;
@@ -58,7 +58,6 @@ export function useUnlockDropManager({
     dropKeyVerificationRequestStatus,
     setDropKeyVerificationRequestStatus,
   ] = React.useState<DropKeyVerificationRequestStatus>("idle");
-  const [redirectUrl, setRedirectUrl] = React.useState<string | null>(null);
 
   const router = useRouter();
   const recaptchaRef = React.useRef<ReCAPTCHA>(null);
@@ -150,12 +149,6 @@ export function useUnlockDropManager({
           setDropKeyVerificationRequestStatus("notfound");
           return;
         }
-
-        setRedirectUrl(
-          `${navigation.openDrop}?drop=${encodeURIComponent(
-            `${identifier}-${systemSecret}-${userSecret}`
-          )}`
-        );
       } catch (error) {
         setDropKeyVerificationRequestStatus("error");
         throw error;
@@ -164,7 +157,7 @@ export function useUnlockDropManager({
         setCreateDropRequestStatus("idle");
       }
     },
-    [setRedirectUrl, identifier, systemSecret, userSecret]
+    [identifier, systemSecret, userSecret]
   );
 
   const handleCaptchaChange = React.useCallback(
@@ -210,7 +203,7 @@ export function useUnlockDropManager({
     }
   }, [router, createDropRequestStatus]);
 
-  const handleOpenDrop = React.useCallback(() => {
+  const handleUnlockDrop = React.useCallback(() => {
     if (!isValidDropKey || !identifier || !systemSecret || !userSecret) {
       setDropKeyVerificationRequestStatus("incomplete");
       return;
@@ -234,6 +227,13 @@ export function useUnlockDropManager({
     handleDropKeyVerification,
   ]);
 
+  const handlePreviewDrop = React.useCallback(() => {
+    const url = `${navigation.openDrop}?drop=${encodeURIComponent(
+      `${identifier}-${systemSecret}-${userSecret}`
+    )}`;
+    router.push(url);
+  }, [identifier, systemSecret, userSecret, router]);
+
   const handleKeyPress = React.useCallback(
     (e: React.KeyboardEvent) => {
       if (
@@ -244,25 +244,14 @@ export function useUnlockDropManager({
         userSecret
       ) {
         e.preventDefault();
-        handleOpenDrop();
+        handleUnlockDrop();
       } else if (e.key === "Enter" && !isValidDropKey) {
         e.preventDefault();
         setDropKeyVerificationRequestStatus("incomplete");
       }
     },
-    [isValidDropKey, identifier, systemSecret, userSecret, handleOpenDrop]
+    [isValidDropKey, identifier, systemSecret, userSecret, handleUnlockDrop]
   );
-
-  const handleUnlockDropStatus = React.useCallback(() => {
-    if (dropKeyVerificationRequestStatus === "rateLimited") {
-      setDropKeyVerificationRequestStatus("idle");
-      handleClearDropKey();
-      router.push("/");
-    }
-
-    setDropKeyVerificationRequestStatus("idle");
-    handleClearDropKey();
-  }, [handleClearDropKey]);
 
   const handleTryAgain = React.useCallback(() => {
     setDropKeyVerificationRequestStatus("idle");
@@ -280,13 +269,13 @@ export function useUnlockDropManager({
     createDropRequestStatus,
     handleCaptchaChange,
     handleCreateDrop,
-    handleOpenDrop,
+    handleUnlockDrop,
+    handlePreviewDrop,
     handleKeyPress,
     handleTryAgain,
     handleRateLimit,
     recaptchaRef,
     shouldShowRecaptcha,
-    redirectUrl,
     isEnterKeyStep,
     isVerifyStep,
     isAccessStep,

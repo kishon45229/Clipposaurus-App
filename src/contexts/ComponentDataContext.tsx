@@ -2,16 +2,20 @@
 
 import React from "react";
 import { getComponentData } from "@/services/componentDataService";
-import { UnlockDropComponent } from "@/types/contentData-types/unlockDrop-types";
-import { HeaderComponent } from "@/types/contentData-types/header-types";
-import { DropPreviewComponent } from "@/types/contentData-types/dropPreview-types";
+import type { UnlockDropComponent } from "@/types/contentData-types/unlockDrop-types";
+import type { HeaderComponent } from "@/types/contentData-types/header-types";
+import type { DropPreviewComponent } from "@/types/contentData-types/dropPreview-types";
+import type { FooterComponent } from "@/components/footer/footer.types";
+import type { NavbarComponent } from "@/components/navbar/navbar.types";
 
-export type ComponentDataType = UnlockDropComponent | HeaderComponent | DropPreviewComponent;
+export type ComponentDataType = UnlockDropComponent | HeaderComponent | DropPreviewComponent | FooterComponent | NavbarComponent;
 
 export type ComponentTypeMap = {
     UnlockDropComponent: UnlockDropComponent;
     HeaderComponent: HeaderComponent;
     DropPreviewComponent: DropPreviewComponent;
+    FooterComponent: FooterComponent;
+    NavbarComponent: NavbarComponent;
 };
 
 interface ComponentDataContextType {
@@ -161,5 +165,37 @@ export function useDropPreview() {
         data: cachedData.DropPreviewComponent as DropPreviewComponent,
         isLoading: loadingStates.DropPreviewComponent || false,
         error: errorStates.DropPreviewComponent,
+    };
+}
+
+export function useNavbarComponent() {
+    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
+
+    React.useEffect(() => {
+        if (!cachedData.NavbarComponent && !loadingStates.NavbarComponent && !errorStates.NavbarComponent) {
+            getComponentData("NavbarComponent").catch(console.error);
+        }
+    }, [cachedData.NavbarComponent, loadingStates.NavbarComponent, errorStates.NavbarComponent, getComponentData]);
+
+    return {
+        data: cachedData.NavbarComponent as NavbarComponent,
+        isLoading: loadingStates.NavbarComponent || false,
+        error: errorStates.NavbarComponent,
+    };
+}
+
+export function useFooterComponent() {
+    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
+
+    React.useEffect(() => {
+        if (!cachedData.FooterComponent && !loadingStates.FooterComponent && !errorStates.FooterComponent) {
+            getComponentData("FooterComponent").catch(console.error);
+        }
+    }, [cachedData.FooterComponent, loadingStates.FooterComponent, errorStates.FooterComponent, getComponentData]);
+
+    return {
+        data: cachedData.FooterComponent as FooterComponent,
+        isLoading: loadingStates.FooterComponent || false,
+        error: errorStates.FooterComponent,
     };
 }

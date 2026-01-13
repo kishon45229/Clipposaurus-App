@@ -1,7 +1,6 @@
 import React from "react";
-import { DropPreview } from "@/components/custom/open-drop/DropPreview";
-import { DropRouteProtection } from "@/components/custom/DropRouteProtection";
-import { ComponentDataProvider } from "@/contexts/ComponentDataContext";
+import { DropPreview } from "@/components/open-drop/DropPreview";
+import { DropRouteProtection } from "@/components/common/DropRouteProtection";
 import ErrorFallback from "@/app/error";
 import LoadingFallback from "@/app/loading";
 import { OpenDropProvider } from "@/contexts/OpenDropContext";
@@ -16,15 +15,13 @@ export default function OpenDropPage(): React.ReactElement {
   try {
     return (
       <DropRouteProtection>
-        <ComponentDataProvider>
-          <OpenDropProvider>
-            <React.Suspense fallback={<LoadingFallback />}>
-              <section className="h-[84dvh] max-w-480mx-auto py-4 overflow-hidden">
-                <DropPreview />
-              </section>
-            </React.Suspense>
-          </OpenDropProvider>
-        </ComponentDataProvider>
+        <OpenDropProvider>
+          <React.Suspense fallback={<LoadingFallback />}>
+            <section className="h-[90dvh] max-w-7xl mx-auto py-4 overflow-hidden">
+              <DropPreview />
+            </section>
+          </React.Suspense>
+        </OpenDropProvider>
       </DropRouteProtection>
     );
   } catch (error) {

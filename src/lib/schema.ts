@@ -205,3 +205,84 @@ export const UnlockDropComponentSchema = z.object({
   accessDrop: AccessDropSchema,
   info: z.array(InfoItemSchema),
 });
+
+// Footer
+export const FooterComponentSchema = z.object({
+  brand: z.object({
+    name: z.string(),
+    description: z.string(),
+  }),
+  columns: z.array(
+    z.object({
+      category: z.string(),
+      links: z.array(z.string()),
+    })
+  ),
+  copyrightNote: z.string(),
+});
+
+// Navbar
+export const NavbarComponentSchema = z.object({
+  brand: z.object({
+    name: z.string(),
+    alt: z.string(),
+    ariaLabel: z.string(),
+    beta: z.object({
+      text: z.string(),
+      ariaLabel: z.string(),
+    }),
+  }),
+  links: z.object({
+    docs: z.string(),
+    github: z.string(),
+    resources: z.string(),
+    help: z.string(),
+  }),
+  menus: z.object({
+    resourcesDropDown: z.object({
+      changelog: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+      terms: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+      support: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+    }),
+    helpDropDown: z.object({
+      faq: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+      issue: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+      contact: z.object({
+        title: z.string(),
+        description: z.string(),
+      }),
+    }),
+    hamburger: z.object({
+      openMenu: z.string(),
+      documentation: z.string(),
+      faq: z.string(),
+      github: z.string(),
+      changelog: z.string(),
+      reportIssue: z.string(),
+      termsOfService: z.string(),
+      contactUs: z.string(),
+      supportProject: z.string(),
+    }),
+  }),
+  themeToggle: z.object({
+    ariaLabel: z.string(),
+  }),
+  ariaLabels: z.object({
+    mainNavigation: z.string(),
+  }),
+});

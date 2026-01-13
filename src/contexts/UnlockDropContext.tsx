@@ -23,13 +23,13 @@ interface UnlockDropContextType {
     createDropRequestStatus: CreateDropRequestStatus;
     handleCaptchaChange: (token: string | null) => void;
     handleCreateDrop: () => void;
-    handleOpenDrop: () => void;
+    handleUnlockDrop: () => void;
+    handlePreviewDrop: () => void;
     handleKeyPress: (e: React.KeyboardEvent) => void;
     handleTryAgain: () => void;
     handleRateLimit: () => void;
     recaptchaRef: React.RefObject<ReCAPTCHA | null>;
     shouldShowRecaptcha: boolean;
-    redirectUrl: string | null;
     isEnterKeyStep: boolean;
     isVerifyStep: boolean;
     isAccessStep: boolean;

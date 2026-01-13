@@ -3,8 +3,8 @@ import React from "react";
 import {
   validateTabList,
   getDefaultTabFromUrl,
-} from "@/components/custom/create-drop/tab/Tab.utils";
-import { tabList } from "@/components/custom/create-drop/tab/Tab.config";
+} from "@/components/create-drop/tab/Tab.utils";
+import { tabList } from "@/components/create-drop/tab/Tab.config";
 
 export const useTabNavigation = () => {
   const searchParams = useSearchParams();

@@ -1,16 +1,15 @@
 "use client";
 
 import React from "react";
-import { UnlockDrop } from "@/components/custom/unlock-drop/form";
+import { UnlockDrop } from "@/components/unlock-drop/form";
 import { UnlockDropProvider } from "@/contexts/UnlockDropContext";
-import { ComponentDataProvider } from "@/contexts/ComponentDataContext";
 
 export default function UnlockDropPage(): React.ReactElement {
     return (
-        <ComponentDataProvider>
+        <section className="h-screen overflow-hidden">
             <UnlockDropProvider>
                 <UnlockDrop />
             </UnlockDropProvider>
-        </ComponentDataProvider>
+        </section>
     );
 }

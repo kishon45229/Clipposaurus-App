@@ -1,6 +1,9 @@
-import React, { useRef, useCallback, useMemo, useEffect } from 'react';
-import { useTheme } from 'next-themes';
-import { getSyntaxHighlighterLanguage, getSyntaxHighlighterStyle } from '../components/custom/create-drop/tab/code-tab/utils';
+import React, { useRef, useCallback, useMemo, useEffect } from "react";
+import { useTheme } from "next-themes";
+import {
+  getSyntaxHighlighterLanguage,
+  getSyntaxHighlighterStyle,
+} from "../components/create-drop/tab/code-tab/utils";
 
 interface UseCodeEditorOptions {
   value: string;
@@ -24,7 +27,9 @@ interface UseCodeEditorReturn {
   handleScroll: (e: React.UIEvent<HTMLTextAreaElement>) => void;
 }
 
-export function useCodeEditor(options: UseCodeEditorOptions): UseCodeEditorReturn {
+export function useCodeEditor(
+  options: UseCodeEditorOptions
+): UseCodeEditorReturn {
   const { value, onChange, onScroll, language, maxLength } = options;
   const { theme } = useTheme();
 
@@ -33,13 +38,13 @@ export function useCodeEditor(options: UseCodeEditorOptions): UseCodeEditorRetur
   const highlighterRef = useRef<HTMLDivElement>(null);
 
   // Syntax highlighting configuration
-  const syntaxHighlighterLanguage = useMemo(() =>
-    getSyntaxHighlighterLanguage(language),
+  const syntaxHighlighterLanguage = useMemo(
+    () => getSyntaxHighlighterLanguage(language),
     [language]
   );
 
-  const syntaxHighlighterStyle = useMemo(() =>
-    getSyntaxHighlighterStyle(theme),
+  const syntaxHighlighterStyle = useMemo(
+    () => getSyntaxHighlighterStyle(theme),
     [theme]
   );
 
@@ -52,29 +57,35 @@ export function useCodeEditor(options: UseCodeEditorOptions): UseCodeEditorRetur
   }, [value]);
 
   // Text change handler with maxLength validation
-  const handleChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newValue = e.target.value;
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      const newValue = e.target.value;
 
-    if (maxLength && newValue.length > maxLength) {
-      return;
-    }
+      if (maxLength && newValue.length > maxLength) {
+        return;
+      }
 
-    onChange(newValue);
-  }, [onChange, maxLength]);
+      onChange(newValue);
+    },
+    [onChange, maxLength]
+  );
 
   // Scroll synchronization handler
-  const handleScroll = useCallback((e: React.UIEvent<HTMLTextAreaElement>) => {
-    if (highlighterRef.current) {
-      const { scrollTop, scrollLeft } = e.currentTarget;
-      // Use transform with requestAnimationFrame for smoother sync
-      requestAnimationFrame(() => {
-        if (highlighterRef.current) {
-          highlighterRef.current.style.transform = `translate(-${scrollLeft}px, -${scrollTop}px)`;
-        }
-      });
-    }
-    onScroll(e);
-  }, [onScroll]);
+  const handleScroll = useCallback(
+    (e: React.UIEvent<HTMLTextAreaElement>) => {
+      if (highlighterRef.current) {
+        const { scrollTop, scrollLeft } = e.currentTarget;
+        // Use transform with requestAnimationFrame for smoother sync
+        requestAnimationFrame(() => {
+          if (highlighterRef.current) {
+            highlighterRef.current.style.transform = `translate(-${scrollLeft}px, -${scrollTop}px)`;
+          }
+        });
+      }
+      onScroll(e);
+    },
+    [onScroll]
+  );
 
   return {
     textareaRef,
