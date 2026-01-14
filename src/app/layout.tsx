@@ -35,7 +35,7 @@ export default function RootLayout({
     <RollbarProvider config={clientConfig}>
       <html lang="en" suppressHydrationWarning>
         <head>
-          <HeadTags baseUrl={process.env.NEXT_PUBLIC_BASE_URL} />
+          <HeadTags />
         </head>
         <body className={`${funnelSans.className} antialiased h-screen md:portrait:h-fit overflow-auto bg-zinc-100 dark:bg-zinc-950 text-foreground`}>
           <ThemeProvider

@@ -1,18 +1,14 @@
 User-agent: *
-Allow: /
 Allow: /create-drop
-Allow: /show-content
-Allow: /privacy
-Allow: /terms
+Allow: /open-drop
+Allow: /unlock-drop
 
+Disallow: /
 Disallow: /api/
-Disallow: /logs/
 Disallow: /_next/
-Disallow: /admin/
-Disallow: /temp/
 
 # Sitemap
-Sitemap: https://clipposaurus.com/sitemap.xml
+Sitemap: https://app.clipposaurus.com/sitemap.xml
 
-# Crawl delay (optional - removes this if causing issues)
+# Crawl delay
 Crawl-delay: 1

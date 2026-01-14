@@ -45,7 +45,7 @@ export function useRedirects(): RedirectsReturn {
     window.open(GITHUB_ISSUES_URL, "_blank", "noopener noreferrer");
   }, []);
 
-  // GITHUB ISSUES
+  // GITHUB SPONSOR
   const handleRedirectToGitHubSponsor = React.useCallback(() => {
     window.open(GITHUB_SPONSOR_URL, "_blank", "noopener noreferrer");
   }, []);

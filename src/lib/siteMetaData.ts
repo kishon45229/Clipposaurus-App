@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { APP_URL } from "@/lib/urls";
 
 export const siteMetadata: Metadata = {
   title: {
@@ -26,9 +27,7 @@ export const siteMetadata: Metadata = {
   creator: "Clipposaurus",
   publisher: "Clipposaurus",
   formatDetection: { email: false, address: false, telephone: false },
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_BASE_URL || "https://clipposaurus.com"
-  ),
+  metadataBase: APP_URL,
   alternates: { canonical: "/" },
   openGraph: {
     title:

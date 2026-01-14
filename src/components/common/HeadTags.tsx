@@ -1,12 +1,8 @@
 import React from "react";
 import { getSiteJsonLd } from "@/lib/jsonLd";
 
-interface HeadTagsProps {
-  baseUrl?: string;
-}
-
-function HeadTags({ baseUrl }: HeadTagsProps) {
-  const jsonLd = getSiteJsonLd(baseUrl);
+export const HeadTags = (): React.ReactNode => {
+  const jsonLd = getSiteJsonLd();
 
   return (
     <>
@@ -24,7 +20,4 @@ function HeadTags({ baseUrl }: HeadTagsProps) {
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     </>
   );
-}
-
-const MemorizedHeadTags = React.memo(HeadTags);
-export { MemorizedHeadTags as HeadTags };
+};
