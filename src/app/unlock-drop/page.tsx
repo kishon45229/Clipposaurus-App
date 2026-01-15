@@ -6,7 +6,7 @@ import { UnlockDropProvider } from "@/contexts/UnlockDropContext";
 
 export default function UnlockDropPage(): React.ReactElement {
     return (
-        <section className="h-screen overflow-hidden">
+        <section className="min-h-screen overflow-hidden">
             <UnlockDropProvider>
                 <UnlockDrop />
             </UnlockDropProvider>

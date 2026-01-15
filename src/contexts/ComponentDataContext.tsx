@@ -7,8 +7,9 @@ import type { HeaderComponent } from "@/types/contentData-types/header-types";
 import type { DropPreviewComponent } from "@/types/contentData-types/dropPreview-types";
 import type { FooterComponent } from "@/components/footer/footer.types";
 import type { NavbarComponent } from "@/components/navbar/navbar.types";
+import type { MenuComponentType } from "@/components/create-drop/MobileMenu/MobileMenu.types";
 
-export type ComponentDataType = UnlockDropComponent | HeaderComponent | DropPreviewComponent | FooterComponent | NavbarComponent;
+export type ComponentDataType = UnlockDropComponent | HeaderComponent | DropPreviewComponent | FooterComponent | NavbarComponent | MenuComponentType;
 
 export type ComponentTypeMap = {
     UnlockDropComponent: UnlockDropComponent;
@@ -16,6 +17,7 @@ export type ComponentTypeMap = {
     DropPreviewComponent: DropPreviewComponent;
     FooterComponent: FooterComponent;
     NavbarComponent: NavbarComponent;
+    MenuComponent: MenuComponentType;
 };
 
 interface ComponentDataContextType {
@@ -197,5 +199,21 @@ export function useFooterComponent() {
         data: cachedData.FooterComponent as FooterComponent,
         isLoading: loadingStates.FooterComponent || false,
         error: errorStates.FooterComponent,
+    };
+}
+
+export function useMenuComponent() {
+    const { getComponentData, cachedData, loadingStates, errorStates } = useComponentData();
+
+    React.useEffect(() => {
+        if (!cachedData.MenuComponent && !loadingStates.MenuComponent && !errorStates.MenuComponent) {
+            getComponentData("MenuComponent").catch(console.error);
+        }
+    }, [cachedData.MenuComponent, loadingStates.MenuComponent, errorStates.MenuComponent, getComponentData]);
+
+    return {
+        data: cachedData.MenuComponent as MenuComponentType,
+        isLoading: loadingStates.MenuComponent || false,
+        error: errorStates.MenuComponent,
     };
 }

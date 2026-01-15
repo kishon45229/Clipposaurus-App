@@ -15,6 +15,9 @@ import { CodeTabProvider } from "@/contexts/CodeTabContext";
 import { FileTabProvider } from "@/contexts/FileTabContext";
 import { useTabNavigation } from "@/hooks/useTabNavigation";
 import { HeaderDropKeyPreview } from "@/components/create-drop/Header/HeaderDropKeyPreview";
+import { useMenu } from "@/contexts/MenuContext";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
 import { TextTabSkeleton } from "@/components/skeleton/TextTabSkeleton";
 import { CodeTabSkeleton } from "@/components/skeleton/CodeTabSkeleton";
 import { FileTabSkeleton } from "@/components/skeleton/FileTabSkeleton";
@@ -45,6 +48,7 @@ const FileTab = dynamic(
 
 export const TabContainer = React.memo(() => {
     const { defaultTab, handleTabChange } = useTabNavigation();
+    const { handleMobileMenuOpen } = useMenu();
 
     return (
         <Tabs
@@ -57,7 +61,7 @@ export const TabContainer = React.memo(() => {
                 <TabsList
                     className="
             flex w-fit items-center rounded-2xl p-1
-            bg-gradient-to-b from-zinc-100/70 to-zinc-50/50
+            bg-linear-to-b from-zinc-100/70 to-zinc-50/50
             dark:from-zinc-900/70 dark:to-zinc-950/50
             border border-zinc-200/50 dark:border-zinc-800/50
             shadow-inner backdrop-blur-xl
@@ -81,7 +85,30 @@ export const TabContainer = React.memo(() => {
                         </TabsTrigger>
                     ))}
                 </TabsList>
-                <HeaderDropKeyPreview />
+
+                {/* Desktop: Show HeaderDropKeyPreview */}
+                <div className="hidden lg:block">
+                    <HeaderDropKeyPreview />
+                </div>
+
+                {/* Mobile: Show plus icon only */}
+                <Button
+                    onClick={handleMobileMenuOpen}
+                    className="lg:hidden flex sm:hidden items-center justify-center h-10 w-10 p-0 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl transition-colors cursor-target"
+                    aria-label="Create drop"
+                >
+                    <Plus className="w-5 h-5" />
+                </Button>
+
+                {/* Tablet: Show plus icon with text */}
+                <Button
+                    onClick={handleMobileMenuOpen}
+                    className="hidden sm:flex lg:hidden items-center gap-2 h-10 px-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded-2xl transition-colors cursor-target"
+                    aria-label="Create drop"
+                >
+                    <Plus className="w-5 h-5" />
+                    <span className="text-sm font-semibold">I&apos;m ready to create drop</span>
+                </Button>
             </div>
 
             {/* Content */}

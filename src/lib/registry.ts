@@ -9,6 +9,7 @@ import {
   UnlockDropComponentSchema,
   FooterComponentSchema,
   NavbarComponentSchema,
+  MenuComponentSchema
 } from "@/lib/schema";
 
 /**
@@ -24,4 +25,5 @@ export const COMPONENT_SCHEMAS: Record<string, z.ZodSchema> = {
   TermsOfServiceComponent: TermsOfServiceComponentSchema,
   FooterComponent: FooterComponentSchema,
   NavbarComponent: NavbarComponentSchema,
+  MenuComponent: MenuComponentSchema,
 };

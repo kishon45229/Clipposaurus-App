@@ -1,0 +1,26 @@
+{
+  "title": "Ready to Create Drop?",
+  "description": "Complete below to configure your Drop",
+  "keySection": {
+    "title": "Configure Your Drop Key",
+    "identifierLabel": "Identifier",
+    "systemSecretLabel": "System Secret",
+    "userSecretLabel": "User Secret",
+    "dropKeyLabel": "Drop Key:",
+    "dropKeyPlaceholder": "Enter user secret to see your drop key"
+  },
+  "retentionSection": {
+    "title": "Drop Expiration Settings",
+    "options": {
+      "deleteOnAccess": "Delete the Drop immediately after being accessed (maximum kept is 1 hour)",
+      "keep30Minutes": "Keep the Drop for 30 minutes then delete",
+      "keep1Hour": "Keep the Drop for 1 hour then delete"
+    }
+  },
+  "noteSection": {
+    "label": "Note:",
+    "text": "Once created, you will not be able to change the Drop Key or Retention Settings."
+  },
+  "mobileMenuButton": "I'm Ready to Create Drop",
+  "ctaButton": "Make a Drop"
+}
