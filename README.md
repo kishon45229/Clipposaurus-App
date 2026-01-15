@@ -42,6 +42,8 @@ Our code is publicly available for review. We welcome security audits to ensure 
 
 For detailed documentation, visit [docs.clipposaurus.com](https://docs.clipposaurus.com). The docs are also available in the repository [https://github.com/kishon45229/Clipposaurus-Docs.git](https://github.com/kishon45229/Clipposaurus-Docs.git).
 
+For marketing materials and branding assets, visit the repository [https://github.com/kishon45229/Clipposaurus-Marketing.git](https://github.com/kishon45229/Clipposaurus-Marketing.git).
+
 ## Technical Architecture
 
 [Upstash Redis](https://upstash.com) serves as the primary storage for drop content and metadata.  
