@@ -18,6 +18,7 @@ export const HeadTags = (): React.ReactNode => {
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="theme-color" content="#000000" />
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+      <meta name="apple-mobile-web-app-title" content="Clipposaurus" />
     </>
   );
 };

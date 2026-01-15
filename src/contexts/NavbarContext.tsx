@@ -16,9 +16,6 @@ export interface NavbarContextValue {
     handleRedirectToGitHub: () => void;
     handleRedirectToFAQ: () => void;
     handleContactUs: () => void;
-    handleRedirectToFeatures: () => void;
-    handleRedirectToHowItWorks: () => void;
-    handleRedirectToSecurity: () => void;
     handleRedirectToGitHubDiscussions: () => void;
 }
 
@@ -30,7 +27,7 @@ interface NavbarProviderProps {
 
 export function NavbarProvider({ children }: NavbarProviderProps): React.ReactElement {
     const { data, isLoading, error } = useNavbarComponent();
-    const { handleRedirectToDocs, handleRedirectToChangelog, handleRedirectToTermsOfService, handleRedirectToGitHub, handleRedirectToFAQ, handleContactUs, handleRedirectToFeatures, handleRedirectToHowItWorks, handleRedirectToSecurity, handleRedirectToGitHubDiscussions } = useRedirects();
+    const { handleRedirectToDocs, handleRedirectToChangelog, handleRedirectToTermsOfService, handleRedirectToGitHub, handleRedirectToFAQ, handleContactUs, handleRedirectToGitHubDiscussions } = useRedirects();
 
     const contextValue: NavbarContextValue = React.useMemo(() => ({
         data,
@@ -42,11 +39,8 @@ export function NavbarProvider({ children }: NavbarProviderProps): React.ReactEl
         handleRedirectToGitHub,
         handleRedirectToFAQ,
         handleContactUs,
-        handleRedirectToFeatures,
-        handleRedirectToHowItWorks,
-        handleRedirectToSecurity,
         handleRedirectToGitHubDiscussions,
-    }), [data, isLoading, error, handleContactUs, handleRedirectToChangelog, handleRedirectToDocs, handleRedirectToFAQ, handleRedirectToFeatures, handleRedirectToGitHub, handleRedirectToGitHubDiscussions, handleRedirectToHowItWorks, handleRedirectToSecurity, handleRedirectToTermsOfService]);
+    }), [data, isLoading, error, handleContactUs, handleRedirectToChangelog, handleRedirectToDocs, handleRedirectToFAQ, handleRedirectToGitHub, handleRedirectToGitHubDiscussions, handleRedirectToTermsOfService]);
 
     return (
         <NavbarContext.Provider value={contextValue}>
