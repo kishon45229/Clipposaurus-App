@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Paperclip, Trash } from "lucide-react";
@@ -15,7 +14,7 @@ import { NoFileInfo } from "./NoFileInfo";
 
 const { MAX_TOTAL_SIZE } = FILE_SIZE_CONFIG;
 
-export const FileTabContainer = React.memo(() => {
+export const FileTabContainer = () => {
   const {
     files,
     setFiles,
@@ -32,19 +31,8 @@ export const FileTabContainer = React.memo(() => {
   } = useFileTab();
 
   return (
-    <div
-      className="
-        flex h-full shrink-0 flex-col
-        gap-[clamp(0.4rem,1.5vw,0.75rem)]
-        rounded-2xl border border-zinc-200/60 dark:border-zinc-800/60
-        bg-gradient-to-b from-zinc-50/80 to-white/60
-        dark:from-zinc-900/70 dark:to-zinc-950/60
-        px-[clamp(0.4rem,1.5vw,0.75rem)]
-        py-[clamp(0.4rem,1.5vw,0.75rem)]
-        shadow-xl backdrop-blur-2xl transition-all duration-300
-      "
-    >
-      {/* Header */}
+    <div className="flex h-full shrink-0 flex-col gap-[clamp(0.4rem,1.5vw,0.75rem)] rounded-2xl border border-zinc-200/60 dark:border-zinc-800/60 bg-gradient-to-b from-zinc-50/80 to-white/60 dark:from-zinc-900/70 dark:to-zinc-950/60 px-[clamp(0.4rem,1.5vw,0.75rem)] py-[clamp(0.4rem,1.5vw,0.75rem)] shadow-xl backdrop-blur-2xl transition-all duration-300">
+      {/* HEADER */}
       <div className="flex w-full flex-shrink-0 items-center justify-between">
         <div className="flex w-1/2 justify-start">
           <Badge
@@ -79,7 +67,7 @@ export const FileTabContainer = React.memo(() => {
         </div>
       </div>
 
-      {/* File Area */}
+      {/* FILE AREA */}
       <div className="flex flex-1 min-h-0">
         <input
           ref={fileInputRef}
@@ -89,23 +77,7 @@ export const FileTabContainer = React.memo(() => {
           onChange={(e) => handleFileSelect(e, fileInputRef)}
           accept="*/*"
         />
-        <div
-          className={cn(
-            "flex-1 min-h-0 rounded-2xl border lg:border-2 lg:border-dashed p-[clamp(0.5rem,2vw,0.6rem)] transition-all duration-200 overflow-y-auto",
-            isDragOver
-              ? "border-primary bg-primary/10"
-              : "border-border lg:hover:border-primary/50",
-            files.length === 0
-              ? "flex items-center justify-center"
-              : "overflow-y-auto",
-            isOverLimit ? "opacity-50 pointer-events-none" : ""
-          )}
-          onDragEnter={handleDragEnter}
-          onDragLeave={handleDragLeave}
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-          onPaste={handlePaste}
-        >
+        <div className={cn("flex-1 min-h-0 rounded-2xl border lg:border-2 lg:border-dashed p-[clamp(0.5rem,2vw,0.6rem)] transition-all duration-200 overflow-y-auto", isDragOver ? "border-primary bg-primary/10" : "border-border lg:hover:border-primary/50", files.length === 0 ? "flex items-center justify-center" : "overflow-y-auto", isOverLimit ? "opacity-50 pointer-events-none" : "")} onDragEnter={handleDragEnter} onDragLeave={handleDragLeave} onDragOver={handleDragOver} onDrop={handleDrop} onPaste={handlePaste}>
           {files.length > 0 ? (
             <div className="w-full">
               <FileTilesGrid />
@@ -124,6 +96,4 @@ export const FileTabContainer = React.memo(() => {
       </div>
     </div>
   );
-});
-
-FileTabContainer.displayName = "FileTabContainer";
+};
