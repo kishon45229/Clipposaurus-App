@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useEffect, useRef, useCallback, useMemo, useState } from 'react';
 import { gsap } from 'gsap';
 
 export interface TargetCursorProps {
@@ -14,6 +14,14 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
     spinDuration = 2,
     hideDefaultCursor = true
   }) => {
+    const [isPointerFine, setIsPointerFine] = useState<boolean>(() => {
+      if (typeof window === 'undefined') return false;
+      const queries = [
+        window.matchMedia('(pointer: fine)'),
+        window.matchMedia('(any-pointer: fine)')
+      ];
+      return queries.some(q => q.matches);
+    });
     const cursorRef = useRef<HTMLDivElement>(null);
     const cornersRef = useRef<NodeListOf<HTMLDivElement>>(null);
     const spinTl = useRef<gsap.core.Timeline>(null);
@@ -38,7 +46,26 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
     }, []);
 
     useEffect(() => {
-      if (!cursorRef.current) return;
+      if (typeof window === 'undefined') return;
+      const queries = [
+        window.matchMedia('(pointer: fine)'),
+        window.matchMedia('(any-pointer: fine)')
+      ];
+
+      const updatePointerState = () => {
+        setIsPointerFine(queries.some(q => q.matches));
+      };
+
+      updatePointerState();
+      queries.forEach(q => q.addEventListener('change', updatePointerState));
+
+      return () => {
+        queries.forEach(q => q.removeEventListener('change', updatePointerState));
+      };
+    }, []);
+
+    useEffect(() => {
+      if (!cursorRef.current || !isPointerFine) return;
 
       const originalCursor = document.body.style.cursor;
       if (hideDefaultCursor) {
@@ -372,7 +399,7 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
           cursor.style.opacity = '1';
         }
       };
-    }, [targetSelector, spinDuration, moveCursor, constants, hideDefaultCursor]);
+    }, [targetSelector, spinDuration, moveCursor, constants, hideDefaultCursor, isPointerFine]);
 
     useEffect(() => {
       if (!cursorRef.current || !spinTl.current) return;
@@ -385,10 +412,12 @@ const TargetCursor: React.FC<TargetCursorProps> = ({
       }
     }, [spinDuration]);
 
+    if (!isPointerFine) return null;
+
     return (
       <div
         ref={cursorRef}
-        className="hidden xl-plus:block fixed top-0 left-0 w-0 h-0 pointer-events-none z-9999 mix-blend-difference transform -translate-x-1/2 -translate-y-1/2"
+        className="fixed top-0 left-0 w-0 h-0 pointer-events-none z-9999 mix-blend-difference transform -translate-x-1/2 -translate-y-1/2"
         style={{ willChange: 'transform' }}
       >
         <div
