@@ -2,7 +2,7 @@
 
 import { useHeader } from "@/contexts/HeaderContext";
 import { ComponentError } from "@/components/common/ComponentError";
-import { HeaderContent } from "@/components/create-drop/header/HeaderContent";
+import { HeaderContent } from "@/components/create-drop/header-menu/HeaderContent";
 import { HeaderSkeleton } from "@/components/skeleton/HeaderSkeleton";
 
 const COMPONENT_ID = "HeaderComponent" as const;

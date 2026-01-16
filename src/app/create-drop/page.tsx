@@ -1,7 +1,7 @@
 import React from 'react';
 import LoadingFallback from "@/app/loading";
 import { Tab } from "@/components/create-drop/tab";
-import { Header } from "@/components/create-drop/header";
+import { Header } from "@/components/create-drop/header-menu";
 import { CreateDropProvider } from "@/contexts/CreateDropContext";
 import { HeaderProvider } from "@/contexts/HeaderContext";
 import { CreateDropDialogBox } from "@/components/create-drop/dialog-box";

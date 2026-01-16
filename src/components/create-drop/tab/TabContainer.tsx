@@ -12,7 +12,7 @@ import { TextTabProvider } from "@/contexts/TextTabContext";
 import { CodeTabProvider } from "@/contexts/CodeTabContext";
 import { FileTabProvider } from "@/contexts/FileTabContext";
 import { useTabNavigation } from "@/hooks/useTabNavigation";
-import { HeaderDropKeyPreview } from "@/components/create-drop/header/HeaderDropKeyPreview";
+import { HeaderDropKeyPreview } from "@/components/create-drop/header-menu/HeaderDropKeyPreview";
 import { useMenu } from "@/contexts/MenuContext";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
