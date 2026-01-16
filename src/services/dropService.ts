@@ -8,6 +8,7 @@ import {
   encryptFileContentWithDropKey,
 } from "@/lib/encryption";
 import { calculateExpiration } from "@/lib/timer";
+import { uploadFilesDirectly } from "@/services/directUploadService";
 
 export async function sendOpenDropRequest(
   identifier: string,
@@ -93,67 +94,64 @@ export async function sendCreateDropRequest(
 
       onProgress?.("uploading", 0);
 
-      const response = await fetch("/api/file-upload", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ files: filesForUpload, streaming: true }),
-      });
+      const totalBytes = filesForUpload.reduce((sum, file) => {
+        const fileData = JSON.stringify({
+          id: file.id,
+          name: file.name,
+          size: file.size,
+          content: file.content,
+        });
+        return sum + new Blob([fileData]).size;
+      }, 0);
 
-      if (!response.ok || !response.body) {
-        return {
-          success: false,
-          status: response.status,
-          error: "File upload failed",
-        };
-      }
-
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
       let fileUrls: string[] = [];
-      let uploadError: string | null = null;
 
       try {
-        while (true) {
-          const { done, value } = await reader.read();
-          
-          if (done) break;
+        fileUrls = await uploadFilesDirectly(filesForUpload, (progress) => {
+          const completedBytes = filesForUpload
+            .slice(0, progress.fileIndex)
+            .reduce((sum, f) => {
+              const fileData = JSON.stringify({
+                id: f.id,
+                name: f.name,
+                size: f.size,
+                content: f.content,
+              });
+              return sum + new Blob([fileData]).size;
+            }, 0);
 
-          const chunk = decoder.decode(value, { stream: true });
-          const lines = chunk.split("\n").filter(line => line.trim());
+          const uploadedBytes = completedBytes + progress.loaded;
+          const overallProgress = Math.min(100, Math.round((uploadedBytes / totalBytes) * 100));
+          onProgress?.("uploading", overallProgress);
+        });
+      } catch (error) {
+        console.log("Direct upload failed, falling back to API route:", error);
+        
+        // Fallback to API route upload
+        const fallbackResponse = await fetch("/api/file-upload", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ files: filesForUpload }),
+        });
 
-          for (const line of lines) {
-            try {
-              const data = JSON.parse(line);
-              
-              if (data.progress !== undefined) {
-                // Report real-time progress
-                onProgress?.("uploading", data.progress);
-              }
-              
-              if (data.success && data.fileUrls) {
-                fileUrls = data.fileUrls;
-                onProgress?.("uploading", 100);
-              }
-              
-              if (data.error) {
-                uploadError = data.error;
-              }
-            } catch {
-              // Skip invalid JSON lines
-            }
-          }
+        if (!fallbackResponse.ok) {
+          return {
+            success: false,
+            status: fallbackResponse.status,
+            error: "File upload failed",
+          };
         }
-      } finally {
-        reader.releaseLock();
+
+        const fallbackData = await fallbackResponse.json();
+        fileUrls = fallbackData.fileUrls || [];
+        onProgress?.("uploading", 100);
       }
 
-      if (uploadError || fileUrls.length === 0) {
+      if (fileUrls.some(url => url === "")) {
         return {
           success: false,
           status: 500,
-          error: uploadError || "File upload failed",
+          error: "File upload failed",
         };
       }
 
