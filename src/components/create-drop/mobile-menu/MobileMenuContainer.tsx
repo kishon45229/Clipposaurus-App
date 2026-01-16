@@ -2,7 +2,7 @@
 
 import { useMenu } from "@/contexts/MenuContext";
 import { MenuSkeleton } from "@/components/skeleton/MenuSkeleton";
-import { MobileMenuContent } from "@/components/create-drop/MobileMenu/MobileMenuContent";
+import { MobileMenuContent } from "@/components/create-drop/mobile-menu/MobileMenuContent";
 import { ComponentError } from "@/components/common/ComponentError";
 
 const COMPONENT_ID = "MenuComponent" as const;

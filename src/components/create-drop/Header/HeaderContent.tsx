@@ -1,8 +1,8 @@
 "use client";
 
-import { HeaderRetention } from "@/components/create-drop/Header/HeaderRetention";
-import { HeaderUserSecret } from "@/components/create-drop/Header/HeaderUserSecret";
-import { HeaderCreateButton } from "@/components/create-drop/Header/HeaderCreateButton";
+import { HeaderRetention } from "@/components/create-drop/header/HeaderRetention";
+import { HeaderUserSecret } from "@/components/create-drop/header/HeaderUserSecret";
+import { HeaderCreateButton } from "@/components/create-drop/header/HeaderCreateButton";
 
 export const HeaderContent = () => {
     return (

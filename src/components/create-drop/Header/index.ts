@@ -1,1 +1,1 @@
-export { HeaderContainer as Header } from "@/components/create-drop/Header/HeaderContainer";
+export { HeaderContainer as Header } from "@/components/create-drop/header/HeaderContainer";

@@ -5,11 +5,11 @@ import {
     ResponsiveDialogHeader,
     ResponsiveDialogContent,
 } from "@/components/ui/responsive-dialog";
-import { MobileMenuHeader } from "@/components/create-drop/MobileMenu/MobileMenuHeader";
-import { MobileMenuKeySection } from "@/components/create-drop/MobileMenu/MobileMenuKeySection";
-import { MobileMenuRetentionCard } from "@/components/create-drop/MobileMenu/MobileMenuRetentionCard";
-import { MobileMenuInfoSection } from "@/components/create-drop/MobileMenu/MobileMenuInfoSection";
-import { MobileMenuFooter } from "@/components/create-drop/MobileMenu/MobileMenuFooter";
+import { MobileMenuHeader } from "@/components/create-drop/mobile-menu/MobileMenuHeader";
+import { MobileMenuKeySection } from "@/components/create-drop/mobile-menu/MobileMenuKeySection";
+import { MobileMenuRetentionCard } from "@/components/create-drop/mobile-menu/MobileMenuRetentionCard";
+import { MobileMenuInfoSection } from "@/components/create-drop/mobile-menu/MobileMenuInfoSection";
+import { MobileMenuFooter } from "@/components/create-drop/mobile-menu/MobileMenuFooter";
 import { useMenu } from "@/contexts/MenuContext";
 import { AmbientGlow } from "@/components/ui/ambient-glow";
 
