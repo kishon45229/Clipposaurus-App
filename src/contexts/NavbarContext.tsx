@@ -16,6 +16,7 @@ export interface NavbarContextValue {
     handleRedirectToGitHub: () => void;
     handleRedirectToFAQ: () => void;
     handleContactUs: () => void;
+    handleRedirectToGitHubIssues: () => void;
     handleRedirectToGitHubDiscussions: () => void;
 }
 
@@ -27,7 +28,7 @@ interface NavbarProviderProps {
 
 export function NavbarProvider({ children }: NavbarProviderProps): React.ReactElement {
     const { data, isLoading, error } = useNavbarComponent();
-    const { handleRedirectToDocs, handleRedirectToChangelog, handleRedirectToTermsOfService, handleRedirectToGitHub, handleRedirectToFAQ, handleContactUs, handleRedirectToGitHubDiscussions } = useRedirects();
+    const { handleRedirectToDocs, handleRedirectToChangelog, handleRedirectToTermsOfService, handleRedirectToGitHub, handleRedirectToFAQ, handleContactUs, handleRedirectToGitHubIssues, handleRedirectToGitHubDiscussions } = useRedirects();
 
     const contextValue: NavbarContextValue = React.useMemo(() => ({
         data,
@@ -39,8 +40,9 @@ export function NavbarProvider({ children }: NavbarProviderProps): React.ReactEl
         handleRedirectToGitHub,
         handleRedirectToFAQ,
         handleContactUs,
+        handleRedirectToGitHubIssues,
         handleRedirectToGitHubDiscussions,
-    }), [data, isLoading, error, handleContactUs, handleRedirectToChangelog, handleRedirectToDocs, handleRedirectToFAQ, handleRedirectToGitHub, handleRedirectToGitHubDiscussions, handleRedirectToTermsOfService]);
+    }), [data, isLoading, error, handleContactUs, handleRedirectToChangelog, handleRedirectToDocs, handleRedirectToFAQ, handleRedirectToGitHub, handleRedirectToGitHubDiscussions, handleRedirectToGitHubIssues, handleRedirectToTermsOfService]);
 
     return (
         <NavbarContext.Provider value={contextValue}>
