@@ -16,14 +16,13 @@ export const FooterBrand = () => {
     return (
         <div className="lg:col-span-2">
             {/* APP ICON + NAME */}
-            <Link href="/" className="group inline-flex items-center gap-3 mb-6">
+            <Link href="/" className="group inline-flex items-center gap-3 mb-6 cursor-target">
                 <div className="relative flex items-center justify-center w-10 h-10 rounded-xl transition-all duration-300">
                     <Image
                         src="/icon0.svg"
                         alt="Clipposaurus Logo"
-                        width={24}
-                        height={24}
-                        className="w-6 h-6 brightness-0 invert"
+                        width={48}
+                        height={48}
                     />
                 </div>
                 <span className="text-2xl font-black text-zinc-900 dark:text-zinc-50">
@@ -40,8 +39,8 @@ export const FooterBrand = () => {
             <div className="flex items-center gap-3">
                 <Button
                     size="icon"
-                    variant="outline"
-                    className="hover:bg-emerald-500 cursor-target"
+                    variant="ghost"
+                    className="hover:bg-emerald-500 dark:hover:bg-emerald-500 cursor-target"
                     aria-label="GitHub"
                     onClick={handleRedirectToGitHub}
                 >
@@ -49,8 +48,8 @@ export const FooterBrand = () => {
                 </Button>
                 <Button
                     size="icon"
-                    variant="outline"
-                    className=""
+                    variant="ghost"
+                    className="hover:bg-emerald-500 dark:hover:bg-emerald-500 cursor-target"
                     aria-label="Email"
                     onClick={handleContactUs}
                 >
