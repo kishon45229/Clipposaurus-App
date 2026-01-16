@@ -19,11 +19,12 @@ export const AnimatedThemeToggler = ({
   ...props
 }: AnimatedThemeTogglerProps) => {
   const { theme, setTheme } = useTheme()
-  const mounted = useRef(false)
+  const [mounted, setMounted] = useState(false)
   const buttonRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
-    mounted.current = true
+    // eslint-disable-next-line react-compiler/react-compiler
+    setMounted(true)
   }, [])
 
   const toggleTheme = useCallback(async () => {
@@ -69,7 +70,7 @@ export const AnimatedThemeToggler = ({
       suppressHydrationWarning
       {...props}
     >
-      {mounted.current && (theme === "dark" ? (
+      {mounted && (theme === "dark" ? (
         <Sun className="navbar-icon" />
       ) : (
         <Moon className="navbar-icon" />
