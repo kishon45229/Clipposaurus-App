@@ -19,12 +19,12 @@ export const HeaderRetention = () => {
 
     return (
         <div className="flex items-center gap-3">
-            {/* Label */}
+            {/* LABEL */}
             <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300 whitespace-nowrap">
                 {title}
             </span>
 
-            {/* Desktop: Radio Group */}
+            {/* DESKTOP: RADIO GROUP */}
             <RadioGroup
                 value={retention}
                 onValueChange={setRetention}
@@ -47,7 +47,7 @@ export const HeaderRetention = () => {
                 ))}
             </RadioGroup>
 
-            {/* Mobile: Compact Display */}
+            {/* MOBILE: COMPACT DISPLAY */}
             <div className="md:hidden px-2.5 py-1 rounded-md bg-emerald-500 text-white">
                 <span className="text-xs font-medium">
                     {selectedOption?.shortLabel}

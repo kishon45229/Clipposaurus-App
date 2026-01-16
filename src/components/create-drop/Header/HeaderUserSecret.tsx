@@ -14,12 +14,12 @@ export const HeaderUserSecret = () => {
 
     return (
         <div className="flex items-center gap-2 w-full">
-            {/* Label */}
+            {/* LABEL */}
             <span className="text-sm font-medium text-zinc-700 dark:text-zinc-300 whitespace-nowrap">
                 {userSecretLabel}
             </span>
 
-            {/* Input Field */}
+            {/* INPUT FIELD */}
             <div className="relative flex-1">
                 <Input
                     id="user-secret-header"
