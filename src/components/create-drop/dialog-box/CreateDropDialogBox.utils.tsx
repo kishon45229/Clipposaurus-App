@@ -25,6 +25,8 @@ export function CreateDropDialogBoxContent() {
                 return <ShieldBan className="w-12 h-12 drop-shadow-sm" />;
             case "nullUserSecret":
                 return <AlertCircle className="w-12 h-12 drop-shadow-sm" />;
+            case "fileSizeExceeded":
+                return <AlertCircle className="w-12 h-12 drop-shadow-sm" />;
             case "encrypting-files":
             case "uploading-files":
             case "creating":
@@ -52,6 +54,8 @@ export function CreateDropDialogBoxContent() {
                 return "Preparing your Drop...";
             case "nullUserSecret":
                 return "Drop Key Incomplete";
+            case "fileSizeExceeded":
+                return "File Size Limit Exceeded";
             case "idle":
                 return "Just a Moment...";
             default:
@@ -77,6 +81,8 @@ export function CreateDropDialogBoxContent() {
                 return "We're preparing your content to create Drop. This may take some time...";
             case "nullUserSecret":
                 return "Your Drop Key seems incomplete. Please ensure you've set the private key before creating a Drop.";
+            case "fileSizeExceeded":
+                return "The file you're trying to upload exceeds the 50MB limit, or adding it would exceed the total 50MB limit. Please remove some files or choose smaller files.";
             case "idle":
                 return "Please wait while we processing your request...";
             default:
@@ -96,6 +102,8 @@ export function CreateDropDialogBoxContent() {
                 return "Understood, I'll Wait";
             case "nullUserSecret":
                 return "I'll Complete My Drop Key";
+            case "fileSizeExceeded":
+                return "I Understand";
             default:
                 return "Okay";
         }

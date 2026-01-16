@@ -61,7 +61,8 @@ export type CreateDropAlertStatus =
   | "idle"
   | "rateLimited"
   | "empty"
-  | "nullUserSecret";
+  | "nullUserSecret"
+  | "fileSizeExceeded";
 
 export type OpenDropAlertStatus =
   | "idle"

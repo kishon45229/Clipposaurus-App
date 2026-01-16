@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
-import { StandardDialog } from "@/components/dialogs";
+import { useOpenDrop } from "@/contexts/OpenDropContext";
 import {
+    CheckCircle2,
     XCircle,
     AlertCircle,
     ShieldBan,
@@ -13,19 +14,11 @@ import {
     ServerCrash,
     Clock,
 } from "lucide-react";
-import { useOpenDrop } from "@/contexts/OpenDropContext";
 
-function OpenDropAlert() {
-    const { alertType, handleClose } = useOpenDrop();
+export function OpenDropDialogBoxContent() {
+    const { alertType } = useOpenDrop();
 
-    const handleOpenChange = React.useCallback((open: boolean) => {
-        if (!open && alertType !== "opening" || alertType === "idle") {
-            handleClose();
-        }
-    }, [alertType, handleClose]);
-
-    // ICON SET
-    const icon = React.useMemo(() => {
+    const icon = (): React.ReactElement => {
         switch (alertType) {
             case "common-error":
                 return <XCircle className="w-12 h-12 drop-shadow-sm text-red-500" />;
@@ -56,10 +49,9 @@ function OpenDropAlert() {
             default:
                 return <AlertCircle className="w-12 h-12 drop-shadow-sm text-gray-500" />;
         }
-    }, [alertType]);
+    }
 
-    // TITLES
-    const title = React.useMemo(() => {
+    const title = (): string => {
         switch (alertType) {
             case "common-error":
                 return "Something Went Wrong";
@@ -92,10 +84,9 @@ function OpenDropAlert() {
             default:
                 return "Unexpected Error";
         }
-    }, [alertType]);
+    }
 
-    // DESCRIPTIONS
-    const description = React.useMemo(() => {
+    const description = (): string => {
         switch (alertType) {
             case "common-error":
                 return "We encountered an unexpected error while trying to open your Drop. Please try again in a moment.";
@@ -128,10 +119,9 @@ function OpenDropAlert() {
             default:
                 return "An unexpected error occurred. Please try again or contact support if the problem persists.";
         }
-    }, [alertType]);
+    }
 
-    // BUTTON LABELS
-    const buttonLabel = React.useMemo(() => {
+    const btnText = (): string => {
         switch (alertType) {
             case "common-error":
                 return "Try Again";
@@ -160,31 +150,7 @@ function OpenDropAlert() {
             default:
                 return "Okay";
         }
-    }, [alertType]);
+    }
 
-    const showButton = alertType !== "opening" && alertType !== "decrypting";
-    const buttons = showButton ? [{
-        text: buttonLabel,
-        onClick: () => {
-            handleClose();
-        },
-        className: "rounded-lg mt-6"
-    }] : undefined;
-
-    return (
-        <StandardDialog
-            open={alertType !== "idle"}
-            onOpenChange={handleOpenChange}
-            icon={icon}
-            title={title}
-            description={description}
-            buttons={buttons}
-            showCloseButton={false}
-        />
-    );
+    return { icon, title, description, btnText };
 }
-
-const MemoizedOpenDropAlert = React.memo(OpenDropAlert);
-MemoizedOpenDropAlert.displayName = "OpenDropAlert";
-
-export { MemoizedOpenDropAlert as OpenDropAlert };

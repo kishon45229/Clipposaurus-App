@@ -142,6 +142,7 @@ export function useUnlockDropManager({
           }
 
           if (setDropSession(decryptionResult.data as DecryptedDrop)) {
+            console.log("Drop session set successfully", decryptionResult.data);
             setDropKeyVerificationRequestStatus("success");
           }
         } catch {

@@ -4,6 +4,7 @@ import { DropRouteProtection } from "@/components/common/DropRouteProtection";
 import ErrorFallback from "@/app/error";
 import LoadingFallback from "@/app/loading";
 import { OpenDropProvider } from "@/contexts/OpenDropContext";
+import { OpenDropDialogBox } from "@/components/open-drop/dialog-box";
 
 const PAGE_ID = "OpenDropPage" as const;
 
@@ -19,6 +20,7 @@ export default function OpenDropPage(): React.ReactElement {
           <React.Suspense fallback={<LoadingFallback />}>
             <section className="h-[90dvh] max-w-7xl mx-auto py-4 overflow-hidden">
               <DropPreview />
+              <OpenDropDialogBox />
             </section>
           </React.Suspense>
         </OpenDropProvider>

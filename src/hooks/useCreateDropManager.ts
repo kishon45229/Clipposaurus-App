@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import { useRouter } from "next/navigation";
 import type { FileItem, CreateDropAlertStatus } from "@/types";
@@ -12,6 +10,7 @@ import {
   releaseKey,
   validateIdentifier,
 } from "@/services/dropKeyService";
+import { getCurrentTotalSize, isOverLimit } from "@/lib/fileSizeCheck";
 
 export interface DropData {
   textContent: string;
@@ -198,85 +197,92 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
     if (!textContent && !codeContent && files.length === 0) {
       setCreateDropRequestStatus("empty");
       return;
-    } else {
-      setCreateDropRequestStatus("creating");
-      setUploadProgress(0);
+    }
+
+    // Check file size limit before creating drop
+    const totalSize = getCurrentTotalSize(files);
+    if (isOverLimit(totalSize)) {
+      setCreateDropRequestStatus("fileSizeExceeded");
+      return;
+    }
+
+    setCreateDropRequestStatus("creating");
+    setUploadProgress(0);
+
+    try {
+      shouldCleanupRef.current = false;
+
+      const validationResult = await validateIdentifier(identifier);
+      if (!validationResult.valid) {
+        await handleKeyGeneration();
+        return;
+      }
+
+      const createDropRequestResult = await sendCreateDropRequest(
+        textContent,
+        codeContent,
+        selectedLanguage,
+        files,
+        retention,
+        identifier,
+        systemSecret,
+        userSecret,
+        (stage, progress) => {
+          if (stage === "encrypting") {
+            setCreateDropRequestStatus("encrypting-files");
+            setUploadProgress(progress || 0);
+          } else if (stage === "uploading") {
+            setCreateDropRequestStatus("uploading-files");
+            setUploadProgress(progress || 0);
+          } else if (stage === "finalizing") {
+            setCreateDropRequestStatus("creating");
+            setUploadProgress(100);
+          }
+        }
+      );
 
       try {
+        await markKeyAsUsed(identifier, createDropRequestResult.ttlSeconds);
         shouldCleanupRef.current = false;
-
-        const validationResult = await validateIdentifier(identifier);
-        if (!validationResult.valid) {
-          await handleKeyGeneration();
-          return;
-        }
-
-        const createDropRequestResult = await sendCreateDropRequest(
-          textContent,
-          codeContent,
-          selectedLanguage,
-          files,
-          retention,
-          identifier,
-          systemSecret,
-          userSecret,
-          (stage, progress) => {
-            if (stage === "encrypting") {
-              setCreateDropRequestStatus("encrypting-files");
-              setUploadProgress(progress || 0);
-            } else if (stage === "uploading") {
-              setCreateDropRequestStatus("uploading-files");
-              setUploadProgress(progress || 0);
-            } else if (stage === "finalizing") {
-              setCreateDropRequestStatus("creating");
-              setUploadProgress(100);
-            }
-          }
-        );
-
-        try {
-          await markKeyAsUsed(identifier, createDropRequestResult.ttlSeconds);
-          shouldCleanupRef.current = false;
-        } catch (error) {
-          setCreateDropRequestStatus("error");
-          shouldCleanupRef.current = false;
-          await handleReleaseIdentifier();
-          throw error;
-        }
-
-        if (createDropRequestResult.status === 429) {
-          setCreateDropRequestStatus("rateLimited");
-          shouldCleanupRef.current = false;
-          await handleReleaseIdentifier();
-          return;
-        }
-
-        if (
-          !createDropRequestResult.success ||
-          createDropRequestResult.status === 400 ||
-          createDropRequestResult.status === 500
-        ) {
-          setCreateDropRequestStatus("error");
-          shouldCleanupRef.current = false;
-          await handleReleaseIdentifier();
-          return;
-        }
-
-        if (createDropRequestResult.success) {
-          setCreateDropRequestStatus("success");
-          shouldCleanupRef.current = false;
-          handleClearContent();
-        } else {
-          setCreateDropRequestStatus("error");
-          shouldCleanupRef.current = false;
-          await handleReleaseIdentifier();
-        }
       } catch (error) {
         setCreateDropRequestStatus("error");
         shouldCleanupRef.current = false;
         await handleReleaseIdentifier();
         throw error;
       }
+
+      if (createDropRequestResult.status === 429) {
+        setCreateDropRequestStatus("rateLimited");
+        shouldCleanupRef.current = false;
+        await handleReleaseIdentifier();
+        return;
+      }
+
+      if (
+        !createDropRequestResult.success ||
+        createDropRequestResult.status === 400 ||
+        createDropRequestResult.status === 500
+      ) {
+        setCreateDropRequestStatus("error");
+        shouldCleanupRef.current = false;
+        await handleReleaseIdentifier();
+        return;
+      }
+
+      if (createDropRequestResult.success) {
+        setCreateDropRequestStatus("success");
+        shouldCleanupRef.current = false;
+        handleClearContent();
+      } else {
+        setCreateDropRequestStatus("error");
+        shouldCleanupRef.current = false;
+        await handleReleaseIdentifier();
+      }
+    } catch (error) {
+      setCreateDropRequestStatus("error");
+      shouldCleanupRef.current = false;
+      await handleReleaseIdentifier();
+      throw error;
     }
   }, [
     textContent,

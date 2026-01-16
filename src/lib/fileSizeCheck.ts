@@ -42,25 +42,8 @@ export async function processFileWithSizeCheck(
   currentTotalSize: number,
   file: File
 ): Promise<FileItem> {
-  if (file.size > MAX_INDIVIDUAL_FILE_SIZE) {
-    throw new FileProcessorError(
-      `File ${
-        file.name
-      } is too large. Maximum individual file size is ${formatSize(
-        MAX_INDIVIDUAL_FILE_SIZE
-      )}.`
-    );
-  }
-
-  const newTotal = currentTotalSize + file.size;
-  if (newTotal > MAX_TOTAL_SIZE) {
-    const remaining = MAX_TOTAL_SIZE - currentTotalSize;
-    throw new FileProcessorError(
-      `Adding this file would exceed the ${formatSize(
-        MAX_TOTAL_SIZE
-      )} limit. Available space: ${formatSize(remaining)}`
-    );
-  }
+  // Note: Size validation removed - will be checked at drop creation time
+  // This allows users to select files and see the dialog with appropriate message
 
   const fileItem = createFileItem(file);
   fileItem.id = generateUUID();
