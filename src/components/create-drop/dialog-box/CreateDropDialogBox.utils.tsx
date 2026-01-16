@@ -25,6 +25,10 @@ export function CreateDropDialogBoxContent() {
                 return <ShieldBan className="w-12 h-12 drop-shadow-sm" />;
             case "nullUserSecret":
                 return <AlertCircle className="w-12 h-12 drop-shadow-sm" />;
+            case "encrypting-files":
+            case "uploading-files":
+            case "creating":
+                return <LoaderCircle className="animate-spin w-12 h-12 drop-shadow-sm" />;
             default:
                 return <LoaderCircle className="animate-spin w-12 h-12 drop-shadow-sm" />;
         }
@@ -40,6 +44,10 @@ export function CreateDropDialogBoxContent() {
                 return "Nothing to Drop";
             case "rateLimited":
                 return "Whoa, Slow Down!";
+            case "encrypting-files":
+                return "Encrypting Your Files...";
+            case "uploading-files":
+                return "Uploading Your Files...";
             case "creating":
                 return "Preparing your Drop...";
             case "nullUserSecret":
@@ -61,6 +69,10 @@ export function CreateDropDialogBoxContent() {
                 return "Looks like you haven't added any content yet. Add some text or code, or files before creating a Drop.";
             case "rateLimited":
                 return "You've reached the limit for creating Drops. Please take a short break before trying again.";
+            case "encrypting-files":
+                return "Your files are being encrypted securely in your browser. Please wait...";
+            case "uploading-files":
+                return "Your encrypted files are now being uploaded. This may take a moment for larger files...";
             case "creating":
                 return "We're preparing your content to create Drop. This may take some time...";
             case "nullUserSecret":

@@ -56,7 +56,8 @@ export async function sendCreateDropRequest(
   retention: string,
   identifier: string,
   systemSecret: string,
-  userSecret: string
+  userSecret: string,
+  onProgress?: (stage: "encrypting" | "uploading" | "finalizing", progress?: number) => void
 ): Promise<{
   success: boolean;
   status: number;
@@ -65,9 +66,13 @@ export async function sendCreateDropRequest(
 }> {
   try {
     let storedFiles: StoredFileItem[] = [];
-    let itemsCompleted = 0;
 
     if (files && files.length > 0) {
+      const totalFiles = files.length;
+      let encryptedCount = 0;
+
+      onProgress?.("encrypting", 0);
+
       const filesForUpload = await Promise.all(
         files.map(async (file) => {
           const result = {
@@ -79,30 +84,78 @@ export async function sendCreateDropRequest(
               userSecret
             ),
           };
-          itemsCompleted++;
+          encryptedCount++;
+          const encryptionProgress = Math.round((encryptedCount / totalFiles) * 100);
+          onProgress?.("encrypting", encryptionProgress);
           return result;
         })
       );
 
-      const fileUploadResponse = await fetch("/api/file-upload", {
+      onProgress?.("uploading", 0);
+
+      const response = await fetch("/api/file-upload", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ files: filesForUpload }),
+        body: JSON.stringify({ files: filesForUpload, streaming: true }),
       });
 
-      if (!fileUploadResponse.ok) {
-        const errorData = await fileUploadResponse.json().catch(() => ({}));
+      if (!response.ok || !response.body) {
         return {
           success: false,
-          status: fileUploadResponse.status,
-          error: errorData.error || "File upload failed",
+          status: response.status,
+          error: "File upload failed",
         };
       }
 
-      const fileUploadData = await fileUploadResponse.json();
-      const fileUrls = fileUploadData.fileUrls || [];
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let fileUrls: string[] = [];
+      let uploadError: string | null = null;
+
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          
+          if (done) break;
+
+          const chunk = decoder.decode(value, { stream: true });
+          const lines = chunk.split("\n").filter(line => line.trim());
+
+          for (const line of lines) {
+            try {
+              const data = JSON.parse(line);
+              
+              if (data.progress !== undefined) {
+                // Report real-time progress
+                onProgress?.("uploading", data.progress);
+              }
+              
+              if (data.success && data.fileUrls) {
+                fileUrls = data.fileUrls;
+                onProgress?.("uploading", 100);
+              }
+              
+              if (data.error) {
+                uploadError = data.error;
+              }
+            } catch {
+              // Skip invalid JSON lines
+            }
+          }
+        }
+      } finally {
+        reader.releaseLock();
+      }
+
+      if (uploadError || fileUrls.length === 0) {
+        return {
+          success: false,
+          status: 500,
+          error: uploadError || "File upload failed",
+        };
+      }
 
       storedFiles = await Promise.all(
         files.map(async (originalFile, index) => ({
@@ -181,6 +234,8 @@ export async function sendCreateDropRequest(
       systemSecret,
       userSecret
     );
+
+    onProgress?.("finalizing", 100);
 
     const createDropResponse = await fetch("/api/create-drop", {
       method: "POST",

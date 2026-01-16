@@ -59,6 +59,8 @@ export interface UseCreateDropManagerReturn {
 
   fullKeyVisible: boolean;
   setFullKeyVisible: React.Dispatch<React.SetStateAction<boolean>>;
+
+  uploadProgress: number;
 }
 
 export function useCreateDropManager(): UseCreateDropManagerReturn {
@@ -71,7 +73,6 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
     React.useState<boolean>(true);
   const [createDropRequestStatus, setCreateDropRequestStatus] =
     React.useState<CreateDropAlertStatus>("idle");
-  // const [showQR, setShowQR] = React.useState(false);
   const [copied, setCopied] = React.useState(false);
   const [identifier, setIdentifier] = React.useState<string>("");
   const [systemSecret, setSystemSecret] = React.useState<string>("");
@@ -79,6 +80,7 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
   const [retention, setRetention] = React.useState<string>("keep-30-minutes");
   const [isLoadingKeys, setIsLoadingKeys] = React.useState<boolean>(false);
   const [fullKeyVisible, setFullKeyVisible] = React.useState(false);
+  const [uploadProgress, setUploadProgress] = React.useState<number>(0);
   const isGeneratingRef = React.useRef<boolean>(false);
   const shouldCleanupRef = React.useRef<boolean>(true);
   const identifierExpiryRef = React.useRef<number | null>(null);
@@ -174,7 +176,12 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
   // DIALOG BOX OPEN CHANGE HANDLER
   const handleDialogBoxOpenChange = React.useCallback(
     (open: boolean) => {
-      if (!open && createDropRequestStatus !== "creating") {
+      if (
+        !open &&
+        createDropRequestStatus !== "creating" &&
+        createDropRequestStatus !== "encrypting-files" &&
+        createDropRequestStatus !== "uploading-files"
+      ) {
         handleDialogClose();
       }
     },
@@ -193,6 +200,7 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
       return;
     } else {
       setCreateDropRequestStatus("creating");
+      setUploadProgress(0);
 
       try {
         shouldCleanupRef.current = false;
@@ -211,7 +219,19 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
           retention,
           identifier,
           systemSecret,
-          userSecret
+          userSecret,
+          (stage, progress) => {
+            if (stage === "encrypting") {
+              setCreateDropRequestStatus("encrypting-files");
+              setUploadProgress(progress || 0);
+            } else if (stage === "uploading") {
+              setCreateDropRequestStatus("uploading-files");
+              setUploadProgress(progress || 0);
+            } else if (stage === "finalizing") {
+              setCreateDropRequestStatus("creating");
+              setUploadProgress(100);
+            }
+          }
         );
 
         try {
@@ -382,5 +402,7 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
 
     fullKeyVisible,
     setFullKeyVisible,
+
+    uploadProgress,
   };
 }

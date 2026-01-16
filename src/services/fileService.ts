@@ -70,8 +70,16 @@ async function uploadToProvider(
   }
 }
 
-export async function uploadFile(files: FileItem[]): Promise<string[]> {
-  const uploadPromises = files.map(async (file) => {
+export async function uploadFile(
+  files: FileItem[],
+  onProgress?: (completed: number, total: number) => void
+): Promise<string[]> {
+  const urls: string[] = [];
+  const totalFiles = files.length;
+
+  for (let i = 0; i < files.length; i++) {
+    const file = files[i];
+    let uploaded = false;
 
     for (const provider of getStorageProviders()) {
       try {
@@ -81,17 +89,24 @@ export async function uploadFile(files: FileItem[]): Promise<string[]> {
           continue;
         } else {
           const url = await uploadToProvider(file, provider);
-          return url;
+          urls.push(url);
+          uploaded = true;
+          
+          onProgress?.(i + 1, totalFiles);
+          break;
         }
       } catch {
         // continue to next provider
       }
     }
-    // no provider available or all uploads failed
-    return "";
-  });
+    
+    if (!uploaded) {
+      // no provider available or all uploads failed
+      urls.push("");
+      onProgress?.(i + 1, totalFiles);
+    }
+  }
 
-  const urls = await Promise.all(uploadPromises);
   return urls;
 }
 

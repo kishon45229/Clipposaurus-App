@@ -47,6 +47,8 @@ export interface HeaderContextValue {
 
     fullKeyVisible: boolean;
     setFullKeyVisible: (visible: boolean) => void;
+
+    uploadProgress: number;
 }
 
 const HeaderContext = React.createContext<HeaderContextValue | undefined>(undefined);
@@ -56,7 +58,7 @@ interface HeaderProviderProps {
 }
 
 export function HeaderProvider({ children }: HeaderProviderProps): React.ReactElement {
-    const { createDropRequestStatus, handleCreateDrop, handleDialogClose, handleDialogBoxOpenChange, handleCopy, copied, identifier, systemSecret, userSecret, setUserSecret, isLoadingKeys, handleKeyGeneration, retention, setRetention, fullKeyVisible, setFullKeyVisible } = useCreateDrop();
+    const { createDropRequestStatus, handleCreateDrop, handleDialogClose, handleDialogBoxOpenChange, handleCopy, copied, identifier, systemSecret, userSecret, setUserSecret, isLoadingKeys, handleKeyGeneration, retention, setRetention, fullKeyVisible, setFullKeyVisible, uploadProgress } = useCreateDrop();
     const { data, isLoading, error } = useHeaderComponent();
     const { isMobileMenuOpen, setIsMobileMenuOpen, handleMobileMenuOpen, handleCloseMobileMenu } = useMobileMenu();
 
@@ -105,6 +107,8 @@ export function HeaderProvider({ children }: HeaderProviderProps): React.ReactEl
 
         fullKeyVisible,
         setFullKeyVisible,
+
+        uploadProgress,
     }), [
         data,
         createDropRequestStatus,
@@ -131,6 +135,7 @@ export function HeaderProvider({ children }: HeaderProviderProps): React.ReactEl
         setFullKeyVisible,
         isDrawerOpen,
         handleDrawerToggle,
+        uploadProgress,
     ]);
 
     return (

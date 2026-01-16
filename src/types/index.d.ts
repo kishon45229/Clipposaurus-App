@@ -54,6 +54,8 @@ export type CreateDropRequestStatus =
 
 export type CreateDropAlertStatus =
   | "creating"
+  | "encrypting-files"
+  | "uploading-files"
   | "success"
   | "error"
   | "idle"
