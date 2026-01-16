@@ -29,7 +29,7 @@ jobs:
             # Calculate timeout (2min, 3min, 4min)
             timeout=$((60 + 60 * $attempt))
             
-            response=$(curl -X POST https://clipposaurus.com/api/drop-key/cleanup \
+            response=$(curl -X POST https://app.clipposaurus.com/api/drop-key/cleanup \
               -H "Content-Type: application/json" \
               -w "\n%{http_code}" \
               -s \
@@ -44,10 +44,10 @@ jobs:
             echo "Response Body: $body"
             
             if [ "$http_code" = "200" ]; then
-              echo "✓ Cleanup completed successfully on attempt $attempt"
+              echo "Cleanup completed successfully on attempt $attempt"
               success=true
             else
-              echo "✗ Attempt $attempt failed with status code: $http_code"
+              echo "Attempt $attempt failed with status code: $http_code"
               if [ $attempt -lt $max_attempts ]; then
                 echo "Waiting 10 seconds before retry..."
                 sleep 10

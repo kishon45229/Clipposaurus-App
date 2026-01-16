@@ -44,7 +44,7 @@ For detailed documentation, visit [docs.clipposaurus.com](https://docs.clipposau
 
 For marketing materials and branding assets, visit the repository [https://github.com/kishon45229/Clipposaurus-Marketing.git](https://github.com/kishon45229/Clipposaurus-Marketing.git).
 
-## Technical Architecture
+## Storage Providers
 
 [Upstash Redis](https://upstash.com) serves as the primary storage for drop content and metadata.  
 [Cloudflare R2](https://www.cloudflare.com/developer-platform/products/r2/) and [Backblaze B2](https://www.backblaze.com/cloud-storage) provide object storage for file uploads.
