@@ -7,7 +7,7 @@ import type { HeaderComponent } from "@/types/contentData-types/header-types";
 import type { DropPreviewComponent } from "@/types/contentData-types/dropPreview-types";
 import type { FooterComponent } from "@/components/footer/footer.types";
 import type { NavbarComponent } from "@/components/navbar/navbar.types";
-import type { MenuComponentType } from "@/components/create-drop/MobileMenu/MobileMenu.types";
+import type { MenuComponentType } from "@/components/create-drop/mobile-menu/MobileMenu.types";
 
 export type ComponentDataType = UnlockDropComponent | HeaderComponent | DropPreviewComponent | FooterComponent | NavbarComponent | MenuComponentType;
 

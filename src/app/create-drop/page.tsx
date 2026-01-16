@@ -5,7 +5,7 @@ import { Header } from "@/components/create-drop/Header";
 import { CreateDropProvider } from "@/contexts/CreateDropContext";
 import { HeaderProvider } from "@/contexts/HeaderContext";
 import { CreateDropDialogBox } from "@/components/create-drop/dialog-box";
-import { MobileMenu } from "@/components/create-drop/MobileMenu";
+import { MobileMenu } from "@/components/create-drop/mobile-menu";
 import { MenuProvider } from '@/contexts/MenuContext';
 
 /**
