@@ -1,18 +1,14 @@
 "use client";
 
-import React from "react";
+import { useMenu } from "@/contexts/MenuContext";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
-import { useHeader } from "@/contexts/HeaderContext";
-import { ComponentError } from "../../common/ComponentError";
+import { ComponentError } from "@/components/common/ComponentError";
 
-const COMPONENT_ID = "MenuContainer" as const;
+const COMPONENT_ID = "MobileCreateDropButton" as const;
 
-/**
- * Mobile Create Drop Button Component
- */
-export const MobileCreateDropButton = React.memo(() => {
-    const { data, isLoading, error, handleMobileMenuOpen } = useHeader();
+export const MobileCreateDropButton = () => {
+    const { data, isLoading, error, handleMobileMenuOpen } = useMenu();
 
     if (isLoading || !data) return null;
     if (error) return <ComponentError componentId={COMPONENT_ID} />;
@@ -28,6 +24,4 @@ export const MobileCreateDropButton = React.memo(() => {
             <span className="hidden sm:inline text-sm md:text-base">{mobileMenuButton}</span>
         </Button>
     );
-});
-
-MobileCreateDropButton.displayName = "MobileCreateDropButton";
+};

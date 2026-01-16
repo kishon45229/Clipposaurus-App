@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Loader } from "lucide-react";
 import { useMenu } from "@/contexts/MenuContext";
 
-export const MobileMenuKeySection = React.memo(() => {
+export const MobileMenuKeySection = () => {
     const {
         data,
         identifier,
@@ -27,30 +27,14 @@ export const MobileMenuKeySection = React.memo(() => {
     } = data.keySection;
 
     return (
-        <Card
-            className="
-        rounded-2xl
-        border border-zinc-200/50 dark:border-zinc-800/50
-        bg-gradient-to-br from-zinc-100/70 to-zinc-50/50
-        dark:from-zinc-900/70 dark:to-zinc-950/60
-        shadow-inner
-        p-[clamp(0.5rem,2vw,1rem)]
-      "
-        >
-            <CardTitle
-                className="
-          mx-auto flex items-center gap-2
-          font-semibold
-          text-[clamp(0.875rem,3.5vw,1.125rem)]
-          text-emerald-600 dark:text-emerald-500
-        "
-            >
+        <Card className="rounded-2xl border border-zinc-200/50 dark:border-zinc-800/50 bg-gradient-to-br from-zinc-100/70 to-zinc-50/50 dark:from-zinc-900/70 dark:to-zinc-950/60 shadow-inner p-[clamp(0.5rem,2vw,1rem)]">
+            <CardTitle className="mx-auto flex items-center gap-2 font-semibold text-[clamp(0.875rem,3.5vw,1.125rem)] text-emerald-600 dark:text-emerald-500">
                 {title}
             </CardTitle>
 
             <CardContent className="flex flex-col gap-[clamp(0.5rem,2vw,0.75rem)] p-0">
                 <div className="grid grid-cols-1 gap-[clamp(0.75rem,3vw,1rem)]">
-                    {/* Identifier */}
+                    {/* IDENTIFIER */}
                     <Field
                         id="mobile-identifier"
                         label={identifierLabel}
@@ -60,7 +44,7 @@ export const MobileMenuKeySection = React.memo(() => {
                         placeholder="Identifier"
                     />
 
-                    {/* System secret */}
+                    {/* SYSTEM SECRET */}
                     <Field
                         id="mobile-system-secret"
                         label={systemSecretLabel}
@@ -70,7 +54,7 @@ export const MobileMenuKeySection = React.memo(() => {
                         placeholder="System secret"
                     />
 
-                    {/* User secret */}
+                    {/* USER SECRET */}
                     <div className="flex flex-col">
                         <Label className="field-label">{userSecretLabel}</Label>
                         <Input
@@ -84,13 +68,7 @@ export const MobileMenuKeySection = React.memo(() => {
                 </div>
 
                 {/* Drop key preview */}
-                <div
-                    className="
-            text-center leading-relaxed tracking-tight
-            text-[clamp(0.7rem,3vw,0.875rem)]
-            text-zinc-600 dark:text-zinc-400
-          "
-                >
+                <div className="text-center leading-relaxed tracking-tight text-[clamp(0.7rem,3vw,0.875rem)] text-zinc-600 dark:text-zinc-400">
                     <strong className="font-medium text-zinc-800 dark:text-zinc-200">
                         {dropKeyLabel}
                     </strong>{" "}
@@ -105,14 +83,9 @@ export const MobileMenuKeySection = React.memo(() => {
             </CardContent>
         </Card>
     );
-});
+};
 
-MobileMenuKeySection.displayName = "MobileMenuKeySection";
-
-/* ---------------------------------- */
-/* Small helper (keeps JSX clean)      */
-/* ---------------------------------- */
-
+// Small helper (keeps JSX clean)      
 function Field({
     id,
     label,
