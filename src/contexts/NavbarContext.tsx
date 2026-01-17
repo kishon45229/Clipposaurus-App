@@ -18,6 +18,7 @@ export interface NavbarContextValue {
     handleContactUs: () => void;
     handleRedirectToGitHubIssues: () => void;
     handleRedirectToGitHubDiscussions: () => void;
+    handleRedirectToGitHubSponsor: () => void;
 }
 
 const NavbarContext = React.createContext<NavbarContextValue | undefined>(undefined);
@@ -28,7 +29,7 @@ interface NavbarProviderProps {
 
 export function NavbarProvider({ children }: NavbarProviderProps): React.ReactElement {
     const { data, isLoading, error } = useNavbarComponent();
-    const { handleRedirectToDocs, handleRedirectToChangelog, handleRedirectToTermsOfService, handleRedirectToGitHub, handleRedirectToFAQ, handleContactUs, handleRedirectToGitHubIssues, handleRedirectToGitHubDiscussions } = useRedirects();
+    const { handleRedirectToDocs, handleRedirectToChangelog, handleRedirectToTermsOfService, handleRedirectToGitHub, handleRedirectToFAQ, handleContactUs, handleRedirectToGitHubIssues, handleRedirectToGitHubDiscussions, handleRedirectToGitHubSponsor } = useRedirects();
 
     const contextValue: NavbarContextValue = React.useMemo(() => ({
         data,
@@ -42,7 +43,8 @@ export function NavbarProvider({ children }: NavbarProviderProps): React.ReactEl
         handleContactUs,
         handleRedirectToGitHubIssues,
         handleRedirectToGitHubDiscussions,
-    }), [data, isLoading, error, handleContactUs, handleRedirectToChangelog, handleRedirectToDocs, handleRedirectToFAQ, handleRedirectToGitHub, handleRedirectToGitHubDiscussions, handleRedirectToGitHubIssues, handleRedirectToTermsOfService]);
+        handleRedirectToGitHubSponsor
+    }), [data, isLoading, error, handleContactUs, handleRedirectToChangelog, handleRedirectToDocs, handleRedirectToFAQ, handleRedirectToGitHub, handleRedirectToGitHubDiscussions, handleRedirectToGitHubIssues, handleRedirectToTermsOfService, handleRedirectToGitHubSponsor]);
 
     return (
         <NavbarContext.Provider value={contextValue}>

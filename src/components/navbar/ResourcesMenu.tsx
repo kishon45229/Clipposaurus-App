@@ -1,5 +1,6 @@
 "use client";
 
+import { useNavbar } from "@/contexts/NavbarContext";
 import { ScrollText, FileText, HeartHandshake } from "lucide-react";
 import {
     NavigationMenu,
@@ -8,40 +9,42 @@ import {
     NavigationMenuTrigger,
     NavigationMenuContent,
 } from "@/components/ui/navigation-menu";
-import { useRedirects } from "@/hooks/useRedirect";
 import { NavItem } from "@/components/navbar/NavItem";
 
 export const ResourcesMenu = () => {
-    const { handleRedirectToChangelog, handleRedirectToTermsOfService, handleRedirectToGitHubSponsor } = useRedirects();
+    const { data, handleRedirectToChangelog, handleRedirectToTermsOfService, handleRedirectToGitHubSponsor } = useNavbar();
+    const { links, menus } = data;
+    const { resources } = links;
+    const { resourcesDropDown } = menus;
+    const { changelog, terms, support } = resourcesDropDown;
 
     return (
         <NavigationMenu viewport={false} className="relative z-50">
             <NavigationMenuList>
                 <NavigationMenuItem>
                     <NavigationMenuTrigger className="h-10 px-4 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:text-emerald-600 dark:hover:text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-950 transition-all duration-200 bg-transparent cursor-target">
-                        Resources
+                        {resources}
                     </NavigationMenuTrigger>
                     <NavigationMenuContent className="z-50 left-auto right-0 bg-white/95 backdrop-blur-xl shadow-xl border-2 border-zinc-200 dark:bg-zinc-900/95 dark:border-zinc-800 rounded-2xl">
                         <ul className="w-64 p-2 space-y-1">
                             <NavItem
                                 onClick={handleRedirectToChangelog}
                                 icon={ScrollText}
-                                title="Changelog"
-                                description="See what's new and improved"
+                                title={changelog.title}
+                                description={changelog.description}
                             />
                             <NavItem
                                 onClick={handleRedirectToTermsOfService}
                                 icon={FileText}
-                                title="Terms of Service"
-                                description="Read our terms and conditions"
+                                title={terms.title}
+                                description={terms.description}
                             />
                             <li className="h-px my-2 bg-zinc-200 dark:bg-zinc-800" />
                             <NavItem
                                 onClick={handleRedirectToGitHubSponsor}
                                 icon={HeartHandshake}
-                                title="Support the Project"
-                                description="Help keep Clipposaurus free"
-                                external
+                                title={support.title}
+                                description={support.description}
                                 highlight
                             />
                         </ul>

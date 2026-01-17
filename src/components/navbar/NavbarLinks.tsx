@@ -1,18 +1,20 @@
 "use client";
 
+import { useNavbar } from "@/contexts/NavbarContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { BookOpen, Star } from "lucide-react";
 import { useGitHubStars } from "@/hooks/useGitHubStars";
 import { Button } from "@/components/ui/button";
 import { AnimatedThemeToggler } from "@/components/ui/animated-theme-toggler";
-import { ResourcesMenu } from "./ResourcesMenu";
-import { HelpMenu } from "./HelpMenu";
-import { useRedirects } from "@/hooks/useRedirect";
+import { ResourcesMenu } from "@/components/navbar/ResourcesMenu";
+import { HelpMenu } from "@/components/navbar/HelpMenu";
 
 export const NavbarLinks = () => {
   const stars = useGitHubStars();
-  const { handleRedirectToDocs, handleRedirectToGitHub } = useRedirects();
+  const { data, handleRedirectToDocs, handleRedirectToGitHub } = useNavbar();
+  const { links } = data;
+  const { docs } = links;
 
   return (
     <nav className="hidden sm:flex items-center gap-1.5" role="navigation" aria-label="Main navigation">
@@ -23,7 +25,7 @@ export const NavbarLinks = () => {
         className="h-10 px-4 text-sm font-semibold text-zinc-700 dark:text-zinc-300 hover:text-emerald-600 dark:hover:text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-950 transition-all duration-200 cursor-target"
       >
         <BookOpen className="w-4 h-4 mr-2" />
-        <span>Docs</span>
+        <span>{docs}</span>
       </Button>
 
       {/* GitHub */}

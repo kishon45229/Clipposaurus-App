@@ -1,5 +1,7 @@
 "use client";
 
+import { useNavbar } from "@/contexts/NavbarContext";
+import { useGitHubStars } from "@/hooks/useGitHubStars";
 import { Button } from "@/components/ui/button";
 import {
     DropdownMenu,
@@ -21,12 +23,14 @@ import {
 } from "lucide-react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { useGitHubStars } from "@/hooks/useGitHubStars";
-import { useRedirects } from "@/hooks/useRedirect";
 
 export const HamburgerMenu = () => {
     const stars = useGitHubStars();
-    const { handleRedirectToDocs, handleRedirectToFAQ, handleRedirectToTermsOfService, handleContactUs, handleRedirectToChangelog, handleRedirectToGitHub, handleRedirectToGitHubIssues, handleRedirectToGitHubSponsor } = useRedirects();
+    const { data, handleRedirectToDocs, handleRedirectToFAQ, handleRedirectToTermsOfService, handleContactUs, handleRedirectToChangelog, handleRedirectToGitHub, handleRedirectToGitHubIssues, handleRedirectToGitHubSponsor } = useNavbar();
+
+    const { menus } = data;
+    const { hamburger } = menus;
+    const { openMenu, documentation, faq, termsOfService, changelog, github, reportIssue, contactUs, supportProject } = hamburger;
 
     return (
         <DropdownMenu>
@@ -34,7 +38,7 @@ export const HamburgerMenu = () => {
                 <Button
                     variant="ghost"
                     size="icon"
-                    aria-label="Open menu"
+                    aria-label={openMenu}
                 >
                     <Menu className="navbar-icon" />
                 </Button>
@@ -51,7 +55,7 @@ export const HamburgerMenu = () => {
                     className="hamburger-menu-item"
                 >
                     <BookOpen className="hamburger-menu-icon-item" />
-                    Documentation
+                    {documentation}
                 </DropdownMenuItem>
 
                 {/* FAQ */}
@@ -60,7 +64,7 @@ export const HamburgerMenu = () => {
                     className="hamburger-menu-item"
                 >
                     <HelpCircle className="hamburger-menu-icon-item" />
-                    FAQ
+                    {faq}
                 </DropdownMenuItem>
 
                 <DropdownMenuSeparator className="my-2 bg-zinc-200 dark:bg-zinc-800" />
@@ -71,7 +75,7 @@ export const HamburgerMenu = () => {
                     className="hamburger-menu-item"
                 >
                     <FontAwesomeIcon icon={faGithub} className="hamburger-menu-icon-item" />
-                    GitHub
+                    {github}
                     <span className="flex items-center justify-center gap-2 ml-auto text-sm sm:text-base md:text-lg text-zinc-500 dark:text-zinc-400">
                         <Star className="hamburger-menu-icon-item" />
                         {stars}
@@ -84,7 +88,7 @@ export const HamburgerMenu = () => {
                     className="hamburger-menu-item"
                 >
                     <ScrollText className="hamburger-menu-icon-item" />
-                    Changelog
+                    {changelog}
                 </DropdownMenuItem>
 
                 {/* Report Issue */}
@@ -93,7 +97,7 @@ export const HamburgerMenu = () => {
                     className="hamburger-menu-item"
                 >
                     <Bug className="hamburger-menu-icon-item" />
-                    Report an Issue
+                    {reportIssue}
                 </DropdownMenuItem>
 
                 {/* Terms of Service */}
@@ -102,7 +106,7 @@ export const HamburgerMenu = () => {
                     className="hamburger-menu-item"
                 >
                     <FileText className="hamburger-menu-icon-item" />
-                    Terms of Service
+                    {termsOfService}
                 </DropdownMenuItem>
 
                 {/* Contact Us */}
@@ -111,7 +115,7 @@ export const HamburgerMenu = () => {
                     className="hamburger-menu-item"
                 >
                     <Mail className="hamburger-menu-icon-item" />
-                    Contact Us
+                    {contactUs}
                 </DropdownMenuItem>
 
                 <DropdownMenuSeparator className="my-2 bg-zinc-200 dark:bg-zinc-800" />
@@ -122,7 +126,7 @@ export const HamburgerMenu = () => {
                     className="hamburger-menu-item bg-emerald-50text-emerald-700 dark:bg-emerald-950/40dark:text-emerald-300"
                 >
                     <HeartHandshake className="hamburger-menu-icon-item" />
-                    Support the Project
+                    {supportProject}
                 </DropdownMenuItem>
             </DropdownMenuContent >
         </DropdownMenu >

@@ -201,12 +201,14 @@ export const FooterComponentSchema = z.object({
   brand: z.object({
     name: z.string(),
     description: z.string(),
+    ariaLabel: z.string(),
+    text: z.string(),
   }),
   columns: z.array(
     z.object({
       category: z.string(),
       links: z.array(z.string()),
-    })
+    }),
   ),
   copyrightNote: z.string(),
 });
