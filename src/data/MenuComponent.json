@@ -2,7 +2,7 @@
   "title": "Ready to Create Drop?",
   "description": "Complete below to configure your Drop",
   "keySection": {
-    "title": "Configure Your Drop Key",
+    "heading": "Configure Your Drop Key",
     "identifierLabel": "Identifier",
     "systemSecretLabel": "System Secret",
     "userSecretLabel": "User Secret",
@@ -10,7 +10,7 @@
     "dropKeyPlaceholder": "Enter user secret to see your drop key"
   },
   "retentionSection": {
-    "title": "Drop Expiration Settings",
+    "heading": "Drop Expiration Settings",
     "options": {
       "deleteOnAccess": "On Access",
       "keep30Minutes": "30 Min",

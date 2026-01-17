@@ -283,7 +283,7 @@ export const MenuComponentSchema = z.object({
   title: z.string().min(1).max(100),
   description: z.string().min(1).max(200),
   keySection: z.object({
-    title: z.string().min(1).max(50),
+    heading: z.string().min(1).max(50),
     identifierLabel: z.string().min(1).max(30),
     systemSecretLabel: z.string().min(1).max(30),
     userSecretLabel: z.string().min(1).max(30),
@@ -291,7 +291,7 @@ export const MenuComponentSchema = z.object({
     dropKeyPlaceholder: z.string().min(1).max(100),
   }),
   retentionSection: z.object({
-    title: z.string().min(1).max(50),
+    heading: z.string().min(1).max(50),
     options: z.object({
       deleteOnAccess: z.string().min(1).max(150),
       keep30Minutes: z.string().min(1).max(100),

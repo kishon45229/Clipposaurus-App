@@ -9,15 +9,16 @@ import { Clock, Trash2, Timer } from "lucide-react";
 export const MobileMenuRetentionCard = () => {
   const { data, retention, setRetention } = useMenu();
 
-  const { title, retentionSection } = data;
+  const { retentionSection } = data;
+  const { heading } = retentionSection;
   const { deleteOnAccess, keep30Minutes, keep1Hour } =
     retentionSection.options;
 
   return (
-    <Card className="rounded-2xl border border-zinc-200/50 dark:border-zinc-800/50 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm shadow-sm p-3">
+    <Card className="rounded-2xl gap-0 border border-zinc-200/50 dark:border-zinc-800/50 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm shadow-sm p-3">
       <CardTitle className="flex items-center justify-center gap-1.5 font-semibold text-[clamp(0.8rem,3.5vw,0.9rem)] text-zinc-900 dark:text-zinc-100 mb-2.5">
         <Clock className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-500" />
-        {title}
+        {heading}
       </CardTitle>
 
       <CardContent className="p-0">
