@@ -24,7 +24,7 @@ export default async function CreateDropPage(): Promise<React.ReactElement> {
                                 <Header />
                             </div>
 
-                            {/* Main Content Area - Full Width Tabs */}
+                            {/* Main Content Area */}
                             <div className="flex-1 min-h-0 p-2 sm:p-4">
                                 <Tab />
                             </div>

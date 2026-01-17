@@ -1,5 +1,5 @@
 import type {
-  FileItem,
+  // FileItem, --> TEMPORARILY DISABLED
   OpenDropRequestResponse,
   StoredFileItem,
 } from "@/types";
@@ -8,7 +8,7 @@ import {
   encryptFileContentWithDropKey,
 } from "@/lib/encryption";
 import { calculateExpiration } from "@/lib/timer";
-import { uploadFilesDirectly } from "@/services/directUploadService";
+// import { uploadFilesDirectly } from "@/services/directUploadService";    --> TEMPORARILY DISABLED
 
 export async function sendOpenDropRequest(
   identifier: string,
@@ -20,7 +20,7 @@ export async function sendOpenDropRequest(
   success: boolean;
 }> {
   try {
-    const openDropRequestResponse = await fetch("/api/open-drop", {
+    const openDropRequestResponse = await fetch("/api/unlock-drop", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,12 +53,12 @@ export async function sendCreateDropRequest(
   textContent: string,
   codeContent: string,
   codeLanguage: string,
-  files: FileItem[],
+  // files: FileItem[],  --> TEMPORARILY DISABLED
   retention: string,
   identifier: string,
   systemSecret: string,
-  userSecret: string,
-  onProgress?: (stage: "encrypting" | "uploading" | "finalizing", progress?: number) => void
+  userSecret: string
+  // onProgress?: (stage: "encrypting" | "uploading" | "finalizing", progress?: number) => void    --> TEMPORARILY DISABLED
 ): Promise<{
   success: boolean;
   status: number;
@@ -66,6 +66,8 @@ export async function sendCreateDropRequest(
   ttlSeconds?: number;
 }> {
   try {
+    // FILE UPLOAD TEMPORARILY DISABLED
+    /*
     let storedFiles: StoredFileItem[] = [];
 
     if (files && files.length > 0) {
@@ -178,7 +180,7 @@ export async function sendCreateDropRequest(
           url: fileUrls[index] || "",
         }))
       );
-    }
+    }*/
 
     const encryptedTextContent = textContent
       ? await encryptWithDropKey(
@@ -233,7 +235,7 @@ export async function sendCreateDropRequest(
       userSecret
     );
 
-    onProgress?.("finalizing", 100);
+    // onProgress?.("finalizing", 100); --> TEMPORARILY DISABLED
 
     const createDropResponse = await fetch("/api/create-drop", {
       method: "POST",
@@ -245,7 +247,7 @@ export async function sendCreateDropRequest(
         textContent: encryptedTextContent,
         codeContent: encryptedCodeContent,
         codeLanguage: encryptedCodeLanguage,
-        files: storedFiles,
+        // files: storedFiles, --> TEMPORARILY DISABLED
         retention: encryptedRetentionPeriod,
         ttlSeconds,
         createdAt: encryptedCreatedDateTime,
@@ -272,40 +274,41 @@ export async function sendCreateDropRequest(
   }
 }
 
-export async function sendDeleteDropRequest(
-  identifier: string,
-  options?: { preserveFiles?: boolean }
-): Promise<{
-  success: boolean;
-  status: number;
-  error?: string | null;
-}> {
-  try {
-    const response = await fetch("/api/delete-drop", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        identifier,
-        preserveFiles: options?.preserveFiles ?? false,
-      }),
-    });
+// DELETE DROP REQUEST FUNCTION TEMPORARILY DISABLED
+// export async function sendDeleteDropRequest(
+//   identifier: string,
+//   options?: { preserveFiles?: boolean }
+// ): Promise<{
+//   success: boolean;
+//   status: number;
+//   error?: string | null;
+// }> {
+//   try {
+//     const response = await fetch("/api/delete-drop", {
+//       method: "DELETE",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({
+//         identifier,
+//         preserveFiles: options?.preserveFiles ?? false,
+//       }),
+//     });
 
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      return {
-        success: false,
-        status: response.status,
-        error: errorData.error || "Failed to delete Drop",
-      };
-    }
+//     if (!response.ok) {
+//       const errorData = await response.json().catch(() => ({}));
+//       return {
+//         success: false,
+//         status: response.status,
+//         error: errorData.error || "Failed to delete Drop",
+//       };
+//     }
 
-    return {
-      success: true,
-      status: 200,
-    };
-  } catch (error) {
-    throw error;
-  }
-}
+//     return {
+//       success: true,
+//       status: 200,
+//     };
+//   } catch (error) {
+//     throw error;
+//   }
+// }

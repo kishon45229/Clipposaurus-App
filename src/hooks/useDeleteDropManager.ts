@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { sendDeleteDropRequest } from "@/services/dropService";
-import { useOpenDropManager } from "./useOpenDropManager";
+// import { sendDeleteDropRequest } from "@/services/dropService";  --> TEMPORARILY DISABLED
+import { useOpenDropManager } from "@/hooks/useOpenDropManager";
 
 interface DeleteDropManagerReturn {
   deleteOnAccess: boolean;
@@ -29,21 +29,22 @@ export function useDeleteDropManager(): DeleteDropManagerReturn {
 
     autoDeleteTriggeredRef.current = true;
 
-    (async () => {
-      try {
-        const dropDeleteResult = await sendDeleteDropRequest(
-          decryptedDrop.identifier,
-          { preserveFiles: true }
-        );
-        if (!dropDeleteResult.success) {
-          setAlertType("common-error");
-          return;
-        }
-        setAlertType("drop-deleted-on-access");
-      } catch {
-        setAlertType("common-error");
-      }
-    })();
+    // TEMPORARILY DISABLED
+    // (async () => {
+    //   try {
+    //     const dropDeleteResult = await sendDeleteDropRequest(
+    //       decryptedDrop.identifier,
+    //       { preserveFiles: true }
+    //     );
+    //     if (!dropDeleteResult.success) {
+    //       setAlertType("common-error");
+    //       return;
+    //     }
+    //     setAlertType("drop-deleted-on-access");
+    //   } catch {
+    //     setAlertType("common-error");
+    //   }
+    // })();
   }, [deleteOnAccess, decryptedDrop.identifier, setAlertType]);
 
   return {

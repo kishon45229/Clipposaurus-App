@@ -1,6 +1,6 @@
 import { Redis } from "@upstash/redis";
 import env from "@/lib/env";
-import { RATE_LIMIT_CONFIG } from "./config";
+import { RATE_LIMIT_CONFIG } from "@/lib/rate-limiting/config";
 
 const redis = new Redis({
   url: env.UPSTASH_REDIS_REST_URL,
@@ -64,37 +64,61 @@ export async function blockIdentifier(
  */
 export async function trackRequest(
   identifier: string,
-  maxRequests: number,
-  windowMs: number
-): Promise<{ allowed: boolean; count: number; resetTime: number }> {
+  capacity: number,
+  refillRate: number,
+  refillIntervalMs: number
+): Promise<{ allowed: boolean; tokensRemaining: number; resetTime: number }> {
   try {
-    const key = `rl:${identifier}`;
+    const key = `tb:${identifier}`;
     const now = Date.now();
-    const windowStart = now - windowMs;
 
     const script = `
       local key = KEYS[1]
-      local now = tonumber(ARGV[1])
-      local window_start = tonumber(ARGV[2])
-      local max_requests = tonumber(ARGV[3])
-      local window_ms = tonumber(ARGV[4])
+      local capacity = tonumber(ARGV[1])
+      local refill_rate = tonumber(ARGV[2])
+      local refill_interval_ms = tonumber(ARGV[3])
+      local now = tonumber(ARGV[4])
+      local cost = tonumber(ARGV[5])
       
-      -- Remove old entries outside window
-      redis.call('ZREMRANGEBYSCORE', key, 0, window_start)
+      -- Get bucket data
+      local bucket = redis.call('HMGET', key, 'tokens', 'last_refill')
+      local tokens = tonumber(bucket[1]) or capacity
+      local last_refill = tonumber(bucket[2]) or now
       
-      -- Count current requests
-      local count = redis.call('ZCARD', key)
+      -- Calculate tokens to add based on time elapsed
+      local time_elapsed = now - last_refill
+      local refills = math.floor(time_elapsed / refill_interval_ms)
+      local tokens_to_add = refills * refill_rate
       
-      -- Check if under limit
-      if count < max_requests then
-        -- Add new request
-        redis.call('ZADD', key, now, now)
-        redis.call('PEXPIRE', key, window_ms)
-        return {1, count + 1, now + window_ms}
+      -- Refill tokens (capped at capacity)
+      tokens = math.min(capacity, tokens + tokens_to_add)
+      
+      -- Update last_refill time if we added tokens
+      if refills > 0 then
+        last_refill = last_refill + (refills * refill_interval_ms)
+      end
+      
+      -- Try to consume token(s)
+      if tokens >= cost then
+        tokens = tokens - cost
+        
+        -- Save updated bucket state
+        redis.call('HSET', key, 'tokens', tokens, 'last_refill', last_refill)
+        redis.call('PEXPIRE', key, refill_interval_ms * capacity)
+        
+        -- Calculate when next token will be available
+        local next_refill = last_refill + refill_interval_ms
+        
+        return {1, tokens, next_refill}
       else
-        -- Over limit
-        redis.call('PEXPIRE', key, window_ms)
-        return {0, count, now + window_ms}
+        -- Not enough tokens - calculate when next token will be available
+        local next_refill = last_refill + refill_interval_ms
+        
+        -- Save current state
+        redis.call('HSET', key, 'tokens', tokens, 'last_refill', last_refill)
+        redis.call('PEXPIRE', key, refill_interval_ms * capacity)
+        
+        return {0, tokens, next_refill}
       end
     `;
 
@@ -102,24 +126,25 @@ export async function trackRequest(
       script,
       [key],
       [
+        capacity.toString(),
+        refillRate.toString(),
+        refillIntervalMs.toString(),
         now.toString(),
-        windowStart.toString(),
-        maxRequests.toString(),
-        windowMs.toString(),
+        "1", // Cost per request (1 token)
       ]
     )) as [number, number, number];
 
     return {
       allowed: result[0] === 1,
-      count: result[1],
+      tokensRemaining: result[1],
       resetTime: result[2],
     };
   } catch (error) {
     console.error("Error tracking request:", error);
     return {
       allowed: true,
-      count: 0,
-      resetTime: Date.now() + windowMs,
+      tokensRemaining: capacity,
+      resetTime: Date.now() + refillIntervalMs,
     };
   }
 }

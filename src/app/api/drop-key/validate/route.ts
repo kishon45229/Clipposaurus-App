@@ -18,7 +18,6 @@ export async function POST(request: Request) {
 
     const isPending = await upstashRedis.exists(`pending:${identifier}`);
     if (!isPending) {
-      // If the identifier expired in the pending phase, recycle it immediately
       const isUsed = await upstashRedis.exists(`used:${identifier}`);
       if (!isUsed) {
         await upstashRedis.sadd("available_keys", identifier);

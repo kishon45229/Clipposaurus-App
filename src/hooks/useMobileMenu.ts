@@ -17,8 +17,8 @@ export function useMobileMenu(): MobileMenuReturn {
 
   const isNoContent =
     !dropData.textContent &&
-    !dropData.codeContent &&
-    dropData.files.length === 0;
+    !dropData.codeContent /*&&
+    dropData.files.length === 0*/;  // --> TEMPORARILY DISABLED
 
   const handleMobileMenuOpen = React.useCallback(() => {
     if (isNoContent) {

@@ -10,7 +10,7 @@ import {
 import { tabList } from "@/components/create-drop/tab/Tab.config";
 import { TextTabProvider } from "@/contexts/TextTabContext";
 import { CodeTabProvider } from "@/contexts/CodeTabContext";
-import { FileTabProvider } from "@/contexts/FileTabContext";
+// import { FileTabProvider } from "@/contexts/FileTabContext"; --> TEMPORARILY DISABLED
 import { useTabNavigation } from "@/hooks/useTabNavigation";
 import { HeaderDropKeyPreview } from "@/components/create-drop/header-menu/HeaderDropKeyPreview";
 import { useMenu } from "@/contexts/MenuContext";
@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 import { TextTabSkeleton } from "@/components/skeleton/TextTabSkeleton";
 import { CodeTabSkeleton } from "@/components/skeleton/CodeTabSkeleton";
-import { FileTabSkeleton } from "@/components/skeleton/FileTabSkeleton";
+// import { FileTabSkeleton } from "@/components/skeleton/FileTabSkeleton";   --> TEMPORARILY DISABLED
 
 const TextTab = dynamic(
     () =>
@@ -36,13 +36,14 @@ const CodeTab = dynamic(
     { loading: () => <CodeTabSkeleton /> }
 );
 
-const FileTab = dynamic(
-    () =>
-        import("@/components/create-drop/tab/file-tab").then((m) => ({
-            default: m.FileTab,
-        })),
-    { loading: () => <FileTabSkeleton /> }
-);
+// TEMPORARILY DISABLED
+// const FileTab = dynamic(
+//     () =>
+//         import("@/components/create-drop/tab/file-tab").then((m) => ({
+//             default: m.FileTab,
+//         })),
+//     { loading: () => <FileTabSkeleton /> }
+// );
 
 export const TabContainer = () => {
     const { defaultTab, handleTabChange } = useTabNavigation();
@@ -106,12 +107,13 @@ export const TabContainer = () => {
                         <CodeTab />
                     </CodeTabProvider>
                 </TabsContent>
-
-                <TabsContent value="file" className="absolute inset-0 flex flex-col">
+                
+                {/* TEMPORARILY DISABLED */}
+                {/* <TabsContent value="file" className="absolute inset-0 flex flex-col">
                     <FileTabProvider>
                         <FileTab />
                     </FileTabProvider>
-                </TabsContent>
+                </TabsContent> */}
             </div>
         </Tabs >
     );

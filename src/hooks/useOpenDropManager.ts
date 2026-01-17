@@ -24,30 +24,30 @@ export interface UseOpenDropReturn {
 
   hasTextContent: boolean;
   hasCodeContent: boolean;
-  hasFiles: boolean;
+  // hasFiles: boolean;   --> TEMPORARILY DISABLED
 
   handleCopyError: () => void;
-  handleDownloadError: () => void;
+  // handleDownloadError: () => void;  --> TEMPORARILY DISABLED
   copiedStates: { [key: string]: boolean };
   handleCopy: (
     text: string,
     itemId: string,
     language?: string
   ) => Promise<void>;
-  handleDownload: (
-    url: string,
-    fileName: string,
-    identifier?: string,
-    systemSecret?: string,
-    userSecret?: string
-  ) => Promise<void>;
+  // handleDownload: (     
+  //   url: string,
+  //   fileName: string,
+  //   identifier?: string,              --> TEMPORARILY DISABLED
+  //   systemSecret?: string,
+  //   userSecret?: string
+  // ) => Promise<void>;
 
   // Action bar options
   showCopyButton: boolean;
-  showDownloadButton: boolean;
+  // showDownloadButton: boolean;     --> TEMPORARILY DISABLED
   isCopied: boolean;
   onCopy: () => Promise<void>;
-  onDownloadAll: () => Promise<void>;
+  // onDownloadAll: () => Promise<void>;   --> TEMPORARILY DISABLED
 }
 
 export interface AvailableContentType {
@@ -82,13 +82,14 @@ export function useOpenDropManager(): UseOpenDropReturn {
     [decryptedDrop.decryptedLanguage]
   );
 
-  const hasFiles = React.useMemo(
-    () =>
-      Boolean(
-        decryptedDrop.decryptedFiles && decryptedDrop.decryptedFiles.length > 0
-      ),
-    [decryptedDrop.decryptedFiles]
-  );
+  // TEMPORARILY DISABLED
+  // const hasFiles = React.useMemo(
+  //   () =>
+  //     Boolean(
+  //       decryptedDrop.decryptedFiles && decryptedDrop.decryptedFiles.length > 0
+  //     ),
+  //   [decryptedDrop.decryptedFiles]
+  // );
 
   // HANDLERS
   const handleClose = React.useCallback(() => {
@@ -116,20 +117,22 @@ export function useOpenDropManager(): UseOpenDropReturn {
     []
   );
 
-  const handleDownload = React.useCallback(
-    async (url: string, fileName: string, dropKey?: string) => {
-      await downloadFileWithFallback(url, fileName, dropKey);
-    },
-    []
-  );
+  // TEMPORARILY DISABLED
+  // const handleDownload = React.useCallback(
+  //   async (url: string, fileName: string, dropKey?: string) => {
+  //     await downloadFileWithFallback(url, fileName, dropKey);
+  //   },
+  //   []
+  // );
 
   const handleCopyError = React.useCallback(() => {
     setAlertType("copy-error");
   }, [setAlertType]);
 
-  const handleDownloadError = React.useCallback(() => {
-    setAlertType("download-error");
-  }, [setAlertType]);
+  // TEMPORARILY DISABLED
+  // const handleDownloadError = React.useCallback(() => {
+  //   setAlertType("download-error");
+  // }, [setAlertType]);
 
   const availableContentTypes = React.useMemo<AvailableContentType[]>(() => {
     const contentTypes: AvailableContentType[] = [];
@@ -149,18 +152,19 @@ export function useOpenDropManager(): UseOpenDropReturn {
       });
     }
 
-    if (hasFiles) {
-      contentTypes.push({
-        type: "files",
-        label: "Files",
-      });
-    }
+    // TEMPORARILY DISABLED
+    // if (hasFiles) {
+    //   contentTypes.push({
+    //     type: "files",
+    //     label: "Files",
+    //   });
+    // }
 
     return contentTypes;
   }, [
     hasTextContent,
     hasCodeContent,
-    hasFiles,
+    // hasFiles,    --> TEMPORARILY DISABLED
     hasCodeLanguage,
     decryptedDrop.decryptedLanguage,
   ]);
@@ -169,9 +173,9 @@ export function useOpenDropManager(): UseOpenDropReturn {
     React.useCallback((): DropContentType | null => {
       if (hasTextContent) return "note";
       if (hasCodeContent) return "code";
-      if (hasFiles) return "files";
+      // if (hasFiles) return "files";    --> TEMPORARILY DISABLED
       return null;
-    }, [hasTextContent, hasCodeContent, hasFiles]);
+    }, [hasTextContent, hasCodeContent/*, hasFiles*/]);    // --> TEMPORARILY DISABLED
 
   React.useEffect(() => {
     if (selectedContentType === null) {
@@ -192,9 +196,10 @@ export function useOpenDropManager(): UseOpenDropReturn {
     );
   }, [selectedContentType, hasTextContent, hasCodeContent]);
 
-  const showDownloadButton = React.useMemo(() => {
-    return selectedContentType === "files" && hasFiles;
-  }, [selectedContentType, hasFiles]);
+  // TEMPORARILY DISABLED
+  // const showDownloadButton = React.useMemo(() => {
+  //   return selectedContentType === "files" && hasFiles;
+  // }, [selectedContentType, hasFiles]);
 
   const isCopied = React.useMemo(() => {
     return Boolean(
@@ -221,14 +226,15 @@ export function useOpenDropManager(): UseOpenDropReturn {
     }
   }, [selectedContentType, decryptedDrop, handleCopy, drop]);
 
-  const onDownloadAll = React.useCallback(async () => {
-    if (decryptedDrop?.decryptedFiles) {
-      const dropKey = decryptedDrop.dropKey || decryptedDrop.identifier;
-      for (const f of decryptedDrop.decryptedFiles) {
-        await handleDownload(f.url, f.name, dropKey);
-      }
-    }
-  }, [decryptedDrop, handleDownload]);
+  // TEMPORARILY DISABLED
+  // const onDownloadAll = React.useCallback(async () => {
+  //   if (decryptedDrop?.decryptedFiles) {
+  //     const dropKey = decryptedDrop.dropKey || decryptedDrop.identifier;
+  //     for (const f of decryptedDrop.decryptedFiles) {
+  //       await handleDownload(f.url, f.name, dropKey);
+  //     }
+  //   }
+  // }, [decryptedDrop, handleDownload]);
 
   return {
     availableContentTypes,
@@ -244,19 +250,19 @@ export function useOpenDropManager(): UseOpenDropReturn {
 
     hasTextContent,
     hasCodeContent,
-    hasFiles,
+    // hasFiles,   --> TEMPORARILY DISABLED
 
     handleCopyError,
-    handleDownloadError,
+    // handleDownloadError,  --> TEMPORARILY DISABLED
 
     copiedStates,
     handleCopy,
-    handleDownload,
+    // handleDownload, --> TEMPORARILY DISABLED
 
     showCopyButton,
-    showDownloadButton,
+    // showDownloadButton,  --> TEMPORARILY DISABLED
     isCopied,
     onCopy,
-    onDownloadAll,
+    // onDownloadAll,  --> TEMPORARILY DISABLED
   };
 }

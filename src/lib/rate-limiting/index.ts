@@ -1,10 +1,10 @@
 import { NextRequest } from "next/server";
 import getClientIP from "@/lib/rate-limiting/client-IP";
-import { generateIdentifier } from "./fingerprint";
-import { isBlocked, blockIdentifier, trackRequest } from "./storage";
-import { getPathConfig } from "./utils";
-import { RATE_LIMIT_CONFIG } from "./config";
-import type { RateLimitResult } from "./types";
+import { generateIdentifier } from "@/lib/rate-limiting/fingerprint";
+import { isBlocked, blockIdentifier, trackRequest } from "@/lib/rate-limiting/storage";
+import { getPathConfig } from "@/lib/rate-limiting/utils";
+import { RATE_LIMIT_CONFIG } from "@/lib/rate-limiting/config";
+import type { RateLimitResult } from "@/lib/rate-limiting/types";
 
 export async function checkRateLimit(
   request: NextRequest
@@ -14,8 +14,8 @@ export async function checkRateLimit(
     if (!ip) {
       return {
         allowed: true,
-        remaining: RATE_LIMIT_CONFIG.maxRequests,
-        resetTime: Date.now() + RATE_LIMIT_CONFIG.windowMs,
+        remaining: RATE_LIMIT_CONFIG.capacity,
+        resetTime: Date.now() + RATE_LIMIT_CONFIG.refillIntervalMs,
       };
     }
 
@@ -37,15 +37,15 @@ export async function checkRateLimit(
 
     const result = await trackRequest(
       identifier,
-      config.maxRequests,
-      config.windowMs
+      config.capacity,
+      config.refillRate,
+      config.refillIntervalMs
     );
 
-    // If exceeded limit, block the identifier
-    if (!result.allowed) {
+    if (!result.allowed && result.tokensRemaining === 0) {
       await blockIdentifier(
         identifier,
-        `Exceeded ${config.maxRequests} requests in ${config.windowMs}ms`
+        `Token bucket depleted - rate limit exceeded`
       );
 
       return {
@@ -53,24 +53,24 @@ export async function checkRateLimit(
         remaining: 0,
         resetTime: Date.now() + RATE_LIMIT_CONFIG.blockDurationMs,
         retryAfter: Math.ceil(RATE_LIMIT_CONFIG.blockDurationMs / 1000),
-        blockReason: `Rate limit exceeded. Maximum ${
-          config.maxRequests
-        } requests per ${Math.ceil(config.windowMs / 60000)} minutes.`,
+        blockReason: `Rate limit exceeded. Please wait before trying again.`,
       };
     }
 
     return {
-      allowed: true,
-      remaining: config.maxRequests - result.count,
+      allowed: result.allowed,
+      remaining: result.tokensRemaining,
       resetTime: result.resetTime,
+      retryAfter: result.allowed
+        ? undefined
+        : Math.ceil((result.resetTime - Date.now()) / 1000),
     };
-  } catch (error) {
-    console.error("Rate limiting error:", error);
+  } catch {
     // Fail open - allow request on error but log it
     return {
       allowed: true,
       remaining: 1,
-      resetTime: Date.now() + RATE_LIMIT_CONFIG.windowMs,
+      resetTime: Date.now() + RATE_LIMIT_CONFIG.refillIntervalMs,
     };
   }
 }

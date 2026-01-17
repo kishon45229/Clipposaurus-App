@@ -1,120 +1,122 @@
-"use client";
+// TEMPORARILY DISABLED
 
-import React, { createContext, useContext } from "react";
-import type { FileItem } from "@/types";
-import { useCreateDrop } from "./CreateDropContext";
-import { useFileProcessor } from "@/hooks/useFileProcessor";
-import { useDragAndDrop } from "@/hooks/useDragAndDrop";
+// "use client";
 
-interface FileTabContextValue {
-    // File state
-    files: FileItem[];
-    setFiles: React.Dispatch<React.SetStateAction<FileItem[]>>;
+// import React, { createContext, useContext } from "react";
+// import type { FileItem } from "@/types";
+// import { useCreateDrop } from "./CreateDropContext";
+// import { useFileProcessor } from "@/hooks/useFileProcessor";
+// import { useDragAndDrop } from "@/hooks/useDragAndDrop";
 
-    // File processing
-    currentTotalSize: number;
-    isOverLimit: boolean;
-    removeFile: (id: string) => void;
-    fileInputRef: React.RefObject<HTMLInputElement | null>;
-    handleError: (error: string) => void;
+// interface FileTabContextValue {
+//     // File state
+//     files: FileItem[];
+//     setFiles: React.Dispatch<React.SetStateAction<FileItem[]>>;
 
-    // Drag and drop
-    handleDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
-    handleDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
-    handleDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
-    handleDrop: (e: React.DragEvent<HTMLDivElement>) => void;
-    handlePaste: (e: React.ClipboardEvent<HTMLDivElement>) => void;
-    handleFileSelect: (e: React.ChangeEvent<HTMLInputElement>, ref: React.RefObject<HTMLInputElement | null>) => void;
-    isDragOver: boolean;
-}
+//     // File processing
+//     currentTotalSize: number;
+//     isOverLimit: boolean;
+//     removeFile: (id: string) => void;
+//     fileInputRef: React.RefObject<HTMLInputElement | null>;
+//     handleError: (error: string) => void;
 
-const FileTabContext = createContext<FileTabContextValue | null>(null);
+//     // Drag and drop
+//     handleDragEnter: (e: React.DragEvent<HTMLDivElement>) => void;
+//     handleDragLeave: (e: React.DragEvent<HTMLDivElement>) => void;
+//     handleDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
+//     handleDrop: (e: React.DragEvent<HTMLDivElement>) => void;
+//     handlePaste: (e: React.ClipboardEvent<HTMLDivElement>) => void;
+//     handleFileSelect: (e: React.ChangeEvent<HTMLInputElement>, ref: React.RefObject<HTMLInputElement | null>) => void;
+//     isDragOver: boolean;
+// }
 
-interface FileTabProviderProps {
-    children: React.ReactNode;
-}
+// const FileTabContext = createContext<FileTabContextValue | null>(null);
 
-export function FileTabProvider({ children }: FileTabProviderProps): React.ReactElement {
-    const { dropData, setFiles } = useCreateDrop();
-    const files = dropData.files;
+// interface FileTabProviderProps {
+//     children: React.ReactNode;
+// }
 
-    // File processing hook
-    const {
-        currentTotalSize,
-        isOverLimit,
-        handleError,
-        fileInputRef,
-        removeFile,
-    } = useFileProcessor(files, setFiles);
+// export function FileTabProvider({ children }: FileTabProviderProps): React.ReactElement {
+//     const { dropData, setFiles } = useCreateDrop();
+//     const files = dropData.files;
 
-    // Drag and drop hook
-    const {
-        handleDragEnter,
-        handleDragLeave,
-        handleDragOver,
-        handleDrop,
-        handlePaste,
-        handleFileSelect,
-        isDragOver,
-    } = useDragAndDrop({
-        currentTotalSize,
-        setFiles,
-        onError: handleError,
-    });
+//     // File processing hook
+//     const {
+//         currentTotalSize,
+//         isOverLimit,
+//         handleError,
+//         fileInputRef,
+//         removeFile,
+//     } = useFileProcessor(files, setFiles);
 
-    const contextValue: FileTabContextValue = React.useMemo(() => ({
-        // File state
-        files,
-        setFiles,
+//     // Drag and drop hook
+//     const {
+//         handleDragEnter,
+//         handleDragLeave,
+//         handleDragOver,
+//         handleDrop,
+//         handlePaste,
+//         handleFileSelect,
+//         isDragOver,
+//     } = useDragAndDrop({
+//         currentTotalSize,
+//         setFiles,
+//         onError: handleError,
+//     });
 
-        // File processing
-        currentTotalSize,
-        isOverLimit,
-        removeFile,
-        fileInputRef,
-        handleError,
+//     const contextValue: FileTabContextValue = React.useMemo(() => ({
+//         // File state
+//         files,
+//         setFiles,
 
-        // Drag and drop
-        handleDragEnter,
-        handleDragLeave,
-        handleDragOver,
-        handleDrop,
-        handlePaste,
-        handleFileSelect,
-        isDragOver,
-    }), [
-        files,
-        setFiles,
-        currentTotalSize,
-        isOverLimit,
-        removeFile,
-        fileInputRef,
-        handleError,
-        handleDragEnter,
-        handleDragLeave,
-        handleDragOver,
-        handleDrop,
-        handlePaste,
-        handleFileSelect,
-        isDragOver,
-    ]);
+//         // File processing
+//         currentTotalSize,
+//         isOverLimit,
+//         removeFile,
+//         fileInputRef,
+//         handleError,
 
-    return (
-        <FileTabContext.Provider value={contextValue}>
-            {children}
-        </FileTabContext.Provider>
-    );
-};
+//         // Drag and drop
+//         handleDragEnter,
+//         handleDragLeave,
+//         handleDragOver,
+//         handleDrop,
+//         handlePaste,
+//         handleFileSelect,
+//         isDragOver,
+//     }), [
+//         files,
+//         setFiles,
+//         currentTotalSize,
+//         isOverLimit,
+//         removeFile,
+//         fileInputRef,
+//         handleError,
+//         handleDragEnter,
+//         handleDragLeave,
+//         handleDragOver,
+//         handleDrop,
+//         handlePaste,
+//         handleFileSelect,
+//         isDragOver,
+//     ]);
 
-/**
- * Custom hook to use FileTab context
- * @returns FileTabContextValue
- * @throws Error if used outside FileTabProvider
- */
-export const useFileTab = (): FileTabContextValue => {
-    const context = useContext(FileTabContext);
-    if (!context) {
-        throw new Error("useFileTab must be used within a FileTabProvider");
-    }
-    return context;
-};
+//     return (
+//         <FileTabContext.Provider value={contextValue}>
+//             {children}
+//         </FileTabContext.Provider>
+//     );
+// };
+
+// /**
+//  * Custom hook to use FileTab context
+//  * @returns FileTabContextValue
+//  * @throws Error if used outside FileTabProvider
+//  */
+// export const useFileTab = (): FileTabContextValue => {
+//     const context = useContext(FileTabContext);
+//     if (!context) {
+//         throw new Error("useFileTab must be used within a FileTabProvider");
+//     }
+//     return context;
+// };

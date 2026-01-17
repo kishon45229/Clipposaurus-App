@@ -3,7 +3,7 @@ import { upstashRedis } from "@/lib/redis";
 import env from "@/lib/env";
 import verifyRecaptcha from "@/services/recaptcha";
 import { checkRateLimit } from "@/lib/rate-limiting/index";
-import { deleteFiles } from "@/services/fileService";
+// import { deleteFiles } from "@/services/fileService";   --> TEMPORARILY DISABLED
 
 export async function POST(request: NextRequest) {
   try {
@@ -126,11 +126,12 @@ export async function POST(request: NextRequest) {
         }
       }
 
-      const uniqueFileUrls = Array.from(new Set(fileUrls)).filter(Boolean);
+      // TEMPORARILY DISABLED
+      // const uniqueFileUrls = Array.from(new Set(fileUrls)).filter(Boolean);
 
-      if (uniqueFileUrls.length > 0) {
-        await deleteFiles(uniqueFileUrls);
-      }
+      // if (uniqueFileUrls.length > 0) {
+      //   await deleteFiles(uniqueFileUrls);
+      // }
 
       await upstashRedis.del(dropKey);
       await upstashRedis.del(`used:${identifier}`);

@@ -1,3 +1,4 @@
-export const tabList = ["Note", "Code", "File"] as const;
+// FILE TEMPORARILY DISABLED
+export const tabList = ["Note", "Code"] as const;
 
 export type TabType = (typeof tabList)[number];

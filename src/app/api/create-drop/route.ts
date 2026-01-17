@@ -18,7 +18,6 @@ interface DropContent {
 export async function POST(request: NextRequest): Promise<NextResponse> {
   try {
     const rateLimitResult = await checkRateLimit(request);
-
     if (!rateLimitResult.allowed) {
       return NextResponse.json(
         {

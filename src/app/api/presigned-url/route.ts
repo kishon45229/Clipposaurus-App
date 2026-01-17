@@ -1,65 +1,67 @@
-import { NextRequest, NextResponse } from "next/server";
-import { s3Clients } from "@/lib/storage";
-import { PutObjectCommand } from "@aws-sdk/client-s3";
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import getStorageProviders from "@/constants/getStorageProviders";
-import path from "path";
+// TEMPORARILY DISABLED
 
-export async function POST(request: NextRequest) {
-  try {
-    const body = await request.json();
-    const { fileName, fileSize, fileId } = body;
+// import { NextRequest, NextResponse } from "next/server";
+// import { s3Clients } from "@/lib/storage";
+// import { PutObjectCommand } from "@aws-sdk/client-s3";
+// import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
+// import getStorageProviders from "@/constants/getStorageProviders";
+// import path from "path";
 
-    if (!fileName || !fileSize || !fileId) {
-      return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
-      );
-    }
+// export async function POST(request: NextRequest) {
+//   try {
+//     const body = await request.json();
+//     const { fileName, fileSize, fileId } = body;
 
-    const provider = getStorageProviders()[0];
-    const s3Client = s3Clients.get(provider.name);
+//     if (!fileName || !fileSize || !fileId) {
+//       return NextResponse.json(
+//         { error: "Missing required fields" },
+//         { status: 400 }
+//       );
+//     }
 
-    if (!s3Client) {
-      return NextResponse.json(
-        { error: "Storage provider not available" },
-        { status: 500 }
-      );
-    }
+//     const provider = getStorageProviders()[0];
+//     const s3Client = s3Clients.get(provider.name);
 
-    const timestamp = Date.now();
-    const randomSuffix = Math.random().toString(36).substring(2, 8);
-    const fileExtension = path.extname(fileName) || "";
-    const fileKey = `files/${timestamp}-${randomSuffix}-${fileId}${fileExtension}`;
+//     if (!s3Client) {
+//       return NextResponse.json(
+//         { error: "Storage provider not available" },
+//         { status: 500 }
+//       );
+//     }
 
-    const command = new PutObjectCommand({
-      Bucket: provider.bucketName,
-      Key: fileKey,
-      ContentType: "application/json",
-      Metadata: {
-        "original-name": fileName,
-        "file-id": fileId,
-        "upload-timestamp": timestamp.toString(),
-        encrypted: "true",
-      },
-    });
+//     const timestamp = Date.now();
+//     const randomSuffix = Math.random().toString(36).substring(2, 8);
+//     const fileExtension = path.extname(fileName) || "";
+//     const fileKey = `files/${timestamp}-${randomSuffix}-${fileId}${fileExtension}`;
 
-    const presignedUrl = await getSignedUrl(s3Client, command, {
-      expiresIn: 600,
-    });
+//     const command = new PutObjectCommand({
+//       Bucket: provider.bucketName,
+//       Key: fileKey,
+//       ContentType: "application/json",
+//       Metadata: {
+//         "original-name": fileName,
+//         "file-id": fileId,
+//         "upload-timestamp": timestamp.toString(),
+//         encrypted: "true",
+//       },
+//     });
 
-    const publicUrl = `${provider.publicUrl}/${fileKey}`;
+//     const presignedUrl = await getSignedUrl(s3Client, command, {
+//       expiresIn: 600,
+//     });
 
-    return NextResponse.json({
-      success: true,
-      presignedUrl,
-      publicUrl,
-      fileKey,
-    });
-  } catch {
-    return NextResponse.json(
-      { error: "Failed to generate presigned URL" },
-      { status: 500 }
-    );
-  }
-}
+//     const publicUrl = `${provider.publicUrl}/${fileKey}`;
+
+//     return NextResponse.json({
+//       success: true,
+//       presignedUrl,
+//       publicUrl,
+//       fileKey,
+//     });
+//   } catch {
+//     return NextResponse.json(
+//       { error: "Failed to generate presigned URL" },
+//       { status: 500 }
+//     );
+//   }
+// }

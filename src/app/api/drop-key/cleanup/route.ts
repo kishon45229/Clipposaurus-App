@@ -1,22 +1,18 @@
 import { NextResponse } from "next/server";
 import { upstashRedis } from "@/lib/redis";
 import env from "@/lib/env";
-import { deleteFiles } from "@/services/fileService";
+// import { deleteFiles } from "@/services/fileService";   --> TEMPORARILY DISABLED
 
 // Vercel: Allow up to 5 minutes execution time for cleanup
 export const maxDuration = 300;
 
-/**
- * Cleanup endpoint to recycle expired identifiers
- * This is called periodically via cron job (every 5 minutes)
- */
 export async function POST() {
   try {
     const startTime = Date.now();
     const MAX_EXECUTION_TIME = 240000; // 4 minutes (leave 1 min buffer)
     const recycledPending: string[] = [];
     const recycledUsed: string[] = [];
-    const filesDeleted: string[] = [];
+    // const filesDeleted: string[] = [];   --> TEMPORARILY DISABLED
     let processedCount = 0;
 
     const availableKeys = await upstashRedis.smembers("available_keys");
@@ -36,37 +32,40 @@ export async function POST() {
 
       const batchOperations = batch.map(async (key) => {
         const dropKey = `${env.DROP}:${key}`;
-        const dropFilesKey = `drop-files:${key}`;
+        // const dropFilesKey = `drop-files:${key}`;  --> TEMPORARILY DISABLED
 
-        const [dropExists, dropFiles, isPending, isUsed] = await Promise.all([
-          upstashRedis.exists(dropKey),
-          upstashRedis.get(dropFilesKey),
-          availableSet.has(key)
-            ? Promise.resolve(1)
-            : upstashRedis.exists(`pending:${key}`),
-          availableSet.has(key)
-            ? Promise.resolve(0)
-            : upstashRedis.exists(`used:${key}`),
-        ]);
+        const [dropExists, isUsed, isPending /*dropFiles*/] = await Promise.all(
+          [
+            upstashRedis.exists(dropKey),
+            availableSet.has(key)
+              ? Promise.resolve(1)
+              : upstashRedis.exists(`pending:${key}`),
+            availableSet.has(key)
+              ? Promise.resolve(0)
+              : upstashRedis.exists(`used:${key}`),
+            // upstashRedis.get(dropFilesKey), --> TEMPORARILY DISABLED
+          ]
+        );
 
-        if (!dropExists && dropFiles) {
-          try {
-            const parsedFiles = Array.isArray(dropFiles)
-              ? dropFiles
-              : (JSON.parse(dropFiles as string) as unknown);
+        // TEMPORARILY DISABLED
+        // if (!dropExists && dropFiles) {
+        //   try {
+        //     const parsedFiles = Array.isArray(dropFiles)
+        //       ? dropFiles
+        //       : (JSON.parse(dropFiles as string) as unknown);
 
-            if (Array.isArray(parsedFiles) && parsedFiles.length > 0) {
-              const fileUrls = parsedFiles.filter(Boolean);
-              if (fileUrls.length > 0) {
-                const result = await deleteFiles(fileUrls);
-                filesDeleted.push(...result.deleted);
-                await upstashRedis.del(dropFilesKey);
-              }
-            }
-          } catch (error) {
-            throw error;
-          }
-        }
+        //     if (Array.isArray(parsedFiles) && parsedFiles.length > 0) {
+        //       const fileUrls = parsedFiles.filter(Boolean);
+        //       if (fileUrls.length > 0) {
+        //         const result = await deleteFiles(fileUrls);
+        //         filesDeleted.push(...result.deleted);
+        //         await upstashRedis.del(dropFilesKey);
+        //       }
+        //     }
+        //   } catch (error) {
+        //     throw error;
+        //   }
+        // }
 
         if (!availableSet.has(key) && !isPending && !isUsed) {
           await upstashRedis.sadd("available_keys", key);
@@ -86,14 +85,13 @@ export async function POST() {
       success: true,
       recycledCount: totalRecycled,
       recycledKeys: recycledPending,
-      filesDeletedCount: filesDeleted.length,
+      // filesDeletedCount: filesDeleted.length,  --> TEMPORARILY DISABLED
       processedKeys: processedCount,
       totalKeys: allKeys.length,
       duration,
       timestamp: new Date().toISOString(),
     });
-  } catch (error) {
-    console.error("Error during key cleanup:", error);
+  } catch {
     return NextResponse.json(
       {
         success: false,
