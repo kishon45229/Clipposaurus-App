@@ -11,12 +11,12 @@ export const MobileMenuHeader = () => {
   const { title, description } = data;
 
   return (
-    <div className="text-center space-y-[clamp(0.25rem,1vw,0.5rem)]">
-      <ResponsiveDialogTitle className="font-semibold tracking-tight text-[clamp(1.25rem,3.5vw,1.5rem)] text-emerald-600 dark:text-emerald-500">
+    <div className="text-center space-y-1">
+      <ResponsiveDialogTitle className="font-bold tracking-tight text-[clamp(1.125rem,4vw,1.375rem)] text-zinc-900 dark:text-zinc-100 leading-tight">
         {title}
       </ResponsiveDialogTitle>
 
-      <ResponsiveDialogDescription className="text-[clamp(0.75rem,3vw,1.125rem)] text-zinc-600 dark:text-zinc-400">
+      <ResponsiveDialogDescription className="text-[clamp(0.8rem,3vw,0.9rem)] text-zinc-600 dark:text-zinc-400 leading-snug max-w-sm mx-auto">
         {description}
       </ResponsiveDialogDescription>
     </div>

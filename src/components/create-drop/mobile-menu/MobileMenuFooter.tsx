@@ -2,7 +2,7 @@
 
 import { useMenu } from "@/contexts/MenuContext";
 import { Button } from "@/components/ui/button";
-import { Save, X } from "lucide-react";
+import { Plus, X } from "lucide-react";
 
 export const MobileMenuFooter = () => {
     const {
@@ -13,25 +13,36 @@ export const MobileMenuFooter = () => {
     } = useMenu();
 
     const { ctaButton } = data;
+    const isCreating = createDropRequestStatus === "creating";
 
     return (
-        <div className="flex gap-[clamp(0.5rem,3vw,0.75rem)] p-2">
+        <div className="flex gap-2 pt-1">
             <Button
                 onClick={handleCreateDrop}
-                disabled={createDropRequestStatus === "creating"}
+                disabled={isCreating}
                 type="submit"
-                className="flex-1 rounded-2xl py-[clamp(0.75rem,3.5vw,1.25rem)] bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-[clamp(0.875rem,3.5vw,1.125rem)] shadow-lg shadow-emerald-600/30 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl disabled:opacity-70"
+                className="flex-1 h-10 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white font-bold text-[clamp(0.8rem,3.5vw,0.9rem)] shadow-lg shadow-emerald-600/30 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
-                <Save className="mr-2 size-[clamp(1rem,4vw,1.25rem)]" />
-                {createDropRequestStatus === "creating" ? "Saving..." : ctaButton}
+                {isCreating ? (
+                    <>
+                        <div className="animate-spin rounded-full h-3.5 w-3.5 border-2 border-white border-t-transparent mr-1.5" />
+                        Creating...
+                    </>
+                ) : (
+                    <>
+                        <Plus className="mr-1.5 w-4 h-4" />
+                        {ctaButton}
+                    </>
+                )}
             </Button>
 
             <Button
                 variant="outline"
                 onClick={handleCloseMobileMenu}
-                className="rounded-2xl px-3 py-[clamp(0.75rem,3.5vw,1.25rem)]"
+                disabled={isCreating}
+                className="h-10 px-3 rounded-xl border-2 border-zinc-300 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all hover:scale-105 active:scale-95 disabled:opacity-50"
             >
-                <X className="size-[clamp(1rem,4vw,1.25rem)]" />
+                <X className="w-4 h-4" />
             </Button>
         </div>
     );

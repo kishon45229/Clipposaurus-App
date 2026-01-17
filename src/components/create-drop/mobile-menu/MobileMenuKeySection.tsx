@@ -4,7 +4,7 @@ import React from "react";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Key, Lock } from "lucide-react";
 import { useMenu } from "@/contexts/MenuContext";
 
 export const MobileMenuKeySection = () => {
@@ -37,64 +37,72 @@ export const MobileMenuKeySection = () => {
         : null;
 
     return (
-        <Card className="rounded-2xl border border-zinc-200/50 dark:border-zinc-800/50 bg-gradient-to-br from-zinc-100/70 to-zinc-50/50 dark:from-zinc-900/70 dark:to-zinc-950/60 shadow-inner p-[clamp(0.5rem,2vw,1rem)]">
-            <CardTitle className="mx-auto flex items-center gap-2 font-semibold text-[clamp(0.875rem,3.5vw,1.125rem)] text-emerald-600 dark:text-emerald-500">
+        <Card className="rounded-2xl border border-zinc-200/50 dark:border-zinc-800/50 bg-white/50 dark:bg-zinc-900/50 backdrop-blur-sm shadow-sm p-3">
+            <CardTitle className="flex items-center justify-center gap-1.5 font-semibold text-[clamp(0.8rem,3.5vw,0.9rem)] text-zinc-900 dark:text-zinc-100 mb-2.5">
+                <Key className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-500" />
                 {title}
             </CardTitle>
 
-            <CardContent className="flex flex-col gap-[clamp(0.5rem,2vw,0.75rem)] p-0">
+            <CardContent className="flex flex-col gap-2.5 p-0">
                 {/* USER SECRET INPUT */}
-                <div className="flex flex-col items-center gap-2">
-                    <Label className="field-label">{userSecretLabel}</Label>
-                    <div className="relative w-1/2">
+                <div className="space-y-2">
+                    <Label className="text-xs font-medium text-zinc-700 dark:text-zinc-300 flex items-center gap-1">
+                        <Lock className="w-3 h-3" />
+                        {userSecretLabel}
+                    </Label>
+                    <div className="relative">
                         <Input
                             value={userSecret}
                             type={showSecret ? "text" : "password"}
                             onChange={(e) => setUserSecret(e.target.value)}
-                            placeholder="Enter here"
+                            placeholder="Enter 6-8 characters"
                             minLength={6}
                             maxLength={8}
-                            className="bg-white dark:bg-zinc-900 pr-10"
+                            className="h-9 bg-white dark:bg-zinc-900 border-zinc-300 dark:border-zinc-700 pr-9 text-center font-medium text-sm focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all"
                         />
                         <button
                             type="button"
-                            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-zinc-500 hover:text-zinc-300 transition-colors cursor-target"
+                            className="absolute right-1.5 top-1/2 transform -translate-y-1/2 p-1 rounded-md text-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all cursor-target"
                             onClick={() => setShowSecret(!showSecret)}
                             onMouseEnter={() => setIsHovering(true)}
                             onMouseLeave={() => setIsHovering(false)}
                             tabIndex={-1}
+                            aria-label={showSecret ? "Hide secret" : "Show secret"}
                         >
-                            {showSecret ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
+                            {showSecret ? <EyeOff className="size-3.5" /> : <Eye className="size-3.5" />}
                         </button>
                     </div>
+                    <p className="text-[0.65rem] text-zinc-500 dark:text-zinc-500 text-center leading-none">
+                        {userSecret.length}/8 characters
+                    </p>
                 </div>
 
-                {/* Drop key preview with eye icon */}
-                <div className="flex items-center justify-center gap-2 p-3 bg-gradient-to-b from-zinc-100/70 to-zinc-50/50 dark:from-zinc-900/70 dark:to-zinc-950/50 border border-zinc-200/50 dark:border-zinc-800/50 shadow-inner rounded-xl">
-                    <span className="text-[clamp(0.75rem,3vw,0.875rem)] text-zinc-700 dark:text-zinc-300 font-medium">
+                {/* DROP KEY PREVIEW */}
+                <div className="flex items-center gap-1.5 p-2">
+                    <span className="text-xs font-medium text-emerald-700 dark:text-emerald-300 shrink-0">
                         {dropKeyLabel}
                     </span>
                     {displayKey ? (
                         <>
-                            <span className="text-[clamp(0.75rem,3vw,0.875rem)] font-mono font-medium text-zinc-900 dark:text-zinc-100 tracking-tight">
+                            <span className="flex-1 text-[clamp(0.7rem,3vw,0.8rem)] font-mono font-semibold text-emerald-900 dark:text-emerald-100 tracking-tight break-all">
                                 {displayKey}
                             </span>
                             <button
                                 onMouseEnter={() => setIsVisible(true)}
                                 onMouseLeave={() => setIsVisible(false)}
                                 onTouchStart={() => setIsVisible(!isVisible)}
-                                className="shrink-0 p-1 rounded hover:bg-zinc-200 dark:hover:bg-zinc-700 transition-colors cursor-target"
+                                className="shrink-0 p-1 rounded-md hover:bg-emerald-200/50 dark:hover:bg-emerald-800/50 transition-colors cursor-target"
                                 aria-label={isVisible ? "Hide key" : "Show key"}
                             >
                                 {isVisible ? (
-                                    <EyeOff className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+                                    <EyeOff className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
                                 ) : (
-                                    <Eye className="w-4 h-4 text-zinc-600 dark:text-zinc-400" />
+                                    <Eye className="w-3.5 h-3.5 text-emerald-700 dark:text-emerald-400" />
                                 )}
                             </button>
                         </>
                     ) : (
-                        <span className="text-[clamp(0.7rem,3vw,0.8rem)] italic text-zinc-500 dark:text-zinc-500">
+                        <span className="flex-1 text-[clamp(0.7rem,3vw,0.8rem)] text-center italic text-zinc-500 dark:text-zinc-500">
                             {dropKeyPlaceholder}
                         </span>
                     )}

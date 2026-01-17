@@ -1,20 +1,24 @@
 "use client";
 
 import { useMenu } from "@/contexts/MenuContext";
+import { Info } from "lucide-react";
 
 export const MobileMenuInfoSection = () => {
   const { data } = useMenu();
   const { label, text } = data.noteSection;
 
   return (
-    <div className="flex items-start gap-[clamp(0.25rem,1.5vw,0.5rem)]">
-      <span className="font-medium text-[clamp(0.75rem,3vw,0.95rem)] text-zinc-700 dark:text-zinc-300 shrink-0">
-        {label}
-      </span>
+    <div className="flex items-start gap-2 p-2 rounded-xl bg-blue-50/50 dark:bg-blue-950/20 border border-blue-200/50 dark:border-blue-800/50">
+      <Info className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400 mt-0.5 shrink-0" />
 
-      <span className="text-[clamp(0.75rem,3vw,0.95rem)] text-zinc-700 dark:text-zinc-300 tracking-tight leading-snug">
-        {text}
-      </span>
+      <div className="flex-1 space-y-0.5">
+        <span className="block font-semibold text-xs text-blue-900 dark:text-blue-100">
+          {label}
+        </span>
+        <span className="block text-[0.7rem] text-blue-800 dark:text-blue-200 leading-snug">
+          {text}
+        </span>
+      </div>
     </div>
   );
 };

@@ -18,14 +18,14 @@ export const MobileMenuContent = () => {
 
     return (
         <ResponsiveDialog open={isMobileMenuOpen && createDropRequestStatus === "idle"} onOpenChange={setIsMobileMenuOpen}>
-            <ResponsiveDialogContent className="flex flex-col max-h-[clamp(65dvh,75dvh,80dvh)] gap-[clamp(0.5rem,1.5vw,1rem)] p-[clamp(0.5rem,2vw,1.25rem)] border border-zinc-200/70 dark:border-zinc-800/70 bg-white/70 dark:bg-zinc-900/70 backdrop-blur-xl shadow-xl rounded-b-[clamp(1.5rem,4vw,2.5rem)] md:rounded-[clamp(1.5rem,3vw,2.5rem)] overflow-y-auto">
+            <ResponsiveDialogContent className="flex flex-col max-h-[clamp(65dvh,75dvh,85dvh)] gap-3 p-3 border border-zinc-200/70 dark:border-zinc-800/70 bg-white/90 dark:bg-zinc-900/90 backdrop-blur-xl shadow-2xl rounded-b-3xl md:rounded-3xl overflow-y-auto">
                 <AmbientGlow />
 
                 <ResponsiveDialogHeader>
                     <MobileMenuHeader />
                 </ResponsiveDialogHeader>
 
-                <div className="flex flex-col gap-[clamp(0.5rem,1.5vw,1rem)]">
+                <div className="flex flex-col gap-2.5">
                     <MobileMenuKeySection />
                     <MobileMenuRetentionCard />
                     <MobileMenuInfoSection />
