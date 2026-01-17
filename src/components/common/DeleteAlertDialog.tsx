@@ -38,21 +38,21 @@ export const DeleteAlertDialog = React.memo(({ type = "content", clearAllContent
                 <AmbientGlow />
 
                 <AlertDialogHeader className="gap-[clamp(0.4rem,2vw,0.6rem)]">
-                    <AlertDialogTitle className="font-semibold text-zinc-900 dark:text-zinc-100 text-[clamp(0.75rem,2.5vw,1.1rem)]">
+                    <AlertDialogTitle className="font-semibold text-zinc-900 dark:text-zinc-100 text-[clamp(1rem,2.5vw,1.2rem)]">
                         Are you sure you want to delete all the {type}?
                     </AlertDialogTitle>
 
-                    <AlertDialogDescription className="leading-relaxed text-zinc-700 dark:text-zinc-300 text-[clamp(0.7rem,2.25vw,0.9rem)]">
+                    <AlertDialogDescription className="leading-relaxed text-zinc-700 dark:text-zinc-300 text-[clamp(0.75rem,2.25vw,1rem)]">
                         This action cannot be undone. This will permanently delete your {type}.
                     </AlertDialogDescription>
                 </AlertDialogHeader>
 
                 <AlertDialogFooter className="mt-[clamp(0.75rem,3vw,1rem)] gap-[clamp(0.5rem,3vw,0.75rem)]">
-                    <AlertDialogCancel className="rounded-lg text-[clamp(0.7rem,2.25vw,0.9rem)] h-[clamp(1.75rem,5vw,2rem)]">
+                    <AlertDialogCancel className="rounded-lg text-[clamp(1rem,2.25vw,1.1rem)] h-[clamp(2rem,5vw,2.5rem)]">
                         Cancel
                     </AlertDialogCancel>
 
-                    <AlertDialogAction onClick={clearAllContent} className="rounded-lg text-[clamp(0.7rem,2.25vw,0.9rem)] h-[clamp(1.75rem,5vw,2rem)]">
+                    <AlertDialogAction onClick={clearAllContent} className="rounded-lg text-[clamp(1rem,2.25vw,1.1rem)] h-[clamp(2rem,5vw,2.5rem)]">
                         Delete
                     </AlertDialogAction>
                 </AlertDialogFooter>
