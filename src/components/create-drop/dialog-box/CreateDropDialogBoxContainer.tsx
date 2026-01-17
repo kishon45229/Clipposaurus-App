@@ -5,7 +5,7 @@ import { StandardDialog } from "@/components/dialogs";
 import type { DialogButtonProps } from "@/components/dialogs/types";
 import { useHeader } from "@/contexts/HeaderContext";
 import { CreateDropDialogBoxContent } from "./CreateDropDialogBox.utils";
-import { ClipboardCheck, Clipboard, Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export const CreateDropDialogBoxContainer = () => {
@@ -41,15 +41,9 @@ export const CreateDropDialogBoxContainer = () => {
   const customContent =
     createDropRequestStatus === "success" ? (
       <div className="mt-[clamp(0.5rem,2vw,1rem)] flex flex-col items-center gap-[clamp(0.25rem,1vw,0.5rem)]">
-        {/* Key display */}
+        {/* KEY DISPLAY */}
         <div
-          className="
-            flex min-w-fit flex-wrap items-center
-            gap-[clamp(0.25rem,1vw,0.5rem)]
-            rounded-xl
-            border-2 border-dashed border-zinc-700 dark:border-zinc-300
-            p-[clamp(0.5rem,1.5vw,0.75rem)]
-          "
+          className="flex min-w-fit flex-wrap items-center gap-[clamp(0.25rem,1vw,0.5rem)] rounded-xl border-2 border-dashed border-zinc-700 dark:border-zinc-300 p-[clamp(0.5rem,1.5vw,0.75rem)]"
         >
           <div className="flex flex-wrap items-center mx-auto gap-[clamp(0.25rem,1vw,0.5rem)]">
             <span className="font-mono font-semibold tracking-wide text-[clamp(1rem,2vw,1.5rem)]">
@@ -65,7 +59,7 @@ export const CreateDropDialogBoxContainer = () => {
             </span>
           </div>
 
-          {/* Actions */}
+          {/* ACTIONS */}
           <div className="ml-auto flex items-center gap-[clamp(0.25rem,1vw,0.5rem)]">
             <Button variant="ghost" size="icon" onClick={() => setFullKeyVisible(!fullKeyVisible)}>
               {fullKeyVisible ? (
@@ -77,15 +71,15 @@ export const CreateDropDialogBoxContainer = () => {
 
             <Button variant="ghost" size="icon" onClick={handleCopy}>
               {copied ? (
-                <ClipboardCheck className="w-[clamp(1rem,2.5vw,1.5rem)] h-[clamp(1rem,2.5vw,1.5rem)]" />
+                <Copy className="w-[clamp(1rem,2.5vw,1.5rem)] h-[clamp(1rem,2.5vw,1.5rem)]" />
               ) : (
-                <Clipboard className="w-[clamp(1rem,2.5vw,1.5rem)] h-[clamp(1rem,2.5vw,1.5rem)]" />
+                <Check className="w-[clamp(1rem,2.5vw,1.5rem)] h-[clamp(1rem,2.5vw,1.5rem)]" />
               )}
             </Button>
           </div>
         </div>
 
-        {/* Retention info */}
+        {/* RETENTION INFO */}
         <div className="mt-[clamp(0.25rem,1vw,0.5rem)] text-center text-[clamp(0.65rem,1.5vw,0.9rem)] text-zinc-900 dark:text-zinc-100">
           {retentionDescription(retention)} — make sure to save your Drop Key!
         </div>
