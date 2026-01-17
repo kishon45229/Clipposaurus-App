@@ -52,15 +52,15 @@ export const CreateDropDialogBoxContainer = () => {
           "
         >
           <div className="flex flex-wrap items-center mx-auto gap-[clamp(0.25rem,1vw,0.5rem)]">
-            <span className="font-mono font-semibold tracking-wide text-[clamp(0.7rem,2vw,1.5rem)]">
+            <span className="font-mono font-semibold tracking-wide text-[clamp(1rem,2vw,1.5rem)]">
               {fullKeyVisible ? identifier : maskKey(identifier)}
             </span>
-            <span className="font-mono font-semibold tracking-wide text-[clamp(0.7rem,2vw,1rem)]">-</span>
-            <span className="font-mono font-semibold tracking-wide text-[clamp(0.7rem,2vw,1.5rem)]">
+            <span className="font-mono font-semibold tracking-wide text-[clamp(0.75rem,2vw,1rem)]">-</span>
+            <span className="font-mono font-semibold tracking-wide text-[clamp(1rem,2vw,1.5rem)]">
               {fullKeyVisible ? systemSecret : maskKey(systemSecret)}
             </span>
-            <span className="font-mono font-semibold tracking-wide text-[clamp(0.7rem,2vw,1rem)]">-</span>
-            <span className="font-mono font-semibold tracking-wide text-[clamp(0.7rem,2vw,1.5rem)]">
+            <span className="font-mono font-semibold tracking-wide text-[clamp(0.75rem,2vw,1rem)]">-</span>
+            <span className="font-mono font-semibold tracking-wide text-[clamp(1rem,2vw,1.5rem)]">
               {fullKeyVisible ? userSecret : maskKey(userSecret)}
             </span>
           </div>
