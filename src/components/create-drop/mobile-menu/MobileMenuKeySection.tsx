@@ -21,7 +21,7 @@ export const MobileMenuKeySection = () => {
     } = useMenu();
 
     const { keySection } = data;
-    const { heading, userSecretLabel, dropKeyLabel, dropKeyPlaceholder } = keySection;
+    const { heading, userSecretLabel, dropKeyLabel, dropKeyPlaceholder, dropKeyError } = keySection;
 
     const maskKey = (key: string) => {
         if (key.length <= 3) return "*".repeat(key.length);
@@ -78,7 +78,11 @@ export const MobileMenuKeySection = () => {
                     <span className="text-xs font-medium text-emerald-700 dark:text-emerald-300 shrink-0">
                         {dropKeyLabel}
                     </span>
-                    {displayKey ? (
+                    {!identifier || !systemSecret ? (
+                        <span className="flex-1 text-[clamp(0.7rem,3vw,0.8rem)] text-center text-red-500 dark:text-red-400">
+                            {dropKeyError}
+                        </span>
+                    ) : displayKey ? (
                         <>
                             <span className="flex-1 text-[clamp(0.7rem,3vw,0.8rem)] font-mono font-semibold text-emerald-900 dark:text-emerald-100 tracking-tight break-all">
                                 {displayKey}

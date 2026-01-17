@@ -7,6 +7,8 @@ import { Plus, X } from "lucide-react";
 export const MobileMenuFooter = () => {
     const {
         data,
+        identifier,
+        systemSecret,
         createDropRequestStatus,
         handleCreateDrop,
         handleCloseMobileMenu,
@@ -19,7 +21,7 @@ export const MobileMenuFooter = () => {
         <div className="flex gap-2 pt-1">
             <Button
                 onClick={handleCreateDrop}
-                disabled={isCreating}
+                disabled={isCreating || !identifier || !systemSecret}
                 type="submit"
                 className="flex-1 h-10 rounded-xl bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white font-bold text-[clamp(0.8rem,3.5vw,0.9rem)] shadow-lg shadow-emerald-600/30 transition-all duration-300 hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >

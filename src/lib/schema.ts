@@ -289,6 +289,7 @@ export const MenuComponentSchema = z.object({
     userSecretLabel: z.string().min(1).max(30),
     dropKeyLabel: z.string().min(1).max(20),
     dropKeyPlaceholder: z.string().min(1).max(100),
+    dropKeyError: z.string().min(1).max(100),
   }),
   retentionSection: z.object({
     heading: z.string().min(1).max(50),

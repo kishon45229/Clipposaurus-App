@@ -7,7 +7,8 @@
     "systemSecretLabel": "System Secret",
     "userSecretLabel": "User Secret",
     "dropKeyLabel": "Drop Key:",
-    "dropKeyPlaceholder": "Enter user secret to see your drop key"
+    "dropKeyPlaceholder": "Enter user secret to see your drop key",
+    "dropKeyError": "Failed to generate Drop Key"
   },
   "retentionSection": {
     "heading": "Drop Expiration Settings",
