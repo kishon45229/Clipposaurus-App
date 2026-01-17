@@ -27,7 +27,7 @@ export const DeleteAlertDialog = React.memo(({ type = "content", clearAllContent
                     variant="destructive"
                     size="icon"
                     aria-label={`Delete all ${type}`}
-                    className="rounded-2xl size-[clamp(1.75rem,5vw,2rem)]"
+                    className="rounded-2xl"
                 >
                     <Trash2 className="size-[clamp(0.85rem,3vw,1rem)]" />
                 </Button>
