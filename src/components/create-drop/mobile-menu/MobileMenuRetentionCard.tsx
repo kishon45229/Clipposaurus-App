@@ -26,7 +26,7 @@ export const MobileMenuRetentionCard = () => {
         <RadioGroup
           value={retention}
           onValueChange={setRetention}
-          className="flex flex-col gap-[clamp(0.5rem,2.5vw,0.75rem)]"
+          className="flex items-center gap-1"
         >
           <Option
             id="delete-on-access-mobile"
@@ -61,11 +61,11 @@ function Option({
   label: string;
 }) {
   return (
-    <div className="flex items-center gap-3 cursor-target">
-      <RadioGroupItem value={value} id={id} />
+    <div className="flex items-center">
+      <RadioGroupItem value={value} id={id} className="peer sr-only" />
       <Label
         htmlFor={id}
-        className="text-[clamp(0.75rem,3vw,1rem)] text-zinc-700 dark:text-zinc-300"
+        className="cursor-target px-3 py-1.5 text-xs font-medium rounded-md transition-all text-zinc-600 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800 peer-data-[state=checked]:bg-emerald-500 hover:peer-data-[state=checked]:bg-emerald-300 dark:hover:peer-data-[state=checked]:bg-emerald-300 peer-data-[state=checked]:text-zinc-950 dark:peer-data-[state=checked]:text-zinc-950 peer-data-[state=checked]:font-semibold"
       >
         {label}
       </Label>

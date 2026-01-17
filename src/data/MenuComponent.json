@@ -12,9 +12,9 @@
   "retentionSection": {
     "title": "Drop Expiration Settings",
     "options": {
-      "deleteOnAccess": "Delete the Drop immediately after being accessed (maximum kept is 1 hour)",
-      "keep30Minutes": "Keep the Drop for 30 minutes then delete",
-      "keep1Hour": "Keep the Drop for 1 hour then delete"
+      "deleteOnAccess": "On Access",
+      "keep30Minutes": "30 Min",
+      "keep1Hour": "1 Hour"
     }
   },
   "noteSection": {
