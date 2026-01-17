@@ -74,7 +74,7 @@ export const MobileMenuKeySection = () => {
                 </div>
 
                 {/* DROP KEY PREVIEW */}
-                <div className="flex items-center gap-1.5 p-1">
+                <div className="flex items-center mx-auto gap-1.5">
                     <span className="text-xs font-medium text-emerald-700 dark:text-emerald-300 shrink-0">
                         {dropKeyLabel}
                     </span>
