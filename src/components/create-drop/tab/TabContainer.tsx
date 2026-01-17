@@ -46,7 +46,7 @@ export const TabContainer = () => {
         >
             {/* TAB LIST */}
             <div className="flex w-full items-center justify-between shrink-0 pb-2">
-                <TabsList className="flex w-fit items-center rounded-2xl p-1 bg-linear-to-b from-zinc-100/70 to-zinc-50/50 dark:from-zinc-900/70 dark:to-zinc-950/50 border border-zinc-200/50 dark:border-zinc-800/50 shadow-inner backdrop-blur-xl">
+                <TabsList className="flex w-fit items-center rounded-2xl p-1 bg-gradient-to-b from-zinc-100/70 to-zinc-50/50 dark:from-zinc-900/70 dark:to-zinc-950/50 border border-zinc-200/50 dark:border-zinc-800/50 shadow-inner backdrop-blur-xl">
                     {tabList.map((tab) => (
                         <TabsTrigger
                             key={tab}

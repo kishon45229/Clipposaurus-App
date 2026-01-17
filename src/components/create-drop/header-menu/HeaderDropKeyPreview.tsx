@@ -22,7 +22,7 @@ export const HeaderDropKeyPreview = () => {
         : null;
 
     return (
-        <div className="flex-shrink-0 flex items-center gap-[clamp(0.25rem,1vw,0.5rem)] px-[clamp(0.75rem,3vw,1rem)] py-[clamp(0.25rem,1.5vw,0.4rem)] bg-gradient-to-b from-zinc-100/70 to-zinc-50/50 dark:from-zinc-900/70 dark:to-zinc-950/50 border border-zinc-200/50 dark:border-zinc-800/50 shadow-inner backdrop-blur-xl rounded-2xl">
+        <div className="flex-shrink-0 flex items-center gap-[clamp(0.25rem,1vw,0.5rem)] px-[clamp(0.75rem,3vw,1rem)] py-[clamp(0.25rem,1.5vw,0.6rem)] bg-gradient-to-b from-zinc-100/70 to-zinc-50/50 dark:from-zinc-900/70 dark:to-zinc-950/50 border border-zinc-200/50 dark:border-zinc-800/50 shadow-inner backdrop-blur-xl rounded-2xl">
             <span className="text-[clamp(0.75rem,2.5vw,1rem)] text-zinc-700 dark:text-zinc-300 shrink-0">
                 {dropKeyLabel}
             </span>
