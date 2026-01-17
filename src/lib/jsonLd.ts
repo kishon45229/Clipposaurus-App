@@ -10,9 +10,9 @@ export function getSiteJsonLd() {
         name: "Clipposaurus",
         url: APP_URL,
         description:
-          "Secure file and code sharing platform with zero-knowledge encryption and no account required",
+          "Privacy focused text and code sharing platform with zero-knowledge encryption and no account required",
         applicationCategory: "SecurityApplication",
-        applicationSubCategory: "File Sharing",
+        applicationSubCategory: "Content Sharing",
         operatingSystem: "Any",
         browserRequirements: "Requires JavaScript. Requires HTML5.",
         offers: {
@@ -24,7 +24,6 @@ export function getSiteJsonLd() {
           "Zero-knowledge encryption",
           "No account required",
           "Auto-expiring drops",
-          "File sharing up to 50MB",
           "Code snippet sharing",
           "Text or notes sharing",
           "End-to-end encryption",

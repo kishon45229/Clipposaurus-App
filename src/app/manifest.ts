@@ -2,10 +2,10 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Clipposaurus - Secure File & Code Sharing",
+    name: "Clipposaurus - Secure Text & Code Sharing",
     short_name: "Clipposaurus",
     description:
-      "Securely share text, code snippets, and files between devices instantly. No account required.",
+      "Securely share text and code snippets between devices instantly. No account required.",
     start_url: "/",
     display: "standalone",
     background_color: "#000000",

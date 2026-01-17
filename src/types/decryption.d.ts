@@ -4,12 +4,6 @@ export interface DecryptedDrop {
   decryptedText?: string;
   decryptedCode?: string;
   decryptedLanguage?: string;
-  decryptedFiles?: Array<{
-    id: string;
-    name: string;
-    url: string;
-    size: number;
-  }>;
   decryptedRetentionPeriod: string;
   decryptedCreatedDateTime: Date;
   decryptedExpirationDateTime: Date;

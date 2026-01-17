@@ -19,12 +19,12 @@ export default async function CreateDropPage(): Promise<React.ReactElement> {
                 <HeaderProvider>
                     <MenuProvider>
                         <section className="flex flex-col h-screen xs-min:h-[90dvh] max-w-7xl mx-auto overflow-hidden">
-                            {/* Header Toolbar - Hidden on mobile and tablet, visible on desktop only */}
+                            {/* HEADER TOOLBAR */}
                             <div className="hidden lg:block px-2 sm:px-4">
                                 <Header />
                             </div>
 
-                            {/* Main Content Area */}
+                            {/* MAIN CONTENT AREA */}
                             <div className="flex-1 min-h-0 p-2 sm:p-4">
                                 <Tab />
                             </div>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useFooter } from "@/context/FooterContext";
+import { useFooter } from "@/contexts/FooterContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { Button } from "@/components/ui/button";
@@ -11,7 +11,7 @@ import { Mail } from "lucide-react";
 export const FooterBrand = () => {
     const { data, handleRedirectToGitHub, handleContactUs } = useFooter();
     const { brand } = data;
-    const { name, description, ariaLabel, text } = brand;
+    const { name, description } = brand;
 
     return (
         <div className="flex flex-col items-center lg:items-start">
@@ -27,12 +27,6 @@ export const FooterBrand = () => {
                 </div>
                 <span className="text-[clamp(1.5rem,3vw,2rem)] font-black text-zinc-900 dark:text-zinc-50 hover:text-emerald-600 dark:hover:text-emerald-500 transition-colors duration-300">
                     {name}
-                </span>
-                <span
-                    className=" items-center rounded-lg bg-emerald-500/10 dark:bg-emerald-500/20 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 border border-emerald-500/20"
-                    aria-label={ariaLabel}
-                >
-                    {text}
                 </span>
             </Link>
 

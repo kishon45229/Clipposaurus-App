@@ -1,1 +1,0 @@
-export { FileTabContainer as FileTab } from "./FileTabContainer";

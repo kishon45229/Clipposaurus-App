@@ -1,7 +1,7 @@
 import { tabList } from "./Tab.config";
 
 export const validateTabList = (list: readonly string[]) => {
-  if (!list || list.length !== 2 /* list.length !== 3 */) {
+  if (!list || list.length !== 2) {
     throw new Error("tabList prop must be an array of two strings.");
   }
 };

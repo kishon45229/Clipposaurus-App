@@ -7,9 +7,8 @@ import { useHeader } from "@/contexts/HeaderContext";
 import { CreateDropDialogBoxContent } from "./CreateDropDialogBox.utils";
 import { ClipboardCheck, Clipboard, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Progress } from "@/components/ui/progress";
 
-export const CreateDropDialogBoxContainer = React.memo(() => {
+export const CreateDropDialogBoxContainer = () => {
   const {
     handleDialogClose,
     handleDialogBoxOpenChange,
@@ -22,7 +21,6 @@ export const CreateDropDialogBoxContainer = React.memo(() => {
     retention,
     fullKeyVisible,
     setFullKeyVisible,
-    uploadProgress,
   } = useHeader();
 
   const maskKey = (key: string) =>
@@ -36,9 +34,7 @@ export const CreateDropDialogBoxContainer = React.memo(() => {
         { text: "Copy Drop Key", onClick: handleCopy, variant: "outline" },
         { text: btnText(), onClick: handleDialogClose },
       ]
-      : createDropRequestStatus !== "creating" &&
-        createDropRequestStatus !== "encrypting-files" &&
-        createDropRequestStatus !== "uploading-files"
+      : createDropRequestStatus !== "creating"
         ? [{ text: btnText(), onClick: handleDialogClose }]
         : undefined;
 
@@ -94,13 +90,6 @@ export const CreateDropDialogBoxContainer = React.memo(() => {
           {retentionDescription(retention)} — make sure to save your Drop Key!
         </div>
       </div>
-    ) : createDropRequestStatus === "uploading-files" ? (
-      <div className="mt-[clamp(0.5rem,2vw,1rem)] flex flex-col items-center gap-[clamp(0.5rem,1.5vw,0.75rem)] w-full">
-        <Progress value={uploadProgress} className="w-full h-3" />
-        <div className="text-center text-[clamp(0.75rem,1.8vw,1rem)] font-semibold text-zinc-900 dark:text-zinc-100">
-          {uploadProgress}%
-        </div>
-      </div>
     ) : undefined;
 
   return (
@@ -111,14 +100,8 @@ export const CreateDropDialogBoxContainer = React.memo(() => {
       title={title()}
       description={description()}
       buttons={buttons}
-      showCloseButton={
-        createDropRequestStatus !== "creating" &&
-        createDropRequestStatus !== "encrypting-files" &&
-        createDropRequestStatus !== "uploading-files"
-      }
+      showCloseButton={createDropRequestStatus !== "creating"}
       customContent={customContent}
     />
   );
-});
-
-CreateDropDialogBoxContainer.displayName = "CreateDropDialogBoxContainer";
+};

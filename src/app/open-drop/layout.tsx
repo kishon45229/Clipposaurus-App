@@ -1,21 +1,19 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: "Your Drop - View your Shared Text, Code Snippets & Files",
-    description: "Access your shared content with drop key. View uploaded files, code snippets, and text content securely. Download files or copy code instantly.",
+    title: "Your Drop - View your Shared Text & Code Snippets",
+    description: "Access your shared content with drop key. View and copy text content and code snippets securely.",
     keywords: [
         "view shared content",
-        "access files",
         "code viewer",
-        "file download",
         "drop key",
         "secure access",
         "shared content",
         "code show content"
     ],
     openGraph: {
-        title: "Your Drop - View your Shared Text, Code Snippets & Files",
-        description: "Access your shared content with drop key. View uploaded files, code snippets, and text content securely. Download files or copy code instantly.",
+        title: "Your Drop - View your Shared Text & Code Snippets",
+        description: "Access your shared content with drop key. View and copy text content and code snippets securely.",
         url: "/open-drop",
         type: "website",
         images: [
@@ -29,8 +27,8 @@ export const metadata: Metadata = {
     },
     twitter: {
         card: "summary_large_image",
-        title: "Your Drop - View your Shared Text, Code Snippets & Files",
-        description: "Access your shared content with drop key. View uploaded files, code snippets, and text content securely. Download files or copy code instantly.",
+        title: "Your Drop - View your Shared Text & Code Snippets",
+        description: "Access your shared content with drop key. View and copy text content and code snippets securely.",
         images: ["/twitter-showcase.png"],
     },
     alternates: {

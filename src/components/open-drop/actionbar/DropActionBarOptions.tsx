@@ -1,18 +1,15 @@
 "use client";
 
-import React from "react";
-import { Copy, Download, Check } from "lucide-react";
+import { Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useOpenDrop } from "@/contexts/OpenDropContext";
 
-export const DropActionBarOptions = React.memo(() => {
+export const DropActionBarOptions = () => {
     const {
         showCopyButton,
-        showDownloadButton,
         isCopied,
         onCopy,
-        onDownloadAll,
         decryptedDrop,
         selectedContentType,
     } = useOpenDrop();
@@ -60,25 +57,6 @@ export const DropActionBarOptions = React.memo(() => {
                     )}
                 </Button>
             )}
-
-            {showDownloadButton && (
-                <Button
-                    onClick={onDownloadAll}
-                    size="sm"
-                    variant="outline"
-                    style={{
-                        fontSize: textSize,
-                        padding: `${paddingY} ${paddingX}`,
-                        gap,
-                    }}
-                    className="rounded-xl hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all cursor-pointer"
-                >
-                    <Download style={{ width: iconSize, height: iconSize }} />
-                    <span>Download all</span>
-                </Button>
-            )}
         </>
     );
-});
-
-DropActionBarOptions.displayName = "DropActionBarOptions";
+};

@@ -4,13 +4,12 @@ import { APP_URL } from "@/lib/urls";
 export const siteMetadata: Metadata = {
   title: {
     default:
-      "Clipposaurus - End to End Encrypted Text, Code Snippet and File Sharing",
+      "Clipposaurus - End to End Encrypted Text & Code Snippet Sharing Platform",
     template: "%s | Clipposaurus",
   },
   description:
-    "Clipposaurus is the fastest way to share text, code snippets, and files securely between devices. No account required, fully encrypted, and free to use.",
+    "Clipposaurus is the fastest way to share text and code snippets securely between devices. No account required, fully encrypted, and free to use.",
   keywords: [
-    "file sharing",
     "code sharing",
     "text sharing",
     "secure sharing",
@@ -18,7 +17,6 @@ export const siteMetadata: Metadata = {
     "clipboard sync",
     "no account required",
     "encrypted sharing",
-    "temporary file storage",
     "drop key",
     "instant sharing",
     "clipposaurus",
@@ -31,9 +29,9 @@ export const siteMetadata: Metadata = {
   alternates: { canonical: "/" },
   openGraph: {
     title:
-      "Clipposaurus - End to End Encrypted Text, Code Snippet and File Sharing",
+      "Clipposaurus - End to End Encrypted Text & Code Snippet Sharing Platform",
     description:
-      "Clipposaurus is the fastest way to share text, code snippets, and files securely between devices. No account required, fully encrypted, and free to use.",
+      "Clipposaurus is the fastest way to share text and code snippets securely between devices. No account required, fully encrypted, and free to use.",
     url: "/",
     siteName: "Clipposaurus",
     images: [
@@ -41,7 +39,7 @@ export const siteMetadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Clipposaurus - Secure File & Code Sharing",
+        alt: "Clipposaurus - Secure Text & Code Sharing",
       },
     ],
     locale: "en_US",
@@ -49,9 +47,9 @@ export const siteMetadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Clipposaurus - Secure File & Code Sharing",
+    title: "Clipposaurus - Secure Text & Code Sharing",
     description:
-      "Share text, code snippets, and files securely between devices. No account required, fully encrypted, and free to use.",
+      "Share text and code snippets securely between devices. No account required, fully encrypted, and free to use.",
     images: ["/twitter-image.png"],
   },
   robots: {

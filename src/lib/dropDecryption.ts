@@ -23,7 +23,6 @@ export async function decryptFullDrop(
       decryptedText: undefined,
       decryptedCode: undefined,
       decryptedLanguage: undefined,
-      decryptedFiles: undefined,
       decryptedRetentionPeriod: "",
       decryptedCreatedDateTime: new Date(0),
       decryptedExpirationDateTime: new Date(0),
@@ -78,43 +77,6 @@ export async function decryptFullDrop(
         };
       }
       decryptedDrop.decryptedLanguage = languageResult.data;
-    }
-
-    // DECRYPT FILES
-    if (dropData.files && dropData.files.length > 0) {
-      const decryptedFilesList = [];
-      for (const storedFile of dropData.files) {
-        const idResult = await decryptWithDropKey(
-          storedFile.id,
-          identifier,
-          systemSecret,
-          userSecret
-        );
-        const nameResult = await decryptWithDropKey(
-          storedFile.name,
-          identifier,
-          systemSecret,
-          userSecret
-        );
-        const sizeResult = await decryptWithDropKey(
-          storedFile.size,
-          identifier,
-          systemSecret,
-          userSecret
-        );
-
-        if (!idResult.success || !nameResult.success || !sizeResult.success) {
-          return { success: false, error: "File metadata decryption failed" };
-        }
-
-        decryptedFilesList.push({
-          id: idResult.data!,
-          name: nameResult.data!,
-          url: storedFile.url,
-          size: parseInt(sizeResult.data!, 10),
-        });
-      }
-      decryptedDrop.decryptedFiles = decryptedFilesList;
     }
 
     // DECRYPT RETENTION PERIOD

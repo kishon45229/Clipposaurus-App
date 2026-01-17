@@ -3,7 +3,6 @@
 import React from "react";
 import { useOpenDrop } from "@/contexts/OpenDropContext";
 import {
-    CheckCircle2,
     XCircle,
     AlertCircle,
     ShieldBan,

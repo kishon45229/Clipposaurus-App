@@ -6,16 +6,6 @@ export const DecryptedDropSchema = z.object({
   decryptedText: z.string().optional(),
   decryptedCode: z.string().optional(),
   decryptedLanguage: z.string().optional(),
-  decryptedFiles: z
-    .array(
-      z.object({
-        id: z.string(),
-        name: z.string(),
-        url: z.string(),
-        size: z.number(),
-      })
-    )
-    .optional(),
   decryptedRetentionPeriod: z.string(),
   decryptedCreatedDateTime: z.union([z.date(), z.string()]).transform((val) => {
     return val instanceof Date ? val : new Date(val);

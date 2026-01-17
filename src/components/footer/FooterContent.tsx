@@ -1,6 +1,6 @@
 "use client";
 
-import { useFooter } from "@/context/FooterContext";
+import { useFooter } from "@/contexts/FooterContext";
 import { FooterBrand } from "@/components/footer/FooterBrand";
 import { FooterBottomBar } from "@/components/footer/FooterBottomBar";
 import { FooterColumn } from "@/components/footer/FooterColumn";

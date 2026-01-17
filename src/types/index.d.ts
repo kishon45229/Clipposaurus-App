@@ -1,38 +1,12 @@
 import type { EncryptedData } from "@/types/encryption";
 
-export type DragAndDropOptions = {
-  processFile?: (
-    file: File,
-    onProgress?: (progress: number) => void
-  ) => Promise<FileItem>;
-  currentTotalSize?: number;
-  setFiles: React.Dispatch<React.SetStateAction<FileItem[]>>;
-  onError?: (error: string) => void;
-};
-
 export interface RetrivedDrop {
   textContent?: EncryptedData;
   codeContent?: EncryptedData;
   codeLanguage?: EncryptedData;
-  files?: StoredFileItem[];
   retention: EncryptedData;
   createdAt: EncryptedData;
   expiresAt: EncryptedData;
-}
-
-export interface FileItem {
-  id: string;
-  name: string;
-  size: number;
-  content: string;
-  file: File;
-}
-
-export interface StoredFileItem {
-  id: EncryptedData;
-  name: EncryptedData;
-  size: EncryptedData;
-  url: string;
 }
 
 export type DropKeyVerificationRequestStatus =
@@ -54,15 +28,12 @@ export type CreateDropRequestStatus =
 
 export type CreateDropAlertStatus =
   | "creating"
-  | "encrypting-files"
-  | "uploading-files"
   | "success"
   | "error"
   | "idle"
   | "rateLimited"
   | "empty"
-  | "nullUserSecret"
-  | "fileSizeExceeded";
+  | "nullUserSecret";
 
 export type OpenDropAlertStatus =
   | "idle"
@@ -82,7 +53,7 @@ export type OpenDropAlertStatus =
   | "decryptionFailed"
   | "deleteOnAccess";
 
-export type DropContentType = "note" | "code" | "files";
+export type DropContentType = "note" | "code";
 
 export interface OpenDropRequestResponse {
   success: boolean;

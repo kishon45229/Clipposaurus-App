@@ -1,7 +1,4 @@
-import {
-  encryptWithDropKey,
-  encryptFileContentWithDropKey,
-} from "../encryption";
+import { encryptWithDropKey } from "@/lib/encryption";
 
 describe("Encryption Functions", () => {
   const mockIdentifier = "test-identifier";
@@ -89,47 +86,6 @@ describe("Encryption Functions", () => {
       const largeText = "a".repeat(100000);
       const result = await encryptWithDropKey(
         largeText,
-        mockIdentifier,
-        mockSystemSecret,
-        mockUserSecret
-      );
-
-      expect(result.encryptedContent).toBeTruthy();
-    });
-  });
-
-  describe("encryptFileContentWithDropKey", () => {
-    it("should encrypt file content successfully", async () => {
-      const fileContent = "base64encodedcontent";
-      const result = await encryptFileContentWithDropKey(
-        fileContent,
-        mockIdentifier,
-        mockSystemSecret,
-        mockUserSecret
-      );
-
-      expect(result).toHaveProperty("encryptedContent");
-      expect(result).toHaveProperty("iv");
-      expect(result).toHaveProperty("salt");
-      expect(result).toHaveProperty("authTag");
-      expect(result).toHaveProperty("nonce");
-    });
-
-    it("should throw error for empty file content", async () => {
-      await expect(
-        encryptFileContentWithDropKey(
-          "",
-          mockIdentifier,
-          mockSystemSecret,
-          mockUserSecret
-        )
-      ).rejects.toThrow("Invalid input");
-    });
-
-    it("should handle large file content", async () => {
-      const largeContent = btoa("x".repeat(1000000)); // Large base64 content
-      const result = await encryptFileContentWithDropKey(
-        largeContent,
         mockIdentifier,
         mockSystemSecret,
         mockUserSecret

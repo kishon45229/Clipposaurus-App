@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/navigation";
-import type { FileItem, CreateDropAlertStatus } from "@/types";
+import type { CreateDropAlertStatus } from "@/types";
 import { navigation } from "@/lib/navigation";
 import { sendCreateDropRequest } from "@/services/dropService";
 import {
@@ -10,13 +10,11 @@ import {
   releaseKey,
   validateIdentifier,
 } from "@/services/dropKeyService";
-import { getCurrentTotalSize, isOverLimit } from "@/lib/fileSizeCheck";
 
 export interface DropData {
   textContent: string;
   codeContent: string;
   selectedLanguage: string;
-  // files: FileItem[];        --> TEMPORARILY DISABLED
 }
 
 export interface UseCreateDropManagerReturn {
@@ -24,7 +22,6 @@ export interface UseCreateDropManagerReturn {
   setTextContent: React.Dispatch<React.SetStateAction<string>>;
   setCodeContent: React.Dispatch<React.SetStateAction<string>>;
   setSelectedLanguage: React.Dispatch<React.SetStateAction<string>>;
-  // setFiles: React.Dispatch<React.SetStateAction<FileItem[]>>;
 
   autoDetectLanguage: boolean;
   setAutoDetectLanguage: React.Dispatch<React.SetStateAction<boolean>>;
@@ -67,7 +64,6 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
   const [textContent, setTextContent] = React.useState<string>("");
   const [codeContent, setCodeContent] = React.useState<string>("");
   const [selectedLanguage, setSelectedLanguage] = React.useState<string>("");
-  // const [files, setFiles] = React.useState<FileItem[]>([]);  --> TEMPORARILY DISABLED
   const [autoDetectLanguage, setAutoDetectLanguage] =
     React.useState<boolean>(true);
   const [createDropRequestStatus, setCreateDropRequestStatus] =
@@ -90,9 +86,8 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
       textContent,
       codeContent,
       selectedLanguage,
-      // files,        --> TEMPORARILY DISABLED
     }),
-    [textContent, codeContent, selectedLanguage /*, files */]
+    [textContent, codeContent, selectedLanguage]
   );
 
   // CLEAR CONTENT HANDLER
@@ -100,7 +95,6 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
     setTextContent("");
     setCodeContent("");
     setSelectedLanguage("");
-    // setFiles([]);  --> TEMPORARILY DISABLED
   }, []);
 
   // RELEASE IDENTIFIER HANDLER
@@ -177,10 +171,7 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
     (open: boolean) => {
       if (
         !open &&
-        createDropRequestStatus !== "creating" /*&&
-        createDropRequestStatus !== "encrypting-files" &&    --> TEMPORARILY DISABLED
-        createDropRequestStatus !== "uploading-files"*/
-      ) {
+        createDropRequestStatus !== "creating") {
         handleDialogClose();
       }
     },
@@ -194,17 +185,10 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
       return;
     }
 
-    if (!textContent && !codeContent /* &&  files.length === 0 */) {    //  --> TEMPORARILY DISABLED
+    if (!textContent && !codeContent) {  
       setCreateDropRequestStatus("empty");
       return;
     }
-
-    // FILE SIZE CHECK TEMPORARILY DISABLED
-    // const totalSize = getCurrentTotalSize(files);
-    // if (isOverLimit(totalSize)) {
-    //   setCreateDropRequestStatus("fileSizeExceeded");
-    //   return;
-    // }
 
     setCreateDropRequestStatus("creating");
     setUploadProgress(0);
@@ -222,23 +206,10 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
         textContent,
         codeContent,
         selectedLanguage,
-        // files*/,        // --> TEMPORARILY DISABLED
         retention,
         identifier,
         systemSecret,
         userSecret,
-        // (stage, progress) => {
-        //   if (stage === "encrypting") {
-        //     setCreateDropRequestStatus("encrypting-files");
-        //     setUploadProgress(progress || 0);
-        //   } else if (stage === "uploading") {
-        //     setCreateDropRequestStatus("uploading-files");
-        //     setUploadProgress(progress || 0);
-        //   } else if (stage === "finalizing") {
-        //     setCreateDropRequestStatus("creating");
-        //     setUploadProgress(100);
-        //   }
-        // }
       );
 
       try {
@@ -288,7 +259,6 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
     textContent,
     codeContent,
     selectedLanguage,
-    // files,        --> TEMPORARILY DISABLED
     handleClearContent,
     identifier,
     systemSecret,
@@ -375,7 +345,6 @@ export function useCreateDropManager(): UseCreateDropManagerReturn {
     setTextContent,
     setCodeContent,
     setSelectedLanguage,
-    // setFiles,  --> TEMPORARILY DISABLED
 
     autoDetectLanguage,
     setAutoDetectLanguage,

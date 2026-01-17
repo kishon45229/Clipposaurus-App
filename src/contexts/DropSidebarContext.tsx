@@ -66,7 +66,6 @@ export function DropSidebarProvider({ children }: DropSidebarProviderProps): Rea
     const contentTypeIcons = React.useMemo(() => ({
         note: FileText,
         code: Code,
-        files: File,
     }), []);
 
     // Get countdown data

@@ -2,14 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { checkRateLimit } from "@/lib/rate-limiting/index";
 import { upstashRedis } from "@/lib/redis";
 import type { EncryptedData } from "@/types/encryption";
-import type { StoredFileItem } from "@/types";
 import env from "@/lib/env";
 
 interface DropContent {
   textContent?: EncryptedData;
   codeContent?: EncryptedData;
   codeLanguage?: string;
-  files?: StoredFileItem[];
   retention: EncryptedData;
   createdAt: string;
   expiresAt: string;
@@ -45,7 +43,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       textContent,
       codeContent,
       codeLanguage,
-      files,
       retention,
       ttlSeconds,
       createdAt,
@@ -65,7 +62,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       textContent: textContent || undefined,
       codeContent: codeContent || undefined,
       codeLanguage: codeLanguage || undefined,
-      files: Array.isArray(files) && files.length > 0 ? files : undefined,
       retention,
       createdAt,
       expiresAt,
@@ -77,21 +73,6 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         ttlSeconds,
         JSON.stringify(dropContent)
       );
-
-      if (Array.isArray(files) && files.length > 0) {
-        const fileUrls = files
-          .map((file: StoredFileItem) => file.url)
-          .filter((url): url is string => Boolean(url));
-
-        if (fileUrls.length > 0) {
-          const bufferedTtl = Math.max(ttlSeconds + 600, ttlSeconds);
-          await upstashRedis.setex(
-            `drop-files:${identifier}`,
-            bufferedTtl,
-            JSON.stringify(fileUrls)
-          );
-        }
-      }
     } catch (error) {
       return NextResponse.json(
         {

@@ -43,7 +43,7 @@ body:
       description: Which area does this feature request relate to?
       options:
         - User Interface / Design
-        - Content Sharing (Text/Code/Files)
+        - Content Sharing (Text/Code)
         - Security / Privacy
         - Performance
         - Mobile Experience

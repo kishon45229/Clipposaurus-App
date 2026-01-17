@@ -1,8 +1,5 @@
-import { decryptWithDropKey, decryptContentWithDropKey } from "../decryption";
-import {
-  encryptWithDropKey,
-  encryptFileContentWithDropKey,
-} from "../encryption";
+import { decryptWithDropKey } from "../decryption";
+import { encryptWithDropKey} from "../encryption";
 import { EncryptedData } from "@/types/encryption";
 
 describe("Decryption Functions", () => {
@@ -216,50 +213,6 @@ describe("Decryption Functions", () => {
 
       expect(result.success).toBe(false);
       expect(result.error).toContain("Invalid hex encoding");
-    });
-  });
-
-  describe("decryptContentWithDropKey", () => {
-    it("should decrypt file content successfully", async () => {
-      const originalContent = "Hello World!";
-      const fileContent = Buffer.from(originalContent).toString("base64");
-      const encrypted = await encryptFileContentWithDropKey(
-        fileContent,
-        mockIdentifier,
-        mockSystemSecret,
-        mockUserSecret
-      );
-
-      const result = await decryptContentWithDropKey(
-        encrypted,
-        mockIdentifier,
-        mockSystemSecret,
-        mockUserSecret
-      );
-
-      expect(result.success).toBe(true);
-      expect(result.data).toBe(originalContent);
-    });
-
-    it("should fail with wrong credentials", async () => {
-      const originalContent = "Hello World!";
-      const fileContent = Buffer.from(originalContent).toString("base64");
-      const encrypted = await encryptFileContentWithDropKey(
-        fileContent,
-        mockIdentifier,
-        mockSystemSecret,
-        mockUserSecret
-      );
-
-      const result = await decryptContentWithDropKey(
-        encrypted,
-        "wrong",
-        mockSystemSecret,
-        mockUserSecret
-      );
-
-      expect(result.success).toBe(false);
-      expect(result.error).toBeTruthy();
     });
   });
 });

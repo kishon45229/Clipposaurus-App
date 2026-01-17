@@ -3,7 +3,6 @@ import { upstashRedis } from "@/lib/redis";
 import env from "@/lib/env";
 import verifyRecaptcha from "@/services/recaptcha";
 import { checkRateLimit } from "@/lib/rate-limiting/index";
-// import { deleteFiles } from "@/services/fileService";   --> TEMPORARILY DISABLED
 
 export async function POST(request: NextRequest) {
   try {
@@ -66,7 +65,6 @@ export async function POST(request: NextRequest) {
     }
 
     const dropKey = `${env.DROP}:${identifier}`;
-    const dropFilesKey = `drop-files:${identifier}`;
 
     const storedDrop = await upstashRedis.get(dropKey);
     if (!storedDrop) {
@@ -101,41 +99,8 @@ export async function POST(request: NextRequest) {
     }
 
     if (dropContent.expiresAt && new Date(dropContent.expiresAt) < new Date()) {
-      const fileUrlsFromDrop = Array.isArray(dropContent.files)
-        ? dropContent.files
-            .map((file: { url?: string }) => file?.url)
-            .filter((url: string | undefined): url is string => Boolean(url))
-        : [];
-
-      let fileUrls: string[] = [...fileUrlsFromDrop];
-      const storedFileUrls = await upstashRedis.get(dropFilesKey);
-
-      if (Array.isArray(storedFileUrls)) {
-        fileUrls = [...fileUrls, ...storedFileUrls];
-      } else if (typeof storedFileUrls === "string") {
-        try {
-          const parsed = JSON.parse(storedFileUrls) as unknown;
-          if (Array.isArray(parsed)) {
-            fileUrls = [...fileUrls, ...parsed.filter(Boolean)];
-          }
-        } catch (error) {
-          console.warn("[OPEN-DROP] Failed to parse drop-files for cleanup", {
-            identifier,
-            error,
-          });
-        }
-      }
-
-      // TEMPORARILY DISABLED
-      // const uniqueFileUrls = Array.from(new Set(fileUrls)).filter(Boolean);
-
-      // if (uniqueFileUrls.length > 0) {
-      //   await deleteFiles(uniqueFileUrls);
-      // }
-
       await upstashRedis.del(dropKey);
       await upstashRedis.del(`used:${identifier}`);
-      await upstashRedis.del(dropFilesKey);
       await upstashRedis.sadd("available_keys", identifier);
 
       return NextResponse.json(

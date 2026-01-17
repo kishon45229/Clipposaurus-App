@@ -1,6 +1,6 @@
 "use client";
 
-import { useFooter } from "@/context/FooterContext";
+import { useFooter } from "@/contexts/FooterContext";
 import { Copyright, Dot } from "lucide-react";
 
 export const FooterBottomBar = () => {

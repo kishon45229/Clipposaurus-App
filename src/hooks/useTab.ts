@@ -1,5 +1,4 @@
 import React from "react";
-import { FileItem } from "@/types";
 
 export default function useTab() {
   const [textContent, setTextContent] = React.useState<string>("");
@@ -7,7 +6,6 @@ export default function useTab() {
   const [selectedLanguage, setSelectedLanguage] = React.useState<string>("");
   const [autoDetectLanguage, setAutoDetectLanguage] =
     React.useState<boolean>(true);
-  const [files, setFiles] = React.useState<FileItem[]>([]);
 
   return {
     textContent,
@@ -18,7 +16,5 @@ export default function useTab() {
     setSelectedLanguage,
     autoDetectLanguage,
     setAutoDetectLanguage,
-    files,
-    setFiles,
   };
 }
