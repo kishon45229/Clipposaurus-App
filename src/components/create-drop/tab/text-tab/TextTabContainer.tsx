@@ -17,7 +17,7 @@ export const TextTabContainer = () => {
       <div className="flex shrink-0 items-center justify-between">
         <Badge
           variant={atCharLimit ? "destructive" : "secondary"}
-          className={cn(`select-none rounded-2xl px-[clamp(0.75rem,2vw,1rem)] text-[clamp(0.7rem,2.5vw,0.9rem)]`,
+          className={cn(`select-none rounded-2xl px-[clamp(0.75rem,2vw,1rem)] py-[clamp(0.1rem,2vw,0.3rem)] text-[clamp(1rem,2.5vw,0.9rem)]`,
             atCharLimit ? "text-white" : "text-muted-foreground")}>
           {charCount.toLocaleString()} characters
         </Badge>
