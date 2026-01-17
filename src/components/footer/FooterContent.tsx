@@ -1,6 +1,6 @@
 "use client";
 
-import { useFooter } from "@/contexts/FooterContext";
+import { useFooter } from "@/context/FooterContext";
 import { FooterBrand } from "@/components/footer/FooterBrand";
 import { FooterBottomBar } from "@/components/footer/FooterBottomBar";
 import { FooterColumn } from "@/components/footer/FooterColumn";
@@ -21,20 +21,27 @@ export const FooterContent = () => {
 
     return (
         <footer className="w-full border-t-2 border-zinc-200 dark:border-zinc-800 bg-gradient-to-b from-white to-zinc-50 dark:from-zinc-950 dark:to-black" role="contentinfo">
-            <div className="w-full max-w-7xl mx-auto py-16">
-                {/* MAIN CONTENT */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-8 mb-12">
-                    {/* BRAND COLUMN */}
-                    <FooterBrand />
+            <div className="w-full max-w-7xl mx-auto py-[clamp(3rem,6vw,4rem)]">
+                <div className="grid grid-rows-[auto_1fr] lg:grid-cols-[1fr_2fr] gap-4">
+                    {/* BRAND SECTION */}
+                    <div className="mb-[clamp(2rem,4vw,3rem)] w-full">
+                        <FooterBrand />
+                    </div>
 
-                    {/* PRODUCT COLUMN */}
-                    <FooterColumn column={columns[0]} redirectHandlers={redirectHandlers} />
+                    {/* COLUMNS SECTION */}
+                    <div className="grid grid-cols-4 mb-12 mx-auto px-2 lg:px-6 w-full">
+                        {/* PRODUCT COLUMN */}
+                        <FooterColumn column={columns[0]} redirectHandlers={redirectHandlers} />
 
-                    {/* RESOURCES COLUMN */}
-                    <FooterColumn column={columns[1]} redirectHandlers={redirectHandlers} />
+                        {/* RESOURCES COLUMN */}
+                        <FooterColumn column={columns[1]} redirectHandlers={redirectHandlers} />
 
-                    {/* LEGAL COLUMN */}
-                    <FooterColumn column={columns[2]} redirectHandlers={redirectHandlers} />
+                        {/* LEGAL COLUMN */}
+                        <FooterColumn column={columns[2]} redirectHandlers={redirectHandlers} />
+
+                        {/* COMMUNITY COLUMN */}
+                        <FooterColumn column={columns[3]} redirectHandlers={redirectHandlers} />
+                    </div>
                 </div>
 
                 {/* BOTTOM BAR */}

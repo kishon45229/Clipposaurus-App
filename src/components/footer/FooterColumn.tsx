@@ -16,12 +16,12 @@ export const FooterColumn = React.memo(({ column, redirectHandlers }: FooterColu
             <div className="text-sm font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-50 mb-4">
                 {category}
             </div>
-            <ul className="space-y-3">
+            <ul className="space-y-[clamp(0.5rem,1vw,0.75rem)]">
                 {links.map((link, index) => (
                     <li key={index}>
                         <button
                             onClick={redirectHandlers[link]}
-                            className="text-zinc-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-500 hover:font-semibold transition-colors duration-200 cursor-target"
+                            className="text-left text-zinc-600 dark:text-zinc-400 hover:text-emerald-600 dark:hover:text-emerald-500 hover:font-semibold transition-colors duration-200 cursor-target"
                             type="button"
                         >
                             <span>{link}</span>

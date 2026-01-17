@@ -1,6 +1,6 @@
 "use client";
 
-import { useFooter } from "@/contexts/FooterContext";
+import { useFooter } from "@/context/FooterContext";
 import { Copyright, Dot } from "lucide-react";
 
 export const FooterBottomBar = () => {
@@ -9,7 +9,7 @@ export const FooterBottomBar = () => {
     const { name } = brand;
 
     return (
-        <div className="pt-8 border-t border-zinc-200 dark:border-zinc-800 flex flex-col md:flex-row items-center justify-center gap-4">
+        <div className="pt-[clamp(1.5rem,3vw,2rem)] border-t border-zinc-200 dark:border-zinc-800 flex flex-col md:flex-row items-center justify-center gap-[clamp(0.75rem,1.5vw,1rem)]">
             {/* COPYRIGHT */}
             <div className="flex items-center gap-2 text-sm text-zinc-600 dark:text-zinc-400">
                 <span className="flex items-center gap-1">
