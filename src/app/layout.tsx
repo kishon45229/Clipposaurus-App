@@ -20,6 +20,9 @@ import { ComponentDataProvider } from "@/contexts/ComponentDataContext";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
+// Trigger env validation
+import env from "@/lib/env";
+
 export { siteMetadata as metadata };
 
 const funnelSans = Funnel_Sans({

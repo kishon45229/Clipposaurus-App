@@ -8,20 +8,6 @@ const envSchema = z.object({
   UPSTASH_REDIS_KV_URL: z.url(),
   UPSTASH_REDIS_KV_REST_API_TOKEN: z.string().min(1).max(100),
 
-  // Cloudflare R2 Configuration
-  CLOUDFLARE_R2_ACCESS_KEY_ID: z.string().min(1),
-  CLOUDFLARE_R2_SECRET_ACCESS_KEY: z.string().min(1),
-  CLOUDFLARE_R2_BUCKET_NAME: z.string().min(1),
-  CLOUDFLARE_R2_ENDPOINT: z.string().min(1),
-  CLOUDFLARE_R2_PUBLIC_URL: z.url(),
-
-  // Backblaze B2 Configuration
-  BACKBLAZE_B2_ACCESS_KEY_ID: z.string().min(1),
-  BACKBLAZE_B2_SECRET_ACCESS_KEY: z.string().min(1),
-  BACKBLAZE_B2_BUCKET_NAME: z.string().min(1),
-  BACKBLAZE_B2_ENDPOINT: z.string().min(1),
-  BACKBLAZE_B2_DOWNLOAD_URL: z.url(),
-
   // Encryption Configuration
   DROP: z.string().min(1),
 
@@ -29,10 +15,14 @@ const envSchema = z.object({
   RECAPTCHA_SECRET_KEY: z.string().min(1),
 
   // Word Pool Configuration
-  KEYS: z.string().min(1),
+  KEYS: z.string().min(500),
 
   // Rollbar configuration
   ROLLBAR_SERVER_TOKEN: z.string().min(1),
+
+  // Marketing URL
+  NEXT_PUBLIC_DEVELOPMENT_MARKETING_URL: z.url(),
+  NEXT_PUBLIC_PRODUCTION_MARKETING_URL: z.url(),
 
   // Documentation URL
   NEXT_PUBLIC_DEVELOPMENT_DOCS_URL: z.url(),
