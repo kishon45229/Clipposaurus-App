@@ -17,6 +17,8 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { NavbarProvider } from "@/contexts/NavbarContext";
 import { FooterProvider } from "@/contexts/FooterContext";
 import { ComponentDataProvider } from "@/contexts/ComponentDataContext";
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export { siteMetadata as metadata };
 
@@ -60,6 +62,8 @@ export default function RootLayout({
                 <div className="min-h-[84dvh] md:portrait:min-h-0 md:portrait:h-auto md:portrait:flex-none">
                   <StorageChecker>
                     {children}
+                     <Analytics />
+                    <SpeedInsights />
                     <Toaster />
                   </StorageChecker>
                 </div>
