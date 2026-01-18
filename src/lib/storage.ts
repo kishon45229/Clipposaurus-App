@@ -2,9 +2,9 @@ import env from "@/lib/env";
 
 export async function checkRedisStorageQuota(): Promise<number> {
   try {
-    const response = await fetch(`${env.UPSTASH_REDIS_REST_URL}/info`, {
+    const response = await fetch(`${env.UPSTASH_REDIS_KV_URL}/info`, {
       headers: {
-        Authorization: `Bearer ${env.UPSTASH_REDIS_REST_TOKEN}`,
+        Authorization: `Bearer ${env.UPSTASH_REDIS_KV_REST_API_TOKEN}`,
       },
       cache: "no-store",
     });
@@ -21,10 +21,10 @@ export async function checkRedisStorageQuota(): Promise<number> {
       .map((line: string) => line.trim());
 
     const usedDataLine = lines.find((line: string) =>
-      line.startsWith("total_data_size:")
+      line.startsWith("total_data_size:"),
     );
     const maxDataLine = lines.find((line: string) =>
-      line.startsWith("max_data_size:")
+      line.startsWith("max_data_size:"),
     );
 
     const toNumber = (line?: string): number => {

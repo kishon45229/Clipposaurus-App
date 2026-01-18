@@ -5,8 +5,8 @@ const envSchema = z.object({
   CACHE_TTL: z.coerce.number().min(0),
 
   // Upstash Redis Configuration
-  UPSTASH_REDIS_REST_URL: z.url(),
-  UPSTASH_REDIS_REST_TOKEN: z.string().min(1).max(100),
+  UPSTASH_REDIS_KV_URL: z.url(),
+  UPSTASH_REDIS_KV_REST_API_TOKEN: z.string().min(1).max(100),
 
   // Cloudflare R2 Configuration
   CLOUDFLARE_R2_ACCESS_KEY_ID: z.string().min(1),
@@ -36,7 +36,7 @@ const envSchema = z.object({
 
   // Documentation URL
   NEXT_PUBLIC_DEVELOPMENT_DOCS_URL: z.url(),
-  NEXT_PUBLIC_PRODUCTION_DOCS_URL: z.url()
+  NEXT_PUBLIC_PRODUCTION_DOCS_URL: z.url(),
 });
 
 const _env = envSchema.safeParse(process.env);
