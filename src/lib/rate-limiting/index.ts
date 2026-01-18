@@ -1,7 +1,6 @@
 import { NextRequest } from "next/server";
 import getClientIP from "@/lib/rate-limiting/client-IP";
 import { generateIdentifier } from "@/lib/rate-limiting/fingerprint";
-// Use in-memory storage instead of Redis to save commands
 import {
   isBlocked,
   blockIdentifier,
