@@ -1,13 +1,18 @@
 import { NextRequest } from "next/server";
 import getClientIP from "@/lib/rate-limiting/client-IP";
 import { generateIdentifier } from "@/lib/rate-limiting/fingerprint";
-import { isBlocked, blockIdentifier, trackRequest } from "@/lib/rate-limiting/storage";
+// Use in-memory storage instead of Redis to save commands
+import {
+  isBlocked,
+  blockIdentifier,
+  trackRequest,
+} from "@/lib/rate-limiting/in-memory-storage";
 import { getPathConfig } from "@/lib/rate-limiting/utils";
 import { RATE_LIMIT_CONFIG } from "@/lib/rate-limiting/config";
 import type { RateLimitResult } from "@/lib/rate-limiting/types";
 
 export async function checkRateLimit(
-  request: NextRequest
+  request: NextRequest,
 ): Promise<RateLimitResult> {
   try {
     const ip = getClientIP(request);
@@ -22,7 +27,7 @@ export async function checkRateLimit(
     const identifier = generateIdentifier(request, ip);
     const path = new URL(request.url).pathname;
 
-    const blockStatus = await isBlocked(identifier);
+    const blockStatus = isBlocked(identifier);
     if (blockStatus.blocked) {
       return {
         allowed: false,
@@ -35,17 +40,18 @@ export async function checkRateLimit(
 
     const config = getPathConfig(path);
 
-    const result = await trackRequest(
+    const result = trackRequest(
       identifier,
       config.capacity,
       config.refillRate,
-      config.refillIntervalMs
+      config.refillIntervalMs,
     );
 
     if (!result.allowed && result.tokensRemaining === 0) {
-      await blockIdentifier(
+      blockIdentifier(
         identifier,
-        `Token bucket depleted - rate limit exceeded`
+        `Token bucket depleted - rate limit exceeded`,
+        RATE_LIMIT_CONFIG.blockDurationMs,
       );
 
       return {
