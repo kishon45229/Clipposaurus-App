@@ -2,14 +2,14 @@ name: Cleanup Cron Job
 
 on:
   schedule:
-    # Run every 5 minutes
-    - cron: "*/5 * * * *"
-  workflow_dispatch: 
+    # Run once daily as backup
+    - cron: "0 2 * * *" # 2 AM UTC daily
+  workflow_dispatch:
 
 jobs:
   cleanup:
     runs-on: ubuntu-latest
-    timeout-minutes: 6 
+    timeout-minutes: 6
 
     steps:
       - name: Call Cleanup Endpoint

@@ -8,9 +8,9 @@ const KEYS: string[] = env.KEYS
       .filter((word) => word.length > 0)
   : [];
 
-const PENDING_TTL = 600 as const; // 10 minutes
+const PENDING_TTL = 1800 as const; // 30 minutes
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
     if (KEYS.length === 0) {
       return NextResponse.json(
@@ -18,16 +18,29 @@ export async function GET() {
           success: false,
           error: "Keys not configured. Please contact support.",
         },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
     const setSize = await upstashRedis.scard("available_keys");
+
     if (setSize === 0 && KEYS.length > 0) {
       await upstashRedis.sadd(
         "available_keys",
-        ...(KEYS as [string, ...string[]])
+        ...(KEYS as [string, ...string[]]),
       );
+    }
+
+    if (setSize > 0 && setSize < 500) {
+      const url = new URL(request.url);
+      const baseUrl = `${url.protocol}//${url.host}`;
+
+      fetch(`${baseUrl}/api/drop-key/cleanup`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+      }).catch(() => {
+        // Silently fail - cleanup is best-effort
+      });
     }
 
     const identifierKey = await upstashRedis.srandmember("available_keys");
@@ -37,7 +50,7 @@ export async function GET() {
           success: false,
           error: "No identifiers available. Please try again later.",
         },
-        { status: 503 }
+        { status: 503 },
       );
     }
 
@@ -55,7 +68,7 @@ export async function GET() {
         success: false,
         error: "Failed to retrieve an identifier. Please try again.",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
