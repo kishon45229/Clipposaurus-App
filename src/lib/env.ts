@@ -16,7 +16,8 @@ const envSchema = z.object({
   RECAPTCHA_SECRET_KEY: z.string().min(1),
 
   // Word Pool Configuration
-  KEYS: z.string().min(500),
+  KEYS: z.string().min(1),
+  MINIMUM_KEYS_THRESHOLD: z.coerce.number().min(1),
 
   // Rollbar configuration
   ROLLBAR_SERVER_TOKEN: z.string().min(1),

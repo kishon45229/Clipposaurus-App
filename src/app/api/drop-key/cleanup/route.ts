@@ -2,8 +2,6 @@ import { NextResponse } from "next/server";
 import { upstashRedis } from "@/lib/redis";
 import env from "@/lib/env";
 
-export const maxDuration = 300;
-
 export async function POST() {
   try {
     const startTime = Date.now();
@@ -15,8 +13,7 @@ export async function POST() {
     const availableSet = new Set(availableKeys);
 
     // Early exit: Skip cleanup if we already have enough keys
-    const MINIMUM_KEYS_THRESHOLD = 500;
-    if (availableSet.size >= MINIMUM_KEYS_THRESHOLD) {
+    if (availableSet.size >= env.MINIMUM_KEYS_THRESHOLD) {
       return NextResponse.json({
         success: true,
         recycledCount: 0,
