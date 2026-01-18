@@ -71,9 +71,9 @@ export const CreateDropDialogBoxContainer = () => {
 
             <Button variant="ghost" size="icon" onClick={handleCopy}>
               {copied ? (
-                <Copy className="w-[clamp(1rem,2.5vw,1.5rem)] h-[clamp(1rem,2.5vw,1.5rem)]" />
-              ) : (
                 <Check className="w-[clamp(1rem,2.5vw,1.5rem)] h-[clamp(1rem,2.5vw,1.5rem)]" />
+              ) : (
+                <Copy className="w-[clamp(1rem,2.5vw,1.5rem)] h-[clamp(1rem,2.5vw,1.5rem)]" />
               )}
             </Button>
           </div>
