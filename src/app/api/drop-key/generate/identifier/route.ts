@@ -43,7 +43,28 @@ export async function GET(request: Request) {
       });
     }
 
-    const identifierKey = await upstashRedis.srandmember("available_keys");
+    let identifierKey = await upstashRedis.srandmember("available_keys");
+    
+    // If no key found, trigger cleanup and retry once
+    if (!identifierKey) {
+      const url = new URL(request.url);
+      const baseUrl = `${url.protocol}//${url.host}`;
+
+      try {
+        const cleanupResponse = await fetch(`${baseUrl}/api/drop-key/cleanup`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        });
+
+        if (cleanupResponse.ok) {
+          // Retry once after cleanup
+          identifierKey = await upstashRedis.srandmember("available_keys");
+        }
+      } catch {
+        // If cleanup fails, proceed to error response
+      }
+    }
+
     if (!identifierKey) {
       return NextResponse.json(
         {

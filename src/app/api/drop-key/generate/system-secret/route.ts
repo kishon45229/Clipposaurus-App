@@ -8,7 +8,7 @@ const KEYS: string[] = env.KEYS
       .filter((word) => word.length > 0)
   : [];
 
-export async function GET() {
+export async function GET(request: Request) {
   try {
     if (KEYS.length === 0) {
       return NextResponse.json(
@@ -28,7 +28,28 @@ export async function GET() {
       );
     }
 
-    const systemSecretKey = await upstashRedis.srandmember("available_keys");
+    let systemSecretKey = await upstashRedis.srandmember("available_keys");
+    
+    // If no key found, trigger cleanup and retry once
+    if (!systemSecretKey) {
+      const url = new URL(request.url);
+      const baseUrl = `${url.protocol}//${url.host}`;
+
+      try {
+        const cleanupResponse = await fetch(`${baseUrl}/api/drop-key/cleanup`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+        });
+
+        if (cleanupResponse.ok) {
+          // Retry once after cleanup
+          systemSecretKey = await upstashRedis.srandmember("available_keys");
+        }
+      } catch {
+        // If cleanup fails, proceed to error response
+      }
+    }
+
     if (!systemSecretKey) {
       return NextResponse.json(
         {
