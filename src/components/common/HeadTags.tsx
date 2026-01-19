@@ -1,22 +1,18 @@
 import React from "react";
 import { getSiteJsonLd } from "@/lib/jsonLd";
-import { createTrustedJSONLD } from "@/lib/trustedTypes";
 
 interface HeadTagsProps {
   nonce?: string;
 }
 
 export const HeadTags = ({ nonce }: HeadTagsProps): React.ReactNode => {
-  const jsonLd = getSiteJsonLd();
-  const trustedJsonLd = createTrustedJSONLD(jsonLd);
+  const jsonLd = JSON.stringify(getSiteJsonLd()).replace(/</g, "\\u003c");
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: trustedJsonLd }}
-        nonce={nonce}
-      />
+      <script type="application/ld+json" nonce={nonce}>
+        {jsonLd}
+      </script>
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
       <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />

@@ -19,7 +19,6 @@ export function middleware(request: NextRequest) {
     "form-action 'self'",
     "object-src 'none'",
     "upgrade-insecure-requests",
-    "require-trusted-types-for 'script'",
   ].join("; ");
 
   const requestHeaders = new Headers(request.headers);
