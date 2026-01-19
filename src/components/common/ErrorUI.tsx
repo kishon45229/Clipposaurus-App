@@ -1,10 +1,9 @@
-import React from "react";
-import { TriangleAlert } from "lucide-react";
-import { Button } from "../ui/button";
-import Link from "next/link";
-import { AmbientGlow } from "../ui/ambient-glow";
+"use client";
 
-const DOCS_URL = process.env.NEXT_PUBLIC_DOCS_URL || "http://localhost:3001";
+import React from "react";
+import { Bug, Check, Copy, TriangleAlert } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { AmbientGlow } from "@/components/ui/ambient-glow";
 
 interface ErrorUIProps {
     isDev: boolean;
@@ -13,7 +12,20 @@ interface ErrorUIProps {
     reset: () => void;
 }
 
-function ErrorUI({ isDev, error, supportId, reset }: ErrorUIProps) {
+export const ErrorUI = React.memo<ErrorUIProps>(({ isDev, error, supportId, reset }): React.ReactNode => {
+    const [isCopied, setIsCopied] = React.useState(false);
+
+    const handleCopySupportId = async () => {
+        if (!supportId) return;
+        try {
+            await navigator.clipboard.writeText(supportId);
+            setIsCopied(true);
+            setTimeout(() => setIsCopied(false), 2000);
+        } catch (err) {
+            console.warn("Failed to copy support ID:", err);
+        }
+    };
+
     return (
         <div
             className="relative flex items-center justify-center min-h-[84dvh] px-4"
@@ -21,18 +33,9 @@ function ErrorUI({ isDev, error, supportId, reset }: ErrorUIProps) {
             aria-label="Error occurred"
         >
             {/* Main container */}
-            <div className="
-                    relative w-full max-w-md
-                    rounded-3xl
-                    border border-zinc-200/70 dark:border-zinc-800/70
-                    backdrop-blur-xl
-                    shadow-xl
-                    p-8
-                    text-center
-                "
-            >
+            <div className="relative w-full max-w-md rounded-3xl border border-zinc-200/70 dark:border-zinc-800/70 backdrop-blur-xl shadow-xl p-8 text-center">
                 {/* Ambient background glow */}
-                {/* <AmbientGlow /> */}
+                <AmbientGlow />
 
                 {/* Icon */}
                 <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
@@ -41,13 +44,29 @@ function ErrorUI({ isDev, error, supportId, reset }: ErrorUIProps) {
 
                 {/* Title */}
                 <div className="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-                    Something didn’t load
+                    Something didn&apos;t load
                 </div>
 
                 {/* Description */}
                 <div className="mt-2 text-base leading-relaxed text-zinc-600 dark:text-zinc-400">
                     We hit a small hiccup while preparing this page. A quick retry usually fixes it.
                 </div>
+
+                {supportId && (
+                    <div>
+                        <div className="mt-4 flex items-center justify-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
+                            Support ID
+                        </div>
+                        <div className="flex items-center justify-center gap-2">
+                            <span>{supportId}</span>
+                            {isCopied ? (
+                                <Check className="w-4 h-4 text-emerald-500" />
+                            ) : (
+                                <Copy className="w-4 h-4 cursor-target" onClick={handleCopySupportId} />
+                            )}
+                        </div>
+                    </div>
+                )}
 
                 {/* Dev-only details */}
                 {isDev && (
@@ -67,51 +86,36 @@ function ErrorUI({ isDev, error, supportId, reset }: ErrorUIProps) {
                     <Button
                         size="lg"
                         onClick={reset}
-                        className="
-                            w-full rounded-xl
-                            bg-zinc-900 hover:bg-zinc-800
-                            dark:bg-zinc-50 dark:hover:bg-zinc-200
-                            text-zinc-50 dark:text-zinc-900
-                            font-semibold
-                            shadow-lg
-                            transition-all
-                            hover:-translate-y-0.5
-                        "
+                        className="w-full rounded-xl bg-zinc-900 hover:bg-zinc-800 dark:bg-zinc-50 dark:hover:bg-zinc-200 text-zinc-50 dark:text-zinc-900 font-semibold shadow-lg transition-all hover:-translate-y-0.5 cursor-target"
                         aria-label="Retry loading"
                     >
                         Try again
                     </Button>
 
-                    <a href={DOCS_URL} target="_blank" rel="noopener noreferrer">
+                    <a href={process.env.NEXT_PUBLIC_GITHUB_ISSUES_URL} target="_blank" rel="noopener noreferrer">
                         <Button
                             size="lg"
                             variant="outline"
-                            className="
-                                w-full rounded-xl
-                                border-zinc-300 dark:border-zinc-700
-                                bg-white/60 dark:bg-zinc-900/60
-                                backdrop-blur-sm
-                                transition-all
-                                hover:-translate-y-0.5
-                            "
-                            aria-label="View documentation"
+                            className="w-full rounded-xl border-zinc-300 dark:border-zinc-700 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-sm transition-all hover:-translate-y-0.5 cursor-target"
+                            aria-label="Report an issue"
                         >
-                            View documentation
+                            <Bug className="h-4 w-4 mr-2" />
+                            Report an issue
                         </Button>
                     </a>
                 </div>
 
                 {/* Support note */}
                 <div className="mt-6 text-sm text-zinc-500 dark:text-zinc-400">
-                    If this keeps happening, contact support
-                    {supportId && (
-                        <>
-                            {" "}with ID{" "}
-                            <span className="font-mono font-medium text-zinc-700 dark:text-zinc-300">
-                                {supportId}
-                            </span>
-                        </>
-                    )}
+                    If this keeps happening,{" "}
+                    <a
+                        href={`mailto:${process.env.NEXT_PUBLIC_CLIPPOSAURUS_CONTACT_EMAIL}${supportId ? `?subject=An error occurred - Support ID: ${supportId}` : ''}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-zinc-700 dark:hover:text-zinc-300 cursor-target"
+                    >
+                        contact support
+                    </a>
                 </div>
 
                 {/* Accessibility */}
@@ -121,9 +125,6 @@ function ErrorUI({ isDev, error, supportId, reset }: ErrorUIProps) {
             </div>
         </div>
     );
-}
+});
 
-const MemoizedErrorUI = React.memo(ErrorUI);
-MemoizedErrorUI.displayName = "ErrorUI";
-
-export { MemoizedErrorUI as ErrorUI };
+ErrorUI.displayName = "ErrorUI";
