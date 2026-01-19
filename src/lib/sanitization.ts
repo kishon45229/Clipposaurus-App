@@ -1,4 +1,5 @@
 import DOMPurify from "isomorphic-dompurify";
+import { createTrustedHTML } from "@/lib/trustedTypes";
 
 export function sanitizeHtml(html: string): string {
   if (typeof html !== "string") {
@@ -10,6 +11,11 @@ export function sanitizeHtml(html: string): string {
     ALLOWED_ATTR: [],
     KEEP_CONTENT: true,
   });
+}
+
+export function sanitizeHtmlToTrusted(html: string): TrustedHTML | string {
+  const sanitized = sanitizeHtml(html);
+  return createTrustedHTML(sanitized);
 }
 
 export function sanitizeText(text: string): string {

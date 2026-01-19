@@ -1,5 +1,6 @@
 import React from "react";
 import { getSiteJsonLd } from "@/lib/jsonLd";
+import { createTrustedJSONLD } from "@/lib/trustedTypes";
 
 interface HeadTagsProps {
   nonce?: string;
@@ -7,12 +8,13 @@ interface HeadTagsProps {
 
 export const HeadTags = ({ nonce }: HeadTagsProps): React.ReactNode => {
   const jsonLd = getSiteJsonLd();
+  const trustedJsonLd = createTrustedJSONLD(jsonLd);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: trustedJsonLd }}
         nonce={nonce}
       />
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
