@@ -9,16 +9,17 @@ export function middleware(request: NextRequest) {
   const cspHeader = [
     "default-src 'self'",
     `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://www.google.com https://www.gstatic.com https://vercel.live https://*.vercel-scripts.com https://va.vercel-scripts.com`,
-    `style-src 'self' 'nonce-${nonce}' 'unsafe-inline' https://fonts.googleapis.com`,
+    `style-src 'self' 'unsafe-inline' https://fonts.googleapis.com`,
     "font-src 'self' https://fonts.gstatic.com data:",
     "img-src 'self' data: https: blob:",
-    "connect-src 'self' https://www.google.com https://vercel.live https://*.vercel-insights.com https://api.rollbar.com",
+    "connect-src 'self' https://www.google.com https://vercel.live https://*.vercel-insights.com https://api.rollbar.com https://api.github.com",
     "frame-src https://www.google.com https://vercel.live",
     "frame-ancestors 'none'",
     "base-uri 'self'",
     "form-action 'self'",
     "object-src 'none'",
     "upgrade-insecure-requests",
+    "require-trusted-types-for 'script'",
   ].join("; ");
 
   const requestHeaders = new Headers(request.headers);
