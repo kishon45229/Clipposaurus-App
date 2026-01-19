@@ -1,7 +1,7 @@
 {
   "brand": {
     "name": "Clipposaurus",
-    "description": "Privacy-first zero-knowledge web app for secure content sharing. No accounts, no tracking, just pure privacy.",
+    "description": "Privacy-first, zero-knowledge web app for secure content sharing. No accounts, no tracking—just pure privacy.",
     "ariaLabel": "Beta Badge",
     "text": "Beta"
   },
@@ -12,16 +12,16 @@
     },
     {
       "category": "resources",
-      "links": ["Docs", "Changelog", "FAQ", "GitHub"]
-    },
-    {
-      "category": "legal",
-      "links": ["Terms of Service"]
+      "links": ["About", "Docs", "FAQ", "Changelog", "Contact"]
     },
     {
       "category": "community",
-      "links": ["GitHub Discussions"]
+      "links": ["GitHub", "Discussions", "Support the Project"]
+    },
+    {
+      "category": "legal",
+      "links": ["Privacy Policy", "Terms of Service"]
     }
   ],
-  "copyrightNote": "All rights reserved"
+  "copyrightNote": "© Clipposaurus. Open-source and community-driven."
 }

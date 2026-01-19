@@ -22,6 +22,8 @@ interface RedirectsReturn {
   handleRedirectToGitHubDiscussions: () => void;
   handleRedirectToCreateDrop: () => void;
   handleRedirectToUnlockDrop: () => void;
+  handleRedirectToAbousUs: () => void;
+  handleRedirectToPrivacyPolicy: () => void;
 }
 
 export function useRedirects(): RedirectsReturn {
@@ -65,9 +67,17 @@ export function useRedirects(): RedirectsReturn {
     window.location.href = MARKETING_URL + "/terms-of-service";
   }, []);
 
+  const handleRedirectToPrivacyPolicy = React.useCallback(() => {
+    window.location.href = MARKETING_URL + "/privacy-policy";
+  }, []);
+
   // CONTACT US
   const handleContactUs = React.useCallback(() => {
     window.location.href = `mailto:${CONTACT_EMAIL}`;
+  }, []);
+
+  const handleRedirectToAbousUs = React.useCallback(() => {
+    window.location.href = MARKETING_URL + "/about";
   }, []);
 
   // GITHUB DISCUSSIONS
@@ -75,7 +85,7 @@ export function useRedirects(): RedirectsReturn {
     window.open(
       GITHUB_REPO_URL + "/discussions",
       "_blank",
-      "noopener noreferrer"
+      "noopener noreferrer",
     );
   }, []);
 
@@ -102,5 +112,7 @@ export function useRedirects(): RedirectsReturn {
     handleRedirectToGitHubDiscussions,
     handleRedirectToCreateDrop,
     handleRedirectToUnlockDrop,
+    handleRedirectToAbousUs,
+    handleRedirectToPrivacyPolicy,
   };
 }
