@@ -1,12 +1,11 @@
 User-agent: *
+Disallow: /api/
+Disallow: /_next/
+
 Allow: /create-drop
 Allow: /open-drop
 Allow: /unlock-drop
 Allow: /sitemap.xml
-
-Disallow: /
-Disallow: /api/
-Disallow: /_next/
 
 # Sitemap
 Sitemap: https://app.clipposaurus.com/sitemap.xml
