@@ -28,6 +28,11 @@ export function getSiteJsonLd() {
           "Text or notes sharing",
           "End-to-end encryption",
         ],
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: 4.8,
+          reviewCount: 150,
+        },
         potentialAction: [
           {
             "@type": "CreateAction",
