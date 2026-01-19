@@ -1,7 +1,11 @@
 import React from "react";
 import { getSiteJsonLd } from "@/lib/jsonLd";
 
-export const HeadTags = (): React.ReactNode => {
+interface HeadTagsProps {
+  nonce?: string;
+}
+
+export const HeadTags = ({ nonce }: HeadTagsProps): React.ReactNode => {
   const jsonLd = getSiteJsonLd();
 
   return (
@@ -9,6 +13,7 @@ export const HeadTags = (): React.ReactNode => {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        nonce={nonce}
       />
       <link rel="icon" type="image/x-icon" href="/favicon.ico" />
       <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
