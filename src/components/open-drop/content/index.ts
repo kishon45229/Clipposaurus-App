@@ -1,1 +1,1 @@
-export { DropContentContainer as DropContent } from "./DropContentContainer";
+export { DropItemsPreviewContainer as DropItemsPreview } from "./DropItemsPreviewContainer";

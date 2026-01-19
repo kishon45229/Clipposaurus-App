@@ -3,7 +3,7 @@ import { DropActionBar } from "../actionbar";
 import { DropTextContent } from "@/components/open-drop/content/DropTextContent";
 import { DropCodeContent } from "@/components/open-drop/content/DropCodeContent";
 
-export const DropContentContainer = () => {
+export const DropItemsPreviewContainer = () => {
     return (
         <div className="flex flex-col h-full">
             {/* ACTION BAR */}

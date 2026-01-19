@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { FileText, Code, File } from "lucide-react";
+import { FileText, Code } from "lucide-react";
 import { useSidebar } from "@/components/ui/sidebar";
 import { useOpenDrop } from "@/contexts/OpenDropContext";
 import { useCountdownTimer } from "@/hooks/useCountdownTimer";
@@ -47,12 +47,10 @@ interface DropSidebarProviderProps {
 }
 
 export function DropSidebarProvider({ children }: DropSidebarProviderProps): React.ReactElement {
-    // Get sidebar state
     const { state, isMobile, openMobile, mobileBehavior } = useSidebar();
     const isSheetMobile = isMobile && mobileBehavior === "sheet";
     const isCollapsed = isSheetMobile ? !openMobile : state === "collapsed";
 
-    // Get drop data from existing context
     const {
         decryptedDrop,
         selectedContentType,
@@ -68,7 +66,6 @@ export function DropSidebarProvider({ children }: DropSidebarProviderProps): Rea
         code: Code,
     }), []);
 
-    // Get countdown data
     const { timeLeft, isExpired } = useCountdownTimer();
     const { deleteOnAccess, setDeleteOnAccess } = useDeleteDropManager();
 
