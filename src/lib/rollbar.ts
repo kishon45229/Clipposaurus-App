@@ -1,7 +1,7 @@
 import Rollbar from 'rollbar';
 
 const baseConfig = {
-  captureUncaught: true,
+  captureUncaught: false,
   captureUnhandledRejections: true,
   environment: process.env.NODE_ENV,
 };
